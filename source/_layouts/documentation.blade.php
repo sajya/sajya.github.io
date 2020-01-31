@@ -29,8 +29,9 @@
             </div>
             <div class="col-12 col-md-9">
 
-                @yield('content')
-
+                <main class="content">
+                    @yield('content')
+                </main>
             </div>
         </div>
     </div>

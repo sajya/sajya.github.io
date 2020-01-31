@@ -23,7 +23,14 @@
     <title>{{ $page->siteName }}{{ $page->title ? ' | ' . $page->title : '' }}</title>
 
     <link rel="home" href="{{ $page->baseUrl }}">
-    <link rel="icon" href="/favicon.ico">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#8ea8af">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
 
     @stack('meta')
 
@@ -42,24 +49,6 @@
 
 
 <body class='page'>
-<div id="main-menu-mobile" class="main-menu-mobile">
-    <ul>
-
-
-        <li class="menu-item-home active">
-            <a href="/">
-                <span>Home</span>
-            </a>
-        </li>
-
-        <li class="menu-item-docs">
-            <a href="/docs/">
-                <span>Docs</span>
-            </a>
-        </li>
-
-    </ul>
-</div>
 <div class="wrapper">
     <div class='header'>
         <div class="container">
@@ -69,19 +58,19 @@
                 </a>
             </div>
             <div class="logo-mobile">
-                <a href="/"><img alt="Logo" src="/images/logo-mobile.svg"/></a>
+                <a href="/"><img alt="Logo" src="/assets/img/logo.svg"/></a>
             </div>
             <div id="main-menu" class="main-menu">
                 <ul>
 
 
-                    <li class="menu-item-home active">
+                    <li class="menu-item-home {{ $page->isActive('/') ? 'active' : '' }}">
                         <a href="/">
                             <span>Home</span>
                         </a>
                     </li>
 
-                    <li class="menu-item-docs">
+                    <li class="menu-item-docs {{ $page->isContains('/docs') ? 'active' : '' }}">
                         <a href="/docs/">
                             <span>Docs</span>
                         </a>
@@ -95,11 +84,6 @@
 
                 </ul>
             </div>
-            <button id="toggle-main-menu-mobile" class="hamburger hamburger--slider" type="button">
-  <span class="hamburger-box">
-    <span class="hamburger-inner"></span>
-  </span>
-            </button>
         </div>
     </div>
 

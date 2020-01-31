@@ -13,16 +13,15 @@
       font-weight: 400;
       margin: 0;
       padding: 4px 0 4px 0;
-      &.active {
-        a {
-          color: lighten($primary, 10%);
-          font-weight: 400;
-        }
-      }
       a {
-        color: $black;
+        color: darken($primary, 60%);
+        &.active {
+            color: $black;
+            text-decoration: underline;
+            font-weight: 400;
+        }
         &:hover {
-          color: $primary;
+          color:  $black;
         }
       }
     }

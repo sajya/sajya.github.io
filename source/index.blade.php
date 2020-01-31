@@ -12,8 +12,9 @@
                         server <br>for Laravel framework</h1>
                     <div class="content">
 
-                        <p>Whisper is a documentation theme built with Hugo. The design and functionality is
-                            intentionally minimal.</p>
+                        <p>A light weight remote procedure call protocol.
+                           It is designed to be simple!
+                        </p>
 
 
                     </div>
@@ -31,7 +32,9 @@
             <div class="row justify-content-center">
                 <div class="col-12 col-md-10">
                     <div class="terminal">
-                        <div id="console"></div>
+                        <pre>
+                            <code class="language-json" id="console"></code>
+                        </pre>
                     </div>
                 </div>
             </div>

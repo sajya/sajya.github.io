@@ -1,7 +1,9 @@
 <?php
 
 return [
-    'Getting Started' => [
+
+    /*
+    'Getting Started -' => [
         'url' => 'docs/getting-started',
         'children' => [
             'Customizing Your Site' => 'docs/customizing-your-site',
@@ -10,5 +12,11 @@ return [
             'Custom 404 Page' => 'docs/custom-404-page',
         ],
     ],
-    'Jigsaw Docs' => 'https://jigsaw.tighten.co/docs/installation',
+*/
+
+    'Introduction' => 'docs/customizing-your-site',
+    'Installation' => 'docs/navigation',
+    'Getting Started' => 'docs/algolia-docsearch',
+    'Validation' => 'docs/custom-404-page',
+    'Authentication' => 'docs/custom-404-page',
 ];

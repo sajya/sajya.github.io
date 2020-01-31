@@ -3,8 +3,8 @@
 return [
     'baseUrl' => '',
     'production' => false,
-    'siteName' => 'Docs Starter Template',
-    'siteDescription' => 'Beautiful docs powered by Jigsaw',
+    'siteName' => 'JSON-RPC server for Laravel framework',
+    'siteDescription' => 'A light weight remote procedure call protocol. It is designed to be simple!',
 
     // Algolia DocSearch credentials
     'docsearchApiKey' => '',
@@ -14,6 +14,10 @@ return [
     'navigation' => require_once('navigation.php'),
 
     // helpers
+    'isContains' => function ($page, $path) {
+        return str_contains(trimPath($page->getPath()), trimPath($path));
+    },
+
     'isActive' => function ($page, $path) {
         return ends_with(trimPath($page->getPath()), trimPath($path));
     },
