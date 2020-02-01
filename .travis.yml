@@ -22,11 +22,12 @@ script:
 deploy:
   local_dir: build_production
   provider: pages
+  target_branch: master
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
   keep_history: true
   on:
-    branch: master
+    branch: jigsaw
 
 notifications:
   email:
