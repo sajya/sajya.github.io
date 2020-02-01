@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="Building a navigation menu for your site">
+
+    <meta property="og:site_name" content="JSON-RPC server for Laravel framework"/>
+    <meta property="og:title" content="Navigation | JSON-RPC server for Laravel framework"/>
+    <meta property="og:description" content="Building a navigation menu for your site"/>
+    <meta property="og:url" content="https://my-jigsaw-docs.com/docs/navigation"/>
+    <meta property="og:image" content="/assets/img/logo.png"/>
+    <meta property="og:type" content="website"/>
+
+    <meta name="twitter:image:alt" content="JSON-RPC server for Laravel framework">
+    <meta name="twitter:card" content="summary_large_image">
+
+    
+    <title>JSON-RPC server for Laravel framework | Navigation</title>
+
+    <link rel="home" href="https://my-jigsaw-docs.com">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#8ea8af">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+
+    
+        <!-- Insert analytics code here -->
+    
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,300i,400,400i,700,700i,800,800i"
+          rel="stylesheet">
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=d8066aa51193099a3030">
+
+    </head>
+
+
+<body class='page'>
+<div class="wrapper">
+    <div class='header'>
+        <div class="container">
+            <div class="logo">
+                <a href="/">
+                    <img src="/assets/img/logo.svg" alt="JSON-RPC server for Laravel framework"/>
+                </a>
+            </div>
+            <div class="logo-mobile">
+                <a href="/"><img alt="Logo" src="/assets/img/logo.svg"/></a>
+            </div>
+            <div id="main-menu" class="main-menu">
+                <ul>
+
+
+                    <li class="menu-item-home ">
+                        <a href="/">
+                            <span>Home</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-item-docs active">
+                        <a href="/docs/">
+                            <span>Docs</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-item-docs">
+                        <a href="https://github.com/sajya" target="_blank">
+                            <span>GitHub</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+
+
+<div class="page-default-list">
+    <div class="container pt-2 pt-md-6 pb-3 pb-md-6">
+        <div class="row">
+            <div class="col-12 col-md-3 mb-3">
+                <div class="sidebar">
+
+                    <div class="docs-menu">
+                        <h4>Docs</h4>
+
+                        <nav id="js-nav-menu" class="nav-menu hidden lg:block">
+                            <ul class="pl-1">
+            <li>
+            
+        <a href="/docs/customizing-your-site"
+            class="lvl0  "
+        >
+            Introduction
+        </a>
+    
+    </li>
+            <li>
+            
+        <a href="/docs/navigation"
+            class="lvl0  active"
+        >
+            Installation
+        </a>
+    
+    </li>
+            <li>
+            
+        <a href="/docs/algolia-docsearch"
+            class="lvl0  "
+        >
+            Getting Started
+        </a>
+    
+    </li>
+            <li>
+            
+        <a href="/docs/custom-404-page"
+            class="lvl0  "
+        >
+            Validation
+        </a>
+    
+    </li>
+            <li>
+            
+        <a href="/docs/custom-404-page"
+            class="lvl0  "
+        >
+            Authentication
+        </a>
+    
+    </li>
+    </ul>
+                        </nav>
+
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-12 col-md-9">
+
+                <main class="content">
+                    <h1 id="navigation">Navigation</h1>
+<p>The navigation menu in the left-hand sidebar is defined using an array in <code>navigation.php</code>. Nested pages can be added by using the <code>children</code> associative array.</p>
+<pre><code class="language-php">&lt;?php
+// navigation.php
+
+return [
+    'Getting Started' =&gt; [
+        'url' =&gt; 'docs/getting-started',
+        'children' =&gt; [
+            'Customizing Your Site' =&gt; 'docs/customizing-your-site',
+            'Navigation' =&gt; 'docs/navigation',
+            'Algolia DocSearch' =&gt; 'docs/algolia-docsearch',
+            'Custom 404 Page' =&gt; 'docs/custom-404-page',
+        ],
+    ],
+    'Jigsaw Docs' =&gt; 'https://jigsaw.tighten.co/docs/installation',
+];
+
+// config.php
+'navigation' =&gt; require_once('navigation.php'),
+
+// blade files
+$page-&gt;navigation</code></pre>                </main>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</div>
+
+<div class="sub-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="sub-footer-inner">
+                    <ul>
+                        <li class="zerostatic"><a href="https://example.com">example.com</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/assets/build/js/main.js?id=2fd42d9dc8d27525f344"></script>
+</body>
+
+
+
+</html>

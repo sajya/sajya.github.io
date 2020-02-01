@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="Customizing your Jigsaw docs site">
+
+    <meta property="og:site_name" content="JSON-RPC server for Laravel framework"/>
+    <meta property="og:title" content="Customizing Your Site | JSON-RPC server for Laravel framework"/>
+    <meta property="og:description" content="Customizing your Jigsaw docs site"/>
+    <meta property="og:url" content="https://my-jigsaw-docs.com/docs/customizing-your-site"/>
+    <meta property="og:image" content="/assets/img/logo.png"/>
+    <meta property="og:type" content="website"/>
+
+    <meta name="twitter:image:alt" content="JSON-RPC server for Laravel framework">
+    <meta name="twitter:card" content="summary_large_image">
+
+    
+    <title>JSON-RPC server for Laravel framework | Customizing Your Site</title>
+
+    <link rel="home" href="https://my-jigsaw-docs.com">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#8ea8af">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+
+    
+        <!-- Insert analytics code here -->
+    
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,300i,400,400i,700,700i,800,800i"
+          rel="stylesheet">
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=d8066aa51193099a3030">
+
+    </head>
+
+
+<body class='page'>
+<div class="wrapper">
+    <div class='header'>
+        <div class="container">
+            <div class="logo">
+                <a href="/">
+                    <img src="/assets/img/logo.svg" alt="JSON-RPC server for Laravel framework"/>
+                </a>
+            </div>
+            <div class="logo-mobile">
+                <a href="/"><img alt="Logo" src="/assets/img/logo.svg"/></a>
+            </div>
+            <div id="main-menu" class="main-menu">
+                <ul>
+
+
+                    <li class="menu-item-home ">
+                        <a href="/">
+                            <span>Home</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-item-docs active">
+                        <a href="/docs/">
+                            <span>Docs</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-item-docs">
+                        <a href="https://github.com/sajya" target="_blank">
+                            <span>GitHub</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+
+
+<div class="page-default-list">
+    <div class="container pt-2 pt-md-6 pb-3 pb-md-6">
+        <div class="row">
+            <div class="col-12 col-md-3 mb-3">
+                <div class="sidebar">
+
+                    <div class="docs-menu">
+                        <h4>Docs</h4>
+
+                        <nav id="js-nav-menu" class="nav-menu hidden lg:block">
+                            <ul class="pl-1">
+            <li>
+            
+        <a href="/docs/customizing-your-site"
+            class="lvl0  active"
+        >
+            Introduction
+        </a>
+    
+    </li>
+            <li>
+            
+        <a href="/docs/navigation"
+            class="lvl0  "
+        >
+            Installation
+        </a>
+    
+    </li>
+            <li>
+            
+        <a href="/docs/algolia-docsearch"
+            class="lvl0  "
+        >
+            Getting Started
+        </a>
+    
+    </li>
+            <li>
+            
+        <a href="/docs/custom-404-page"
+            class="lvl0  "
+        >
+            Validation
+        </a>
+    
+    </li>
+            <li>
+            
+        <a href="/docs/custom-404-page"
+            class="lvl0  "
+        >
+            Authentication
+        </a>
+    
+    </li>
+    </ul>
+                        </nav>
+
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-12 col-md-9">
+
+                <main class="content">
+                    <h1 id="customizing">Customizing Your Site</h1>
+<h2>Styles</h2>
+<p>This starter template comes pre-loaded with <a href="https://tailwindcss.com">Tailwind CSS</a>, a utility CSS framework that allows you to customize and build complex designs without touching a line of CSS. There are also a few base Sass files in the <code>/source/_assets/sass</code> folder, set up with the expectation that you can add any custom CSS into <code>_documentation.scss</code>.</p>
+<blockquote>
+<p>You can re-work the architecture of the Sass includes any way you’d like; just make sure to keep the <code>@tailwind</code> references in your final files.</p>
+</blockquote>
+<pre><code class="language-scss">// source/_assets/sass/main.scss
+
+@tailwind preflight;
+@tailwind components;
+
+// Code syntax highlighting,
+// powered by https://highlightjs.org
+@import '~highlight.js/styles/a11y-light.css';
+
+@import 'base';
+@import 'navigation';
+@import 'documentation';
+
+@tailwind utilities;</code></pre>
+<hr />
+<h2 id="customizing-typography">Typography Styles</h2>
+<p>Here’s a quick preview of what some of the basic type styles will look like in this starter template:</p>
+<div class="example pt-6">
+<h1>h1 Heading</h1>
+<h2>h2 Heading</h2>
+<h3>h3 Heading</h3>
+<h4>h4 Heading</h4>
+<h5>h5 Heading</h5>
+<h6>h6 Heading</h6>
+<p>The quick brown fox jumps over the lazy dog</p>
+<p><s>The quick brown fox jumps over the lazy dog</s></p>
+<p><u>The quick brown fox jumps over the lazy dog</u></p>
+<p><em>The quick brown fox jumps over the lazy dog</em></p>
+<p><strong>The quick brown fox jumps over the lazy dog</strong></p>
+<p><code>The quick brown fox jumps over the lazy dog</code></p>
+<p><small>The quick brown fox jumps over the lazy dog</small></p>
+<p>&gt; The quick brown fox jumps over the lazy dog</p>
+<p><a href="#">The quick brown fox jumps over the lazy dog</a></p>
+<pre><code class="language-php">class Foo extends bar
+{
+    public function fooBar()
+    {
+        //
+    }
+}</code></pre>
+</div>                </main>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</div>
+
+<div class="sub-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="sub-footer-inner">
+                    <ul>
+                        <li class="zerostatic"><a href="https://example.com">example.com</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/assets/build/js/main.js?id=2fd42d9dc8d27525f344"></script>
+</body>
+
+
+
+</html>
