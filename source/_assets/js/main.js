@@ -19,24 +19,31 @@ document.querySelectorAll('pre code').forEach((block) => {
 
 if (document.getElementById("console")) {
 
-    var intervalID = window.setInterval(updateScreen, 340);
+    var intervalID = window.setInterval(updateScreen, 540);
     var c = document.getElementById("console");
 
-    var txt = [
-        '--> {"jsonrpc": "2.0", "method": "subtract", "params": [42, 23], "id": 1}',
-        '<-- {"jsonrpc": "2.0", "result": 19, "id": 1}',
-        '--> {"jsonrpc": "2.0", "method": "subtract", "params": [23, 42], "id": 2}',
-        '<-- {"jsonrpc": "2.0", "result": -19, "id": 2}',
-        '--> {"jsonrpc": "2.0", "method": "subtract", "params": {"subtrahend": 23, "minuend": 42}, "id": 3}',
-        '<-- {"jsonrpc": "2.0", "result": 19, "id": 3}',
-        '--> {"jsonrpc": "2.0", "method": "subtract", "params": {"minuend": 42, "subtrahend": 23}, "id": 4}',
-        '<-- {"jsonrpc": "2.0", "result": 19, "id": 4}',
-        '--> {"jsonrpc": "2.0", "method": "foobar", "id": 10}',
-        '<-- {"jsonrpc": "2.0", "error": {"code": -32601, "message": "Procedure not found."}, "id": 10}',
-        '--> {"jsonrpc": "2.0", "method": "foobar", "params": "bar", "baz"]',
-        '<-- {"jsonrpc": "2.0", "error": {"code": -32700, "message": "Parse error"}, "id": null}',
-        '--> {"jsonrpc": "2.0", "method": 1, "params": "bar"}',
-        '<-- {"jsonrpc": "2.0", "error": {"code": -32600, "message": "Invalid JSON-RPC."}, "id": null}',
+    const txt = [
+        '--> ' + hljs.highlightAuto('{"jsonrpc": "2.0", "method": "subtract", "params": [42, 23], "id": 1}').value,
+        '<-- ' + hljs.highlightAuto('{"jsonrpc": "2.0", "result": 19, "id": 1}').value,
+        '<span class="text-muted">---</span>',
+        '--> ' + hljs.highlightAuto('{"jsonrpc": "2.0", "method": "subtract", "params": [23, 42], "id": 2}').value,
+        '<-- ' + hljs.highlightAuto('{"jsonrpc": "2.0", "result": -19, "id": 2}').value,
+        '<span class="text-muted">---</span>',
+        '--> ' + hljs.highlightAuto('{"jsonrpc": "2.0", "method": "subtract", "params": {"subtrahend": 23, "minuend": 42}, "id": 3}').value,
+        '<-- ' + hljs.highlightAuto('{"jsonrpc": "2.0", "result": 19, "id": 3}').value,
+        '<span class="text-muted">---</span>',
+        '--> ' + hljs.highlightAuto('{"jsonrpc": "2.0", "method": "subtract", "params": {"minuend": 42, "subtrahend": 23}, "id": 4}').value,
+        '<-- ' + hljs.highlightAuto('{"jsonrpc": "2.0", "result": 19, "id": 4}').value,
+        '<span class="text-muted">---</span>',
+        '--> ' + hljs.highlightAuto('{"jsonrpc": "2.0", "method": "foobar", "id": 10}').value,
+        '<-- ' + hljs.highlightAuto('{"jsonrpc": "2.0", "error": {"code": -32601, "message": "Procedure not found."}, "id": 10}').value,
+        '<span class="text-muted">---</span>',
+        '--> ' + hljs.highlightAuto('{"jsonrpc": "2.0", "method": "foobar", "params": "bar", "baz"]').value,
+        '<-- ' + hljs.highlightAuto('{"jsonrpc": "2.0", "error": {"code": -32700, "message": "Parse error"}, "id": null}').value,
+        '<span class="text-muted">---</span>',
+        '--> ' + hljs.highlightAuto('{"jsonrpc": "2.0", "method": 1, "params": "bar"}').value,
+        '<-- ' + hljs.highlightAuto('{"jsonrpc": "2.0", "error": {"code": -32600, "message": "Invalid JSON-RPC."}, "id": null}').value,
+        '<span class="text-muted">---</span>',
     ];
 
     var docfrag = document.createDocumentFragment();
@@ -47,7 +54,7 @@ if (document.getElementById("console")) {
         //Rebuild document fragment
         txt.forEach(function (e) {
             var p = document.createElement("p");
-            p.textContent = e;
+            p.innerHTML = e;
             docfrag.appendChild(p);
         });
         //Clear DOM body

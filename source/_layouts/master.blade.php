@@ -99,7 +99,8 @@
             <div class="col-12">
                 <div class="sub-footer-inner">
                     <ul>
-                        <li class="zerostatic"><a href="https://example.com">example.com</a></li>
+                        <li class="zerostatic"><a href="https://www.jsonrpc.org/specification" target="_blank">Specification</a></li>
+                        <li class="zerostatic"><a href="https://github.com/sajya" target="_blank">GitHub</a></li>
                     </ul>
                 </div>
             </div>
