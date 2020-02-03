@@ -5,6 +5,34 @@ extends: _layouts.documentation
 section: content
 ---
 
+
+## Введение
+
+**JSON-RPC** - это легкий протокол без сохранения состояния для создания API в стиле удаленного вызова процедур (RPC).
+
+
+Выглядит это обычно следующим образом.
+```json
+{
+    "jsonrpc":"2.0",
+    "method":"ping",
+    "params":[],
+    "id":1
+}
+```
+
+Ответ:
+
+```json
+{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": "pong"
+}
+```
+
+
+
 # Getting Started {#getting-started}
 
 This is a starter template for creating a beautiful, customizable documentation site for your project with minimal effort. You’ll only have to change a few settings and you’re ready to go.
