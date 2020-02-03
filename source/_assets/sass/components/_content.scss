@@ -80,6 +80,7 @@
     letter-spacing: -0.01em;
     font-family: $font-family-base;
     margin-bottom: 20px;
+    margin-top: 1em;
   }
   h3 {
     font-size: 1.6rem;
@@ -87,6 +88,7 @@
     font-weight: 400;
     font-family: $font-family-base;
     margin-bottom: 20px;
+    margin-top: 0.8em;
   }
   h4 {
     font-size: 1.5rem;
@@ -94,6 +96,7 @@
     font-weight: 500;
     font-family: $font-family-base;
     margin-bottom: 20px;
+    margin-top: 0.6em;
   }
   h5 {
     font-size: 1.4rem;
@@ -101,6 +104,7 @@
     font-weight: 600;
     font-family: $font-family-base;
     margin-bottom: 20px;
+    margin-top: 0.5em;
   }
   h6 {
     font-size: 1.2rem;
@@ -108,6 +112,7 @@
     font-weight: 700;
     font-family: $font-family-base;
     margin-bottom: 20px;
+    margin-top: 0.5em;
   }
   blockquote {
     background: #f9f9f9;
@@ -133,5 +138,10 @@
   img {
     max-width: 100%;
     height: auto;
+  }
+
+  .hljs{
+    padding: 1em!important;
+    margin-bottom: 0.5em;
   }
 }
