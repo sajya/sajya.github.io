@@ -150,7 +150,22 @@
             <div class="col-12 col-md-9">
 
                 <main class="content">
-                    <h1 id="getting-started">Getting Started</h1>
+                    <h2>Введение</h2>
+<p><strong>JSON-RPC</strong> - это легкий протокол без сохранения состояния для создания API в стиле удаленного вызова процедур (RPC).</p>
+<p>Выглядит это обычно следующим образом.</p>
+<pre><code class="language-json">{
+    "jsonrpc":"2.0",
+    "method":"ping",
+    "params":[],
+    "id":1
+}</code></pre>
+<p>Ответ:</p>
+<pre><code class="language-json">{
+    "jsonrpc": "2.0",
+    "id": 1,
+    "result": "pong"
+}</code></pre>
+<h1 id="getting-started">Getting Started</h1>
 <p>This is a starter template for creating a beautiful, customizable documentation site for your project with minimal effort. You’ll only have to change a few settings and you’re ready to go.</p>
 <h2 id="getting-started-configuration">Configuration</h2>
 <p>As with all Jigsaw sites, configuration settings can be found in <code>config.php</code>; you can update the variables in that file with settings specific to your project. You can also add new configuration variables there to use across your site; take a look at the <a href="http://jigsaw.tighten.co/docs/site-variables/">Jigsaw documentation</a> to learn more.</p>
