@@ -34,7 +34,7 @@ section: content
 
 Для начала необходимо создать класс процедуры, с помощью команды:
 
-```php
+```bash
 php artisan make:procedure PingProcedure
 ```
 
