@@ -154,9 +154,12 @@
 <p>At this stage, it is necessary you have already <a href="/docs/installation">installed the framework and package</a></p>
 <hr />
 <h2>Создание процедур</h2>
-<p>Для начала необходимо создать класс процедуры, с помощью команды:</p>
+<p>Каждый метод описываться в отдельном классе под названием &quot;Процедура&quot;. В нем обязательно должны присутствовать
+статическое свойство <code>name</code> по которому будет определяться выполнение запроса и метод <code>handle</code> в котором производиться непосредственно действие.</p>
+<p>Создать класс процедуры можно выполнив <code>artisan</code> команду:</p>
 <pre><code class="language-bash">php artisan make:procedure PingProcedure</code></pre>
-<p>В директории <code>app/Http/Procedures</code> будет создан новый файл <code>PingProcedure.php</code> со следующим содержанием:</p>
+<p>Она создаст новый файл <code>PingProcedure.php</code> в директории <code>app/Http/Procedures</code>.</p>
+<p>Назовём новую процедуру <code>ping</code>, для этого изменим свойство <code>name</code> и добавим возвращающие значение <code>pong</code> в метод, , что бы получилось такое содержание:</p>
 <pre><code class="language-php">declare(strict_types=1);
 
 namespace App\Http\Procedures;
@@ -169,15 +172,11 @@ class PingProcedure extends Procedure
     /**
      * The name of the procedure that will be
      * displayed and taken into account in the search
-     *
-     * @var string
      */
     public static string $name = 'ping';
 
     /**
      * Execute the procedure.
-     *
-     * @param Collection $params
      *
      * @return array|string|integer
      */
@@ -191,6 +190,9 @@ class PingProcedure extends Procedure
 <pre><code class="language-php">use App\Http\Procedures\PingProcedure;
 
 Route::rpc('/v1/endpoint', [PingProcedure::class])-&gt;name('rpc.endpoint');</code></pre>
+<blockquote>
+<p>Обратите внимание, что вторым аргументом мы передаём массив, который содержит только необходимые классы. Таким образом мы сможем в будующем добавить вторую версию нашего API, без конфликтов.</p>
+</blockquote>
 <h2>Запуск локального сервера</h2>
 <p>Для запуска проекта можно использовать встроенный сервер:</p>
 <pre><code class="language-bash">php artisan serve</code></pre>
