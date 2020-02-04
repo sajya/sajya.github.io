@@ -20,9 +20,9 @@ mix.webpackConfig({
 mix.js('source/_assets/js/main.js', 'js')
     .sourceMaps()
     .sass('source/_assets/sass/main.scss', 'css/main.css')
-    .purgeCss({
-        extensions: ['html', 'md', 'js', 'php', 'vue'],
-        folders: ['source'],
-        whitelistPatterns: [/language/, /hljs/, /algolia/],
-    })
+    //.purgeCss({
+    //    extensions: ['html', 'md', 'js', 'php', 'vue'],
+    //    folders: ['source'],
+    //    whitelistPatterns: [/language/, /hljs/, /algolia/],
+    //})
     .version();
