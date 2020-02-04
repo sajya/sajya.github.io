@@ -178,12 +178,14 @@
     "id": 1,
     "result": "pong"
 }</code></pre>
+<h2>Установка</h2>
+<p>Перейдите в каталог проекта и выполните команду:</p>
+<pre><code class="language-bash">$ composer require sajya/server</code></pre>
+<h2>Быстрый старт</h2>
 <p>Для начала необходимо создать класс процедуры, с помощью команды:</p>
 <pre><code class="language-bash">php artisan make:procedure PingProcedure</code></pre>
 <p>В директории <code>app/Http/Procedures</code> будет создан новый файл <code>PingProcedure.php</code> со следующим содержанием:</p>
-<pre><code class="language-php">&lt;?php
-
-declare(strict_types=1);
+<pre><code class="language-php">declare(strict_types=1);
 
 namespace App\Http\Procedures;
 
@@ -219,11 +221,12 @@ class PingProcedure extends Procedure
 Route::rpc('/v1/endpoint', [PingProcedure::class])-&gt;name('rpc.endpoint');</code></pre>
 <h2>Запуск локального сервера</h2>
 <p>Для запуска проекта можно использовать встроенный сервер:</p>
-<pre><code class="language-php">php artisan serve</code></pre>
+<pre><code class="language-bash">php artisan serve</code></pre>
 <p>Откройте браузер и перейдите к <code>http://localhost:8000/dashboard</code>. Если все работает, вы увидите страницу входа в панель управления. Позже, когда вы закончите работу, остановите сервер, нажав <code>Ctrl+C</code> в используемом терминале.</p>
 <h2>Проверка</h2>
 <p>Выполним <code>curl</code> обращение к новому API:</p>
-<pre><code class="language-php">curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '[{ "jsonrpc":"2.0","method":"ping","params":[],"id" : 1 }]'</code></pre>
+<pre><code class="language-bash">curl 'http://127.0.0.1:8000/api/v1/endpoint' 
+--data-binary '[{ "jsonrpc":"2.0","method":"ping","params":[],"id" : 1 }]'</code></pre>
 <h1 id="getting-started">Getting Started</h1>
 <p>This is a starter template for creating a beautiful, customizable documentation site for your project with minimal effort. You’ll only have to change a few settings and you’re ready to go.</p>
 <h2 id="getting-started-configuration">Configuration</h2>
