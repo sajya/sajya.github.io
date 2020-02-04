@@ -1,71 +1,84 @@
 ---
-title: Algolia DocSearch
-description: Configure Algolia DocSearch with the Jigsaw docs starter template
+title: Quickstart
+description:
 extends: _layouts.documentation
 section: content
 ---
 
-# Algolia DocSearch {#algolia-docsearch}
+# Быстрый старт
 
-This starter template includes support for [DocSearch](https://community.algolia.com/docsearch/), a documentation indexing and search tool provided by Algolia for free. To configure this tool, you’ll need to sign up with Algolia and set your API Key and index name in `config.php`. Algolia will then crawl your documentation regularly, and index all your content.
+At this stage, it is necessary you have already [installed the framework and package](/docs/installation)
 
-[Get your DocSearch credentials here.](https://community.algolia.com/docsearch/#join-docsearch-program)
+----
+
+
+## Создание процедур
+
+Для начала необходимо создать класс процедуры, с помощью команды:
+
+```bash
+php artisan make:procedure PingProcedure
+```
+
+В директории `app/Http/Procedures` будет создан новый файл `PingProcedure.php` со следующим содержанием:
 
 ```php
-// config.php
-return [
-    'docsearchApiKey' => '',
-    'docsearchIndexName' => '',
-];
-```
+declare(strict_types=1);
 
-Once the `docsearchApiKey` and `docsearchIndexName` values are set in `config.php`, the search field at the top of the page is ready to use.
+namespace App\Http\Procedures;
 
-<img class="block m-auto" src="/assets/img/docsearch.png" alt="Screenshot of search results" />
+use Sajya\Server\Procedure;
+use Illuminate\Support\Collection;
 
-To help Algolia index your pages correctly, it's good practice to add a unique `id` or `name` attribute to each heading tag (`<h1>`, `<h2>`, etc.). By doing so, a user will be taken directly to the appropriate section of the page when they click a search result.
+class PingProcedure extends Procedure
+{
+    /**
+     * The name of the procedure that will be
+     * displayed and taken into account in the search
+     *
+     * @var string
+     */
+    public static string $name = 'ping';
 
----
-
-## Adding Custom Styles {#algolia-adding-custom-styles}
-
-If you'd like to customize the styling of the search results, Algolia exposes custom CSS classes that you can modify:
-
-```css
-/* Main dropdown wrapper */
-.algolia-autocomplete .ds-dropdown-menu {
-  width: 500px;
-}
-
-/* Main category (eg. Getting Started) */
-.algolia-autocomplete .algolia-docsearch-suggestion--category-header {
-  color: darkgray;
-  border: 1px solid gray;
-}
-
-/* Category (eg. Downloads) */
-.algolia-autocomplete .algolia-docsearch-suggestion--subcategory-column {
-  color: gray;
-}
-
-/* Title (eg. Bootstrap CDN) */
-.algolia-autocomplete .algolia-docsearch-suggestion--title {
-  font-weight: bold;
-  color: black;
-}
-
-/* Description description (eg. Bootstrap currently works...) */
-.algolia-autocomplete .algolia-docsearch-suggestion--text {
-  font-size: 0.8rem;
-  color: gray;
-}
-
-/* Highlighted text */
-.algolia-autocomplete .algolia-docsearch-suggestion--highlight {
-  color: blue;
+    /**
+     * Execute the procedure.
+     *
+     * @param Collection $params
+     *
+     * @return array|string|integer
+     */
+    public function handle(Collection $params)
+    {
+        return 'pong';
+    }
 }
 ```
 
----
+## Регистрация маршрута
 
-For more details, visit the [official Algolia DocSearch documentation.](https://community.algolia.com/docsearch/what-is-docsearch.html)
+Как и контроллер, процедуру нужно регистрировать в файле маршрутов, определим его в файле `api.php`:
+
+```php
+use App\Http\Procedures\PingProcedure;
+
+Route::rpc('/v1/endpoint', [PingProcedure::class])->name('rpc.endpoint');
+```
+
+
+## Запуск локального сервера
+
+Для запуска проекта можно использовать встроенный сервер:
+```bash
+php artisan serve
+```
+
+Откройте браузер и перейдите к `http://localhost:8000/dashboard`. Если все работает, вы увидите страницу входа в панель управления. Позже, когда вы закончите работу, остановите сервер, нажав `Ctrl+C` в используемом терминале.
+
+## Проверка 
+
+Выполним `curl` обращение к новому API:
+
+```bash
+curl 'http://127.0.0.1:8000/api/v1/endpoint' 
+--data-binary '[{ "jsonrpc":"2.0","method":"ping","params":[],"id" : 1 }]'
+```
