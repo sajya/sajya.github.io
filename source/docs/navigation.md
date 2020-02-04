@@ -1,34 +1,28 @@
 ---
-title: Navigation
+title: Installation
 description: Building a navigation menu for your site
 extends: _layouts.documentation
 section: content
 ---
 
-# Navigation {#navigation}
+# Installation
 
-The navigation menu in the left-hand sidebar is defined using an array in `navigation.php`. Nested pages can be added by using the `children` associative array.
+## System Requirements
 
-```php
-<?php
-// navigation.php
+To use Sajya, you need to have PHP (minimum version 7.4) and [Composer](https://getcomposer.org/) installed on your machine. 
 
-return [
-    'Getting Started' => [
-        'url' => 'docs/getting-started',
-        'children' => [
-            'Customizing Your Site' => 'docs/customizing-your-site',
-            'Navigation' => 'docs/navigation',
-            'Algolia DocSearch' => 'docs/algolia-docsearch',
-            'Custom 404 Page' => 'docs/custom-404-page',
-        ],
-    ],
-    'Jigsaw Docs' => 'https://jigsaw.tighten.co/docs/installation',
-];
+---
 
-// config.php
-'navigation' => require_once('navigation.php'),
 
-// blade files
-$page->navigation
+## Install via Composer
+
+Navigate to your new project directory and install Sajya using Composer:
+
+```bash
+$ cd my-application
+$ composer require sajya/server
 ```
+
+## What to do next?
+
+Now you can try the step-by-step example of working with the package on the [“Quick Start” page](/docs/quickstart).
