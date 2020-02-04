@@ -16,7 +16,7 @@ return [
 
     'Introduction' => 'docs',
     'Installation' => 'docs/installation',
-    'Getting Started' => 'docs/algolia-docsearch',
+    'Quick Start' => 'docs/quickstart',
     'Validation' => 'docs/custom-404-page',
     'Authentication' => 'docs/customizing-your-site',
 ];
