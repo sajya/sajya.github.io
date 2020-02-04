@@ -5,14 +5,14 @@ extends: _layouts.documentation
 section: content
 ---
 
-# Быстрый старт
+# Quick Start
 
 At this stage, it is necessary you have already [installed the framework and package](/docs/installation)
 
 ----
 
 
-## Создание процедур
+## Creating Procedures
 
 Каждый метод описываться в отдельном классе под названием "Процедура". В нем обязательно должны присутствовать
 статическое свойство `name` по которому будет определяться выполнение запроса и метод `handle` в котором производиться непосредственно действие.
@@ -55,7 +55,7 @@ class PingProcedure extends Procedure
 }
 ```
 
-## Регистрация маршрута
+## Route Registration
 
 Как и контроллер, процедуру нужно регистрировать в файле маршрутов, определим его в файле `api.php`:
 
@@ -68,7 +68,7 @@ Route::rpc('/v1/endpoint', [PingProcedure::class])->name('rpc.endpoint');
 > Обратите внимание, что вторым аргументом мы передаём массив, который содержит только необходимые классы. Таким образом мы сможем в будующем добавить вторую версию нашего API, без конфликтов.
 
 
-## Запуск локального сервера
+## Starting a Local Server
 
 Для запуска проекта можно использовать встроенный сервер:
 ```bash
