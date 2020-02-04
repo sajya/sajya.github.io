@@ -7,7 +7,7 @@
     <meta name="description" content="Building a navigation menu for your site">
 
     <meta property="og:site_name" content="JSON-RPC server for Laravel framework"/>
-    <meta property="og:title" content="Navigation | JSON-RPC server for Laravel framework"/>
+    <meta property="og:title" content="Installation | JSON-RPC server for Laravel framework"/>
     <meta property="og:description" content="Building a navigation menu for your site"/>
     <meta property="og:url" content="https://my-jigsaw-docs.com/docs/navigation"/>
     <meta property="og:image" content="/assets/img/logo.png"/>
@@ -17,7 +17,7 @@
     <meta name="twitter:card" content="summary_large_image">
 
     
-    <title>JSON-RPC server for Laravel framework | Navigation</title>
+    <title>JSON-RPC server for Laravel framework | Installation</title>
 
     <link rel="home" href="https://my-jigsaw-docs.com">
 
@@ -150,29 +150,16 @@
             <div class="col-12 col-md-9">
 
                 <main class="content">
-                    <h1 id="navigation">Navigation</h1>
-<p>The navigation menu in the left-hand sidebar is defined using an array in <code>navigation.php</code>. Nested pages can be added by using the <code>children</code> associative array.</p>
-<pre><code class="language-php">&lt;?php
-// navigation.php
-
-return [
-    'Getting Started' =&gt; [
-        'url' =&gt; 'docs/getting-started',
-        'children' =&gt; [
-            'Customizing Your Site' =&gt; 'docs/customizing-your-site',
-            'Navigation' =&gt; 'docs/navigation',
-            'Algolia DocSearch' =&gt; 'docs/algolia-docsearch',
-            'Custom 404 Page' =&gt; 'docs/custom-404-page',
-        ],
-    ],
-    'Jigsaw Docs' =&gt; 'https://jigsaw.tighten.co/docs/installation',
-];
-
-// config.php
-'navigation' =&gt; require_once('navigation.php'),
-
-// blade files
-$page-&gt;navigation</code></pre>                </main>
+                    <h1>Installation</h1>
+<h2>System Requirements</h2>
+<p>To use Sajya, you need to have PHP (minimum version 7.4) and <a href="https://getcomposer.org/">Composer</a> installed on your machine. </p>
+<hr />
+<h2>Install via Composer</h2>
+<p>Navigate to your new project directory and install Sajya using Composer:</p>
+<pre><code class="language-bash">$ cd my-application
+$ composer require sajya/server</code></pre>
+<h2>What to do next?</h2>
+<p>Now you can try the step-by-step example of working with the package on the <a href="/docs/quickstart">“Quick Start” page</a>.</p>                </main>
             </div>
         </div>
     </div>
