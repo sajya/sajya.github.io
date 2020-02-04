@@ -11,7 +11,6 @@ section: content
 **JSON-RPC** - это легкий протокол без сохранения состояния для создания API в стиле удаленного вызова процедур (RPC).
 
 
-
 Запрос включает в себя 4 поля:
 - **jsonrpc** — всегда будет “2.0”, указывает версию протокола.
 - **method** — название метода (функции), который нужно вызвать.
@@ -44,6 +43,15 @@ section: content
 }
 ```
 
+## Установка
+
+Перейдите в каталог проекта и выполните команду:
+
+```bash
+$ composer require sajya/server
+```
+
+## Быстрый старт
 
 Для начала необходимо создать класс процедуры, с помощью команды:
 
@@ -54,8 +62,6 @@ php artisan make:procedure PingProcedure
 В директории `app/Http/Procedures` будет создан новый файл `PingProcedure.php` со следующим содержанием:
 
 ```php
-<?php
-
 declare(strict_types=1);
 
 namespace App\Http\Procedures;
@@ -101,7 +107,7 @@ Route::rpc('/v1/endpoint', [PingProcedure::class])->name('rpc.endpoint');
 ## Запуск локального сервера
 
 Для запуска проекта можно использовать встроенный сервер:
-```php
+```bash
 php artisan serve
 ```
 
@@ -111,8 +117,9 @@ php artisan serve
 
 Выполним `curl` обращение к новому API:
 
-```php
-curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '[{ "jsonrpc":"2.0","method":"ping","params":[],"id" : 1 }]'
+```bash
+curl 'http://127.0.0.1:8000/api/v1/endpoint' 
+--data-binary '[{ "jsonrpc":"2.0","method":"ping","params":[],"id" : 1 }]'
 ```
 
 
