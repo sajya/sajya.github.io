@@ -16,7 +16,7 @@ To use Sajya, you need to have PHP (minimum version 7.4) and [Composer](https://
 
 ## Install via Composer
 
-Navigate to your new project directory and install Sajya using Composer:
+Navigate to your project directory and install Sajya using Composer:
 
 ```bash
 $ cd my-application
