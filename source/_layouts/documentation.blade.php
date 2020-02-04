@@ -16,13 +16,9 @@
                 <div class="sidebar">
 
                     <div class="docs-menu">
-                        <h4>Docs</h4>
-
                         <nav id="js-nav-menu" class="nav-menu hidden lg:block">
                             @include('_nav.menu', ['items' => $page->navigation])
                         </nav>
-
-
                     </div>
 
                 </div>
