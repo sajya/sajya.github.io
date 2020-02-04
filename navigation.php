@@ -15,7 +15,7 @@ return [
 */
 
     'Introduction' => 'docs',
-    'Installation' => 'docs/navigation',
+    'Installation' => 'docs/installation',
     'Getting Started' => 'docs/algolia-docsearch',
     'Validation' => 'docs/custom-404-page',
     'Authentication' => 'docs/customizing-your-site',
