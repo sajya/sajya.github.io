@@ -14,13 +14,18 @@ At this stage, it is necessary you have already [installed the framework and pac
 
 ## Создание процедур
 
-Для начала необходимо создать класс процедуры, с помощью команды:
+Каждый метод описываться в отдельном классе под названием "Процедура". В нем обязательно должны присутствовать
+статическое свойство `name` по которому будет определяться выполнение запроса и метод `handle` в котором производиться непосредственно действие.
+
+Создать класс процедуры можно выполнив `artisan` команду:
 
 ```bash
 php artisan make:procedure PingProcedure
 ```
+ 
+Она создаст новый файл `PingProcedure.php` в директории `app/Http/Procedures`.
 
-В директории `app/Http/Procedures` будет создан новый файл `PingProcedure.php` со следующим содержанием:
+Назовём новую процедуру `ping`, для этого изменим свойство `name` и добавим возвращающие значение `pong` в метод, , что бы получилось такое содержание:
 
 ```php
 declare(strict_types=1);
@@ -35,15 +40,11 @@ class PingProcedure extends Procedure
     /**
      * The name of the procedure that will be
      * displayed and taken into account in the search
-     *
-     * @var string
      */
     public static string $name = 'ping';
 
     /**
      * Execute the procedure.
-     *
-     * @param Collection $params
      *
      * @return array|string|integer
      */
@@ -63,6 +64,8 @@ use App\Http\Procedures\PingProcedure;
 
 Route::rpc('/v1/endpoint', [PingProcedure::class])->name('rpc.endpoint');
 ```
+
+> Обратите внимание, что вторым аргументом мы передаём массив, который содержит только необходимые классы. Таким образом мы сможем в будующем добавить вторую версию нашего API, без конфликтов.
 
 
 ## Запуск локального сервера
