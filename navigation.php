@@ -12,8 +12,8 @@ return [
    'Features' => [
         'children' => [
             'Validation'     => 'docs/custom-404-page',
-            'Authentication' => 'docs/customizing-your-site',
-            'Batch requests' => 'docs/customizing-your-site',
+            'Authentication' => 'docs/authentication',
+            'Batch requests' => 'docs/batch',
             'Notifications'  => 'docs/customizing-your-site',
         ],
     ],
