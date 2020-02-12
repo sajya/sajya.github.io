@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="A light weight remote procedure call protocol. It is designed to be simple!">
+    <meta name="description" content="Laravel makes implementing authentication very simple. In fact, almost everything is configured for you out of the box.">
 
     <meta property="og:site_name" content="JSON-RPC server for Laravel framework"/>
-    <meta property="og:title" content="Specification | JSON-RPC server for Laravel framework"/>
-    <meta property="og:description" content="A light weight remote procedure call protocol. It is designed to be simple!"/>
-    <meta property="og:url" content="https://my-jigsaw-docs.com/docs/specification"/>
+    <meta property="og:title" content="Authentication for JSON-RPC | JSON-RPC server for Laravel framework"/>
+    <meta property="og:description" content="Laravel makes implementing authentication very simple. In fact, almost everything is configured for you out of the box."/>
+    <meta property="og:url" content="https://my-jigsaw-docs.com/docs/authentication"/>
     <meta property="og:image" content="/assets/img/logo.png"/>
     <meta property="og:type" content="website"/>
 
@@ -17,7 +17,7 @@
     <meta name="twitter:card" content="summary_large_image">
 
     
-    <title>JSON-RPC server for Laravel framework | Specification</title>
+    <title>JSON-RPC server for Laravel framework | Authentication for JSON-RPC</title>
 
     <link rel="home" href="https://my-jigsaw-docs.com">
 
@@ -110,7 +110,7 @@
             <li>
             
         <a href="/docs/specification"
-            class="lvl1  active"
+            class="lvl1  "
         >
             Specification
         </a>
@@ -154,7 +154,7 @@
             <li>
             
         <a href="/docs/authentication"
-            class="lvl1  "
+            class="lvl1  active"
         >
             Authentication
         </a>
@@ -206,42 +206,63 @@
             <div class="col-12 col-md-9">
 
                 <main class="content">
-                    <h1>Specification</h1>
-<h2>Brief</h2>
-<p><strong>JSON-RPC</strong> is a lightweight stateless protocol for creating a remote procedure call (RPC) style API.
-Supporting several types of data and commands. With the possibility of notification (information sent to the server does not require a response) and multiple calls.</p>
-<hr />
-<p>The request object includes the following properties:</p>
-<ul>
-<li><strong>jsonrpc</strong> — will always be <code>"2.0"</code>, indicates the protocol version.</li>
-<li><strong>method</strong> — name of the method to be called.</li>
-<li><strong>params</strong> — optional property, load to the call (method arguments).</li>
-<li><strong>id</strong> — optional property, unique call identifier. If you want to get the value from the called function, then you must generate <code>id</code> on the client side and when answering you can understand which call the answer came by matching the <code>id</code> of the response.</li>
-</ul>
+                    <h1>Authentication</h1>
+<p>При работе с JSON-PRC, может появиться соблазн добавить аунтификацию,
+данные которые которых будут указаны в параметрах запроса:</p>
 <pre><code class="language-json">{
     "jsonrpc":"2.0",
     "method":"ping",
-    "params":[],
+    "params": {
+      "api": "ebfb7ff0-b2f6-41c8-bef3-4fba17be410c"
+    },
     "id":1
 }</code></pre>
-<blockquote>
-<p><strong>Note.</strong> If you did not send <code>id</code>, then this means that you are not interested in the answer and you will not receive anything from the server. Such a call is called a notification.</p>
-</blockquote>
-<p>An answer can have the following properties:</p>
-<ul>
-<li><strong>jsonrpc</strong> — will always be <code>"2.0"</code>, indicates the protocol version.</li>
-<li><strong>result</strong> — response body (return value of the method).</li>
-<li><strong>id</strong> — unique identifier of the response. It is needed so that the client can match to which request he received a response.</li>
-<li><strong>error</strong> — in case of an error, instead of result, you will get an error field containing a code and a human-readable description of the error.</li>
-</ul>
-<pre><code class="language-json">{
-    "jsonrpc": "2.0",
-    "id": 1,
-    "result": "pong"
-}</code></pre>
+<p>Не стоит так делать, формат обмена не предпологает аунтификацию, так как это не входит в его обязаности. Наилучшим решением являеться передача таких данных в заголовках.</p>
 <hr />
-<p>Official source for <a href="http://www.jsonrpc.org/specification">JSON-RPC 2.0 Specification</a>.
-You can ask clarifying questions to the guys from <a href="http://groups.google.com/group/json-rpc">the json-rpc Google group</a>.</p>                </main>
+<h2>Stateless HTTP Basic Authentication</h2>
+<p>Например реализуем <code>HTTP Basic Authentication</code>, для этого определите промежуточное программное обеспечение, которое вызывает <code>onceBasic</code> метод. Если <code>onceBasic</code> метод не возвращает ответ , запрос может быть передан далее в приложение:</p>
+<pre><code class="language-php">namespace App\Http\Middleware;
+
+use Illuminate\Support\Facades\Auth;
+
+class AuthenticateOnceWithBasicAuth
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @return mixed
+     */
+    public function handle($request, $next)
+    {
+        return Auth::onceBasic() ?: $next($request);
+    }
+
+}</code></pre>
+<p>Затем зарегистрируйте промежуточное программное обеспечение маршрута и прикрепите его к маршруту:</p>
+<pre><code class="language-php">Route::rpc('/v1/endpoint')
+    -&gt;name('rpc.endpoint')
+    -&gt;middleware('auth.basic.once');</code></pre>
+<p>Тогда для обращения к процедурам, необходимо указывать и заголовок, например c использованием <code>JavaScript</code> библиотеки <code>Axios</code>:</p>
+<pre><code class="language-javascript">axios.post('http://localhost/v1/endpoint', {
+    jsonrpc: "2.0",
+    id: "1",
+    method: 'ping',
+    params: {},
+}, {
+    auth: {
+        username: "root@localhost.com",
+        password: "H3xU67Z8T"
+    },
+    headers: {
+        'Content-Type': 'application/json',
+        'Access-Control-Allow-Origin': '*'
+    },
+});</code></pre>
+<p>По умолчанию промежуточное ПО будет использовать столбец <code>email</code> в записи пользователя в качестве «имени пользователя».</p>
+<hr />
+<p>Вы можете узнать больше посетив документацию laravel по <a href="https://laravel.com/docs/authentication">аунтификации</a> и <a href="https://laravel.com/docs/api-authentication">аунтификации для api</a>.</p>                </main>
             </div>
         </div>
     </div>
