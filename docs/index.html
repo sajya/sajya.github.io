@@ -173,18 +173,19 @@
                 <main class="content">
                     <h1>Welcome</h1>
 <h2>Introduction</h2>
-<p><strong>Sajya</strong> - это открытый и свободный проект целью которого являться предоставления легкой реализации сервера JSON-RPC 2.0 для Laravel framework.</p>
-<p>Руководство содержит информацию по использованию пакета, при этом не поясняет использование фреймворка. Настоятельно рекомендуется ознакомиться с документацией «Laravel».</p>
+<p><strong>Sajya</strong> is an open and free project whose goal is to provide an easy implementation of the JSON-RPC 2.0 server for the Laravel framework.</p>
+<p>The manual contains information on using the package, but does not explain the use of the framework.
+It is strongly recommended that you read the <a href="https://laravel.com/docs/">Laravel documentation</a>.</p>
 <hr />
 <h2>Specification</h2>
-<p><strong>JSON-RPC</strong> - это легкий протокол без сохранения состояния для создания API в стиле удаленного вызова процедур (RPC).
-Поддерживающий несколько типов данных и команд. С возможностью уведомления (информация, отправляемая на сервер, не требует ответа) и множественными вызовами.</p>
-<p>Объект запроса включает в себя следующие свойства:</p>
+<p><strong>JSON-RPC</strong> is a lightweight stateless protocol for creating a remote procedure call (RPC) style API.
+Supporting several types of data and commands. With the possibility of notification (information sent to the server does not require a response) and multiple calls.</p>
+<p>The request object includes the following properties:</p>
 <ul>
-<li><strong>jsonrpc</strong> — всегда будет <code>“2.0”</code>, указывает версию протокола.</li>
-<li><strong>method</strong> — название метода (функции), который нужно вызвать.</li>
-<li><strong>params</strong> — опциональное свойство, нагрузка к вызову (аргументы функции).</li>
-<li><strong>id</strong> — опциональное свойство, уникальный идентификатор вызова. Если вы хотите получить значение от вызванной функции, то вы должны сгенерировать <code>id</code> на стороне клиента и при ответе вы сможете понять, на какой именно вызов пришел ответ, сопоставив <code>id</code> ответа.</li>
+<li><strong>jsonrpc</strong> — will always be <code>"2.0"</code>, indicates the protocol version.</li>
+<li><strong>method</strong> — name of the method to be called.</li>
+<li><strong>params</strong> — optional property, load to the call (method arguments).</li>
+<li><strong>id</strong> — optional property, unique call identifier. If you want to get the value from the called function, then you must generate <code>id</code> on the client side and when answering you can understand which call the answer came by matching the <code>id</code> of the response.</li>
 </ul>
 <pre><code class="language-json">{
     "jsonrpc":"2.0",
@@ -193,27 +194,28 @@
     "id":1
 }</code></pre>
 <blockquote>
-<p><strong>Примечание.</strong> Если вы не отправили <code>id</code>, то это означает, что ответ вас не интересует и от сервера вы ничего не получите. Такой вызов называется уведомлением.</p>
+<p><strong>Note.</strong> If you did not send <code>id</code>, then this means that you are not interested in the answer and you will not receive anything from the server. Such a call is called a notification.</p>
 </blockquote>
-<p>Ответ может иметь следующие свойства:</p>
+<p>An answer can have the following properties:</p>
 <ul>
-<li><strong>jsonrpc</strong> — всегда будет “2.0”, указывает версию протокола.</li>
-<li><strong>result</strong> — тело ответа (возвращаемое значение функции).</li>
-<li><strong>id</strong> — уникальный идентификатор ответа. Он нужен для того, чтобы клиент мог сопоставить, на какой запрос он получил ответ.</li>
-<li><strong>error</strong> — в случае ошибки вместо result, вы получите поле error, содержащее в себе code (код ответа: по протоколу их может быть шесть) и message (человекопонятное описание ошибки).</li>
+<li><strong>jsonrpc</strong> — will always be <code>"2.0"</code>, indicates the protocol version.</li>
+<li><strong>result</strong> — response body (return value of the method).</li>
+<li><strong>id</strong> — unique identifier of the response. It is needed so that the client can match to which request he received a response.</li>
+<li><strong>error</strong> — in case of an error, instead of result, you will get an error field containing a code and a human-readable description of the error.</li>
 </ul>
 <pre><code class="language-json">{
     "jsonrpc": "2.0",
     "id": 1,
     "result": "pong"
 }</code></pre>
-<p>Официальный источник для <a href="http://www.jsonrpc.org/specification">спецификации JSON-RPC 2.0</a>. Уточняющие вопросы можно задать ребятам из <a href="http://groups.google.com/group/json-rpc">группы Google json-rpc</a>.</p>
-<h2>Как установить ?</h2>
-<p>Пакет свободно распространяется через интернет, <a href="https://github.com/sajya/server">исходные коды</a> и <a href="https://github.com/sajya/server/releases">информация о выпусках</a> опубликованы на GitHub.
-В руководстве по <a href="/docs/installation/">установке</a> содержатся подробные инструкции. </p>
+<p>Official source for <a href="http://www.jsonrpc.org/specification">JSON-RPC 2.0 Specification</a>.
+You can ask clarifying questions to the guys from <a href="http://groups.google.com/group/json-rpc">the json-rpc Google group</a>.</p>
+<h2>How to install?</h2>
+<p>The package is freely distributed over the Internet, <a href="https://github.com/sajya/server">source codes</a> and <a href="https://github.com/sajya/server/releases">release notes</a> are published on GitHub.
+The <a href="/docs/installation/">installation manual</a> contains detailed instructions.</p>
 <blockquote>
-<p>Для предложения улучшений этого руководства, <a href="https://github.com/sajya/sajya.github.io/issues/new">создайте новый issue</a>.
-При появлении вопросов или нахождения ошибки по документации, пожалуйста, укажите главу и сопутствующий текст, чтобы указать на ошибку.</p>
+<p>To suggest improvements to this guide, <a href="https://github.com/sajya/sajya.github.io/issues/new">create a new issue</a>.
+If you have questions or find an error in the documentation, please indicate the chapter and accompanying text to indicate an error.</p>
 </blockquote>                </main>
             </div>
         </div>
