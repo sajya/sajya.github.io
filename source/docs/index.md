@@ -9,24 +9,25 @@ section: content
 
 ## Introduction
 
-**Sajya** - это открытый и свободный проект целью которого являться предоставления легкой реализации сервера JSON-RPC 2.0 для Laravel framework.
+**Sajya** is an open and free project whose goal is to provide an easy implementation of the JSON-RPC 2.0 server for the Laravel framework.
 
+The manual contains information on using the package, but does not explain the use of the framework. 
+It is strongly recommended that you read the [Laravel documentation](https://laravel.com/docs/).
 
-Руководство содержит информацию по использованию пакета, при этом не поясняет использование фреймворка. Настоятельно рекомендуется ознакомиться с документацией «Laravel».
 
 ----
 
 ## Specification 
 
-**JSON-RPC** - это легкий протокол без сохранения состояния для создания API в стиле удаленного вызова процедур (RPC).
-Поддерживающий несколько типов данных и команд. С возможностью уведомления (информация, отправляемая на сервер, не требует ответа) и множественными вызовами.
+**JSON-RPC** is a lightweight stateless protocol for creating a remote procedure call (RPC) style API.
+Supporting several types of data and commands. With the possibility of notification (information sent to the server does not require a response) and multiple calls.
 
-Объект запроса включает в себя следующие свойства:
+The request object includes the following properties:
 
-- **jsonrpc** — всегда будет `“2.0”`, указывает версию протокола.
-- **method** — название метода (функции), который нужно вызвать.
-- **params** — опциональное свойство, нагрузка к вызову (аргументы функции).
-- **id** — опциональное свойство, уникальный идентификатор вызова. Если вы хотите получить значение от вызванной функции, то вы должны сгенерировать `id` на стороне клиента и при ответе вы сможете понять, на какой именно вызов пришел ответ, сопоставив `id` ответа.
+- **jsonrpc** — will always be `"2.0"`, indicates the protocol version.
+- **method** — name of the method to be called.
+- **params** — optional property, load to the call (method arguments).
+- **id** — optional property, unique call identifier. If you want to get the value from the called function, then you must generate `id` on the client side and when answering you can understand which call the answer came by matching the `id` of the response.
 
 ```json
 {
@@ -37,15 +38,15 @@ section: content
 }
 ```
 
-> **Примечание.** Если вы не отправили `id`, то это означает, что ответ вас не интересует и от сервера вы ничего не получите. Такой вызов называется уведомлением.
+> **Note.** If you did not send `id`, then this means that you are not interested in the answer and you will not receive anything from the server. Such a call is called a notification.
 
 
-Ответ может иметь следующие свойства:
+An answer can have the following properties:
 
-- **jsonrpc** — всегда будет “2.0”, указывает версию протокола.
-- **result** — тело ответа (возвращаемое значение функции).
-- **id** — уникальный идентификатор ответа. Он нужен для того, чтобы клиент мог сопоставить, на какой запрос он получил ответ.
-- **error** — в случае ошибки вместо result, вы получите поле error, содержащее в себе code (код ответа: по протоколу их может быть шесть) и message (человекопонятное описание ошибки).
+- **jsonrpc** — will always be `"2.0"`, indicates the protocol version.
+- **result** — response body (return value of the method).
+- **id** — unique identifier of the response. It is needed so that the client can match to which request he received a response.
+- **error** — in case of an error, instead of result, you will get an error field containing a code and a human-readable description of the error.
 
 ```json
 {
@@ -55,14 +56,16 @@ section: content
 }
 ```
 
-Официальный источник для [спецификации JSON-RPC 2.0](http://www.jsonrpc.org/specification). Уточняющие вопросы можно задать ребятам из [группы Google json-rpc](http://groups.google.com/group/json-rpc).
+
+Official source for [JSON-RPC 2.0 Specification](http://www.jsonrpc.org/specification). 
+You can ask clarifying questions to the guys from [the json-rpc Google group](http://groups.google.com/group/json-rpc).
 
 
-## Как установить ?
+## How to install?
 
-Пакет свободно распространяется через интернет, [исходные коды](https://github.com/sajya/server) и [информация о выпусках](https://github.com/sajya/server/releases) опубликованы на GitHub.
-В руководстве по [установке](/docs/installation/) содержатся подробные инструкции. 
+The package is freely distributed over the Internet, [source codes](https://github.com/sajya/server) and [release notes](https://github.com/sajya/server/releases) are published on GitHub.
+The [installation manual](/docs/installation/) contains detailed instructions.
 
 
-> Для предложения улучшений этого руководства, [создайте новый issue](https://github.com/sajya/sajya.github.io/issues/new). 
-При появлении вопросов или нахождения ошибки по документации, пожалуйста, укажите главу и сопутствующий текст, чтобы указать на ошибку.
+> To suggest improvements to this guide, [create a new issue](https://github.com/sajya/sajya.github.io/issues/new).
+If you have questions or find an error in the documentation, please indicate the chapter and accompanying text to indicate an error.
