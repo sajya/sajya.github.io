@@ -137,8 +137,12 @@
     @extend .table;
   }
   img {
-    max-width: 100%;
     height: auto;
+    max-width: 40em;
+    max-height: 20em;
+    margin: 1em auto;
+    display: block;
+    object-fit: fill;
   }
 
   .hljs{
