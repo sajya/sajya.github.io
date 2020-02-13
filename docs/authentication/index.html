@@ -34,7 +34,7 @@
     
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,300i,400,400i,700,700i,800,800i"
           rel="stylesheet">
-    <link rel="stylesheet" href="/assets/build/css/main.css?id=99d57c5ff9cb39369956">
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=b93c9679c01bf20286d9">
 
     </head>
 
@@ -100,19 +100,19 @@
         <ul class="pl-1">
             <li>
             
-        <a href="/docs"
+        <a href="/docs/specification"
             class="lvl1  "
         >
-            Introduction
+            Specification
         </a>
     
     </li>
             <li>
             
-        <a href="/docs/specification"
+        <a href="/docs"
             class="lvl1  "
         >
-            Specification
+            Introduction
         </a>
     
     </li>
@@ -144,7 +144,7 @@
         <ul class="pl-1">
             <li>
             
-        <a href="/docs/custom-404-page"
+        <a href="/docs/#"
             class="lvl1  "
         >
             Validation
@@ -171,10 +171,19 @@
     </li>
             <li>
             
-        <a href="/docs/customizing-your-site"
+        <a href="/docs/#"
             class="lvl1  "
         >
             Notifications
+        </a>
+    
+    </li>
+            <li>
+            
+        <a href="/docs/compression"
+            class="lvl1  "
+        >
+            Compression
         </a>
     
     </li>
@@ -188,7 +197,7 @@
         <ul class="pl-1">
             <li>
             
-        <a href="/docs/customizing-your-site"
+        <a href="/docs/#"
             class="lvl1  "
         >
             HTTP Tests
@@ -207,8 +216,8 @@
 
                 <main class="content">
                     <h1>Authentication</h1>
-<p>При работе с JSON-PRC, может появиться соблазн добавить аунтификацию,
-данные которые которых будут указаны в параметрах запроса:</p>
+<p>При работе с JSON-PRC, может появиться соблазн добавить аутентификацию,
+данные которые будут указаны в параметрах запроса:</p>
 <pre><code class="language-json">{
     "jsonrpc":"2.0",
     "method":"ping",
@@ -217,7 +226,10 @@
     },
     "id":1
 }</code></pre>
-<p>Не стоит так делать, формат обмена не предпологает аунтификацию, так как это не входит в его обязаности. Наилучшим решением являеться передача таких данных в заголовках.</p>
+<p>Не стоит так делать, формат обмена не предполагает аутентификацию, так как это не входит в его обязанности. Наилучшим решением является передача таких данных в заголовках.</p>
+<blockquote>
+<p>Каждый запрос клиента к серверу должен содержать всю информацию, необходимую для выполнения этого запроса, без хранения какого-либо контекста на стороне сервера. Состояние сеанса целиком хранится на стороне клиента.</p>
+</blockquote>
 <hr />
 <h2>Stateless HTTP Basic Authentication</h2>
 <p>Например реализуем <code>HTTP Basic Authentication</code>, для этого определите промежуточное программное обеспечение, которое вызывает <code>onceBasic</code> метод. Если <code>onceBasic</code> метод не возвращает ответ , запрос может быть передан далее в приложение:</p>
@@ -260,9 +272,9 @@ class AuthenticateOnceWithBasicAuth
         'Access-Control-Allow-Origin': '*'
     },
 });</code></pre>
-<p>По умолчанию промежуточное ПО будет использовать столбец <code>email</code> в записи пользователя в качестве «имени пользователя».</p>
+<p>По умолчанию <code>middleware</code> будет использовать столбец <code>email</code> в записи пользователя в качестве «имени пользователя».</p>
 <hr />
-<p>Вы можете узнать больше посетив документацию laravel по <a href="https://laravel.com/docs/authentication">аунтификации</a> и <a href="https://laravel.com/docs/api-authentication">аунтификации для api</a>.</p>                </main>
+<p>Вы можете узнать больше посетив документацию laravel по <a href="https://laravel.com/docs/authentication">аутентификации</a> и <a href="https://laravel.com/docs/api-authentication">аутентификации для api</a>.</p>                </main>
             </div>
         </div>
     </div>

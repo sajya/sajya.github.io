@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="Custom 404 pages with Jigsaw docs starter template">
+    <meta name="description" content="Compress JSON files to reduce file size, get lower download times and save website bandwidth.">
 
     <meta property="og:site_name" content="JSON-RPC server for Laravel framework"/>
-    <meta property="og:title" content="Custom 404 Page | JSON-RPC server for Laravel framework"/>
-    <meta property="og:description" content="Custom 404 pages with Jigsaw docs starter template"/>
-    <meta property="og:url" content="https://my-jigsaw-docs.com/docs/custom-404-page"/>
+    <meta property="og:title" content="JSON Compression | JSON-RPC server for Laravel framework"/>
+    <meta property="og:description" content="Compress JSON files to reduce file size, get lower download times and save website bandwidth."/>
+    <meta property="og:url" content="https://my-jigsaw-docs.com/docs/compression"/>
     <meta property="og:image" content="/assets/img/logo.png"/>
     <meta property="og:type" content="website"/>
 
@@ -17,7 +17,7 @@
     <meta name="twitter:card" content="summary_large_image">
 
     
-    <title>JSON-RPC server for Laravel framework | Custom 404 Page</title>
+    <title>JSON-RPC server for Laravel framework | JSON Compression</title>
 
     <link rel="home" href="https://my-jigsaw-docs.com">
 
@@ -34,7 +34,7 @@
     
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,300i,400,400i,700,700i,800,800i"
           rel="stylesheet">
-    <link rel="stylesheet" href="/assets/build/css/main.css?id=99d57c5ff9cb39369956">
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=b93c9679c01bf20286d9">
 
     </head>
 
@@ -100,19 +100,19 @@
         <ul class="pl-1">
             <li>
             
-        <a href="/docs"
+        <a href="/docs/specification"
             class="lvl1  "
         >
-            Introduction
+            Specification
         </a>
     
     </li>
             <li>
             
-        <a href="/docs/specification"
+        <a href="/docs"
             class="lvl1  "
         >
-            Specification
+            Introduction
         </a>
     
     </li>
@@ -144,8 +144,8 @@
         <ul class="pl-1">
             <li>
             
-        <a href="/docs/custom-404-page"
-            class="lvl1  active"
+        <a href="/docs/#"
+            class="lvl1  "
         >
             Validation
         </a>
@@ -171,10 +171,19 @@
     </li>
             <li>
             
-        <a href="/docs/customizing-your-site"
+        <a href="/docs/#"
             class="lvl1  "
         >
             Notifications
+        </a>
+    
+    </li>
+            <li>
+            
+        <a href="/docs/compression"
+            class="lvl1  active"
+        >
+            Compression
         </a>
     
     </li>
@@ -188,7 +197,7 @@
         <ul class="pl-1">
             <li>
             
-        <a href="/docs/customizing-your-site"
+        <a href="/docs/#"
             class="lvl1  "
         >
             HTTP Tests
@@ -206,23 +215,37 @@
             <div class="col-12 col-md-9">
 
                 <main class="content">
-                    <h1 id="custom-404-page">Custom 404 Page</h1>
-<p>This starter template includes a custom <strong>404 Not Found</strong> error page, located at <code>/source/404.blade.php</code>. <a href="/404">To preview the 404 page</a>, you can visit <code>/404</code> in your browser.</p>
-<pre><code class="language-html">&lt;!-- source/404.blade.php --&gt;
-@extends('_layouts.master')
-
-@section('body')
-&lt;div class="flex flex-col items-center mt-32 text-gray-700"&gt;
-    &lt;h1 class="text-6xl leading-none mb-2"&gt;404&lt;/h1&gt;
-    &lt;h2 class="text-3xl"&gt;Page not found&lt;/h2&gt;
-
-    &lt;hr class="block w-full max-w-lg mx-auto my-8 border"&gt;
-
-    &lt;p class="text-xl"&gt;Need to update this page? See the &lt;a title="404 Page Documentation" href="/docs/404"&gt; documentation here&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-@endsection</code></pre>
+                    <h1>JSON</h1>
+<h2>Compression</h2>
+<p>Огромное число сервисов используют JSON для обмена сообщениями, за счёт удобочитаемых данных для человека и меньшего размера в сравнении с XML. Но у него также есть свои проблемы, одной из такой является размер файла в сравнении с бинарными форматами. На малом объёме данных скорость передачи и расшифровки будет практически незаметна почти на любом формате, но при увеличении объема нагрузка на сеть может сильно возрастать. </p>
 <hr />
-<p>Depending on where your site is hosted, you may need to configure your server to use the custom 404 page. For more details, visit the <a href="https://jigsaw.tighten.co/docs/custom-404-page/">Jigsaw documentation about configuring a custom 404 page.</a></p>                </main>
+<h2>Middleware for Gzip</h2>
+<p>Конечно, если данные из сервиса потребляться напрямую веб-браузерами то такого объема будет сложно достичь. Но при передачах данных между серверами, для большей оптимизации можно использовать сжатие, например Gzip. </p>
+<p><img src="/assets/img/compress.svg" alt="JSON Compress" /></p>
+<p>... Подключаем <code>middleware</code> ...</p>
+<pre><code class="language-php">namespace App\Http\Middleware;
+
+class GzipMiddleware
+{
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Closure $next
+     * @return mixed
+     */
+    public function handle($request, $next)
+    {
+        $response = $next($request);
+        $content = $response-&gt;content();
+
+        return response(gzencode($content, 7))-&gt;withHeaders([
+            'Access-Control-Allow-Origin' =&gt; '*',
+            'Content-type' =&gt; 'application/json; charset=utf-8',
+            'Content-Encoding' =&gt; 'gzip'
+        ]);
+    }
+}</code></pre>                </main>
             </div>
         </div>
     </div>

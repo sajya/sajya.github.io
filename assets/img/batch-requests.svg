@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 246.65 419.99">
+    <defs>
+        <style>
+            .cls-1{isolation:isolate;}.cls-2{fill:#ccc;}.cls-3{opacity:0.3;mix-blend-mode:multiply;}.cls-4{fill:#fff;}.cls-10,.cls-5{fill:#f4f8f9;}.cls-6{fill:#9fbec1;}.cls-7{fill:#d8d8e4;}.cls-8{fill:#f2b770;}.cls-9{font-size:16.34px;font-family:MyriadPro-Regular,
+            Myriad Pro;}.cls-10{stroke:#d8d8e4;stroke-miterlimit:10;stroke-width:0.25px;}
+        </style>
+    </defs>
+    <title>Mesa de trabajo 1</title>
+    <g class="cls-1">
+        <g id="OBJECTS">
+            <rect width="178.26" height="378.29" x="34.5" y="20.52" class="cls-4" rx="16.9"/>
+            <rect width="178.26" height="378.29" x="34.5" y="20.52" class="cls-5" rx="16.56"/>
+            <path d="M124.06 390.85a12.78 12.78 0 1 1 12.78-12.78 12.8 12.8 0 0 1-12.78 12.78zm0-24.8a12 12 0 1 0 12 12 12 12 0 0 0-12-12.05z"
+                  class="cls-6"/>
+            <path d="M51.87 27.72H195.1a10.55 10.55 0 0 1 10.54 10.55v318.8H41.3V38.26a10.55 10.55 0 0 1 10.57-10.55z"
+                  class="cls-7"/>
+        </g>
+        <g id="Слой_3">
+            <path d="M52.76 27.72H194.2a11.44 11.44 0 0 1 11.44 11.44v28.68H41.3V39.17a11.44 11.44 0 0 1 11.46-11.45z"
+                  class="cls-2"/>
+            <rect width="115.41" height="24.39" x="56.3" y="83.6" class="cls-2" rx="10.88"/>
+            <rect width="99.47" height="24.39" x="56.3" y="119.75" class="cls-2" rx="10.88"/>
+            <rect width="72.24" height="24.39" x="56.1" y="155.89" class="cls-2" rx="10.88"/>
+            <rect width="22.06" height="22.06" x="140.87" y="157.06" class="cls-8" rx="9.64"/>
+            <text class="cls-9" transform="translate(150.1 173.76)">!</text>
+            <rect width="72.44" height="24.39" x="55.9" y="192.99" class="cls-2" rx="10.88"/>
+            <rect width="22.06" height="22.06" x="140.87" y="194.15" class="cls-8" rx="9.64"/>
+            <text class="cls-9" transform="translate(150.1 210.85)">!</text>
+            <path d="M42.87 333.55h161.6v22.16H42.86z" class="cls-4"/>
+            <path d="M168.4 352.54H57.12c-5.24 0-9.48-3.76-9.48-8.4v1c0-4.64 4.24-8.4 9.48-8.4H168.4c5.23 0 9.48 3.76 9.48 8.4v-1c0 4.64-4.25 8.4-9.5 8.4z"
+                  class="cls-10"/>
+            <circle cx="190.66" cy="344.6" r="7.86" class="cls-10"/>
+            <path d="M186.4 340.8l11 3.76h-11v-3.75zM186.43 348.88l10.96-4-11 .14.03 3.86z" class="cls-7"/>
+        </g>
+    </g>
+</svg>
