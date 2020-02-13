@@ -7,6 +7,8 @@ section: content
 
 # Authentication
  
+## Stateless
+ 
 При работе с JSON-PRC, может появиться соблазн добавить аутентификацию,
 данные которые будут указаны в параметрах запроса:
  
@@ -28,7 +30,7 @@ section: content
  
  ----
  
-## Stateless HTTP Basic Authentication 
+## HTTP Basic Authentication 
 
 Например реализуем `HTTP Basic Authentication`, для этого определите промежуточное программное обеспечение, которое вызывает `onceBasic` метод. Если `onceBasic` метод не возвращает ответ , запрос может быть передан далее в приложение:
 
