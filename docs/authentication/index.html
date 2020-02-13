@@ -216,6 +216,7 @@
 
                 <main class="content">
                     <h1>Authentication</h1>
+<h2>Stateless</h2>
 <p>При работе с JSON-PRC, может появиться соблазн добавить аутентификацию,
 данные которые будут указаны в параметрах запроса:</p>
 <pre><code class="language-json">{
@@ -231,7 +232,7 @@
 <p>Каждый запрос клиента к серверу должен содержать всю информацию, необходимую для выполнения этого запроса, без хранения какого-либо контекста на стороне сервера. Состояние сеанса целиком хранится на стороне клиента.</p>
 </blockquote>
 <hr />
-<h2>Stateless HTTP Basic Authentication</h2>
+<h2>HTTP Basic Authentication</h2>
 <p>Например реализуем <code>HTTP Basic Authentication</code>, для этого определите промежуточное программное обеспечение, которое вызывает <code>onceBasic</code> метод. Если <code>onceBasic</code> метод не возвращает ответ , запрос может быть передан далее в приложение:</p>
 <pre><code class="language-php">namespace App\Http\Middleware;
 
