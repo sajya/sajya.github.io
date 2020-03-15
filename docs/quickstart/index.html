@@ -220,7 +220,7 @@
 <hr />
 <h2>Creating Procedures</h2>
 <p>Каждый метод запроса описываться в отдельном классе под названием &quot;Процедура&quot;. В нем обязательно должны присутствовать
-статическое свойство <code>name</code> по которому будет определяться выполнение запроса и метод <code>handle</code> в котором производиться непосредственно действие.</p>
+статическое свойство <code>name</code> по которому будет определяться выполнение запроса, а непосредственные действия могут быть выполнены в любом публичном методе.</p>
 <p>Создать класс процедуры можно выполнив <code>artisan</code> команду:</p>
 <pre><code class="language-bash">php artisan make:procedure TennisProcedure</code></pre>
 <p>Она создаст новый файл <code>TennisProcedure.php</code> в директории <code>app/Http/Procedures</code>.</p>
@@ -245,7 +245,7 @@ class TennisProcedure extends Procedure
      *
      * @return array|string|integer
      */
-    public function ping(Collection $params)
+    public function ping()
     {
         return 'pong';
     }
