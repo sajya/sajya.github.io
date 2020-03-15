@@ -15,7 +15,7 @@ At this stage, it is necessary you have already [installed the framework and pac
 ## Creating Procedures
 
 Каждый метод запроса описываться в отдельном классе под названием "Процедура". В нем обязательно должны присутствовать
-статическое свойство `name` по которому будет определяться выполнение запроса и метод `handle` в котором производиться непосредственно действие.
+статическое свойство `name` по которому будет определяться выполнение запроса, а непосредственные действия могут быть выполнены в любом публичном методе.
 
 Создать класс процедуры можно выполнив `artisan` команду:
 
@@ -48,7 +48,7 @@ class TennisProcedure extends Procedure
      *
      * @return array|string|integer
      */
-    public function ping(Collection $params)
+    public function ping()
     {
         return 'pong';
     }
