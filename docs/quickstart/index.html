@@ -222,9 +222,9 @@
 <p>Каждый метод запроса описываться в отдельном классе под названием &quot;Процедура&quot;. В нем обязательно должны присутствовать
 статическое свойство <code>name</code> по которому будет определяться выполнение запроса и метод <code>handle</code> в котором производиться непосредственно действие.</p>
 <p>Создать класс процедуры можно выполнив <code>artisan</code> команду:</p>
-<pre><code class="language-bash">php artisan make:procedure PingProcedure</code></pre>
-<p>Она создаст новый файл <code>PingProcedure.php</code> в директории <code>app/Http/Procedures</code>.</p>
-<p>Назовём новую процедуру <code>ping</code>, для этого изменим свойство <code>name</code> и добавим возвращающие значение <code>pong</code> в метод, , что бы получилось такое содержание:</p>
+<pre><code class="language-bash">php artisan make:procedure TennisProcedure</code></pre>
+<p>Она создаст новый файл <code>TennisProcedure.php</code> в директории <code>app/Http/Procedures</code>.</p>
+<p>Назовём новую процедуру <code>tennis</code>, для этого изменим свойство <code>name</code> и добавим возвращающие значение <code>pong</code> в метод <code>ping</code>, что бы получилось такое содержание:</p>
 <pre><code class="language-php">declare(strict_types=1);
 
 namespace App\Http\Procedures;
@@ -232,29 +232,29 @@ namespace App\Http\Procedures;
 use Sajya\Server\Procedure;
 use Illuminate\Support\Collection;
 
-class PingProcedure extends Procedure
+class TennisProcedure extends Procedure
 {
     /**
      * The name of the procedure that will be
      * displayed and taken into account in the search
      */
-    public static string $name = 'ping';
+    public static string $name = 'tennis';
 
     /**
      * Execute the procedure.
      *
      * @return array|string|integer
      */
-    public function handle(Collection $params)
+    public function ping(Collection $params)
     {
         return 'pong';
     }
 }</code></pre>
 <h2>Route Registration</h2>
 <p>Как и контроллер, процедуру нужно регистрировать в файле маршрутов, определим его в файле <code>api.php</code>:</p>
-<pre><code class="language-php">use App\Http\Procedures\PingProcedure;
+<pre><code class="language-php">use App\Http\Procedures\TennisProcedure;
 
-Route::rpc('/v1/endpoint', [PingProcedure::class])-&gt;name('rpc.endpoint');</code></pre>
+Route::rpc('/v1/endpoint', [TennisProcedure::class])-&gt;name('rpc.endpoint');</code></pre>
 <blockquote>
 <p>Обратите внимание, что вторым аргументом мы передаём массив, который содержит только необходимые классы. Таким образом мы сможем в будующем добавить вторую версию нашего API, без конфликтов.</p>
 </blockquote>
@@ -265,7 +265,7 @@ Route::rpc('/v1/endpoint', [PingProcedure::class])-&gt;name('rpc.endpoint');</co
 <h2>Проверка</h2>
 <p>Выполним <code>curl</code> обращение к новому API:</p>
 <pre><code class="language-bash">curl 'http://127.0.0.1:8000/api/v1/endpoint' 
---data-binary '[{ "jsonrpc":"2.0","method":"ping","params":[],"id" : 1 }]'</code></pre>                </main>
+--data-binary '[{ "jsonrpc":"2.0","method":"tennis@ping","params":[],"id" : 1 }]'</code></pre>                </main>
             </div>
         </div>
     </div>
