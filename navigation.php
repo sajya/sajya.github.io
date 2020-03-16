@@ -1,25 +1,20 @@
 <?php
 
 return [
-    'Getting Started' => [
+   'Introduction' => [
         'children' => [
-            'Specification' => 'docs/specification',
             'Introduction' => 'docs',
-            'Installation' => 'docs/installation',
-            'Quick Start'  => 'docs/quickstart',
+            'Specification' => 'docs/specification',
         ],
     ],
-   'Features' => [
+    'Getting Started' => [
         'children' => [
-            'Authentication' => 'docs/authentication',
+            'Installation' => 'docs/installation',
+            'Quick Start'  => 'docs/quickstart',
             'Batch requests' => 'docs/batch',
             'Notifications'  => 'docs/#',
+            'Authentication' => 'docs/authentication',
             'Compression'    => 'docs/compression',
         ],
     ],
-    'Testing' => [
-        'children' => [
-            'HTTP Tests' => 'docs/#',
-        ],
-    ]
 ];
