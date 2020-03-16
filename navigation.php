@@ -1,7 +1,7 @@
 <?php
 
 return [
-   'Introduction' => [
+   'Prologue' => [
         'children' => [
             'Introduction' => 'docs',
             'Specification' => 'docs/specification',
