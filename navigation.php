@@ -11,7 +11,6 @@ return [
     ],
    'Features' => [
         'children' => [
-            'Validation'     => 'docs/#',
             'Authentication' => 'docs/authentication',
             'Batch requests' => 'docs/batch',
             'Notifications'  => 'docs/#',
