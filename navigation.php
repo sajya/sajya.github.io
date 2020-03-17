@@ -12,9 +12,9 @@ return [
             'Installation' => 'docs/installation',
             'Quick Start'  => 'docs/quickstart',
             'Batch requests' => 'docs/batch',
-            'Notifications'  => 'docs/#',
+            //'Notifications'  => 'docs/#',
             'Authentication' => 'docs/authentication',
-            'Compression'    => 'docs/compression',
+            //'Compression'    => 'docs/compression',
         ],
     ],
 ];
