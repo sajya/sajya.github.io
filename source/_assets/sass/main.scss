@@ -137,3 +137,11 @@ blockquote {
     padding: 1em 1em 0.1em 2em;
     margin: 0 0 1em 0;
 }
+
+.img-p {
+  img{
+    float: right;
+    width: 200px;
+    margin: 0;
+  }
+}
