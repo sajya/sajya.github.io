@@ -175,14 +175,23 @@
 <h2>Batch</h2>
 <p>Пакетная обработка JSON позволяет оптимизировать приложение путем объединения нескольких запросов в один объект JSON.</p>
 <p>Одним из премуществ JSON-RPC по сравнению с REST являеться возможность указания сразу нескольких запросов в одном.</p>
-<p>Рассмотрим пример разницу с REST подходом. Например, общаетесь в мессенжере с друзьями и автобус заехал в тутель.
+<div class="img-p">
+![JSON RPC Batch Requests](/assets/img/batch-requests.svg)
+
+Рассмотрим пример разницу с REST подходом. Например, общаетесь в мессенжере с друзьями и автобус заехал в тутель.
 Интеренет пропал. Сообщения находятся в режиме ожидания:
-<img src="/assets/img/batch-requests.svg" alt="JSON RPC Batch Requests" /></p>
-<p>Как только появиться соединение при REST подходе будет отправлено два сообщения:</p>
-<pre><code class="language-php">POST https://api.example.com/v1.0/message/create
-POST https://api.example.com/v1.0/message/create</code></pre>
-<p>Пакетная обработка позволяет избежать этого:</p>
-<pre><code class="language-php">[
+
+Как только появиться соединение при REST подходе будет отправлено два сообщения:
+
+```php
+POST https://api.example.com/v1.0/message/create
+POST https://api.example.com/v1.0/message/create
+```
+
+Пакетная обработка позволяет избежать этого:
+
+```php
+[
   {
     "jsonrpc": "2.0",
     "method": "message@create",
@@ -195,7 +204,9 @@ POST https://api.example.com/v1.0/message/create</code></pre>
     "params": "...",
     "id": 2
   }
-]</code></pre>
+]
+```
+</div>
 <p>В этом сценарии отдельные запросы никоим образом не являются взаимозависимыми и, следовательно, могут быть помещены в пакетный запрос в любом порядке. Ответы на пакетные запросы могут отображаться в другом порядке. Свойство <code>id</code> может быть использовано для корреляции индивидуальных запросов и ответов.</p>
 <!--
 ![JSON PRC Notifications](/assets/img/notifications.svg)
