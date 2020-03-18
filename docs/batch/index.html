@@ -178,9 +178,7 @@
 <p><img src="/assets/img/batch-requests.svg" alt="JSON RPC Batch Requests" /></p>
 <p>Рассмотрим пример разницу с REST подходом. Например, общаетесь в мессенжере с друзьями и автобус заехал в тутель.
 Интеренет пропал. Сообщения находятся в режиме ожидания:</p>
-<p>Как только появиться соединение при REST подходе будет отправлено два сообщения:</p>
-<pre><code class="language-php">POST https://api.example.com/v1.0/message/create
-POST https://api.example.com/v1.0/message/create</code></pre>
+<p>Как только появиться соединение при REST подходе будет отправлено два сообщения на <code>https://api.example.com/v1.0/message/create</code></p>
 <p>Пакетная обработка позволяет избежать этого:</p>
 <pre><code class="language-php">[
   {
