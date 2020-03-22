@@ -9,8 +9,8 @@ section: content
  
 ## Stateless
  
-При работе с JSON-PRC, может появиться соблазн добавить аутентификацию,
-данные которые будут указаны в параметрах запроса:
+When working with JSON-PRC, you might be tempted to add authentication,
+data that will be specified in the request parameters:
  
 ```json
 {
@@ -23,16 +23,15 @@ section: content
 }
 ```
 
-Не стоит так делать, формат обмена не предполагает аутентификацию, так как это не входит в его обязанности. Наилучшим решением является передача таких данных в заголовках.
+You should not do this, the exchange format does not imply authentication since this is not part of his duties. The best solution is to transfer such data in the headers.
  
- 
- > Каждый запрос клиента к серверу должен содержать всю информацию, необходимую для выполнения этого запроса, без хранения какого-либо контекста на стороне сервера. Состояние сеанса целиком хранится на стороне клиента.
+ > Each client request to the server must contain all the information necessary to fulfill this request, without storing any context on the server-side. The session state is entirely stored on the client-side.
  
  ----
  
 ## HTTP Basic Authentication 
 
-Например реализуем `HTTP Basic Authentication`, для этого определите промежуточное программное обеспечение, которое вызывает `onceBasic` метод. Если `onceBasic` метод не возвращает ответ , запрос может быть передан далее в приложение:
+For example, we implement `HTTP Basic Authentication`, for this, define the middleware that calls the `onceBasic` method. If the `onceBasic` method does not return a response, the request can be passed on to the application:
 
 ```php
 namespace App\Http\Middleware;
@@ -56,7 +55,7 @@ class AuthenticateOnceWithBasicAuth
 }
 ```
 
-Затем зарегистрируйте промежуточное программное обеспечение маршрута и прикрепите его к маршруту:
+Then register the route middleware and attach it to the route:
 
 ```php
 Route::rpc('/v1/endpoint')
@@ -64,7 +63,7 @@ Route::rpc('/v1/endpoint')
     ->middleware('auth.basic.once');
 ```
 
-Тогда для обращения к процедурам, необходимо указывать и заголовок, например c использованием `JavaScript` библиотеки `Axios`:
+Then, to access the procedures, you must specify the title, for example, using the `JavaScript` library `Axios`:
 
 ```javascript
 axios.post('http://localhost/v1/endpoint', {
@@ -84,8 +83,8 @@ axios.post('http://localhost/v1/endpoint', {
 });
 ```
 
-По умолчанию `middleware` будет использовать столбец `email` в записи пользователя в качестве «имени пользователя».
+By default, `middleware` will use the `email` column in the user record as the "username".
 
 ----
 
-Вы можете узнать больше посетив документацию laravel по [аутентификации](https://laravel.com/docs/authentication) и [аутентификации для api](https://laravel.com/docs/api-authentication).
+You can find out more by visiting the laravel documentation on [authentication](https://laravel.com/docs/authentication) and [authentication for api](https://laravel.com/docs/api-authentication).

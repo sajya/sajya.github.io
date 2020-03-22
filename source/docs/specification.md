@@ -1,6 +1,6 @@
 ---
 title: Specification
-description: 
+description: JSON-PRC Specification
 extends: _layouts.documentation
 section: content
 ---

@@ -1,6 +1,6 @@
 ---
 title: Quickstart
-description:
+description: Easy implementation of the JSON-RPC 2.0 server for the Laravel framework.
 extends: _layouts.documentation
 section: content
 ---
@@ -14,18 +14,18 @@ At this stage, it is necessary you have already [installed the framework and pac
 
 ## Creating Procedures
 
-Все действия описываются в классах под назнанием "Процедура", он являеться привычным контроллером, но в нём обязательно должено присутствовать статическое свойство `name`,
-по которому будет определяться выполнение запроса, а непосредственные действия могут быть выполнены в любом публичном методе.
+All actions are described in `Procedure` classes, it is a familiar controller, but it must contain the static property `name`, which will determine the execution of the request, and immediate actions can be performed in any public method.
 
-Создать класс процедуры можно выполнив `artisan` команду:
+You can create a procedure class by executing the `artisan` command:
 
 ```bash
 php artisan make:procedure TennisProcedure
 ```
- 
-Она создаст новый файл `TennisProcedure.php` в директории `app/Http/Procedures`.
 
-Назовём новую процедуру `tennis`, для этого изменим свойство `name` и добавим возвращающие значение `pong` в метод `ping`, что бы получилось такое содержание:
+Will create a new file `TennisProcedure.php` in the directory `app/Http/Procedures`.
+
+Let's call the new procedure `tennis`, to do this, change the` name` property and add the `pong` returning value to the` ping` method to get this content:
+
 
 ```php
 declare(strict_types=1);
@@ -46,7 +46,7 @@ class TennisProcedure extends Procedure
     /**
      * Execute the procedure.
      *
-     * @return array|string|integer
+     * @return string
      */
     public function ping()
     {
@@ -57,7 +57,7 @@ class TennisProcedure extends Procedure
 
 ## Route Registration
 
-Как и контроллер, процедуру нужно регистрировать в файле маршрутов, определим его в файле `api.php`:
+Like the controller, the procedure needs to be registered in the routes file, define it in the file `api.php`:
 
 ```php
 use App\Http\Procedures\TennisProcedure;
@@ -65,21 +65,21 @@ use App\Http\Procedures\TennisProcedure;
 Route::rpc('/v1/endpoint', [TennisProcedure::class])->name('rpc.endpoint');
 ```
 
-> Обратите внимание, что вторым аргументом мы передаём массив, который содержит только необходимые классы. Таким образом мы сможем в будующем добавить вторую версию нашего API, без конфликтов.
+> Note that the second argument we pass an array that contains only the necessary classes. Thus, in the future, we will be able to add a second version of our API, without conflicts.
 
 
 ## Starting a Local Server
 
-Для запуска проекта можно использовать встроенный сервер:
+To start the project, you can use the built-in server:
 ```bash
 php artisan serve
 ```
 
-Откройте браузер и перейдите к `http://localhost:8000/dashboard`. Если все работает, вы увидите страницу входа в панель управления. Позже, когда вы закончите работу, остановите сервер, нажав `Ctrl+C` в используемом терминале.
+Open a browser and go to `http://localhost:8000`. If everything works, you will see the control panel login page. Later, when you are done, stop the server by pressing `Ctrl + C` in the terminal you are using.
 
-## Проверка 
+## Check response 
 
-Выполним `curl` обращение к новому API:
+Let's make a `curl` call to the new API:
 
 ```bash
 curl 'http://127.0.0.1:8000/api/v1/endpoint' 

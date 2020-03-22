@@ -1,24 +1,24 @@
 ---
 title: Batch request for JSON-RPC
-description: 
+description: Batch processing allows you to optimize your application by combining multiple requests into a single JSON object.
 extends: _layouts.documentation
 section: content
 ---
 
 # Request
 
+----
+
 ## Batch
 
-Пакетная обработка JSON позволяет оптимизировать приложение путем объединения нескольких запросов в один объект JSON.
+Batch processing allows you to optimize your application by combining multiple requests into a single JSON object.
 
-Рассмотрим пример разницу с REST подходом. Например, общаетесь в мессенжере с друзьями и автобус заехал в тутель.
-Интеренет пропал. Сообщения находятся в режиме ожидания:
+Let's look at an example of the difference with the REST approach. For example, you communicate with your friends in the messenger and the bus drove into the tunnel.
+Internet connection dropped. Messages are in standby mode. As soon as a connection appears during the REST approach, two messages are sent, batch processing allows you to avoid this since you can send several different requests at once in one:
 
 <!--
 ![JSON RPC Batch Requests](/assets/img/batch-requests.svg)
 -->
-
-Как только появиться соединение при REST подходе будет отправлено два сообщения, пакетная обработка позволяет избежать этого:
 
 ```php
 [
@@ -37,7 +37,7 @@ section: content
 ]
 ```
 
-В этом сценарии отдельные запросы никоим образом не являются взаимозависимыми и, следовательно, могут быть помещены в пакетный запрос в любом порядке. Ответы на пакетные запросы могут отображаться в другом порядке. Свойство `id` может быть использовано для корреляции индивидуальных запросов и ответов.
+In this scenario, individual requests are in no way interdependent and therefore can be placed in a batch request in any order. Responses to batch requests may appear in a different order. The id property can be used to correlate individual requests and responses.
 
 <!--
 ![JSON PRC Notifications](/assets/img/notifications.svg)

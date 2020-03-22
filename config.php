@@ -1,10 +1,12 @@
 <?php
 
+use \Illuminate\Support\Str;
+
 return [
     'baseUrl' => '',
     'production' => false,
     'siteName' => 'JSON-RPC server for Laravel framework',
-    'siteDescription' => 'A light weight remote procedure call protocol. It is designed to be simple!',
+    'siteDescription' => 'Easy implementation of the JSON-RPC 2.0 server for the Laravel framework.',
 
     // Algolia DocSearch credentials
     'docsearchApiKey' => '',
@@ -15,11 +17,11 @@ return [
 
     // helpers
     'isContains' => function ($page, $path) {
-        return str_contains(trimPath($page->getPath()), trimPath($path));
+        return Str::contains(trimPath($page->getPath()), trimPath($path));
     },
 
     'isActive' => function ($page, $path) {
-        return ends_with(trimPath($page->getPath()), trimPath($path));
+        return Str::endsWith(trimPath($page->getPath()), trimPath($path));
     },
     'isActiveParent' => function ($page, $menuItem) {
         if (is_object($menuItem) && $menuItem->children) {
@@ -29,6 +31,6 @@ return [
         }
     },
     'url' => function ($page, $path) {
-        return starts_with($path, 'http') ? $path : '/' . trimPath($path);
+        return Str::startsWith($path, 'http') ? $path : '/' . trimPath($path);
     },
 ];

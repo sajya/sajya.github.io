@@ -1,6 +1,6 @@
 ---
 title: Getting Started
-description: Getting started with Jigsaw's docs starter template is as easy as 1, 2, 3.
+description: Easy implementation of the JSON-RPC 2.0 server for the Laravel framework.
 extends: _layouts.documentation
 section: content
 ---
