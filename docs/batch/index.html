@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="A light weight remote procedure call protocol. It is designed to be simple!">
+    <meta name="description" content="Batch processing allows you to optimize your application by combining multiple requests into a single JSON object.">
 
     <meta property="og:site_name" content="JSON-RPC server for Laravel framework"/>
     <meta property="og:title" content="Batch request for JSON-RPC | JSON-RPC server for Laravel framework"/>
-    <meta property="og:description" content="A light weight remote procedure call protocol. It is designed to be simple!"/>
+    <meta property="og:description" content="Batch processing allows you to optimize your application by combining multiple requests into a single JSON object."/>
     <meta property="og:url" content="https://my-jigsaw-docs.com/docs/batch"/>
     <meta property="og:image" content="/assets/img/logo.png"/>
     <meta property="og:type" content="website"/>
@@ -172,14 +172,14 @@
 
                 <main class="content">
                     <h1>Request</h1>
+<hr />
 <h2>Batch</h2>
-<p>Пакетная обработка JSON позволяет оптимизировать приложение путем объединения нескольких запросов в один объект JSON.</p>
-<p>Рассмотрим пример разницу с REST подходом. Например, общаетесь в мессенжере с друзьями и автобус заехал в тутель.
-Интеренет пропал. Сообщения находятся в режиме ожидания:</p>
+<p>Batch processing allows you to optimize your application by combining multiple requests into a single JSON object.</p>
+<p>Let's look at an example of the difference with the REST approach. For example, you communicate with your friends in the messenger and the bus drove into the tunnel.
+Internet connection dropped. Messages are in standby mode. As soon as a connection appears during the REST approach, two messages are sent, batch processing allows you to avoid this since you can send several different requests at once in one:</p>
 <!--
 ![JSON RPC Batch Requests](/assets/img/batch-requests.svg)
 -->
-<p>Как только появиться соединение при REST подходе будет отправлено два сообщения, пакетная обработка позволяет избежать этого:</p>
 <pre><code class="language-php">[
   {
     "jsonrpc": "2.0",
@@ -194,7 +194,7 @@
     "id": 2
   }
 ]</code></pre>
-<p>В этом сценарии отдельные запросы никоим образом не являются взаимозависимыми и, следовательно, могут быть помещены в пакетный запрос в любом порядке. Ответы на пакетные запросы могут отображаться в другом порядке. Свойство <code>id</code> может быть использовано для корреляции индивидуальных запросов и ответов.</p>
+<p>In this scenario, individual requests are in no way interdependent and therefore can be placed in a batch request in any order. Responses to batch requests may appear in a different order. The id property can be used to correlate individual requests and responses.</p>
 <!--
 ![JSON PRC Notifications](/assets/img/notifications.svg)
 -->                </main>

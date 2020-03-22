@@ -173,8 +173,8 @@
                 <main class="content">
                     <h1>Authentication</h1>
 <h2>Stateless</h2>
-<p>При работе с JSON-PRC, может появиться соблазн добавить аутентификацию,
-данные которые будут указаны в параметрах запроса:</p>
+<p>When working with JSON-PRC, you might be tempted to add authentication,
+data that will be specified in the request parameters:</p>
 <pre><code class="language-json">{
     "jsonrpc":"2.0",
     "method":"ping",
@@ -183,13 +183,13 @@
     },
     "id":1
 }</code></pre>
-<p>Не стоит так делать, формат обмена не предполагает аутентификацию, так как это не входит в его обязанности. Наилучшим решением является передача таких данных в заголовках.</p>
+<p>You should not do this, the exchange format does not imply authentication since this is not part of his duties. The best solution is to transfer such data in the headers.</p>
 <blockquote>
-<p>Каждый запрос клиента к серверу должен содержать всю информацию, необходимую для выполнения этого запроса, без хранения какого-либо контекста на стороне сервера. Состояние сеанса целиком хранится на стороне клиента.</p>
+<p>Each client request to the server must contain all the information necessary to fulfill this request, without storing any context on the server-side. The session state is entirely stored on the client-side.</p>
 </blockquote>
 <hr />
 <h2>HTTP Basic Authentication</h2>
-<p>Например реализуем <code>HTTP Basic Authentication</code>, для этого определите промежуточное программное обеспечение, которое вызывает <code>onceBasic</code> метод. Если <code>onceBasic</code> метод не возвращает ответ , запрос может быть передан далее в приложение:</p>
+<p>For example, we implement <code>HTTP Basic Authentication</code>, for this, define the middleware that calls the <code>onceBasic</code> method. If the <code>onceBasic</code> method does not return a response, the request can be passed on to the application:</p>
 <pre><code class="language-php">namespace App\Http\Middleware;
 
 use Illuminate\Support\Facades\Auth;
@@ -209,11 +209,11 @@ class AuthenticateOnceWithBasicAuth
     }
 
 }</code></pre>
-<p>Затем зарегистрируйте промежуточное программное обеспечение маршрута и прикрепите его к маршруту:</p>
+<p>Then register the route middleware and attach it to the route:</p>
 <pre><code class="language-php">Route::rpc('/v1/endpoint')
     -&gt;name('rpc.endpoint')
     -&gt;middleware('auth.basic.once');</code></pre>
-<p>Тогда для обращения к процедурам, необходимо указывать и заголовок, например c использованием <code>JavaScript</code> библиотеки <code>Axios</code>:</p>
+<p>Then, to access the procedures, you must specify the title, for example, using the <code>JavaScript</code> library <code>Axios</code>:</p>
 <pre><code class="language-javascript">axios.post('http://localhost/v1/endpoint', {
     jsonrpc: "2.0",
     id: "1",
@@ -229,9 +229,9 @@ class AuthenticateOnceWithBasicAuth
         'Access-Control-Allow-Origin': '*'
     },
 });</code></pre>
-<p>По умолчанию <code>middleware</code> будет использовать столбец <code>email</code> в записи пользователя в качестве «имени пользователя».</p>
+<p>By default, <code>middleware</code> will use the <code>email</code> column in the user record as the &quot;username&quot;.</p>
 <hr />
-<p>Вы можете узнать больше посетив документацию laravel по <a href="https://laravel.com/docs/authentication">аутентификации</a> и <a href="https://laravel.com/docs/api-authentication">аутентификации для api</a>.</p>                </main>
+<p>You can find out more by visiting the laravel documentation on <a href="https://laravel.com/docs/authentication">authentication</a> and <a href="https://laravel.com/docs/api-authentication">authentication for api</a>.</p>                </main>
             </div>
         </div>
     </div>

@@ -4,11 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="A light weight remote procedure call protocol. It is designed to be simple!">
+    <meta name="description" content="Easy implementation of the JSON-RPC 2.0 server for the Laravel framework.">
 
     <meta property="og:site_name" content="JSON-RPC server for Laravel framework"/>
     <meta property="og:title" content="Quickstart | JSON-RPC server for Laravel framework"/>
-    <meta property="og:description" content="A light weight remote procedure call protocol. It is designed to be simple!"/>
+    <meta property="og:description" content="Easy implementation of the JSON-RPC 2.0 server for the Laravel framework."/>
     <meta property="og:url" content="https://my-jigsaw-docs.com/docs/quickstart"/>
     <meta property="og:image" content="/assets/img/logo.png"/>
     <meta property="og:type" content="website"/>
@@ -175,12 +175,11 @@
 <p>At this stage, it is necessary you have already <a href="/docs/installation">installed the framework and package</a></p>
 <hr />
 <h2>Creating Procedures</h2>
-<p>Все действия описываются в классах под назнанием &quot;Процедура&quot;, он являеться привычным контроллером, но в нём обязательно должено присутствовать статическое свойство <code>name</code>,
-по которому будет определяться выполнение запроса, а непосредственные действия могут быть выполнены в любом публичном методе.</p>
-<p>Создать класс процедуры можно выполнив <code>artisan</code> команду:</p>
+<p>All actions are described in <code>Procedure</code> classes, it is a familiar controller, but it must contain the static property <code>name</code>, which will determine the execution of the request, and immediate actions can be performed in any public method.</p>
+<p>You can create a procedure class by executing the <code>artisan</code> command:</p>
 <pre><code class="language-bash">php artisan make:procedure TennisProcedure</code></pre>
-<p>Она создаст новый файл <code>TennisProcedure.php</code> в директории <code>app/Http/Procedures</code>.</p>
-<p>Назовём новую процедуру <code>tennis</code>, для этого изменим свойство <code>name</code> и добавим возвращающие значение <code>pong</code> в метод <code>ping</code>, что бы получилось такое содержание:</p>
+<p>Will create a new file <code>TennisProcedure.php</code> in the directory <code>app/Http/Procedures</code>.</p>
+<p>Let's call the new procedure <code>tennis</code>, to do this, change the<code>name</code> property and add the <code>pong</code> returning value to the<code>ping</code> method to get this content:</p>
 <pre><code class="language-php">declare(strict_types=1);
 
 namespace App\Http\Procedures;
@@ -199,7 +198,7 @@ class TennisProcedure extends Procedure
     /**
      * Execute the procedure.
      *
-     * @return array|string|integer
+     * @return string
      */
     public function ping()
     {
@@ -207,19 +206,19 @@ class TennisProcedure extends Procedure
     }
 }</code></pre>
 <h2>Route Registration</h2>
-<p>Как и контроллер, процедуру нужно регистрировать в файле маршрутов, определим его в файле <code>api.php</code>:</p>
+<p>Like the controller, the procedure needs to be registered in the routes file, define it in the file <code>api.php</code>:</p>
 <pre><code class="language-php">use App\Http\Procedures\TennisProcedure;
 
 Route::rpc('/v1/endpoint', [TennisProcedure::class])-&gt;name('rpc.endpoint');</code></pre>
 <blockquote>
-<p>Обратите внимание, что вторым аргументом мы передаём массив, который содержит только необходимые классы. Таким образом мы сможем в будующем добавить вторую версию нашего API, без конфликтов.</p>
+<p>Note that the second argument we pass an array that contains only the necessary classes. Thus, in the future, we will be able to add a second version of our API, without conflicts.</p>
 </blockquote>
 <h2>Starting a Local Server</h2>
-<p>Для запуска проекта можно использовать встроенный сервер:</p>
+<p>To start the project, you can use the built-in server:</p>
 <pre><code class="language-bash">php artisan serve</code></pre>
-<p>Откройте браузер и перейдите к <code>http://localhost:8000/dashboard</code>. Если все работает, вы увидите страницу входа в панель управления. Позже, когда вы закончите работу, остановите сервер, нажав <code>Ctrl+C</code> в используемом терминале.</p>
-<h2>Проверка</h2>
-<p>Выполним <code>curl</code> обращение к новому API:</p>
+<p>Open a browser and go to <code>http://localhost:8000</code>. If everything works, you will see the control panel login page. Later, when you are done, stop the server by pressing <code>Ctrl + C</code> in the terminal you are using.</p>
+<h2>Check response</h2>
+<p>Let's make a <code>curl</code> call to the new API:</p>
 <pre><code class="language-bash">curl 'http://127.0.0.1:8000/api/v1/endpoint' 
 --data-binary '[{ "jsonrpc":"2.0","method":"tennis@ping","params":[],"id" : 1 }]'</code></pre>                </main>
             </div>
