@@ -215,8 +215,11 @@ Route::rpc('/v1/endpoint', [TennisProcedure::class])-&gt;name('rpc.endpoint');</
 <pre><code class="language-bash">php artisan serve</code></pre>
 <p>Open a browser and go to <code>http://localhost:8000</code>. If everything works, you will see the control panel login page. Later, when you are done, stop the server by pressing <code>Ctrl + C</code> in the terminal you are using.</p>
 <h2>Check response</h2>
+<p>In order to turn to the required method, you must pass the name specified in the class and the necessary method with the delimiter &quot;@&quot; character. In our case, it will be: <code>tennis@ping</code>.</p>
 <p>Let's make a <code>curl</code> call to the new API:</p>
-<pre><code class="language-bash">curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '[{ "jsonrpc":"2.0","method":"tennis@ping","params":[],"id" : 1 }]'</code></pre>                </main>
+<pre><code class="language-bash">curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '[{ "jsonrpc":"2.0","method":"tennis@ping","params":[],"id" : 1 }]'</code></pre>
+<p>The result will be the resulting JSON string:</p>
+<pre><code class="language-bash">[{"id":"1","result":"pong","jsonrpc":"2.0"}]</code></pre>                </main>
             </div>
         </div>
     </div>
