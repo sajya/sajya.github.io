@@ -7,9 +7,9 @@
     <meta name="description" content="Batch processing allows you to optimize your application by combining multiple requests into a single JSON object.">
 
     <meta property="og:site_name" content="JSON-RPC server for Laravel framework"/>
-    <meta property="og:title" content="Batch request for JSON-RPC | JSON-RPC server for Laravel framework"/>
+    <meta property="og:title" content="Batch/Notification requests for JSON-RPC | JSON-RPC server for Laravel framework"/>
     <meta property="og:description" content="Batch processing allows you to optimize your application by combining multiple requests into a single JSON object."/>
-    <meta property="og:url" content="https://my-jigsaw-docs.com/docs/batch"/>
+    <meta property="og:url" content="https://my-jigsaw-docs.com/docs/requests"/>
     <meta property="og:image" content="/assets/img/logo.png"/>
     <meta property="og:type" content="website"/>
 
@@ -17,7 +17,7 @@
     <meta name="twitter:card" content="summary_large_image">
 
     
-    <title>JSON-RPC server for Laravel framework | Batch request for JSON-RPC</title>
+    <title>JSON-RPC server for Laravel framework | Batch/Notification requests for JSON-RPC</title>
 
     <link rel="home" href="https://my-jigsaw-docs.com">
 
@@ -143,7 +143,7 @@
             <li>
             
         <a href="/docs/batch"
-            class="lvl1  active"
+            class="lvl1  "
         >
             Batch requests
         </a>
@@ -169,7 +169,7 @@
             <div class="col-12 col-md-9">
 
                 <main class="content">
-                    <h1>Request</h1>
+                    <h1>Requests</h1>
 <hr />
 <h2>Batch</h2>
 <p>Batch processing allows you to optimize your application by combining multiple requests into a single JSON object.</p>
@@ -193,9 +193,20 @@ Internet connection dropped. Messages are in standby mode. As soon as a connecti
   }
 ]</code></pre>
 <p>In this scenario, individual requests are in no way interdependent and therefore can be placed in a batch request in any order. Responses to batch requests may appear in a different order. The id property can be used to correlate individual requests and responses.</p>
+<p>You can easily try this by running the following command from a quick start:</p>
+<pre><code class="language-bash">curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '[{"jsonrpc":"2.0","method":"tennis@ping","params":[],"id" : 1},{"jsonrpc":"2.0","method":"tennis@ping","params":[],"id" : 2}]'</code></pre>
 <!--
 ![JSON PRC Notifications](/assets/img/notifications.svg)
--->                </main>
+-->
+<h2>Notification</h2>
+<p>A Notification is a Request object without an &quot;id&quot; member.
+This means that the client is not interested in the response and the server will not send it.</p>
+<blockquote>
+<p>Note. In a group request, if there is at least one request that does not have the id property,
+then the whole group is considered as a notification one.</p>
+</blockquote>
+<p>You can easily try this by running the following command from a quick start:</p>
+<pre><code class="language-bash">curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '{"jsonrpc":"2.0","method":"tennis@ping","params":[]}'</code></pre>                </main>
             </div>
         </div>
     </div>
