@@ -83,7 +83,7 @@ In order to turn to the required method, you must pass the name specified in the
 Let's make a `curl` call to the new API:
 
 ```bash
-curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '[{ "jsonrpc":"2.0","method":"tennis@ping","params":[],"id" : 1 }]'
+curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '{ "jsonrpc":"2.0","method":"tennis@ping","params":[],"id" : 1 }'
 ```
 
 The result will be the resulting JSON string:
