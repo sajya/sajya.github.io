@@ -33,7 +33,6 @@ declare(strict_types=1);
 namespace App\Http\Procedures;
 
 use Sajya\Server\Procedure;
-use Illuminate\Support\Collection;
 
 class TennisProcedure extends Procedure
 {
@@ -82,6 +81,5 @@ Open a browser and go to `http://localhost:8000`. If everything works, you will 
 Let's make a `curl` call to the new API:
 
 ```bash
-curl 'http://127.0.0.1:8000/api/v1/endpoint' 
---data-binary '[{ "jsonrpc":"2.0","method":"tennis@ping","params":[],"id" : 1 }]'
+curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '[{ "jsonrpc":"2.0","method":"tennis@ping","params":[],"id" : 1 }]'
 ```
