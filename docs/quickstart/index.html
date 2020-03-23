@@ -183,7 +183,6 @@
 namespace App\Http\Procedures;
 
 use Sajya\Server\Procedure;
-use Illuminate\Support\Collection;
 
 class TennisProcedure extends Procedure
 {
@@ -217,8 +216,7 @@ Route::rpc('/v1/endpoint', [TennisProcedure::class])-&gt;name('rpc.endpoint');</
 <p>Open a browser and go to <code>http://localhost:8000</code>. If everything works, you will see the control panel login page. Later, when you are done, stop the server by pressing <code>Ctrl + C</code> in the terminal you are using.</p>
 <h2>Check response</h2>
 <p>Let's make a <code>curl</code> call to the new API:</p>
-<pre><code class="language-bash">curl 'http://127.0.0.1:8000/api/v1/endpoint' 
---data-binary '[{ "jsonrpc":"2.0","method":"tennis@ping","params":[],"id" : 1 }]'</code></pre>                </main>
+<pre><code class="language-bash">curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '[{ "jsonrpc":"2.0","method":"tennis@ping","params":[],"id" : 1 }]'</code></pre>                </main>
             </div>
         </div>
     </div>
