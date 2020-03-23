@@ -199,10 +199,10 @@ Internet connection dropped. Messages are in standby mode. As soon as a connecti
 ![JSON PRC Notifications](/assets/img/notifications.svg)
 -->
 <h2>Notification</h2>
-<p>A Notification is a Request object without an &quot;id&quot; member.
+<p>A Notification is a request object without an <code>id</code> member.
 This means that the client is not interested in the response and the server will not send it.</p>
 <blockquote>
-<p>Note. In a group request, if there is at least one request that does not have the id property,
+<p>Note. In a batch request, if there is at least one request that does not have the id property,
 then the whole group is considered as a notification one.</p>
 </blockquote>
 <p>You can easily try this by running the following command from a quick start:</p>
