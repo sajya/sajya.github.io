@@ -53,10 +53,10 @@ curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '[{"jsonrpc":"2.0","m
 
 ## Notification
 
-A Notification is a Request object without an "id" member. 
+A Notification is a request object without an `id` member. 
 This means that the client is not interested in the response and the server will not send it.
 
-> Note. In a group request, if there is at least one request that does not have the id property,
+> Note. In a batch request, if there is at least one request that does not have the id property,
 then the whole group is considered as a notification one.
 
 
