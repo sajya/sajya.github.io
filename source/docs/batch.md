@@ -1,11 +1,11 @@
 ---
-title: Batch request for JSON-RPC
+title: Batch/Notification requests for JSON-RPC
 description: Batch processing allows you to optimize your application by combining multiple requests into a single JSON object.
 extends: _layouts.documentation
 section: content
 ---
 
-# Request
+# Requests
 
 ----
 
@@ -39,6 +39,29 @@ Internet connection dropped. Messages are in standby mode. As soon as a connecti
 
 In this scenario, individual requests are in no way interdependent and therefore can be placed in a batch request in any order. Responses to batch requests may appear in a different order. The id property can be used to correlate individual requests and responses.
 
+You can easily try this by running the following command from a quick start:
+
+```bash
+curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '[{"jsonrpc":"2.0","method":"tennis@ping","params":[],"id" : 1},{"jsonrpc":"2.0","method":"tennis@ping","params":[],"id" : 2}]'
+```
+
+
 <!--
 ![JSON PRC Notifications](/assets/img/notifications.svg)
 -->
+
+
+## Notification
+
+A Notification is a Request object without an "id" member. 
+This means that the client is not interested in the response and the server will not send it.
+
+> Note. In a group request, if there is at least one request that does not have the id property,
+then the whole group is considered as a notification one.
+
+
+You can easily try this by running the following command from a quick start:
+
+```bash
+curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '{"jsonrpc":"2.0","method":"tennis@ping","params":[]}'
+```
