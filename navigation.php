@@ -11,7 +11,7 @@ return [
         'children' => [
             'Installation' => 'docs/installation',
             'Quick Start'  => 'docs/quickstart',
-            'Batch requests' => 'docs/batch',
+            'Batch/Notification' => 'docs/requests',
             //'Notifications'  => 'docs/#',
             'Authentication' => 'docs/authentication',
             //'Compression'    => 'docs/compression',
