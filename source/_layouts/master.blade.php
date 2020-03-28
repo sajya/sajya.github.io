@@ -15,6 +15,8 @@
 
     <meta name="twitter:image:alt" content="{{ $page->siteName }}">
     <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="google-site-verification" content="CezCm3VnIMolzHC65_TaI0DMhs4fJv2A7fWTPJrnp9s" />
 
     @if ($page->docsearchApiKey && $page->docsearchIndexName)
         <meta name="generator" content="tighten_jigsaw_doc">
