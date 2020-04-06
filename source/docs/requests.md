@@ -98,7 +98,7 @@ class ExampleRequest extends FormRequest
     public function rules()
     {
         return [
-            'user'   => 'bail|required|unique:user|max:255',
+            'user' => 'bail|required|unique:user|max:255',
         ];
     }
 
