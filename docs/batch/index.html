@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="Easy implementation of the JSON-RPC 2.0 server for the Laravel framework.">
+    <meta name="description" content="Batch processing allows you to optimize your application by combining multiple requests into a single JSON object.">
 
     <meta property="og:site_name" content="JSON-RPC server for Laravel framework"/>
-    <meta property="og:title" content="Quickstart | JSON-RPC server for Laravel framework"/>
-    <meta property="og:description" content="Easy implementation of the JSON-RPC 2.0 server for the Laravel framework."/>
-    <meta property="og:url" content="https://sajya.github.io/docs/quickstart"/>
+    <meta property="og:title" content="Batch requests for JSON-RPC | JSON-RPC server for Laravel framework"/>
+    <meta property="og:description" content="Batch processing allows you to optimize your application by combining multiple requests into a single JSON object."/>
+    <meta property="og:url" content="https://sajya.github.io/docs/batch"/>
     <meta property="og:image" content="/assets/img/logo.png"/>
     <meta property="og:type" content="website"/>
 
@@ -19,7 +19,7 @@
     <meta name="google-site-verification" content="CezCm3VnIMolzHC65_TaI0DMhs4fJv2A7fWTPJrnp9s" />
 
     
-    <title>JSON-RPC server for Laravel framework | Quickstart</title>
+    <title>JSON-RPC server for Laravel framework | Batch requests for JSON-RPC</title>
 
     <link rel="home" href="https://sajya.github.io/">
 
@@ -134,7 +134,7 @@
             <li>
             
         <a href="/docs/quickstart"
-            class="lvl1  active"
+            class="lvl1  "
         >
             Quick Start
         </a>
@@ -161,7 +161,7 @@
             <li>
             
         <a href="/docs/batch"
-            class="lvl1  "
+            class="lvl1  active"
         >
             Batch
         </a>
@@ -187,57 +187,32 @@
             <div class="col-12 col-md-9">
 
                 <main class="content">
-                    <h1>Quick Start</h1>
-<p>At this stage, it is necessary you have already <a href="/docs/installation">installed the framework and package</a></p>
+                    <h1>Requests</h1>
 <hr />
-<h2>Creating Procedures</h2>
-<p>All actions are described in <code>Procedure</code> classes, it is a familiar controller, but it must contain the static property <code>name</code>, which will determine the execution of the request, and immediate actions can be performed in any public method.</p>
-<p>You can create a procedure class by executing the <code>artisan</code> command:</p>
-<pre><code class="language-bash">php artisan make:procedure TennisProcedure</code></pre>
-<p>Will create a new file <code>TennisProcedure.php</code> in the directory <code>app/Http/Procedures</code>.</p>
-<p>Let's call the new procedure <code>tennis</code>, to do this, change the <code>name</code> property and add the <code>pong</code> returning value to the <code>ping</code> method to get this content:</p>
-<pre><code class="language-php">declare(strict_types=1);
-
-namespace App\Http\Procedures;
-
-use Sajya\Server\Procedure;
-
-class TennisProcedure extends Procedure
-{
-    /**
-     * The name of the procedure that will be
-     * displayed and taken into account in the search
-     */
-    public static string $name = 'tennis';
-
-    /**
-     * Execute the procedure.
-     *
-     * @return string
-     */
-    public function ping()
-    {
-        return 'pong';
-    }
-}</code></pre>
-<h2>Route Registration</h2>
-<p>Like the controller, the procedure needs to be registered in the routes file, define it in the file <code>api.php</code>:</p>
-<pre><code class="language-php">use App\Http\Procedures\TennisProcedure;
-
-Route::rpc('/v1/endpoint', [TennisProcedure::class])-&gt;name('rpc.endpoint');</code></pre>
-<blockquote>
-<p>Note that the second argument we pass an array that contains only the necessary classes. Thus, in the future, we will be able to add a second version of our API, without conflicts.</p>
-</blockquote>
-<h2>Starting a Local Server</h2>
-<p>To start the project, you can use the built-in server:</p>
-<pre><code class="language-bash">php artisan serve</code></pre>
-<p>Open a browser and go to <code>http://localhost:8000</code>. If everything works, you will see the control panel login page. Later, when you are done, stop the server by pressing <code>Ctrl + C</code> in the terminal you are using.</p>
-<h2>Check response</h2>
-<p>In order to turn to the required method, you must pass the name specified in the class and the necessary method with the delimiter &quot;@&quot; character. In our case, it will be: <code>tennis@ping</code>.</p>
-<p>Let's make a <code>curl</code> call to the new API:</p>
-<pre><code class="language-bash">curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '{"jsonrpc":"2.0","method":"tennis@ping","params":[],"id" : 1}'</code></pre>
-<p>The result will be the resulting JSON string:</p>
-<pre><code class="language-bash">[{"id":"1","result":"pong","jsonrpc":"2.0"}]</code></pre>                </main>
+<h2>Batch</h2>
+<p>Batch processing allows you to optimize your application by combining multiple requests into a single JSON object.</p>
+<p>Let's look at an example of the difference with the REST approach. For example, you communicate with your friends in the messenger and the bus drove into the tunnel.
+Internet connection dropped. Messages are in standby mode. As soon as a connection appears during the REST approach, two messages are sent, batch processing allows you to avoid this since you can send several different requests at once in one:</p>
+<!--
+![JSON RPC Batch Requests](/assets/img/batch-requests.svg)
+-->
+<pre><code class="language-php">[
+  {
+    "jsonrpc": "2.0",
+    "method": "message@create",
+    "params": "...",
+    "id": 1
+  },
+  {
+    "jsonrpc": "2.0",
+    "method": "message@create",
+    "params": "...",
+    "id": 2
+  }
+]</code></pre>
+<p>In this scenario, individual requests are in no way interdependent and therefore can be placed in a batch request in any order. Responses to batch requests may appear in a different order. The id property can be used to correlate individual requests and responses.</p>
+<p>You can easily try this by running the following command from a quick start:</p>
+<pre><code class="language-bash">curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '[{"jsonrpc":"2.0","method":"tennis@ping","params":[],"id" : 1},{"jsonrpc":"2.0","method":"tennis@ping","params":[],"id" : 2}]'</code></pre>                </main>
             </div>
         </div>
     </div>
