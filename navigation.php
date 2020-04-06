@@ -12,6 +12,8 @@ return [
             'Installation'   => 'docs/installation',
             'Quick Start'    => 'docs/quickstart',
             'Requests'       => 'docs/requests',
+            'Notifications'  => 'docs/notifications',
+            'Batch'          => 'docs/batch',
             //'Notifications'  => 'docs/#',
             'Authentication' => 'docs/authentication',
             //'Compression'    => 'docs/compression',
