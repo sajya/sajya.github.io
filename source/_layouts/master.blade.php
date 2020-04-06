@@ -15,6 +15,8 @@
 
     <meta name="twitter:image:alt" content="{{ $page->siteName }}">
     <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="google-site-verification" content="CezCm3VnIMolzHC65_TaI0DMhs4fJv2A7fWTPJrnp9s" />
 
     @if ($page->docsearchApiKey && $page->docsearchIndexName)
         <meta name="generator" content="tighten_jigsaw_doc">
@@ -34,8 +36,6 @@
 
     @stack('meta')
 
-    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:300,300i,400,400i,700,700i,800,800i"
-          rel="stylesheet">
     <link rel="stylesheet" href="{{ mix('css/main.css', 'assets/build') }}">
 
     @if ($page->docsearchApiKey && $page->docsearchIndexName)

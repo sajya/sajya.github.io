@@ -24,7 +24,7 @@ php artisan make:procedure TennisProcedure
 
 Will create a new file `TennisProcedure.php` in the directory `app/Http/Procedures`.
 
-Let's call the new procedure `tennis`, to do this, change the` name` property and add the `pong` returning value to the` ping` method to get this content:
+Let's call the new procedure `tennis`, to do this, change the `name` property and add the `pong` returning value to the `ping` method to get this content:
 
 
 ```php
