@@ -76,6 +76,7 @@ declare(strict_types=1);
 
 namespace App\Http\Requests;
 
+use App\User;
 use Illuminate\Foundation\Http\FormRequest;
 
 class ExampleRequest extends FormRequest
