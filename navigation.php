@@ -9,9 +9,9 @@ return [
     ],
     'Getting Started' => [
         'children' => [
-            'Installation' => 'docs/installation',
-            'Quick Start'  => 'docs/quickstart',
-            'Batch/Notification' => 'docs/requests',
+            'Installation'   => 'docs/installation',
+            'Quick Start'    => 'docs/quickstart',
+            'Requests'       => 'docs/requests',
             //'Notifications'  => 'docs/#',
             'Authentication' => 'docs/authentication',
             //'Compression'    => 'docs/compression',
