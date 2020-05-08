@@ -74,7 +74,7 @@ To start the project, you can use the built-in server:
 php artisan serve
 ```
 
-Open a browser and go to `http://localhost:8000`. If everything works, you will see the control panel login page. Later, when you are done, stop the server by pressing `Ctrl + C` in the terminal you are using.
+Open a browser and go to `http://localhost:8000`. If everything works, you will see welcome page. Later, when you are done, stop the server by pressing `Ctrl + C` in the terminal you are using.
 
 ## Check response 
 
