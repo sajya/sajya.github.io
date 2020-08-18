@@ -47,17 +47,6 @@ curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '[{"jsonrpc":"2.0","m
 
 Execution result:
 
-```json
-[
-   {
-      "id":"1",
-      "result":"pong",
-      "jsonrpc":"2.0"
-   },
-   {
-      "id":"2",
-      "result":"pong",
-      "jsonrpc":"2.0"
-   }
-]
+```bash
+[{"id":"1","result":"pong","jsonrpc":"2.0"},{"id":"2","result":"pong","jsonrpc":"2.0"}]%
 ```
