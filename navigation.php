@@ -12,13 +12,17 @@ return [
             'Installation'   => 'docs/installation',
             'Quick Start'    => 'docs/quickstart',
             //'Notifications'  => 'docs/#',
-            'Authentication' => 'docs/authentication',
             //'Compression'    => 'docs/compression',
+        ],
+    ],
+    'Application' => [
+        'children' => [
+            'Authentication' => 'docs/authentication',
+            'Accessing The Request' => 'docs/requests',
         ],
     ],
    'Requests' => [
        'children' => [
-           'Accessing The Request' => 'docs/requests',
            'Notifications'         => 'docs/notifications',
            'Batch'                 => 'docs/batch',
        ],
