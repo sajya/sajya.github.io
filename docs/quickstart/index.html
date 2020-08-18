@@ -245,7 +245,7 @@ Route::rpc('/v1/endpoint', [TennisProcedure::class])-&gt;name('rpc.endpoint');</
 <p>Let's make a <code>curl</code> call to the new API:</p>
 <pre><code class="language-bash">curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '{"jsonrpc":"2.0","method":"tennis@ping","params":[],"id" : 1}'</code></pre>
 <p>The result will be the resulting JSON string:</p>
-<pre><code class="language-bash">[{"id":"1","result":"pong","jsonrpc":"2.0"}]</code></pre>                </main>
+<pre><code class="language-bash">{"id":"1","result":"pong","jsonrpc":"2.0"}</code></pre>                </main>
             </div>
         </div>
     </div>
