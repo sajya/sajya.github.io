@@ -23,15 +23,16 @@ data that will be specified in the request parameters:
 }
 ```
 
-You should not do this, the exchange format does not imply authentication since this is not part of his duties. The best solution is to transfer such data in the headers.
+It would be best if you did not do this. The exchange format does not imply authentication since this is not part of his duties. The best solution is to transfer such data in the headers.
  
- > Each client request to the server must contain all the information necessary to fulfill this request, without storing any context on the server-side. The session state is entirely stored on the client-side.
+ > Each client request to the server must contain all the information necessary to fulfill this request without storing any context on the server-side. The session state is entirely stored on the client-side.
  
  ----
  
 ## HTTP Basic Authentication 
 
-For example, we implement `HTTP Basic Authentication`, for this, define the middleware that calls the `onceBasic` method. If the `onceBasic` method does not return a response, the request can be passed on to the application:
+
+For example, we implement `HTTP Basic Authentication` to define the middleware that calls the `onceBasic` method. If the `onceBasic` method does not return a response, the request can be passed on to the application:
 
 ```php
 namespace App\Http\Middleware;
