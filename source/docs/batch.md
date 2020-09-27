@@ -13,8 +13,8 @@ section: content
 
 Batch processing allows you to optimize your application by combining multiple requests into a single JSON object.
 
-Let's look at an example of the difference with the REST approach. For example, you communicate with your friends in the messenger and the bus drove into the tunnel.
-Internet connection dropped. Messages are in standby mode. As soon as a connection appears during the REST approach, two messages are sent, batch processing allows you to avoid this since you can send several different requests at once in one:
+Let's look at an example of the difference with the REST approach. For example, you communicate with your friends in the messenger, and the bus drove into the tunnel.
+Internet connection dropped. Messages are in standby mode. As soon as a relationship appears during the REST approach, two messages are sent. Batch processing allows you to avoid this since you can send several different requests at once in one:
 
 <!--
 ![JSON RPC Batch Requests](/assets/img/batch-requests.svg)
