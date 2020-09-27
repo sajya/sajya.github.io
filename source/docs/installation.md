@@ -9,7 +9,7 @@ section: content
 
 ## System Requirements
 
-To use Sajya, you need to have PHP (minimum version 7.4) and [Composer](https://getcomposer.org/) installed on your machine. 
+To use Sajya, you need to have PHP (minimum version 7.4), and [Composer](https://getcomposer.org/) installed on your machine. 
 
 ---
 
