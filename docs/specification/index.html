@@ -205,15 +205,15 @@
                 <main class="content">
                     <h1>Specification</h1>
 <h2>Brief</h2>
-<p><strong>JSON-RPC</strong> is a lightweight stateless protocol for creating a remote procedure call (RPC) style API.
-Supporting several types of data and commands. With the possibility of notification (information sent to the server does not require a response) and multiple calls.</p>
+<p><strong>JSON-RPC</strong> is a lightweight, stateless protocol for creating a remote procedure call (RPC) style API.
+We support several types of data and commands, with the possibility of notification (information sent to the server does not require a response) and multiple calls.</p>
 <hr />
 <p>The request object includes the following properties:</p>
 <ul>
 <li><strong>jsonrpc</strong> — will always be <code>"2.0"</code>, indicates the protocol version.</li>
-<li><strong>method</strong> — name of the method to be called.</li>
+<li><strong>method</strong> — the name of the method to be called.</li>
 <li><strong>params</strong> — optional property, load to the call (method arguments).</li>
-<li><strong>id</strong> — optional property, unique call identifier. If you want to get the value from the called function, then you must generate <code>id</code> on the client side and when answering you can understand which call the answer came by matching the <code>id</code> of the response.</li>
+<li><strong>id</strong> — optional property, unique call identifier. If you want to get the value from the called function, you must generate <code>id</code> on the client-side. When answering, you can understand which call the answer came by matching the response's <code>id</code>.</li>
 </ul>
 <pre><code class="language-json">{
     "jsonrpc":"2.0",
@@ -222,14 +222,14 @@ Supporting several types of data and commands. With the possibility of notificat
     "id":1
 }</code></pre>
 <blockquote>
-<p><strong>Note.</strong> If you did not send <code>id</code>, then this means that you are not interested in the answer and you will not receive anything from the server. Such a call is called a notification.</p>
+<p><strong>Note.</strong> If you did not send <code>id</code>, then this means that you are not interested in the answer, and you will not receive anything from the server. Such a call is called a notification.</p>
 </blockquote>
 <p>An answer can have the following properties:</p>
 <ul>
 <li><strong>jsonrpc</strong> — will always be <code>"2.0"</code>, indicates the protocol version.</li>
 <li><strong>result</strong> — response body (return value of the method).</li>
 <li><strong>id</strong> — unique identifier of the response. It is needed so that the client can match to which request he received a response.</li>
-<li><strong>error</strong> — in case of an error, instead of result, you will get an error field containing a code and a human-readable description of the error.</li>
+<li><strong>error</strong> — in case of a mistake, you will get an error field containing a code and a human-readable description of the error instead of the result.</li>
 </ul>
 <pre><code class="language-json">{
     "jsonrpc": "2.0",
@@ -238,7 +238,7 @@ Supporting several types of data and commands. With the possibility of notificat
 }</code></pre>
 <hr />
 <p>Official source for <a href="http://www.jsonrpc.org/specification">JSON-RPC 2.0 Specification</a>.
-You can ask clarifying questions to the guys from <a href="http://groups.google.com/group/json-rpc">the json-rpc Google group</a>.</p>                </main>
+You can ask clarifying questions to the guys from <a href="http://groups.google.com/group/json-rpc">the JSON-RPC Google group</a>.</p>                </main>
             </div>
         </div>
     </div>
