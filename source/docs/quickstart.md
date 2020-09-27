@@ -7,14 +7,14 @@ section: content
 
 # Quick Start
 
-At this stage, it is necessary you have already [installed the framework and package](/docs/installation)
+At this stage, you must already [installed the framework and package](/docs/installation)
 
 ----
 
 
 ## Creating Procedures
 
-All actions are described in `Procedure` classes, it is a familiar controller, but it must contain the static property `name`, which will determine the execution of the request, and immediate actions can be performed in any public method.
+All actions are described in `Procedure` classes; it is a familiar controller. Still, it must contain the static property `name`, which will determine the request's execution. Actions can be performed in any public method.
 
 You can create a procedure class by executing the `artisan` command:
 
@@ -22,9 +22,9 @@ You can create a procedure class by executing the `artisan` command:
 php artisan make:procedure TennisProcedure
 ```
 
-Will create a new file `TennisProcedure.php` in the directory `app/Http/Procedures`.
+Will create a new file, `TennisProcedure.php` in the directory `app/Http/Procedures`.
 
-Let's call the new procedure `tennis`, to do this, change the `name` property and add the `pong` returning value to the `ping` method to get this content:
+Let's call the new procedure `tennis`. To do this, change the `name` property and add the `pong` returning value to the `ping` method to get this content:
 
 
 ```php
@@ -64,7 +64,7 @@ use App\Http\Procedures\TennisProcedure;
 Route::rpc('/v1/endpoint', [TennisProcedure::class])->name('rpc.endpoint');
 ```
 
-> Note that the second argument we pass an array that contains only the necessary classes. Thus, in the future, we will be able to add a second version of our API, without conflicts.
+> Note that the second argument, we pass an array that contains only the necessary classes. Thus, in the future, we will add a second version of our API without conflicts.
 
 
 ## Starting a Local Server
@@ -74,11 +74,11 @@ To start the project, you can use the built-in server:
 php artisan serve
 ```
 
-Open a browser and go to `http://localhost:8000`. If everything works, you will see welcome page. Later, when you are done, stop the server by pressing `Ctrl + C` in the terminal you are using.
+Open a browser and go to `http://localhost:8000`. If everything works, you will see the welcome page. Later, when you are done, stop the server by pressing `Ctrl + C` in the terminal you are using.
 
 ## Check response 
 
-In order to turn to the required method, you must pass the name specified in the class and the necessary method with the delimiter "@" character. In our case, it will be: `tennis@ping`.
+To turn to the required method, you must pass the name specified in the class and the necessary process with the delimiter "@" character. In our case, it will be: `tennis@ping`.
 
 Let's make a `curl` call to the new API:
 
