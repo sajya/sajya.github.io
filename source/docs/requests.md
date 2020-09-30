@@ -44,7 +44,7 @@ class TennisProcedure extends Procedure
 
 The transferred parameters will be automatically written to the object:
 ```bash
-curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '{"jsonrpc":"2.0","method":"tennis@ping","params":["innings": "out"],"id" : 1}'
+curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '{"jsonrpc":"2.0","method":"tennis@ping","params":{"innings": "out"},"id" : 1}'
 ```
 
 Since this is a regular Laravel object, you can perform all available operations on it, for example, validation:
