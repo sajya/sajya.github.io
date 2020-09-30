@@ -42,7 +42,7 @@ In this scenario, individual requests are in no way interdependent and therefore
 You can easily try this by running the following command from a quick start:
 
 ```bash
-curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '[{"jsonrpc":"2.0","method":"tennis@ping","params":[],"id" : 1},{"jsonrpc":"2.0","method":"tennis@ping","params":[],"id" : 2}]'
+curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '[{"jsonrpc":"2.0","method":"tennis@ping","id":1},{"jsonrpc":"2.0","method":"tennis@ping","id":2}]'
 ```
 
 Execution result:
