@@ -1,6 +1,7 @@
 /* window.docsearch = require('docsearch.js'); */
 
 import hljs from 'highlight.js/lib/highlight';
+import { listen, prefetch } from "quicklink";
 
 hljs.registerLanguage('bash', require('highlight.js/lib/languages/bash'));
 hljs.registerLanguage('css', require('highlight.js/lib/languages/css'));
@@ -64,3 +65,6 @@ if (document.getElementById("console")) {
         c.appendChild(docfrag);
     }
 }
+
+
+listen();

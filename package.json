@@ -26,6 +26,7 @@
         "yargs": "^4.6.0"
     },
     "dependencies": {
+        "quicklink": "^2.0.0",
         "typed.js": "^2.0.11"
     }
 }
