@@ -17,8 +17,9 @@ return [
     ],
     'Application' => [
         'children' => [
-            'Authentication' => 'docs/authentication',
+            'Authentication'        => 'docs/authentication',
             'Accessing The Request' => 'docs/requests',
+            'Testing'               => 'docs/testing',
         ],
     ],
    'Requests' => [
