@@ -14,7 +14,6 @@ section: content
 In this example, we will create a simple test validation method from the ["Quick Start"](/docs/quickstart) tutorial. To create a new test case, use the `make: test` Artisan command:
 
 ```bash
-// Create test in Feature directory ...
 php artisan make:test PingPongTest
 ```
 
