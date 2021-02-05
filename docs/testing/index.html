@@ -239,7 +239,7 @@ class PingPongTest extends TestCase
     {
         $this
             -&gt;setRpcRoute('rpc.endpoint')
-            -&gt;callProcedure('ping@pong')
+            -&gt;callProcedure('tennis@ping')
             -&gt;assertJsonFragment([
                 'result' =&gt; 'pong',
             ]);
