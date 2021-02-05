@@ -11,7 +11,7 @@ section: content
 
 ## Writing and running tests
 
-In this example, we will create a simple test validation method from the ["Quick Start"](/docs/quickstart) tutorial. To create a new test case, use the `make: test` Artisan command:
+In this example, we will create a simple test validation method from the ["Quick Start"](/docs/quickstart) tutorial. To create a new test case, use the `make:test` Artisan command:
 
 ```bash
 php artisan make:test PingPongTest
