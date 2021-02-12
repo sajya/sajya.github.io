@@ -9,19 +9,19 @@ section: content
 
 ## Compression
 
-Огромное число сервисов используют JSON для обмена сообщениями, за счёт удобочитаемых данных для человека и меньшего размера в сравнении с XML. Но у него также есть свои проблемы, одной из такой является размер файла в сравнении с бинарными форматами. На малом объёме данных скорость передачи и расшифровки будет практически незаметна почти на любом формате, но при увеличении объема нагрузка на сеть может сильно возрастать. 
+Many services use `JSON` for messaging due to its human-readable data and smaller size compared to `XML`. But it also has its own problems, one of which is the file size compared to binary formats. On a small amount of data, the transfer and decryption speed will be almost invisible in almost any format, but with an increase in the volume, the load on the network can greatly increase.
 
 ----
 
 ## Middleware for gzip
 
-Конечно, если данные из сервиса потребляться напрямую веб-браузерами то такого объема будет сложно достичь. Но при передачах данных между серверами, для большей оптимизации можно использовать сжатие, например [gzip](https://en.wikipedia.org/wiki/Gzip). 
+Of course, if the service data is consumed directly by web browsers, this amount will be difficult to achieve. But when transferring data between servers, for more optimization, you can use compression, for example, [gzip](https://en.wikipedia.org/wiki/Gzip). 
 
 
 ![JSON Compress](/assets/img/compress.svg)
 
 
-Для того, чтобы ответы приложения сжимались достаточно поставить "GzipCompress" в качестве middleware:
+In order for application responses to be compressed, it is enough to put `GzipCompress` as the middleware:
 
 ```php
 use Sajya\Server\Middleware\GzipCompress;
@@ -31,13 +31,13 @@ Route::rpc('/v1/endpoint', [TennisProcedure::class])
     ->name('rpc.endpoint');
 ```
 
-После этого мы можем легко проверить это с помощью curl:
+After that, we can easily check this with curl:
 
 ```bash
 curl 'http://127.0.0.1:8001/api/v1/endpoint' --data-binary '{"jsonrpc":"2.0","method":"tennis@ping","id":1}' -H "Accept-Encoding: gzip" --output -
 ```
 
-Примерным результатом будет:
+An approximate result would be:
 
 ```bash
 Accept-Encoding: gzip"  --output -
@@ -45,6 +45,6 @@ Accept-Encoding: gzip"  --output -
 ��ҁ�������d�����R-��*%      
 ```
 
-Не переживайте если вас смущают такие символы. Всё хорошо, значит сжатие работает.
+Don't worry if you are confused by such symbols. It's okay, so the compression is working.
 
-> Примечание. Если в запросе отсутствует заголовок о принятии данных в формате gzip `Accept-Encoding: gzip`, то вернется не сжатый ответ.
+> Note. If the request does not contain a header about data acceptance in the gzip format `Accept-Encoding: gzip`, an uncompressed response will be returned.
