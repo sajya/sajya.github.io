@@ -216,33 +216,24 @@
 <h2>Compression</h2>
 <p>Огромное число сервисов используют JSON для обмена сообщениями, за счёт удобочитаемых данных для человека и меньшего размера в сравнении с XML. Но у него также есть свои проблемы, одной из такой является размер файла в сравнении с бинарными форматами. На малом объёме данных скорость передачи и расшифровки будет практически незаметна почти на любом формате, но при увеличении объема нагрузка на сеть может сильно возрастать. </p>
 <hr />
-<h2>Middleware for Gzip</h2>
-<p>Конечно, если данные из сервиса потребляться напрямую веб-браузерами то такого объема будет сложно достичь. Но при передачах данных между серверами, для большей оптимизации можно использовать сжатие, например Gzip. </p>
+<h2>Middleware for gzip</h2>
+<p>Конечно, если данные из сервиса потребляться напрямую веб-браузерами то такого объема будет сложно достичь. Но при передачах данных между серверами, для большей оптимизации можно использовать сжатие, например <a href="https://en.wikipedia.org/wiki/Gzip">gzip</a>. </p>
 <p><img src="/assets/img/compress.svg" alt="JSON Compress" /></p>
-<p>... Подключаем <code>middleware</code> ...</p>
-<pre><code class="language-php">namespace App\Http\Middleware;
+<p>Для того, чтобы ответы приложения сжимались достаточно поставить &quot;GzipCompress&quot; в качестве middleware:</p>
+<pre><code class="language-php">use Sajya\Server\Middleware\GzipCompress;
 
-class GzipMiddleware
-{
-    /**
-     * Handle an incoming request.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @param  \Closure $next
-     * @return mixed
-     */
-    public function handle($request, $next)
-    {
-        $response = $next($request);
-        $content = $response-&gt;content();
-
-        return response(gzencode($content, 7))-&gt;withHeaders([
-            'Access-Control-Allow-Origin' =&gt; '*',
-            'Content-type' =&gt; 'application/json; charset=utf-8',
-            'Content-Encoding' =&gt; 'gzip'
-        ]);
-    }
-}</code></pre>                </main>
+Route::rpc('/v1/endpoint', [TennisProcedure::class])
+    -&gt;middleware(GzipCompress::class)
+    -&gt;name('rpc.endpoint');</code></pre>
+<p>После этого мы можем легко проверить это с помощью curl:</p>
+<pre><code class="language-bash">curl 'http://127.0.0.1:8001/api/v1/endpoint' --data-binary '{"jsonrpc":"2.0","method":"tennis@ping","id":1}' -H "Accept-Encoding: gzip" --output -</code></pre>
+<p>Примерным результатом будет:</p>
+<pre><code class="language-bash">Accept-Encoding: gzip"  --output -
+�V�LQ�R2T�Q*J-.�)r
+��ҁ�������d�����R-��*%      </code></pre>
+<blockquote>
+<p>Примечание. Если в запросе отсутствует заголовок о принятии данных в формате gzip <code>Accept-Encoding: gzip</code>, то вернется не сжатый ответ.</p>
+</blockquote>                </main>
             </div>
         </div>
     </div>
