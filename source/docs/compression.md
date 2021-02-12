@@ -45,4 +45,4 @@ Accept-Encoding: gzip"  --output -
 
 Don't worry if you are confused by such symbols. It's okay, so the compression is working.
 
-> **Note**. If the request does not contain a header about data acceptance in the gzip format `Accept-Encoding: gzip`, an uncompressed response will be returned.
+> **Note.** If the request does not contain a header about data acceptance in the gzip format `Accept-Encoding: gzip`, an uncompressed response will be returned.
