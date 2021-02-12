@@ -212,11 +212,10 @@
             <div class="col-12 col-md-9">
 
                 <main class="content">
-                    <h1>JSON</h1>
-<h2>Compression</h2>
+                    <h1>Compression</h1>
+<h2>Middleware for gzip</h2>
 <p>Many services use <code>JSON</code> for messaging due to its human-readable data and smaller size compared to <code>XML</code>. But it also has its own problems, one of which is the file size compared to binary formats. On a small amount of data, the transfer and decryption speed will be almost invisible in almost any format, but with an increase in the volume, the load on the network can greatly increase.</p>
 <hr />
-<h2>Middleware for gzip</h2>
 <p>Of course, if the service data is consumed directly by web browsers, this amount will be difficult to achieve. But when transferring data between servers, for more optimization, you can use compression, for example, <a href="https://en.wikipedia.org/wiki/Gzip">gzip</a>. </p>
 <p><img src="/assets/img/compress.svg" alt="JSON Compress" /></p>
 <p>In order for application responses to be compressed, it is enough to put <code>GzipCompress</code> as the middleware:</p>
