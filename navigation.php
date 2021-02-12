@@ -16,10 +16,10 @@ return [
     ],
     'Application' => [
         'children' => [
-            'Authentication'        => 'docs/authentication',
-            'Accessing The Request' => 'docs/requests',
-            'Testing'               => 'docs/testing',
-            'Compression'           => 'docs/compression',
+            'Authentication'      => 'docs/authentication',
+            'Validation and Data' => 'docs/requests',
+            'Testing'             => 'docs/testing',
+            'Compression'         => 'docs/compression',
         ],
     ],
    'Requests' => [
