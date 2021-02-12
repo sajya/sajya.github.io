@@ -14,7 +14,7 @@ section: content
 A Notification is a request object without an `id` member. 
 It means that the client is not interested in the response, and the server will not send it.
 
-> Note. In a batch request, if there is at least one request that does not have the id property,
+> **Note.** In a batch request, if there is at least one request that does not have the id property,
 then the whole group is considered as a notification one.
 
 
