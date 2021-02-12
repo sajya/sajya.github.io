@@ -12,7 +12,6 @@ return [
             'Installation'   => 'docs/installation',
             'Quick Start'    => 'docs/quickstart',
             //'Notifications'  => 'docs/#',
-            //'Compression'    => 'docs/compression',
         ],
     ],
     'Application' => [
@@ -20,6 +19,7 @@ return [
             'Authentication'        => 'docs/authentication',
             'Accessing The Request' => 'docs/requests',
             'Testing'               => 'docs/testing',
+            'Compression'           => 'docs/compression',
         ],
     ],
    'Requests' => [
