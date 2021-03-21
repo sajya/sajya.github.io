@@ -64,6 +64,7 @@ if (document.getElementById("console")) {
         }
         c.appendChild(docfrag);
     }
+    updateScreen();
 }
 
 
