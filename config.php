@@ -5,7 +5,7 @@ use \Illuminate\Support\Str;
 return [
     'baseUrl' => '',
     'production' => false,
-    'siteName' => 'JSON-RPC server for Laravel framework',
+    'siteName' => 'JSON-RPC API server for Laravel framework',
     'siteDescription' => 'Easy implementation of the JSON-RPC 2.0 server for the Laravel framework.',
 
     // Algolia DocSearch credentials
