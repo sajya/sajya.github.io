@@ -20,7 +20,7 @@ document.querySelectorAll('pre code').forEach((block) => {
 
 if (document.getElementById("console")) {
 
-    var intervalID = window.setInterval(updateScreen, 540);
+    var intervalID = window.setInterval(updateScreen, 740);
     var c = document.getElementById("console");
 
     const txt = [
