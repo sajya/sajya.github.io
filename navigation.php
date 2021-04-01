@@ -18,9 +18,9 @@ return [
         'children' => [
             'Authentication'      => 'docs/authentication',
             'Validation and Data' => 'docs/requests',
+            'API Docs Generator'  => 'docs/api-docs-generator',
             'Testing'             => 'docs/testing',
             'Compression'         => 'docs/compression',
-            'API Docs Generator'  => 'docs/api-docs-generator',
         ],
     ],
    'Requests' => [
