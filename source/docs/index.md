@@ -30,11 +30,12 @@ For example, you have an endpoint on the server that accepts requests and gives 
 ```
 
 An example of an error:
+
 ```json
 {"jsonrpc": "2.0", "error": {"code": 1234, "message": "Description of error"}, "id": "1"}
 ```
 
-You can find out more on the [specification page](/docs/specification/).
+You can find out more on the [specification page](/docs/specification).
 
 
 ## How to install?
