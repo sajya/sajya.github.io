@@ -18,6 +18,24 @@ It is strongly recommended that you read the [Laravel documentation](https://lar
 ----
 
 
+## What is JSON-RPC 2.0?
+
+It is a simple stateless protocol for creating Remote Procedure Call (RPC) style APIs.
+
+For example, you have an endpoint on the server that accepts requests and gives answers with a body like:
+
+```json
+--> {"jsonrpc": "2.0", "method": "subtract", "params": {"minuend": 42, "subtrahend": 23}, "id": 3}
+<-- {"jsonrpc": "2.0", "result": 19, "id": 3}
+```
+
+```json
+<-- {"jsonrpc": "2.0", "error": {"code": 1234, "message": "Description of error"}, "id": "1"}
+```
+
+You can find out more on the [specification page](/docs/specification/).
+
+
 ## How to install?
 
 The package is freely distributed over the Internet, [source codes](https://github.com/sajya/server), and [release notes](https://github.com/sajya/server/releases) are published on GitHub.
