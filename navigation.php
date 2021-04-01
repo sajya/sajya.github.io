@@ -20,6 +20,7 @@ return [
             'Validation and Data' => 'docs/requests',
             'Testing'             => 'docs/testing',
             'Compression'         => 'docs/compression',
+            'API Docs Generator'  => 'docs/api-docs-generator',
         ],
     ],
    'Requests' => [
