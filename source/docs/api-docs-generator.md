@@ -16,6 +16,7 @@ declare(strict_types=1);
 
 namespace App\Http\Procedures;
 
+use Illuminate\Http\Request;
 use Sajya\Server\Annotations\Param;
 use Sajya\Server\Annotations\Result;
 use Sajya\Server\Procedure;
@@ -38,13 +39,14 @@ class MathProcedure extends Procedure
      *
      * @Result(name="outcome", value="required|integer")
      */
-    public function subtract(int $minuend, int $subtrahend): array
+    public function subtract(Request $request): array
     {
         return [
-            'outcome' => $minuend - $subtrahend,
+            'outcome' => $request->get('minuend') - $request->get('subtrahend'),
         ];
     }
 }
+
 ```
 
 Using annotations `Param` and `Result`, you can specify the expected key's name and description.
