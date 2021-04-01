@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="Automatic generation of APIs documentation for JSON-RPC 2.0">
+
+    <meta property="og:site_name" content="JSON-RPC API server for Laravel framework"/>
+    <meta property="og:title" content="API Docs Generator | JSON-RPC API server for Laravel framework"/>
+    <meta property="og:description" content="Automatic generation of APIs documentation for JSON-RPC 2.0"/>
+    <meta property="og:url" content="https://sajya.github.io/docs/api-docs-generator"/>
+    <meta property="og:image" content="/assets/img/logo.png"/>
+    <meta property="og:type" content="website"/>
+
+    <meta name="twitter:image:alt" content="JSON-RPC API server for Laravel framework">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <meta name="google-site-verification" content="CezCm3VnIMolzHC65_TaI0DMhs4fJv2A7fWTPJrnp9s" />
+
+    
+    <title>API Docs Generator | JSON-RPC API server for Laravel framework</title>
+
+    <link rel="home" href="https://sajya.github.io/">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#8ea8af">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+
+    
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=a4cbfa39df34bf168dbf">
+
+    </head>
+
+
+<body class='page'>
+<div class="wrapper">
+    <div class='header'>
+        <div class="container">
+            <div class="logo">
+                <a href="/">
+                    <img src="/assets/img/logo.svg" alt="JSON-RPC API server for Laravel framework"/>
+                </a>
+            </div>
+            <div class="logo-mobile">
+                <a href="/"><img alt="Logo" src="/assets/img/logo.svg"/></a>
+            </div>
+            <div id="main-menu" class="main-menu">
+                <ul>
+
+
+                    <li class="menu-item-home ">
+                        <a href="/">
+                            <span>Home</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-item-docs active">
+                        <a href="/docs/" title="Read the Sajya documentation">
+                            <span>Docs</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-item-docs">
+                        <a href="https://github.com/sajya" target="_blank" title="Contribute to Sajya on GitHub">
+                            <span>GitHub</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    
+
+
+
+<div class="page-default-list">
+    <div class="container pt-2 pt-md-6 pb-3 pb-md-6">
+        <div class="row">
+            <div class="col-12 col-md-3 mb-3">
+                <div class="sidebar">
+
+                    <div class="docs-menu">
+                        <nav id="js-nav-menu" class="nav-menu hidden lg:block">
+                            <ul class="pl-0">
+            <li>
+            
+        <h4>Prologue</h4>
+    
+            
+        <ul class="pl-1">
+            <li>
+            
+        <a href="/docs"
+            class="lvl1  "
+        >
+            Introduction
+        </a>
+    
+    </li>
+            <li>
+            
+        <a href="/docs/specification"
+            class="lvl1  "
+        >
+            Specification
+        </a>
+    
+    </li>
+    </ul>
+    </li>
+            <li>
+            
+        <h4>Getting Started</h4>
+    
+            
+        <ul class="pl-1">
+            <li>
+            
+        <a href="/docs/installation"
+            class="lvl1  "
+        >
+            Installation
+        </a>
+    
+    </li>
+            <li>
+            
+        <a href="/docs/quickstart"
+            class="lvl1  "
+        >
+            Quick Start
+        </a>
+    
+    </li>
+    </ul>
+    </li>
+            <li>
+            
+        <h4>Application</h4>
+    
+            
+        <ul class="pl-1">
+            <li>
+            
+        <a href="/docs/authentication"
+            class="lvl1  "
+        >
+            Authentication
+        </a>
+    
+    </li>
+            <li>
+            
+        <a href="/docs/requests"
+            class="lvl1  "
+        >
+            Validation and Data
+        </a>
+    
+    </li>
+            <li>
+            
+        <a href="/docs/testing"
+            class="lvl1  "
+        >
+            Testing
+        </a>
+    
+    </li>
+            <li>
+            
+        <a href="/docs/compression"
+            class="lvl1  "
+        >
+            Compression
+        </a>
+    
+    </li>
+    </ul>
+    </li>
+            <li>
+            
+        <h4>Requests</h4>
+    
+            
+        <ul class="pl-1">
+            <li>
+            
+        <a href="/docs/notifications"
+            class="lvl1  "
+        >
+            Notifications
+        </a>
+    
+    </li>
+            <li>
+            
+        <a href="/docs/batch"
+            class="lvl1  "
+        >
+            Batch
+        </a>
+    
+    </li>
+    </ul>
+    </li>
+    </ul>
+                        </nav>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-12 col-md-9">
+
+                <main class="content">
+                    <h1>API Docs Generator</h1>
+<h2>Usage</h2>
+<p>Documentation creation based on phpdoc annotations:</p>
+<pre><code class="language-php">declare(strict_types=1);
+
+namespace App\Http\Procedures;
+
+use Sajya\Server\Annotations\Param;
+use Sajya\Server\Annotations\Result;
+use Sajya\Server\Procedure;
+
+class MathProcedure extends Procedure
+{
+    /**
+     * The name of the procedure that will be
+     * displayed and taken into account in the search
+     *
+     * @var string
+     */
+    public static string $name = 'math';
+
+    /**
+     * Execute the procedure.
+     *
+     * @Param(name="minuend", value="required|integer")
+     * @Param(name="subtrahend", value="required|integer")
+     *
+     * @Result(name="outcome", value="required|integer")
+     */
+    public function subtract(int $minuend, int $subtrahend): array
+    {
+        return [
+            'outcome' =&gt; $minuend - $subtrahend,
+        ];
+    }
+}</code></pre>
+<p>Using annotations <code>Param</code> and <code>Result</code>, you can specify the expected key's name and description.</p>
+<blockquote>
+<p><strong>Note.</strong> Importing annotation classes is required.</p>
+</blockquote>
+<p>To specify array elements or nesting, use dot notation, for example:</p>
+<pre><code class="language-php">@Param(name="server.title", value="required|string|max:255")</code></pre>
+<hr />
+<h2>Generating HTML</h2>
+<p>Run the documentations generator command from the root directory:</p>
+<pre><code class="language-php">php artisan sajya:docs 'Route name'</code></pre>
+<p>By default, the file will be saved <code>storage/app/api/docs.html</code>, but you can change both path and filename with options:</p>
+<pre><code class="language-php">php artisan sajya:docs rpc.endpoint --path='/api/v1/' --name="index.html"</code></pre>                </main>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+</div>
+
+<div class="sub-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-12 order-2 order-sm-1">
+                <div class="sub-footer-inner justify-content-start mt-2 mt-sm-0">
+                    <small class="text-muted">Package and documentation licensed <a
+                                href="https://github.com/sajya/server/blob/master/LICENSE.md">MIT</a>.</small>
+                </div>
+            </div>
+            <div class="col-sm-6 col-12 order-1 order-sm-2">
+                <div class="sub-footer-inner">
+                    <ul>
+                        <li><a href="https://www.jsonrpc.org/specification" target="_blank">Specification</a></li>
+                        <li><a href="https://github.com/sajya" target="_blank">GitHub</a></li>
+                        <li><a href="https://jigsaw.tighten.co/" target="_blank">Built with Jigsaw</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/assets/build/js/main.js?id=2ac0f63229c3ebf6d3b4"></script>
+
+<!-- Insert analytics code here -->
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript" >
+        (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+            m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+        (window, document, "script", "https://cdn.jsdelivr.net/npm/yandex-metrica-watch/tag.js", "ym");
+
+        ym(61197199, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+        });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/61197199" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+    <!-- /Yandex.Metrika counter -->
+    
+    
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-39757298-6"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-39757298-6');
+   </script>
+
+</body>
+
+
+
+</html>
