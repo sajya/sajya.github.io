@@ -25,12 +25,13 @@ It is a simple stateless protocol for creating Remote Procedure Call (RPC) style
 For example, you have an endpoint on the server that accepts requests and gives answers with a body like:
 
 ```json
---> {"jsonrpc": "2.0", "method": "subtract", "params": {"minuend": 42, "subtrahend": 23}, "id": 3}
-<-- {"jsonrpc": "2.0", "result": 19, "id": 3}
+{"jsonrpc": "2.0", "method": "subtract", "params": {"minuend": 42, "subtrahend": 23}, "id": 3}
+{"jsonrpc": "2.0", "result": 19, "id": 3}
 ```
 
+An example of an error:
 ```json
-<-- {"jsonrpc": "2.0", "error": {"code": 1234, "message": "Description of error"}, "id": "1"}
+{"jsonrpc": "2.0", "error": {"code": 1234, "message": "Description of error"}, "id": "1"}
 ```
 
 You can find out more on the [specification page](/docs/specification/).
