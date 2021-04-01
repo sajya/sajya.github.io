@@ -22,7 +22,7 @@ It is strongly recommended that you read the [Laravel documentation](https://lar
 
 It is a simple stateless protocol for creating Remote Procedure Call (RPC) style APIs.
 
-For example, you have an endpoint on the server that accepts requests and gives answers with a body like:
+For example, you have an endpoint on the server that accepts requests and response with a body like:
 
 ```json
 {"jsonrpc": "2.0", "method": "subtract", "params": {"minuend": 42, "subtrahend": 23}, "id": 3}
