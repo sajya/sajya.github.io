@@ -18,8 +18,8 @@
     
     <meta name="google-site-verification" content="CezCm3VnIMolzHC65_TaI0DMhs4fJv2A7fWTPJrnp9s" />
 
-    
-    <title>Batch/Notification requests for JSON-RPC | JSON-RPC API server for Laravel framework</title>
+
+    <title>Requests data and validation for JSON-RPC | JSON-RPC API server for Laravel framework</title>
 
     <link rel="home" href="https://sajya.github.io/">
 
@@ -167,6 +167,24 @@
     
     </li>
             <li>
+
+                <a href="/docs/binding"
+                   class="lvl1"
+                >
+                    Parameter binding
+                </a>
+
+            </li>
+            <li>
+
+        <a href="/docs/binding"
+            class="lvl1"
+        >
+            Parameter binding
+        </a>
+
+    </li>
+            <li>
             
         <a href="/docs/api-docs-generator"
             class="lvl1  "
@@ -231,10 +249,12 @@
 
                 <main class="content">
                     <h1>Requests</h1>
-<hr />
-<h2>Accessing The Request</h2>
-<p>To obtain an instance of the current HTTP request via dependency injection, you should type-hint the <code>Illuminate\Http\Request</code> class on your controller method. The incoming request instance will automatically be injected.</p>
-<pre><code class="language-php">declare(strict_types=1);
+                    <hr/>
+                    <h2>Accessing the Data</h2>
+                    <p>The parameters of the incoming RPC request are automatically made available under the standard Laravel request.</p>
+                    <pre><code class="language-bash">curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '{"jsonrpc":"2.0","method":"tennis@ping","params":{"innings": "out"},"id" : 1}'</code></pre>
+                    <p>To obtain an instance of the current HTTP request via dependency injection, you should type-hint the <code>Illuminate\Http\Request</code> class on your controller method. The incoming request instance will automatically be injected.</p>
+                    <pre><code class="language-php">declare(strict_types=1);
 
 namespace App\Http\Procedures;
 
@@ -257,13 +277,14 @@ class TennisProcedure extends Procedure
      */
     public function ping(Request $request)
     {
-        return $request-&gt;input('innings');
+        return $request-&gt;input('innings'); // will return 'out'
     }
 }</code></pre>
-<p>The transferred parameters will be automatically written to the object:</p>
-<pre><code class="language-bash">curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '{"jsonrpc":"2.0","method":"tennis@ping","params":{"innings": "out"},"id" : 1}'</code></pre>
-<p>Since this is a regular Laravel object, you can perform all available operations on it, for example, validation:</p>
-<pre><code class="language-php">/**
+                    <p>To obtain all parameters as an array, use this syntax on the injected Request:</p>
+                    <pre><code class="language-php">$request->request->all()
+}</code></pre>
+                    <p>Since this is a regular Laravel object, you can perform all available operations on it, for example, validation:</p>
+                    <pre><code class="language-php">/**
  * Execute the procedure.
  *
  * @param  Request  $request
@@ -275,10 +296,12 @@ public function ping(Request $request)
         'innings' =&gt; 'required|string|max:255',
     ]);
 }</code></pre>
-<p>Sometimes you may miss the automatic binding of models in the route. But you can extend the request class. Let's execute the artisan command:</p>
-<pre><code class="language-bash">php artisan make:request ExampleRequest</code></pre>
-<p>The generated class will be placed in the <code>app/Http/Requests</code> directory.</p>
-<pre><code class="language-php">declare(strict_types=1);
+                    <h2>Using FormRequests</h2>
+                    <p>Just like in Laravel controllers, FormRequests can be used to provide validation and authentication using a simple syntax.</p>
+                    <p>The first step is to create a child class of the <code>Illuminate\Foundation\Http\FormRequest</code> class. Let's execute the artisan command:</p>
+                    <pre><code class="language-bash">php artisan make:request ExampleRequest</code></pre>
+                    <p>The generated class will be placed in the <code>app/Http/Requests</code> directory.</p>
+                    <pre><code class="language-php">declare(strict_types=1);
 
 namespace App\Http\Requests;
 
@@ -304,21 +327,13 @@ class ExampleRequest extends FormRequest
     public function rules()
     {
         return [
-            'user' =&gt; 'bail|required|unique:user|max:255',
+            'user_id' =&gt; 'bail|required|unique:user|max:255',
         ];
     }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Model|null
-     */
-    public function user()
-    {
-        $user = new User();
-
-        return $user-&gt;resolveRouteBinding($this-&gt;user);
-    }</code></pre>
-<p>Then you can quickly and conveniently get values in the methods of procedures:</p>
-<pre><code class="language-php">/**
+}</code></pre>
+                    <p>The <code>authorize()</code> and <code>rules()</code> methods behave the same as in standard Laravel.</p>
+                    <p>All you need to do is to type-hint this new Request class instead of <code>Illuminate\Http\Request</code> on the procedure method. Then you can quickly and conveniently get values in the methods of procedures:</p>
+                    <pre><code class="language-php">/**
  * Execute the procedure.
  *
  * @param  ExampleRequest  $request
@@ -326,7 +341,8 @@ class ExampleRequest extends FormRequest
  */
 public function ping(ExampleRequest $request)
 {
-    $request-&gt;user();
+    // Do stuff with the request already authenticated and validated, e.g.:
+    $user_id = $request->get('user_id');
     //...
 }</code></pre>                </main>
             </div>

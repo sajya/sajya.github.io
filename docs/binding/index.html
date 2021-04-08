@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="Batch processing allows you to optimize your application by combining multiple requests into a single JSON object.">
+
+    <meta property="og:site_name" content="JSON-RPC API server for Laravel framework"/>
+    <meta property="og:title" content="Batch/Notification requests for JSON-RPC | JSON-RPC API server for Laravel framework"/>
+    <meta property="og:description" content="Batch processing allows you to optimize your application by combining multiple requests into a single JSON object."/>
+    <meta property="og:url" content="https://sajya.github.io/docs/requests"/>
+    <meta property="og:image" content="/assets/img/logo.png"/>
+    <meta property="og:type" content="website"/>
+
+    <meta name="twitter:image:alt" content="JSON-RPC API server for Laravel framework">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <meta name="google-site-verification" content="CezCm3VnIMolzHC65_TaI0DMhs4fJv2A7fWTPJrnp9s"/>
+
+    <title>Requests binding for JSON-RPC | JSON-RPC API server for Laravel framework</title>
+
+    <link rel="home" href="https://sajya.github.io/">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#8ea8af">
+    <meta name="msapplication-TileColor" content="#2d89ef">
+    <meta name="theme-color" content="#ffffff">
+
+    <link rel="stylesheet" href="/assets/build/css/main.css?id=a4cbfa39df34bf168dbf">
+
+</head>
+
+
+<body class='page'>
+<div class="wrapper">
+    <div class='header'>
+        <div class="container">
+            <div class="logo">
+                <a href="/">
+                    <img src="/assets/img/logo.svg" alt="JSON-RPC API server for Laravel framework"/>
+                </a>
+            </div>
+            <div class="logo-mobile">
+                <a href="/"><img alt="Logo" src="/assets/img/logo.svg"/></a>
+            </div>
+            <div id="main-menu" class="main-menu">
+                <ul>
+
+
+                    <li class="menu-item-home ">
+                        <a href="/">
+                            <span>Home</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-item-docs active">
+                        <a href="/docs/" title="Read the Sajya documentation">
+                            <span>Docs</span>
+                        </a>
+                    </li>
+
+                    <li class="menu-item-docs">
+                        <a href="https://github.com/sajya" target="_blank" title="Contribute to Sajya on GitHub">
+                            <span>GitHub</span>
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="page-default-list">
+        <div class="container pt-2 pt-md-6 pb-3 pb-md-6">
+            <div class="row">
+                <div class="col-12 col-md-3 mb-3">
+                    <div class="sidebar">
+
+                        <div class="docs-menu">
+                            <nav id="js-nav-menu" class="nav-menu hidden lg:block">
+                                <ul class="pl-0">
+                                    <li>
+
+                                        <h4>Prologue</h4>
+
+
+                                        <ul class="pl-1">
+                                            <li>
+
+                                                <a href="/docs"
+                                                   class="lvl1  "
+                                                >
+                                                    Introduction
+                                                </a>
+
+                                            </li>
+                                            <li>
+
+                                                <a href="/docs/specification"
+                                                   class="lvl1  "
+                                                >
+                                                    Specification
+                                                </a>
+
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+
+                                        <h4>Getting Started</h4>
+
+
+                                        <ul class="pl-1">
+                                            <li>
+
+                                                <a href="/docs/installation"
+                                                   class="lvl1  "
+                                                >
+                                                    Installation
+                                                </a>
+
+                                            </li>
+                                            <li>
+
+                                                <a href="/docs/quickstart"
+                                                   class="lvl1  "
+                                                >
+                                                    Quick Start
+                                                </a>
+
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+
+                                        <h4>Application</h4>
+
+
+                                        <ul class="pl-1">
+                                            <li>
+
+                                                <a href="/docs/authentication"
+                                                   class="lvl1  "
+                                                >
+                                                    Authentication
+                                                </a>
+
+                                            </li>
+                                            <li>
+
+                                                <a href="/docs/requests"
+                                                   class="lvl1"
+                                                >
+                                                    Validation and Data
+                                                </a>
+
+                                            </li>
+                                            <li>
+
+                                                <a href="/docs/binding"
+                                                   class="lvl1  active"
+                                                >
+                                                    Parameter binding
+                                                </a>
+
+                                            </li>
+                                            <li>
+
+                                                <a href="/docs/api-docs-generator"
+                                                   class="lvl1  "
+                                                >
+                                                    API Docs Generator
+                                                </a>
+
+                                            </li>
+                                            <li>
+
+                                                <a href="/docs/testing"
+                                                   class="lvl1  "
+                                                >
+                                                    Testing
+                                                </a>
+
+                                            </li>
+                                            <li>
+
+                                                <a href="/docs/compression"
+                                                   class="lvl1  "
+                                                >
+                                                    Compression
+                                                </a>
+
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+
+                                        <h4>Requests</h4>
+
+
+                                        <ul class="pl-1">
+                                            <li>
+
+                                                <a href="/docs/notifications"
+                                                   class="lvl1  "
+                                                >
+                                                    Notifications
+                                                </a>
+
+                                            </li>
+                                            <li>
+
+                                                <a href="/docs/batch"
+                                                   class="lvl1  "
+                                                >
+                                                    Batch
+                                                </a>
+
+                                            </li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-12 col-md-9">
+
+                    <main class="content">
+                        <h1>Binding</h1>
+                        <p>Sometimes you may miss the automatic binding of models in the route. There are multiple possible solutions to access objects based on request parameters depending on your needs:</p>
+                        <ul>
+                            <li>
+                                <p>Access using custom methods</p>
+                                <ul>
+                                    <li>use custom methods in a custom Request class</li>
+                                    <li>bind instances inside a custom Request class</li>
+                                </ul>
+                            </li>
+                            <li>
+                                <p>Access using dependency injection</p>
+                                <ul>
+                                    <li>use a custom Request class to automatically resolve and inject Eloquent models</li>
+                                    <li>use a custom Request class to apply a custom resolution of objects to be injected</li>
+                                    <li>use the global binding features of the library</li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <h2>Access using custom methods</h2>
+                        <h3>Use custom methods in a custom Request class</h3>
+                        <p>Once you are using a custom <code>FormRequest</code> it is easy to implement additional methods to facilitate with resolution of object instances.</p>
+                        <h4>Access instances using dedicated methods</h4>
+                        <p>A simple approach is to create a method in the request, that returns the required instance based on the request parameters.</p>
+                        <pre><code class="language-php">declare(strict_types=1);
+
+namespace App\Http\Requests;
+
+use App\User;
+use Illuminate\Foundation\Http\FormRequest;
+
+class ExampleRequest extends FormRequest
+{
+    /**
+     * @return \Illuminate\Database\Eloquent\Model|null
+     */
+    public function user()
+    {
+        $user = new User();
+
+        return $user-&gt;resolveRouteBinding($this-&gt;user);
+    }
+}</code></pre>
+                        <p>This <code>user()</code> method resolves an Eloquent model based on the <code>user_id</code> parameter. Then you can quickly and conveniently get the models in the methods of procedures:</p>
+                        <pre><code class="language-php">/**
+ * Execute the procedure.
+ *
+ * @param  ExampleRequest  $request
+ * @return string
+ */
+public function ping(ExampleRequest $request)
+{
+    $request-&gt;user();
+    //...
+}</code></pre>
+                        <h4>Bind instances inside the request</h4>
+                        <p>It is also possible to replace or add the parameters directly inside the request.</p>
+                        <pre><code class="language-php">declare(strict_types=1);
+
+namespace App\Http\Requests;
+
+use App\User;
+use Illuminate\Foundation\Http\FormRequest;
+
+class ExampleRequest extends FormRequest
+{
+    /**
+     * Bind instances into the Request after validation has passed.
+     */
+    public function passedValidation()
+    {
+        $user = new User();
+        $user = $user->resolveRouteBinding($this->user);
+        $this->merge(
+            [
+                'user_original' => $this->user,
+                'user' => $user,
+            ]
+        );
+    }
+}</code></pre>
+                        <p>After this the resolved <code>User</code> model can be accessed from the Request, while the original user parameter value is also kept under the new <code>user_original</code> parameter.</p>
+                        <pre><code class="language-php">/**
+ * Execute the procedure.
+ *
+ * @param  ExampleRequest  $request
+ * @return string
+ */
+public function ping(ExampleRequest $request)
+{
+    $userInstance = $request-&gt;user;
+    $originalUserParameter = $request-&gt;user_original;
+    //...
+}</code></pre>
+                        <h2>Access using dependency injection</h2>
+                        <p><strong>Sajya</strong> comes with three different built in ways to handle dependency injection needs. This means that by applying one (or more) of the below listed methods, class instances can be automatically injected into the Procedure methods as needed. The first two methods require the use of a special <code>FormRequest</code> while the last one can be used with any Request.</p>
+                        <h3>Use a custom Request class to automatically resolve and inject Eloquent models</h3>
+                        <p>If you want to get Eloquent model instances in the Procedure methods using dependency injection use a custom <code>FormRequest</code> that implements the <code>Sajya\Server\Binding\BindsParameters</code> interface.</p>
+                        <pre><code class="language-php">declare(strict_types=1);
+
+namespace App\Http\Requests;
+
+use App\User;
+use Illuminate\Foundation\Http\FormRequest;
+use Sajya\Server\Binding\BindsParameters;
+
+class ExampleRequest extends FormRequest implements BindsParameters
+{
+    public function getBindings(): array
+    {
+        return [
+            'userById'       => 'user_id',
+            'userByEmail'    => 'user_email:email',
+            'userByNestedId' => ['user','id']
+        ];
+    }
+
+    public function resolveParameter(string $parameterName)
+    {
+        return false;
+    }
+}</code></pre>
+                        <p>In the <code>getBindings()</code> method you can define the mapping between the Procedure method parameters and the request parameters. The meaning of the definitions are:</p>
+                        <ul>
+                            <li><code>'userById' => 'user'</code>: the procedure method parameter <code>$userById</code> will get the type-hinted Eloquent model instance with the <code>id</code> matching the <code>user</code> request parameter</li>
+                            <li><code>'userByEmail' => 'user:email'</code>: the procedure method parameter <code>$userByEmail</code> will get the type-hinted Eloquent model instance with the <code>email</code> attribute matching the <code>user_email</code> request parameter</li>
+                            <li><code>'userByNestedId' => ['user','id']</code>: the procedure method parameter <code>$userByNestedId</code> will get the type-hinted Eloquent model instance with the <code>id</code> attribute matching the <code>id</code> request parameter nested inside the <code>user</code> request parameter</li>
+                        </ul>
+                        <p>The actual model type to be injected depends on the Procedure method signature, so it is mandatory to typehint those parameters correctly. <strong>Note</strong> that it is only possible to use this resolution logic for classes that implement the <code>Illuminate\Contracts\Routing\UrlRoutable</code> interface, e.g.: Eloquent models.</p>
+                        <pre><code class="language-php">/**
+ * Execute the procedure.
+ *
+ * @param  ExampleRequest  $request
+ * @return string
+ */
+public function ping(ExampleRequest $request, User $userById, User $userByEmail, User $userByNestedId)
+{
+    $userInstance = userById;
+    $originalUserParameter = $request-&gt;user_id;
+    //...
+}</code></pre>
+                        <p><strong>Note:</strong> because the procedure method parameters are resolved in order, it is mandatory to always put the Request before the type-hinted parameter(s) of the handling method. Therefore the same setup with the following method signature like would fail.</p>
+                        <pre><code>public function ping(User $userById, User $userByEmail, User $userByNestedId, ExampleRequest $request) { //...</code></pre>
+
+                        <h3>Use a custom Request class to apply a custom resolution of objects to be injected</h3>
+                        <p>Similarly to the previous case, it is possible to implement any custom resolution logic inside a <code>FormRequest</code> that implements the <code>Sajya\Server\Binding\BindsParameters</code> interface. This is most usefull to resolve instances other than Eloquent models. For this, use the <code>resolveParameter()</code> method.</p>
+                        <pre><code class="language-php">declare(strict_types=1);
+
+namespace App\Http\Requests;
+
+use App\User;
+use Illuminate\Foundation\Http\FormRequest;
+use Sajya\Server\Binding\BindsParameters;
+
+class ExampleRequest extends FormRequest implements BindsParameters
+{
+    public function getBindings(): array
+    {
+        return [];
+    }
+
+    public function resolveParameter(string $parameterName)
+    {
+        if ( 'userByHash' === $parameterName ) {
+            return User::getUserInstanceBasedOnASecretHash( $this->input('user_hash') );
+        }
+        return false; // Allow the service container to proceed with default resolution.
+    }
+}</code></pre>
+                        <p>In this case the procedure method parameter called <code>$userByHash</code> will be resolved by the <code>User::getUserInstanceBasedOnASecretHash()</code> method, and injected accordingly.</p>
+                        <pre><code class="language-php">/**
+ * Execute the procedure.
+ *
+ * @param  ExampleRequest  $request
+ * @return string
+ */
+public function ping(ExampleRequest $request, User $userByHash)
+{
+    $userInstance = $userByHash;
+    $userHash = $request-&gt;user_hash;
+    //...
+}</code></pre>
+                        <p>It is possible to use both the <code>getBindings()</code> and the <code>resolveParameter()</code> methods together. If both are configured, resolution by <code>resolveParameter()</code> takes precedence over the resolution by <code>getBindings()</code>.</p>
+
+
+                        <h3>Use the global binding features of the library</h3>
+                        <p>Defining the parameter bindings in a custom <code>FormRequest</code> class is convenient, because the connection between the binding and the Procedure method becomes implicit, by type-hinting the right <code>FormRequest</code> class on the method itself. However sometimes you may need to define the bindings in other places in the code, perhaps without using a custom <code>FormRequest</code>. For that case <strong>Sajya</strong> provides the <code>RPC</code> facade, which allows injection bindings to be defined in a global context.</p>
+                        <p>It mirrors the logic of Laravel's <a href="https://laravel.com/docs/8.x/routing#customizing-the-resolution-logic" rel="nofollow"><code>Route::bind()</code></a> and <a href="https://laravel.com/docs/8.x/routing#explicit-binding" rel="nofollow"><code>Route::model()</code></a> calls, but with an extended call signature to address various needs.</p>
+
+                        <h4><code>RPC::model()</code></h4>
+                        <p>The simplest case is to bind an Eloquent model based on a request attribute:</p>
+                        <pre><code class="language-php">RPC::model('user', User::class);</code></pre>
+                        <p>With this on the Procedure method that handles the RPC call an <code>User $user</code> parameter will be injected with the resolved User model:</p>
+                        <pre><code class="language-php">/**
+ * @param User $user The user resolved by global bindings.
+ */
+public function getUserName(User $user): string
+{
+    return $user->getAttribute('name');
+}</code></pre>
+
+                        <h5>Scoping</h5>
+                        <p>One may need to apply different models for different Procedure methods, so the binding can be scoped with the third argument:</p>
+                        <pre><code class="language-php">RPC::model('user', RegularUser::class, 'myNamespace\MyProcedure@handleUser');
+RPC::model('user', AdminUser::class,   'myNamespace\MyProcedure@handleAdminUser');
+RPC::model('user', SpecialUser::class, 'myNamespace\special');
+RPC::model('user', User::class, ''); // = RPC::model('user', User::class);</code></pre>
+                        <p>These lines mean:</p>
+                        <ul>
+                            <li>Resolve a <code>RegularUser</code> model for the <code>myNamespace\MyProcedure@handleUser</code> method</li>
+                            <li>Resolve an <code>AdminUser</code> model for the <code>myNamespace\MyProcedure@handleAdminUser</code> method</li>
+                            <li>Resolve a <code>SpecialUser</code> model for all Procedures and methods under the <code>myNamespace\special</code> namespace</li>
+                            <li>Resolve a <code>User</code> model for every other Procedure and method</li>
+                        </ul>
+                        <p>The resolution happens in the order the binders are registered, so start with the more specific ones and progress with more generic towards the unscoped global binding.</p>
+                        <p>It is also possible to bind multiple scopes in one call:</p>
+                        <pre><code class="language-php">RPC::model('user', RegularUser::class, [
+    'myNamespace\MyProcedure@handleUser',
+    'myNamespace\MyOtherProcedure@handleUser'
+]);</code></pre>
+                        <p>It is also possible to use the PHP callable array syntax for the scopes which are defined dow to the method level, e.g.:</p>
+                        <pre><code class="language-php">RPC::model('user', RegularUser::class, ['myNamespace\MyProcedure', 'handleUser']);
+RPC::model('user', AdminUser::class,   ['myNamespace\MyProcedure', 'handleAdminUser']);</code></pre>
+
+                        <h5>Method parameter mapping</h5>
+                        <p>In some cases the method parameter may have a different name than the request parameter. In that case the 4th argument can be used to declare which method parameter should the binding apply to:</p>
+                        <pre><code class="language-php">RPC::model('customer', User::class, '', 'user');</code></pre>
+                        <p>In this case the <code>User</code> model resolved based on the <code>customer</code> request parameter will be injected into the Procedure method argument <code>$user</code>, instead of the default <code>$customer</code>.<br>
+                            This can be particularly useful with nested parameters, as their names may even collide. Consider these two bindings:</p>
+                        <pre><code class="language-php">RPC::model(['seller','id'], User::class, '', 'seller');
+RPC::model(['buyer','id'], User::class, '', 'buyer');</code></pre>
+                        <p>Without the 4th parameter both the seller and the buyer <code>User</code> would be attempted to be injected for a parameter called <code>$id</code>, however that is not possible to have two method parameters with the same name, therefore the first line will resolve a <code>User</code> model based on the parameter <code>id</code> nested under the parameter <code>seller</code> and inject the resulting <code>User</code> instance under <code>$seller</code>, while the second will inject another <code>User</code> resolved based on the <code>id</code> of the <code>buyer</code> and inject that for the parameter called <code>$buyer</code>.</p>
+
+                        <h5>Error handling</h5>
+                        <p>Similar to Laravel's <code>Route::model()</code> the last optional parameter is an error handler callback. It is called if the automatic resolution of the model fails. Anything returned from this method will be injected instead.</p>
+                        <pre><code class="language-php">RPC::model('user', User::class, '', null, static function () {
+    return auth()->user();
+});</code></pre>
+                        <p>This code will attempt automatic Eloquent model resolution, but if it fails to find the <code>User</code> it will inject the currently logged in user instead.</p>
+
+                        <h4><code>RPC::bind()</code></h4>
+                        <p>It is the same for <code>Route::bind()</code> what <code>RPC::model()</code> is for <code>Route::model()</code>. The 1st, 3rd and 4th parameters are the same.<br>
+                            The 2nd parameter is instead of <code>$class</code> is <code>$binder</code>, which is a callback that performs the binding. It receives the value of the request parameter configured by the 1st argument and is expected to return the instance to be injected into the Procedure method. E.g.:</p>
+                        <pre><code class="language-php">RPC::bind(
+    'user_hash',
+    /**
+     * @param  string  $parameter
+     * @return User
+     */
+    static function (string $parameter) {
+        return User::getUserByHash($parameter);
+    },
+    '', // global scope
+    'user' // Inject for the method parameter called $user
+);</code></pre>
+                        <h4>Nested parameters</h4>
+                        <p>Nested parameters are supported the same way for the global bindings using the <code>RPC</code> Facade as for the <code>BindsParameters::getBindings()</code> method. It is possible to bind to a nested request parameter, for example if the request has a <code>customer</code> which has an <code>id</code>, the binding can be configured with <code>['customer', 'id']</code>. Custom fields are supported too when the binding is for Eloquent models, e.g.: <code>['customer', 'address:email']</code>.</p>
+
+                        <h3>Resolution order</h3>
+                        <p>Bindings configured in a <code>FormRequest</code> that implement the <code>Sajya\Server\Binding\BindsParameters</code> interface take precedence over bindings using the <code>RPC</code> Facade. However <code>FormRequest</code> based resolution only works for parameters that come after the type-hinted <code>FormRequest</code> parameter. For any parameter before the <code>FormRequest</code> parameter only the <code>RPC</code> Facade defined bindings apply. If none of the configured bindings can resolve the type-hinted parameters, the resolution is left for Laravel's Service container.</p>
+                    </main>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<div class="sub-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6 col-12 order-2 order-sm-1">
+                <div class="sub-footer-inner justify-content-start mt-2 mt-sm-0">
+                    <small class="text-muted">Package and documentation licensed <a
+                            href="https://github.com/sajya/server/blob/master/LICENSE.md">MIT</a>.</small>
+                </div>
+            </div>
+            <div class="col-sm-6 col-12 order-1 order-sm-2">
+                <div class="sub-footer-inner">
+                    <ul>
+                        <li><a href="https://www.jsonrpc.org/specification" target="_blank">Specification</a></li>
+                        <li><a href="https://github.com/sajya" target="_blank">GitHub</a></li>
+                        <li><a href="https://jigsaw.tighten.co/" target="_blank">Built with Jigsaw</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="/assets/build/js/main.js?id=2ac0f63229c3ebf6d3b4"></script>
+
+<!-- Insert analytics code here -->
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+  (function (m, e, t, r, i, k, a) {
+    m[i]   = m[i] || function () {
+      (m[i].a = m[i].a || []).push(arguments)
+    };
+    m[i].l = 1 * new Date();
+    k = e.createElement(t), a = e.getElementsByTagName(t)[0], k.async = 1, k.src = r, a.parentNode.insertBefore(k, a)
+  })
+  (window, document, "script", "https://cdn.jsdelivr.net/npm/yandex-metrica-watch/tag.js", "ym");
+
+  ym(61197199, "init", {
+    clickmap           : true,
+    trackLinks         : true,
+    accurateTrackBounce: true,
+    webvisor           : true
+  });
+</script>
+<noscript>
+    <div><img src="https://mc.yandex.ru/watch/61197199" style="position:absolute; left:-9999px;" alt=""/></div>
+</noscript>
+<!-- /Yandex.Metrika counter -->
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-39757298-6"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+
+  function gtag() {
+    dataLayer.push(arguments);
+  }
+
+  gtag('js', new Date());
+
+  gtag('config', 'UA-39757298-6');
+</script>
+
+</body>
+
+
+</html>
