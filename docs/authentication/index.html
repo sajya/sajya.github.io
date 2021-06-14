@@ -290,6 +290,98 @@ class AuthenticateOnceWithBasicAuth
 });</code></pre>
 <p>By default, <code>middleware</code> will use the <code>email</code> column in the user record as the &quot;username&quot;.</p>
 <hr />
+<h2>Token Authentication</h2>
+<h3>Database Preparation</h3>
+<p>Before using the <code>token</code> driver, you will need to create a migration which adds an <code>api_token</code> column to your <code>users</code> table:</p>
+<pre><code class="language-php">Schema::table('users', function ($table) {
+    $table-&gt;string('api_token', 80)
+        -&gt;after('password')
+        -&gt;unique()
+        -&gt;nullable()
+        -&gt;default(null);
+});</code></pre>
+<p>Once the migration has been created, run the <code>migrate</code> Artisan command.</p>
+<blockquote>
+<p>If you choose to use a different column name, be sure to update your API's <code>storage_key</code> configuration option within the <code>config/auth.php</code> configuration file.</p>
+</blockquote>
+<h3>Generating Tokens</h3>
+<p>Once the <code>api_token</code> column has been added to your <code>users</code> table, you are ready to assign random API tokens to each user that registers with your application. You should assign these tokens when a <code>User</code> model is created for the user during registration.</p>
+<pre><code class="language-php">use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use App\Models\User;
+
+/**
+ * Create a new user instance after a valid registration.
+ *
+ * @param  array  $data
+ * @return \App\Models\User
+ */
+protected function create(array $data)
+{
+    return User::forceCreate([
+        'name' =&gt; $data['name'],
+        'email' =&gt; $data['email'],
+        'password' =&gt; Hash::make($data['password']),
+        'api_token' =&gt; Str::random(80),
+    ]);
+}</code></pre>
+<h3>Hashing Tokens</h3>
+<p>In the examples above, API tokens are stored in your database as plain-text. If you would like to hash your API tokens using SHA-256 hashing, you may set the <code>hash</code> option of your <code>api</code> guard configuration to <code>true</code>. The <code>api</code> guard is defined in your <code>config/auth.php</code> configuration file:</p>
+<pre><code class="language-php">'api' =&gt; [
+    'driver' =&gt; 'token',
+    'provider' =&gt; 'users',
+    'hash' =&gt; true,
+],</code></pre>
+<h4>Generating Hashed Tokens</h4>
+<p>When using hashed API tokens, you should not generate your API tokens during user registration. Instead, you will need to implement your own API token management page within your application. This page should allow users to initialize and refresh their API token. When a user makes a request to initialize or refresh their token, you should store a hashed copy of the token in the database, and return the plain-text copy of token to the view / frontend client for one-time display.</p>
+<p>For example, a controller method that initializes / refreshes the token for a given user and returns the plain-text token as a JSON response might look like the following:</p>
+<pre><code class="language-php">namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+
+class ApiTokenController extends Controller
+{
+    /**
+     * Update the authenticated user's API token.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return array
+     */
+    public function update(Request $request)
+    {
+        $token = Str::random(80);
+
+        $request-&gt;user()-&gt;forceFill([
+            'api_token' =&gt; hash('sha256', $token),
+        ])-&gt;save();
+
+        return ['token' =&gt; $token];
+    }
+}</code></pre>
+<blockquote>
+<p>Since the API tokens in the example above have sufficient entropy, it is impractical to create &quot;rainbow tables&quot; to lookup the original value of the hashed token. Therefore, slow hashing methods such as <code>bcrypt</code> are unnecessary.</p>
+</blockquote>
+<h2>Protecting Routes</h2>
+<p>Laravel includes an authentication guard that will automatically validate API tokens on incoming requests. You only need to specify the <code>auth:api</code> middleware on any route that requires a valid access token:</p>
+<pre><code class="language-php">
+Route::rpc('/v1/endpoint')
+    -&gt;name('rpc.endpoint')
+    -&gt;middleware('auth:api');</code></pre>
+<h2>Passing Tokens In Requests</h2>
+<p>There are several ways of passing the API token to your application. We'll discuss each of these approaches while using the Guzzle HTTP library to demonstrate their usage. You may choose any of these approaches based on the needs of your application.</p>
+<h4>Query String</h4>
+<p>Your application's API consumers may specify their token as an <code>api_token</code> query string value:</p>
+<pre><code class="language-php">$response = $client-&gt;request('GET', '/v1/endpoint?api_token='.$token);</code></pre>
+<h4>Bearer Token</h4>
+<p>Your application's API consumers may provide their API token as a <code>Bearer</code> token in the <code>Authorization</code> header of the request:</p>
+<pre><code class="language-php">$response = $client-&gt;request('POST', '/v1/endpoint', [
+    'headers' =&gt; [
+        'Authorization' =&gt; 'Bearer '.$token,
+        'Accept' =&gt; 'application/json',
+    ],
+]);</code></pre>
+<hr />
 <p>You can find out more by visiting the laravel documentation on <a href="https://laravel.com/docs/authentication">authentication</a> and <a href="https://laravel.com/docs/api-authentication">authentication for api</a>.</p>                </main>
             </div>
         </div>
