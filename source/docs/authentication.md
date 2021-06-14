@@ -225,4 +225,4 @@ $response = $client->request('POST', '/v1/endpoint', [
 
 ----
 
-You can find out more by visiting the laravel documentation on [authentication](https://laravel.com/docs/authentication) and [authentication for api](https://laravel.com/docs/api-authentication).
+You can find out more by visiting the laravel documentation on [authentication](https://laravel.com/docs/authentication).
