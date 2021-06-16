@@ -1,6 +1,6 @@
 ---
-title: Batch/Notification requests for JSON-RPC
-description: Batch processing allows you to optimize your application by combining multiple requests into a single JSON object.
+title: Requests parameters, validation and authorization for JSON-RPC
+description: Working with the Request provides access to the request parameters and related features.
 extends: _layouts.documentation
 section: content
 ---
@@ -9,7 +9,13 @@ section: content
 
 ----
 
-## Accessing The Request
+## Accessing the Data
+
+The parameters of the incoming RPC request are automatically made available under the standard Laravel request.
+
+```bash
+curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '{"jsonrpc":"2.0","method":"tennis@ping","params":{"innings": "out"},"id" : 1}'
+```
 
 To obtain an instance of the current HTTP request via dependency injection, you should type-hint the `Illuminate\Http\Request` class on your controller method. The incoming request instance will automatically be injected.
 
@@ -37,14 +43,15 @@ class TennisProcedure extends Procedure
      */
     public function ping(Request $request)
     {
-        return $request->input('innings');
+        return $request->input('innings'); // will return 'out'
     }
 }
 ```
 
-The transferred parameters will be automatically written to the object:
-```bash
-curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '{"jsonrpc":"2.0","method":"tennis@ping","params":{"innings": "out"},"id" : 1}'
+The transferred parameters will be automatically written to the request object. To obtain all parameters as an array, use this syntax on the injected Request:
+
+```php
+$request->request->all();
 ```
 
 Since this is a regular Laravel object, you can perform all available operations on it, for example, validation:
@@ -64,7 +71,11 @@ public function ping(Request $request)
 }
 ```
 
-Sometimes you may miss the automatic binding of models in the route. But you can extend the request class. Let's execute the artisan command:
+## Using FormRequests
+
+Just like in Laravel controllers, FormRequests can be used to provide validation and authentication using a simple syntax.
+
+The first step is to create a child class of the `Illuminate\Foundation\Http\FormRequest` class. Let's execute the artisan command:
 
 ```bash
 php artisan make:request ExampleRequest
@@ -90,6 +101,7 @@ class ExampleRequest extends FormRequest
     {
         return true;
     }
+    
     /**
      * Get the validation rules that apply to the request.
      *
@@ -98,22 +110,15 @@ class ExampleRequest extends FormRequest
     public function rules()
     {
         return [
-            'user' => 'bail|required|unique:user|max:255',
+            'user_id' => 'bail|required|unique:user|max:255',
         ];
     }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Model|null
-     */
-    public function user()
-    {
-        $user = new User();
-
-        return $user->resolveRouteBinding($this->user);
-    }
+}
 ```
 
-Then you can quickly and conveniently get values in the methods of procedures:
+The [`authorize()`](https://laravel.com/docs/8.x/validation#form-request-validation) and [`rules()`](https://laravel.com/docs/8.x/validation#form-request-validation) methods behave the same with standard Laravel controllers.
+
+All you need to do is to type-hint this new Request class instead of `Illuminate\Http\Request` on the procedure method. Then you can quickly and conveniently get values in the methods of procedures:
 
 ```php
 /**
@@ -124,7 +129,8 @@ Then you can quickly and conveniently get values in the methods of procedures:
  */
 public function ping(ExampleRequest $request)
 {
-    $request->user();
+    // Do stuff with the request already authenticated and validated, e.g.:
+    $user_id = $request->get('user_id');
     //...
 }
 ```
