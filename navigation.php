@@ -11,7 +11,8 @@ return [
         'children' => [
             'Installation'   => 'docs/installation',
             'Quick Start'    => 'docs/quickstart',
-            //'Notifications'  => 'docs/#',
+            'Notifications'  => 'docs/notifications',
+            'Batch'          => 'docs/batch',
         ],
     ],
     'Application' => [
@@ -23,10 +24,4 @@ return [
             'Compression'         => 'docs/compression',
         ],
     ],
-   'Requests' => [
-       'children' => [
-           'Notifications'         => 'docs/notifications',
-           'Batch'                 => 'docs/batch',
-       ],
-   ],
 ];
