@@ -16,6 +16,11 @@
       width: 60%;
     }
   }
+  @media (min-width: 768px) { 
+    .terminal {   
+      display: none;
+    }
+  }         
   .terminal {
     border-radius: 3px;
     margin: 0 auto;
