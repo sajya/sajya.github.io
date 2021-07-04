@@ -16,7 +16,7 @@
       width: 60%;
     }
   }
-  @media (min-width: 768px) { 
+  @media (max-width: 768px) { 
     .terminal {   
       display: none;
     }
