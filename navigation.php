@@ -18,9 +18,9 @@ return [
     'Application' => [
         'children' => [
             'Authentication'      => 'docs/authentication',
-            'Validation and Data' => 'docs/requests',
-            'Binding'             => 'docs/binding',           
+            'Validation and Data' => 'docs/requests',                     
             'API Docs Generator'  => 'docs/api-docs-generator',
+            'Binding'             => 'docs/binding',             
             'Testing'             => 'docs/testing',
             'Compression'         => 'docs/compression',
         ],
