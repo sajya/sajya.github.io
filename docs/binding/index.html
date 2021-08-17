@@ -281,7 +281,50 @@ public function boot()
 {
     return $a - $b; // $a = 100
 }</code></pre>
-<p>But at the same time, the request will contain the original value that was passed.</p>                </main>
+<p>But at the same time, the request will contain the original value that was passed.</p>
+<h2>Customizing The Resolution Logic</h2>
+<p>If you wish to define your model binding resolution logic, you may use the <code>RPC::bind</code> method. The closure you pass to the bind method will receive the value of the URI segment and should return the instance of the class that should be injected into the route. Again, this customization should take place in the boot method of your application's <code>RouteServiceProvider</code>:</p>
+<pre><code class="language-php">use Sajya\Server\Facades\RPC;
+use Illuminate\Support\Facades\Route;
+
+/**
+ * Define your route model bindings, pattern filters, etc.
+ *
+ * @return void
+ */
+public function boot()
+{
+    RPC::bind('a', function () {
+        return 100;
+    });
+}</code></pre>
+<p>This will automatically replace the substituted value in our method:</p>
+<pre><code class="language-php">public function subtract(int $a, int $b): int
+{
+    return $a - $b; // $a = 100
+}</code></pre>
+<p>But at the same time, the request will contain the original value that was passed.</p>
+<h2>Explicit Model Binding</h2>
+<p>To register an explicit binding, use the <code>RPC::model</code> method to specify the class for a given parameter. It would help if you defined your explicit model bindings at the beginning of the <code>boot</code> method of your <code>RouteServiceProvider</code> class:</p>
+<pre><code class="language-php">use Sajya\Server\Facades\RPC;
+use Illuminate\Support\Facades\Route;
+
+/**
+ * Define your route model bindings, pattern filters, etc.
+ *
+ * @return void
+ */
+public function boot()
+{
+    RPC::model('user', User::class);
+}</code></pre>
+<p>It will work for anyone who expects a <code>$user</code> argument, and that value will be passed. The model will run the <code>resolveRouteBinding</code> method.</p>
+<h2>Deep binding</h2>
+<p>As with automatic substitution, bindings <code>RPC::bind</code> and <code>RPC::model</code> can be set for nested elements. To do this, you need to use the <code>dot</code> notation in the declaration. For example:</p>
+<pre><code class="language-php">RPC::model('user.order', ...);
+RPC::bind('user.order', ...;</code></pre>
+<p>In turn, this will expect <code>camelCase</code> in the arguments:</p>
+<pre><code class="language-php">public function handler($userOrder)</code></pre>                </main>
             </div>
         </div>
     </div>
