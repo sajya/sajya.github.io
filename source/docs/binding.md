@@ -100,3 +100,74 @@ public function subtract(int $a, int $b): int
 ```
 
 But at the same time, the request will contain the original value that was passed.
+
+
+## Customizing The Resolution Logic
+
+If you wish to define your model binding resolution logic, you may use the `RPC::bind` method. The closure you pass to the bind method will receive the value of the URI segment and should return the instance of the class that should be injected into the route. Again, this customization should take place in the boot method of your application's `RouteServiceProvider`:
+
+```php
+use Sajya\Server\Facades\RPC;
+use Illuminate\Support\Facades\Route;
+
+/**
+ * Define your route model bindings, pattern filters, etc.
+ *
+ * @return void
+ */
+public function boot()
+{
+    RPC::bind('a', function () {
+        return 100;
+    });
+}
+```
+
+This will automatically replace the substituted value in our method:
+
+```php
+public function subtract(int $a, int $b): int
+{
+    return $a - $b; // $a = 100
+}
+```
+
+But at the same time, the request will contain the original value that was passed.
+
+
+## Explicit Model Binding
+
+To register an explicit binding, use the `RPC::model` method to specify the class for a given parameter. It would help if you defined your explicit model bindings at the beginning of the `boot` method of your `RouteServiceProvider` class:
+
+```php
+use Sajya\Server\Facades\RPC;
+use Illuminate\Support\Facades\Route;
+
+/**
+ * Define your route model bindings, pattern filters, etc.
+ *
+ * @return void
+ */
+public function boot()
+{
+    RPC::model('user', User::class);
+}
+````
+
+It will work for anyone who expects a `$user` argument, and that value will be passed. The model will run the `resolveRouteBinding` method.
+
+
+## Deep binding
+
+As with automatic substitution, bindings `RPC::bind` and `RPC::model` can be set for nested elements. To do this, you need to use the `dot` notation in the declaration. For example:
+
+```php
+RPC::model('user.order', ...);
+RPC::bind('user.order', ...;
+```
+
+In turn, this will expect `camelCase` in the arguments:
+
+```php
+public function handler($userOrder)
+```
