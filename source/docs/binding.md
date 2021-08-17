@@ -74,9 +74,20 @@ public function handler(string $userName): string
 If you wish to define your own model binding resolution logic, you may use the `RPC::bind` method. The closure you pass to the bind method will receive the value of the URI segment and should return the instance of the class that should be injected into the route. Again, this customization should take place in the boot method of your application's `RouteServiceProvider`:
 
 ```php
-RPC::bind('a', function () {
-    return 100;
-});
+use Sajya\Server\Facades\RPC;
+use Illuminate\Support\Facades\Route;
+
+/**
+ * Define your route model bindings, pattern filters, etc.
+ *
+ * @return void
+ */
+public function boot()
+{
+    RPC::bind('a', function () {
+        return 100;
+    });
+}
 ```
 
 This will automatically replace the substituted value in our method:
