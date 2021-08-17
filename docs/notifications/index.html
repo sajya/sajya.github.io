@@ -227,12 +227,10 @@
 <h2>Notification</h2>
 <p>A Notification is a request object without an <code>id</code> member.
 It means that the client is not interested in the response, and the server will not send it.</p>
-<p>*/</p>
-<blockquote>
-<p><strong>Note.</strong> In a batch request, if there is at least one request that does not have the id property,
+<!-- 
+> **Note.** In a batch request, if there is at least one request that does not have the id property,
 then the whole group is considered as a notification one.
-*/</p>
-</blockquote>
+-->
 <p>You can easily try this by running the following command from a quick start:</p>
 <pre><code class="language-bash">curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '{"jsonrpc":"2.0","method":"tennis@ping"}'</code></pre>
 <p>Execution result:</p>
