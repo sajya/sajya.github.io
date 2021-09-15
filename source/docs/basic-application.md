@@ -19,6 +19,9 @@ To use, you need to create an instance of a class and call the `handle` method:
 ```php
 use Sajya\Server\Guide;
 
+/**
+ * Instantiate App
+ */
 $guide = new Guide([
     // Your procedure classes, for example:
     SajyaProcedure::class
