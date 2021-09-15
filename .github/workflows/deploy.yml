@@ -3,7 +3,7 @@ name: Jigsaw deploy
 on:
   push:
     branches:
-      - jigsaw
+      - master
 
 jobs:
   build-and-deploy:
