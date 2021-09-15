@@ -4,12 +4,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="description" content="Different methods for binding allows you to conveniently access objct instances created from the request parameters">
+    <meta name="description" content="Using JSON-RPC in Console, WebSockets and More">
 
     <meta property="og:site_name" content="JSON-RPC API server for Laravel framework"/>
-    <meta property="og:title" content="Requests binding for JSON-RPC | JSON-RPC API server for Laravel framework"/>
-    <meta property="og:description" content="Different methods for binding allows you to conveniently access objct instances created from the request parameters"/>
-    <meta property="og:url" content="https://sajya.github.io/docs/binding"/>
+    <meta property="og:title" content="Basic application | JSON-RPC API server for Laravel framework"/>
+    <meta property="og:description" content="Using JSON-RPC in Console, WebSockets and More"/>
+    <meta property="og:url" content="https://sajya.github.io/docs/basic-application"/>
     <meta property="og:image" content="/assets/img/logo.png"/>
     <meta property="og:type" content="website"/>
 
@@ -19,7 +19,7 @@
     <meta name="google-site-verification" content="CezCm3VnIMolzHC65_TaI0DMhs4fJv2A7fWTPJrnp9s" />
 
     
-    <title>Requests binding for JSON-RPC | JSON-RPC API server for Laravel framework</title>
+    <title>Basic application | JSON-RPC API server for Laravel framework</title>
 
     <link rel="home" href="https://sajya.github.io/">
 
@@ -196,7 +196,7 @@
             <li>
             
         <a href="/docs/binding"
-            class="lvl1  active"
+            class="lvl1  "
         >
             Binding
         </a>
@@ -231,87 +231,28 @@
             <div class="col-12 col-md-9">
 
                 <main class="content">
-                    <h1>Binding</h1>
-<hr />
-<h2>Passing Values to Arguments</h2>
-<p>For example, let's take the following simple procedure, where we pass two values for which we want to get the subtract:</p>
-<pre><code class="language-javascript">{
-    "jsonrpc": "2.0",
-    "method": "math@subtract",
-    "params": {
-        "a": 4,
-        "b": 2
-    },
-    "id": 1
-}</code></pre>
-<p>In this case, we need to write something like the following in the handler:</p>
-<pre><code class="language-php">public function subtract(Request $request) {
-    return $request-&gt;get('a') - $request-&gt;get('b');
-}</code></pre>
-<p>Automatic passing of arguments will be by name:</p>
-<pre><code class="language-php">public function subtract(int $a, int $b): int
-{
-    return $a - $b;
-}</code></pre>
-<p>This will also work for deep things via <code>camelCase</code>:</p>
-<pre><code class="language-php">{
-    "jsonrpc": "2.0",
-    "method": "....",
-    "params": {
-        "user": {
-            "name": "Alex"
-        }
-    },
-    "id": 1
-}</code></pre>
-<p>for argument:</p>
-<pre><code class="language-php">public function handler(string $userName): string
-{
-    return $userName;
-}</code></pre>
-<h2>Customizing The Resolution Logic</h2>
-<p>If you wish to define your model binding resolution logic, you may use the <code>RPC::bind</code> method. The closure you pass to the bind method will receive the value of the params segment and should return the instance of the class that should be injected into the route. Again, this customization should take place in the boot method of your application's <code>RouteServiceProvider</code>:</p>
-<pre><code class="language-php">use Sajya\Server\Facades\RPC;
-use Illuminate\Support\Facades\Route;
+                    <h1>Basic application</h1>
+<p>Automatic use via Laravel routes is a very great feature of Sajya, but JSON-RPC is not limited to HTTP transport only.
+You can use it for your own WebSockets, console command, or other situations.</p>
+<h2>Usage</h2>
+<p>The <code>Sajya\Server\Guide</code> class is the entry point to your JSON-RPC application and is used to register procedures.
+To use, you need to create an instance of a class and call the <code>handle</code> method:</p>
+<pre><code class="language-php">use Sajya\Server\Guide;
 
-/**
- * Define your route model bindings, pattern filters, etc.
- *
- * @return void
- */
-public function boot()
-{
-    RPC::bind('a', function () {
-        return 100;
-    });
-}</code></pre>
-<p>This will automatically replace the substituted value in our method:</p>
-<pre><code class="language-php">public function subtract(int $a, int $b): int
-{
-    return $a - $b; // $a = 100
-}</code></pre>
-<p>But at the same time, the request will contain the original value that was passed.</p>
-<h2>Explicit Model Binding</h2>
-<p>To register an explicit binding, use the <code>RPC::model</code> method to specify the class for a given parameter. It would help if you defined your explicit model bindings at the beginning of the <code>boot</code> method of your <code>RouteServiceProvider</code> class:</p>
-<pre><code class="language-php">use Sajya\Server\Facades\RPC;
-use Illuminate\Support\Facades\Route;
+$guide = new Guide([
+    // Your procedure classes, for example:
+    SajyaProcedure::class
+]);
 
-/**
- * Define your route model bindings, pattern filters, etc.
- *
- * @return void
- */
-public function boot()
-{
-    RPC::model('user', User::class);
-}</code></pre>
-<p>It will work for anyone who expects a <code>$user</code> argument, and that value will be passed. The model will run the <code>resolveRouteBinding</code> method.</p>
-<h2>Deep binding</h2>
-<p>As with automatic substitution, bindings <code>RPC::bind</code> and <code>RPC::model</code> can be set for nested elements. To do this, you need to use the <code>dot</code> notation in the declaration. For example:</p>
-<pre><code class="language-php">RPC::model('user.order', ...);
-RPC::bind('user.order', ...;</code></pre>
-<p>In turn, this will expect <code>camelCase</code> in the arguments:</p>
-<pre><code class="language-php">public function handler($userOrder)</code></pre>                </main>
+$response = $guide-&gt;handle('{"jsonrpc": "2.0", "method": "sajya@hello", "id": 1}');</code></pre>
+<p>The result will be a class that you can change or easily modify into a JSON string for the response:</p>
+<pre><code class="language-php">echo json_encode($response);</code></pre>
+<h2>Executing Notification Requests</h2>
+<p>Please note that notification requests are not executed immediately. This can be a problem in long-lived applications.
+To execute them manually, you need to call the <code>terminate</code> method for container. This will lead to the call of all deferred processing:</p>
+<pre><code class="language-php">use Illuminate\Container\Container;
+
+Container::getInstance()-&gt;terminate();</code></pre>                </main>
             </div>
         </div>
     </div>
