@@ -17,7 +17,7 @@ In this example, we will create a simple test validation method from the ["Quick
 php artisan make:test PingPongTest
 ```
 
-To make things easier, Sajya delivery already has a trait helper, `ProceduralRequests`.Let's add it to our test class:
+To make things easier, Sajya delivery already has a trait helper, `ProceduralRequests`. Let's add it to our test class:
 
 ```php
 namespace Tests\Feature;
