@@ -19,7 +19,7 @@ return [
         'children' => [
             'Authentication'      => 'docs/authentication',
             'Validation and Data' => 'docs/requests',                     
-            'API Docs Generator'  => 'docs/api-docs-generator',
+            'Docs Generator'  => 'docs/api-docs-generator',
             'Binding'             => 'docs/binding',             
             'Testing'             => 'docs/testing',
             'Compression'         => 'docs/compression',
