@@ -25,7 +25,7 @@ return [
             'Compression'         => 'docs/compression',
         ],
     ],
-    'Other usage'     => [
+    'Other Usage'     => [
         'children' => [
             'Basic Application' => 'docs/basic-application',
         ],
