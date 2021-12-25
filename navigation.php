@@ -27,7 +27,7 @@ return [
     ],
     'Other usage'     => [
         'children' => [
-            'Basic application' => 'docs/basic-application',
+            'Basic Application' => 'docs/basic-application',
         ],
     ],   
 ];
