@@ -270,9 +270,11 @@ $response = $guide-&gt;handle('{"jsonrpc": "2.0", "method": "sajya@hello", "id":
 <h2>Executing Notification Requests</h2>
 <p>Please note that notification requests are not executed immediately. This can be a problem in long-lived applications.
 To execute them manually, you need to call the <code>terminate</code> method for container. This will lead to the call of all deferred processing:</p>
-<pre><code class="language-php">use Illuminate\Container\Container;
+<pre><code class="language-php">use Illuminate\Foundation\Application;
 
-Container::getInstance()-&gt;terminate();</code></pre>                </main>
+Application::getInstance()-&gt;terminate()</code></pre>
+<p>Or use which will process deferred tasks every time:</p>
+<pre><code class="language-php">$response = $guide-&gt;terminate('{"jsonrpc": "2.0", "method": "sajya@hello", "id": 1}');</code></pre>                </main>
             </div>
         </div>
     </div>
