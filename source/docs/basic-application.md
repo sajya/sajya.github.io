@@ -43,7 +43,13 @@ Please note that notification requests are not executed immediately. This can be
 To execute them manually, you need to call the `terminate` method for container. This will lead to the call of all deferred processing:
 
 ```php
-use Illuminate\Container\Container;
+use Illuminate\Foundation\Application;
 
-Container::getInstance()->terminate();
+Application::getInstance()->terminate()
+```
+
+Or use which will process deferred tasks every time:
+
+```php
+$response = $guide->terminate('{"jsonrpc": "2.0", "method": "sajya@hello", "id": 1}');
 ```
