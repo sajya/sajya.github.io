@@ -190,7 +190,6 @@ class ApiTokenController extends Controller
 Laravel includes an authentication guard that will automatically validate API tokens on incoming requests. You only need to specify the `auth:api` middleware on any route that requires a valid access token:
 
 ```php
-
 Route::rpc('/v1/endpoint')
     ->name('rpc.endpoint')
     ->middleware('auth:api');
