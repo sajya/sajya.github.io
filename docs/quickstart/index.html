@@ -283,7 +283,19 @@ class TennisProcedure extends Procedure
 }</code></pre>
 <h2>Route Registration</h2>
 <p>Like the controller, the procedure needs to be registered in the routes file, define it in the file <code>api.php</code>:</p>
-<pre><code class="language-php">use App\Http\Procedures\TennisProcedure;
+<pre><code class="language-php">use Illuminate\Support\Facades\Route;
+use App\Http\Procedures\TennisProcedure;
+
+/*
+|--------------------------------------------------------------------------
+| API Routes
+|--------------------------------------------------------------------------
+|
+| Here is where you can register API routes for your application. These
+| routes are loaded by the RouteServiceProvider within a group which
+| is assigned the "api" middleware group. Enjoy building your API!
+|
+*/
 
 Route::rpc('/v1/endpoint', [TennisProcedure::class])-&gt;name('rpc.endpoint');</code></pre>
 <blockquote>
