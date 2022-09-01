@@ -7,7 +7,7 @@ section: content
 
 # Error Handling
 
-Sajya tries to fully comply with the standards and expectations that apply to Laravel. For example, with the `debug` option enabled in the `config/app.php` configuration file, the response error information will contain much more information.
+Sajya tries to fully comply with the standards and expectations that apply to [Laravel](https://laravel.com/docs/errors). For example, with the `debug` option enabled in the `config/app.php` configuration file, the response error information will contain much more information.
 
 
 ## Reporting Exceptions
