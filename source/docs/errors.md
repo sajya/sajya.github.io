@@ -9,6 +9,45 @@ section: content
 
 Sajya tries to fully comply with the standards and expectations that apply to [Laravel](https://laravel.com/docs/errors). For example, with the `debug` option enabled in the `config/app.php` configuration file, the response error information will contain much more information.
 
+## Throw Exceptions
+
+During operation, you can throw exceptions that will be converted into a valid JSON-RPC response without your intervention. For example:
+
+```php
+declare(strict_types=1);
+
+namespace App\Http\Procedures;
+
+use Exception;
+use Sajya\Server\Procedure;
+
+class TennisProcedure extends Procedure
+{
+    public static string $name = 'tennis';
+
+    public function ping()
+    {
+        throw new Exception('Division by zero.', -100);
+    }
+}
+```
+
+Will lead to the following response:
+
+```json
+{
+    "id": "1",
+    "error": {
+        "code": -100,
+        "message": "Division by zero."
+        ....
+    },
+    "jsonrpc": "2.0"
+}
+```
+
+
+
 
 ## Reporting Exceptions
 
