@@ -33,4 +33,4 @@ jobs:
         with:
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
           BRANCH: build
-          FOLDER: build_production
+          FOLDER: build_local
