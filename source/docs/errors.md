@@ -46,7 +46,7 @@ Will lead to the following response:
 }
 ```
 
-
+In order not to repeat, you can make your exception class for this, use inheritance from `Sajya\Server\Exceptions\RpcException`.
 
 
 ## Reporting Exceptions
