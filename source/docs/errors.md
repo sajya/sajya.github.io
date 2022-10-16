@@ -46,7 +46,69 @@ Will lead to the following response:
 }
 ```
 
-In order not to repeat, you can make your exception class for this, use inheritance from `Sajya\Server\Exceptions\RpcException`.
+In order not to repeat, you can make your exception class for this, use inheritance from `Sajya\Server\Exceptions\RpcException`. To do this, create a new Exception class with the `Artisan` command:
+
+```bash
+php artisan make:exception DivisionByZero
+```
+A new file will be created in the `app/Exceptions` directory. Let's change the inheritance to support RPC and define the description and error code:
+
+```php
+<?php
+
+declare(strict_types=1);
+
+namespace App\Exceptions;
+
+use Sajya\Server\Exceptions\RpcException;
+
+class DivisionByZero extends RpcException
+{
+    /**
+     * A String providing a short description of the error.
+     * The message SHOULD be limited to a concise single sentence.
+     *
+     * @return string
+     */
+    protected function getDefaultMessage(): string
+    {
+        return 'Division by zero.';
+    }
+
+    /**
+     * A Number that indicates the error type that occurred.
+     * This MUST be an integer.
+     *
+     * @return int
+     */
+    protected function getDefaultCode(): int
+    {
+        return -100;
+    }
+}
+```
+
+We can then throw an exception at runtime and the client will get the correct error code and description: 
+
+```php
+declare(strict_types=1);
+
+namespace App\Http\Procedures;
+
+use App\Exceptions\DivisionByZero;
+use Sajya\Server\Procedure;
+
+class TennisProcedure extends Procedure
+{
+    public static string $name = 'tennis';
+
+    public function ping()
+    {
+        throw new DivisionByZero();
+    }
+}
+```
+
 
 
 ## Reporting Exceptions
