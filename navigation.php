@@ -22,6 +22,7 @@ return [
             'Error Handling'      => 'docs/errors',
             'Binding'             => 'docs/binding',             
             'Testing'             => 'docs/testing',
+            'Proxy'               => 'docs/proxy',
             'Compression'         => 'docs/compression',
         ],
     ],
