@@ -19,7 +19,6 @@ return [
         'children' => [
             'Authentication'      => 'docs/authentication',
             'Validation and Data' => 'docs/requests',                     
-            'Docs Generator'      => 'docs/api-docs-generator',
             'Error Handling'      => 'docs/errors',
             'Binding'             => 'docs/binding',             
             'Testing'             => 'docs/testing',
@@ -28,7 +27,8 @@ return [
     ],
     'Other Usage'     => [
         'children' => [
-            'Basic Application' => 'docs/basic-application',
+            'Basic Application'   => 'docs/basic-application',
+            'Docs Generator'      => 'docs/api-docs-generator',
         ],
     ],   
 ];
