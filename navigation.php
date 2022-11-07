@@ -30,6 +30,7 @@ return [
         'children' => [
             'Basic Application'   => 'docs/basic-application',
             'Docs Generator'      => 'docs/api-docs-generator',
+            'HTTP Client'         => 'docs/client',
         ],
     ],   
 ];
