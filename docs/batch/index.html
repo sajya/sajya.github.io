@@ -284,7 +284,7 @@ Internet connection dropped. Messages are in standby mode. As soon as a relation
 <!--
 ![JSON RPC Batch Requests](/assets/img/batch-requests.svg)
 -->
-<pre><code class="language-php">[
+<pre><code class="language-json">[
   {
     "jsonrpc": "2.0",
     "method": "message@create",
@@ -302,7 +302,18 @@ Internet connection dropped. Messages are in standby mode. As soon as a relation
 <p>You can easily try this by running the following command from a quick start:</p>
 <pre><code class="language-bash">curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '[{"jsonrpc":"2.0","method":"tennis@ping","id":1},{"jsonrpc":"2.0","method":"tennis@ping","id":2}]'</code></pre>
 <p>Execution result:</p>
-<pre><code class="language-bash">[{"id":"1","result":"pong","jsonrpc":"2.0"},{"id":"2","result":"pong","jsonrpc":"2.0"}]</code></pre>                </main>
+<pre><code class="language-json">[
+  {
+    "id": "1",
+    "result": "pong",
+    "jsonrpc": "2.0"
+  },
+  {
+    "id": "2",
+    "result": "pong",
+    "jsonrpc": "2.0"
+  }
+]</code></pre>                </main>
             </div>
         </div>
     </div>
