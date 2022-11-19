@@ -20,7 +20,7 @@ Internet connection dropped. Messages are in standby mode. As soon as a relation
 ![JSON RPC Batch Requests](/assets/img/batch-requests.svg)
 -->
 
-```php
+```json
 [
   {
     "jsonrpc": "2.0",
@@ -47,6 +47,17 @@ curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '[{"jsonrpc":"2.0","m
 
 Execution result:
 
-```bash
-[{"id":"1","result":"pong","jsonrpc":"2.0"},{"id":"2","result":"pong","jsonrpc":"2.0"}]
+```json
+[
+  {
+    "id": "1",
+    "result": "pong",
+    "jsonrpc": "2.0"
+  },
+  {
+    "id": "2",
+    "result": "pong",
+    "jsonrpc": "2.0"
+  }
+]
 ```
