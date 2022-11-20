@@ -23,6 +23,7 @@ return [
             'Binding'             => 'docs/binding',             
             'Testing'             => 'docs/testing',
             'Proxy'               => 'docs/proxy',
+            'Security'            => 'docs/security',
             'Compression'         => 'docs/compression',
         ],
     ],
