@@ -294,10 +294,13 @@
 <pre><code class="language-php">use Illuminate\Support\Facades\Http;
 use Sajya\Client\Client;
 
+// Create the JSON RPC client
 $client = new Client(Http::baseUrl('http://localhost:8000/api/v1/endpoint'));
 
+// Call the 'tennis' method on the server
 $response = $client-&gt;execute('tennis@ping');
 
+// Print the response from the server
 $response-&gt;result(); // pong</code></pre>
 <p>By default, the request identifier will be generated using the <a href="https://en.wikipedia.org/wiki/Universally_unique_identifier">UUID</a>, you can get it by calling the <code>id()</code> method</p>
 <pre><code class="language-php">$response-&gt;id();</code></pre>
