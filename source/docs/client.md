@@ -27,10 +27,13 @@ $ composer require sajya/client
 use Illuminate\Support\Facades\Http;
 use Sajya\Client\Client;
 
+// Create the JSON RPC client
 $client = new Client(Http::baseUrl('http://localhost:8000/api/v1/endpoint'));
 
+// Call the 'tennis' method on the server
 $response = $client->execute('tennis@ping');
 
+// Print the response from the server
 $response->result(); // pong
 ```
 
