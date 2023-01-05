@@ -19,7 +19,7 @@
         "laravel-mix": "^4.1.4",
         "laravel-mix-purgecss": "^3.0.0",
         "node-cmd": "^3.0.0",
-        "resolve-url-loader": "^3.1.1",
+        "resolve-url-loader": "^3.1.5",
         "sass": "^1.25.0",
         "sass-loader": "^7.3.1",
         "vue-template-compiler": "^2.6.11",
