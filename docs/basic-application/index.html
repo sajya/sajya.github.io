@@ -284,12 +284,10 @@
             <div class="col-12 col-md-9">
 
                 <main class="content">
-                    <h1>Basic application</h1>
-<p>Automatic use via Laravel routes is a very great feature of Sajya, but JSON-RPC is not limited to HTTP transport only.
-You can use it for your own WebSockets, console command, or other situations.</p>
+                    <h1>Basic Application</h1>
+<p>Sajya is a JSON-RPC server for Laravel that allows for automatic use through Laravel routes, but JSON-RPC is not limited to HTTP transport only. It can also be used with WebSockets, console commands, or other situations.</p>
 <h2>Usage</h2>
-<p>The <code>Sajya\Server\Guide</code> class is the entry point to your JSON-RPC application and is used to register procedures.
-To use, you need to create an instance of a class and call the <code>handle</code> method:</p>
+<p>To use Sajya in your application, you will need to use the <code>Sajya\Server\Guide</code> class as the entry point for your JSON-RPC application. This class is used to register procedures and handle requests. To use it, you will need to create an instance of the Guide class and call its <code>handle</code> method:</p>
 <pre><code class="language-php">use Sajya\Server\Guide;
 
 /**
@@ -301,15 +299,14 @@ $guide = new Guide([
 ]);
 
 $response = $guide-&gt;handle('{"jsonrpc": "2.0", "method": "sajya@hello", "id": 1}');</code></pre>
-<p>The result will be a class that you can change or easily modify into a JSON string for the response:</p>
+<p>The result of this will be a class that you can modify or easily convert into a JSON string for the response:</p>
 <pre><code class="language-php">echo json_encode($response);</code></pre>
 <h2>Executing Notification Requests</h2>
-<p>Please note that notification requests are not executed immediately. This can be a problem in long-lived applications.
-To execute them manually, you need to call the <code>terminate</code> method for container. This will lead to the call of all deferred processing:</p>
+<p>It is important to note that notification requests are not executed immediately. This can be a problem in long-lived applications. To execute them manually, you can call the <code>terminate</code> method on the container:</p>
 <pre><code class="language-php">use Illuminate\Foundation\Application;
 
 Application::getInstance()-&gt;terminate()</code></pre>
-<p>Or use which will process deferred tasks every time:</p>
+<p>Alternatively, you can use the <code>terminate</code> method on the <code>Guide</code> instance, which will process deferred tasks every time:</p>
 <pre><code class="language-php">$response = $guide-&gt;terminate('{"jsonrpc": "2.0", "method": "sajya@hello", "id": 1}');</code></pre>                </main>
             </div>
         </div>
