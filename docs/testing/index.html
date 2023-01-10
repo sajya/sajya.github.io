@@ -286,10 +286,10 @@
                 <main class="content">
                     <h1>Testing</h1>
 <hr />
-<h2>Writing and running tests</h2>
-<p>In this example, we will create a simple test validation method from the <a href="/docs/quickstart">&quot;Quick Start&quot;</a> tutorial. To create a new test case, use the <code>make:test</code> Artisan command:</p>
+<h2>Writing and Running Tests</h2>
+<p>In this example, we will create a simple test case to validate a method from the <a href="/docs/quickstart">&quot;Quick Start&quot;</a> tutorial. To create a new test case, use the <code>make:test</code> Artisan command:</p>
 <pre><code class="language-bash">php artisan make:test PingPongTest</code></pre>
-<p>To make things easier, Sajya delivery already has a trait helper, <code>ProceduralRequests</code>. Let's add it to our test class:</p>
+<p>To make things easier, the Sajya delivery package includes a trait called <code>ProceduralRequests</code> which we can add to our test class:</p>
 <pre><code class="language-php">namespace Tests\Feature;
 
 use Sajya\Server\Testing\ProceduralRequests;
@@ -301,7 +301,7 @@ class PingPongTest extends TestCase
 
     //...
 }</code></pre>
-<p>Then we will modify the generated example to refer to our procedure server:</p>
+<p>Next, we will modify the generated example to refer to our procedure server:</p>
 <pre><code class="language-php">namespace Tests\Feature;
 
 use Sajya\Server\Testing\ProceduralRequests;
@@ -326,9 +326,9 @@ class PingPongTest extends TestCase
             ]);
     }
 }</code></pre>
-<p>We can now run the test using the command:</p>
+<p>To run the test, use the following command:</p>
 <pre><code class="language-bash">php artisan test</code></pre>
-<p>You can find more information about testing on the website <a href="https://laravel.com/docs/testing">Laravel</a></p>                </main>
+<p>For more information on testing in Laravel, you can refer to the <a href="https://laravel.com/docs/testing">Laravel</a> documentation.</p>                </main>
             </div>
         </div>
     </div>
