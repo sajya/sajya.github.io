@@ -9,15 +9,16 @@ section: content
 
 ----
 
-## Writing and running tests
+## Writing and Running Tests
 
-In this example, we will create a simple test validation method from the ["Quick Start"](/docs/quickstart) tutorial. To create a new test case, use the `make:test` Artisan command:
+
+In this example, we will create a simple test case to validate a method from the ["Quick Start"](/docs/quickstart) tutorial. To create a new test case, use the `make:test` Artisan command:
 
 ```bash
 php artisan make:test PingPongTest
 ```
 
-To make things easier, Sajya delivery already has a trait helper, `ProceduralRequests`. Let's add it to our test class:
+To make things easier, the Sajya delivery package includes a trait called `ProceduralRequests` which we can add to our test class:
 
 ```php
 namespace Tests\Feature;
@@ -33,7 +34,7 @@ class PingPongTest extends TestCase
 }
 ```
 
-Then we will modify the generated example to refer to our procedure server:
+Next, we will modify the generated example to refer to our procedure server:
 
 ```php
 namespace Tests\Feature;
@@ -62,10 +63,10 @@ class PingPongTest extends TestCase
 }
 ```
 
-We can now run the test using the command:
+To run the test, use the following command:
 
 ```bash
 php artisan test
 ```
 
-You can find more information about testing on the website [Laravel](https://laravel.com/docs/testing)
+For more information on testing in Laravel, you can refer to the [Laravel](https://laravel.com/docs/testing) documentation.
