@@ -5,15 +5,13 @@ extends: _layouts.documentation
 section: content
 ---
 
-# Basic application
+# Basic Application
 
-Automatic use via Laravel routes is a very great feature of Sajya, but JSON-RPC is not limited to HTTP transport only.
-You can use it for your own WebSockets, console command, or other situations.
+Sajya is a JSON-RPC server for Laravel that allows for automatic use through Laravel routes, but JSON-RPC is not limited to HTTP transport only. It can also be used with WebSockets, console commands, or other situations.
 
 ## Usage
 
-The `Sajya\Server\Guide` class is the entry point to your JSON-RPC application and is used to register procedures.
-To use, you need to create an instance of a class and call the `handle` method:
+To use Sajya in your application, you will need to use the `Sajya\Server\Guide` class as the entry point for your JSON-RPC application. This class is used to register procedures and handle requests. To use it, you will need to create an instance of the Guide class and call its `handle` method:
 
 
 ```php
@@ -30,7 +28,7 @@ $guide = new Guide([
 $response = $guide->handle('{"jsonrpc": "2.0", "method": "sajya@hello", "id": 1}');
 ```
 
-The result will be a class that you can change or easily modify into a JSON string for the response:
+The result of this will be a class that you can modify or easily convert into a JSON string for the response:
 
 ```php
 echo json_encode($response);
@@ -39,8 +37,9 @@ echo json_encode($response);
 
 ## Executing Notification Requests
 
-Please note that notification requests are not executed immediately. This can be a problem in long-lived applications. 
-To execute them manually, you need to call the `terminate` method for container. This will lead to the call of all deferred processing:
+
+It is important to note that notification requests are not executed immediately. This can be a problem in long-lived applications. To execute them manually, you can call the `terminate` method on the container:
+
 
 ```php
 use Illuminate\Foundation\Application;
@@ -48,7 +47,7 @@ use Illuminate\Foundation\Application;
 Application::getInstance()->terminate()
 ```
 
-Or use which will process deferred tasks every time:
+Alternatively, you can use the `terminate` method on the `Guide` instance, which will process deferred tasks every time:
 
 ```php
 $response = $guide->terminate('{"jsonrpc": "2.0", "method": "sajya@hello", "id": 1}');
