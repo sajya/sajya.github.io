@@ -56,5 +56,9 @@ curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '{"jsonrpc":"2.0","me
 And the result is
 
 ```json
-{"id": "2", "result": "Hello 2", "jsonrpc": "2.0"}
+{
+  "id": "2",
+  "result": "Hello 2",
+  "jsonrpc": "2.0"
+}
 ```
