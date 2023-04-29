@@ -358,7 +358,7 @@
                         <p>
                             Documentation and examples for a quick and successful implementation.
                         </p>
-                        <a href="#" class="icon-link d-flex align-items-center text-body-secondary">
+                        <a href="/docs" class="icon-link d-flex align-items-center text-body-secondary">
                             <span>Read The Docs</span>
 
                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-arrow-right-short ms-1" viewBox="0 0 16 16">
@@ -376,7 +376,7 @@
                             <h3 class="fs-2 fw-normal ms-3">Source</h3>
                         </div>
                         <p>Head over to GitHub for code, bug reports, and pull requests.</p>
-                        <a href="#" class="icon-link d-flex align-items-center text-body-secondary">
+                        <a href="https://github.com/sajya" class="icon-link d-flex align-items-center text-body-secondary" target="_blank">
                             <span>Source Code</span>
 
                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-arrow-right-short ms-1" viewBox="0 0 16 16">
