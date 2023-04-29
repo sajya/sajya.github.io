@@ -285,7 +285,7 @@
                     </div>
 
                     <div class="row g-4 py-md-5 py-3 row-cols-1 row-cols-lg-3">
-                        <div class="feature col mb-5 mb-md-0">
+                        <div class="feature col">
 
                             <div class="d-flex align-items-center">
                                 <div
@@ -302,7 +302,7 @@
                                 Build the API to your React, Vue.js and Angular web apps.
                             </p>
                         </div>
-                        <div class="feature col mb-5 mb-md-0">
+                        <div class="feature col">
 
                             <div class="d-flex align-items-center">
                                 <div
