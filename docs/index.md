@@ -9,11 +9,8 @@ section: content
 
 **Sajya** is an open and free project whose goal is to provide easy implementation of the JSON-RPC 2.0 server for the Laravel framework.
 
-
-The manual contains information on how to use the package, but does not explain how to use the framework.
+> The manual contains information on how to use the package, but does not explain how to use the framework.
 It is highly recommended that you read the [Laravel documentation](https://laravel.com/docs/).
-
-----
 
 
 ## What is JSON-RPC 2.0?
