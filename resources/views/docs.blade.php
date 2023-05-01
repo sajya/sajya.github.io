@@ -17,7 +17,7 @@
                     </h1>
 
                             <div class="d-flex">
-                             <a href="{{ $edit }}" class="mx-auto d-none d-md-flex align-items-center text-decoration-none text-nowrap small"
+                             <a href="{{ $edit }}" class="mx-auto d-none d-md-flex align-items-center text-decoration-none text-nowrap small text-muted"
                                title="View and edit this file on GitHub" target="_blank" rel="noopener"
                             >
                                 <svg class="me-2" xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" viewBox="0 0 32 32" fill="currentColor">

@@ -10,11 +10,10 @@
                     <div class="my-3 p-3">
                         <h1 class="display-5 mb-4">
                             <span class="text-primary">{</span> JSON-RPC <span class="text-primary">}</span>
-                            <small class="d-block mt-1">The simplest way to create API</small>
+                            <small class="d-block mt-1">The simplest way to create APIs</small>
                         </h1>
 
-
-                        <p class="lead text-muted">A remote procedure call protocol that is designed to be simple and easy to use!</p>
+                        <p class="lead text-muted">Because the protocol was originally designed to be simple and easy to use!</p>
                     </div>
                     <div class="bg-body shadow-sm mx-auto p-3"
                          style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
@@ -428,7 +427,7 @@
         <div class="px-4 py-md-5 my-5">
             <div class="col-lg-8 mx-auto text-start">
                 <section class="row g-md-5 mb-4">
-                    <div class="col-lg-7 main">
+                    <div class="col-lg-7 main order-last order-md-first">
                         <p class="text-muted small text-center mb-1"></p>
                         <pre><code class="language-php">declare(strict_types=1);
 
@@ -445,7 +444,7 @@ class UserProcedure extends Procedure
     }
 }</code></pre>
                     </div>
-                    <div class="col-lg-5">
+                    <div class="col-lg-5 order-first order-md-last">
                         <div
                             class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3 p-3 rounded-4">
                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor"
