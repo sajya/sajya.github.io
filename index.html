@@ -257,7 +257,11 @@
                 <section class="row g-md-5 mb-4">
                     <div class="col-lg-7 main">
                         <p class="text-muted small text-center mb-1"></p>
-                        <pre><code class="language-php">
+                        <pre><code class="language-php">declare(strict_types=1);
+
+namespace App\Http\Procedures;
+
+use App\Models\User;
 use Sajya\Server\Procedure;
 
 class UserProcedure extends Procedure
