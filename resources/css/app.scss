@@ -106,7 +106,7 @@ main, main div {
 }
 
 
-main {
+main, .main {
     line-height: 1.5em;
     overflow: initial;
     color: $body-color;
@@ -202,11 +202,11 @@ main {
             top: -0.5em;
             left: -0.3em;
             background-color: #e4dccf;
-            color: rgb(0 0 0 / 40%);
+            color: rgb(0 0 0 / 50%);
             content: "!";
             width: 1.5em;
             height: 1.5em;
-            border-radius: 100%;
+            border-radius: 0.8rem;
             text-align: center;
             font-weight: 600;
             font-size: 1.5em;
@@ -214,7 +214,7 @@ main {
             align-self: center;
             justify-content: center;
             align-items: center;
-            box-shadow: 5px 5px 13px rgba(63, 26, 60, 0.29);
+            //box-shadow: 5px 5px 13px rgba(63, 26, 60, 0.29);
         }
         >p{
             margin-bottom: 0;
@@ -272,4 +272,11 @@ main {
         }
     }
 
+}
+
+
+@include media-breakpoint-up(lg) {
+    .border-lg-start {
+        border-left: var(--bs-border-width) solid var(--bs-border-color);
+    }
 }
