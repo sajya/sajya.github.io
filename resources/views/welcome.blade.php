@@ -292,15 +292,17 @@
 
                 <h3 class="display-5 mb-3">Easy to use</h3>
                 <p class="fw-normal">
-                Request and response format is unified and easy to use, allowing even beginners to work.
-                </p>
-                <p class="fw-normal">
-                Use any transport you prefer, including HTTP, WebSocket, or others.
+                    Request and response format is unified and easy to use, allowing even beginners to work.
+                    Use any transport you prefer, including <code>HTTP</code>, <code>WebSocket</code>, or others.
                 </p>
 
+                <p class="fw-normal small text-muted">Learn more about <a href="/docs/specification">Specification</a>.</p>
+
+                {{--
                 <p class="fw-normal">
-                With JSON-RPC, forget about disputes in your team about the right way to create requests and process responses. This guarantees fast implementation and maximum performance for your project.
+                    With JSON-RPC, forget about disputes in your team about the right way to create requests and process responses. This guarantees fast implementation and maximum performance for your project.
                 </p>
+                --}}
 
 
             </div>
@@ -338,8 +340,9 @@
                     <h3 class="fw-normal ms-3">Batch</h3>
                     </div>
                     <p class="pe-lg-5">
-                        Ability to send several different requests in one API call. This helps reduce network costs and speed up your application.
+                        Ability to send several requests in one API call. This helps reduce network costs and speed up your application.
                     </p>
+                    <p class="fw-normal small text-muted">Learn more about <a href="/docs/batch">batch requests</a>.</p>
                 </div>
                 <div class="col-lg-6 py-lg-4 border-lg-start">
                     <div class="d-flex align-items-center">
@@ -356,6 +359,7 @@
                     <p class="pe-lg-5">
                         Send requests that do not need to be answered. Customers won't have to wait for the request to actually be fulfilled.
                     </p>
+                    <p class="fw-normal small text-muted">Learn more about <a href="/docs/notifications">notifications requests</a>.</p>
                 </div>
 
 
@@ -449,8 +453,10 @@ class UserProcedure extends Procedure
 
                         <h3 class="display-5 mb-3">Binding</h3>
                         <p class="fw-normal">
-                            With Binding you can bind values of query parameters to various objects such as Eloquent models, Enums and others, which allows you to work with data in your project quickly and conveniently.
+                            Bind values of query parameters to various objects such as <code>Eloquent</code> models, <code>Enums</code> and others, which allows you to work with data in your project quickly and conveniently.
                         </p>
+
+                        <p class="fw-normal small text-muted">Learn more about <a href="/docs/notifications">Binding</a>.</p>
                     </div>
                 </section>
                 <section class="row g-3 g-md-5 justify-content-center">
@@ -469,6 +475,8 @@ class UserProcedure extends Procedure
                         <p class="pe-lg-5">
                             Automatically validates incoming requests to ensure they meet your specifications. You can also customize the error messages that are returned if the validation fails.
                         </p>
+                        <p class="fw-normal small text-muted">Learn more about <a href="/docs/requests">request validation</a>.</p>
+
                     </div>
                     <div class="col-lg-6 py-lg-4 border-lg-start">
                         <div class="d-flex align-items-center">
@@ -485,6 +493,8 @@ class UserProcedure extends Procedure
                         <p class="pe-lg-5">
                             Add tests with ease using our developer friendly API testing tool.
                         </p>
+
+                        <p class="fw-normal small text-muted">Learn more about <a href="/docs/requests">testing</a>.</p>
                     </div>
                 </section>
             </div>
