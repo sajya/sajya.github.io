@@ -5,7 +5,7 @@
         <ul>
             @foreach($values as $title => $link)
                 <li class="border-start border-3 px-2 px-md-3 py-1 {{ active('*'.$link, 'border-secondary active-doc-menu') }}">
-                    <a href="{{$link}}" class="text-decoration-none {{ active('*'.$link, 'text-secondary') }}">
+                    <a href="{{$link}}" class="{{ is_active('*'.$link) ? 'text-secondary' : 'text-decoration-none'}}">
                         {!! $title !!}
                     </a>
                 </li>
