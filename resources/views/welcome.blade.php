@@ -459,7 +459,7 @@ class UserProcedure extends Procedure
                             Bind values of query parameters to various objects such as <code>Eloquent</code> models, <code>Enums</code> and others, which allows you to work with data in your project quickly and conveniently.
                         </p>
 
-                        <p class="fw-normal small text-muted">Learn more about <a href="/docs/notifications">Binding</a>.</p>
+                        <p class="fw-normal small text-muted">Learn more about <a href="/docs/binding">Binding</a>.</p>
                     </div>
                 </section>
                 <section class="row g-3 g-md-5 justify-content-center">
@@ -496,7 +496,7 @@ class UserProcedure extends Procedure
                             Add tests with ease using our developer friendly API testing tool.
                         </p>
 
-                        <p class="fw-normal small text-muted">Learn more about <a href="/docs/requests">testing</a>.</p>
+                        <p class="fw-normal small text-muted">Learn more about <a href="/docs/testing">testing</a>.</p>
                     </div>
                 </section>
             </div>
