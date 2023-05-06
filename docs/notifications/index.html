@@ -193,7 +193,13 @@
                 <main class="py-2 px-3 py-md-4 px-md-4 ms-md-4 me-md-auto order-md-first overflow-auto">
                     <body><p>A Notification is a request object that does not have an <code>id</code> member. This means that the client is not interested in receiving a response from the server for this request. As a result, the server will not send a response for a Notification.</p>
 <p>You can try out a Notification by using the following curl command:</p>
-<pre><code class="language-bash">curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '{"jsonrpc":"2.0","method":"tennis@ping"}'
+<pre><code class="language-bash">curl --location --request POST 'http://127.0.0.1:8000/api/v1/endpoint' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+	"jsonrpc":"2.0",
+	"method":"tennis@ping",
+	"id":1
+}'
 </code></pre>
 <p>The execution result should be an empty JSON object:</p>
 <pre><code class="language-bash">{}
