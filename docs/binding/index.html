@@ -204,7 +204,8 @@
 }
 </code></pre>
 <p>In this case, we need to write something like the following in the handler:</p>
-<pre><code class="language-php">public function subtract(Request $request) {
+<pre><code class="language-php">public function subtract(Request $request): int
+{
     return $request-&gt;get('a') - $request-&gt;get('b');
 }
 </code></pre>
