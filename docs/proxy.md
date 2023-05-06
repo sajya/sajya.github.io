@@ -48,7 +48,13 @@ class FixtureProxyProcedure extends Procedure implements Proxy
 After that, we can call any method of this procedure:
 
 ```bash
-curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '{"jsonrpc":"2.0","method":"proxy@ping","id":2}'
+curl --location --request POST 'http://127.0.0.1:8000/api/v1/endpoint' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+	"jsonrpc":"2.0",
+	"method":"proxy@ping",
+	"id":2
+}'
 ```
 
 And the result is
