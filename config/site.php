@@ -13,7 +13,7 @@ return [
                 'Specification' => '/docs/specification',
         ],
         'Getting Started' => [
-                'Installation'   => '/docs/installation',
+                //'Installation'   => '/docs/installation',
                 'Quick Start'    => '/docs/quickstart',
                 'Notifications'  => '/docs/notifications',
                 'Batch'          => '/docs/batch',
