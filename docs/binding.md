@@ -26,7 +26,8 @@ For example, let's take the following simple procedure, where we pass two values
 In this case, we need to write something like the following in the handler:
 
 ```php
-public function subtract(Request $request) {
+public function subtract(Request $request): int
+{
     return $request->get('a') - $request->get('b');
 }
 ```
