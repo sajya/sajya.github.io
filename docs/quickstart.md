@@ -98,7 +98,13 @@ To turn to the required method, you must pass the name specified in the class an
 Let's make a `curl` call to the new API:
 
 ```bash
-curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '{"jsonrpc":"2.0","method":"tennis@ping","id":1}'
+curl --location --request POST 'http://127.0.0.1:8000/api/v1/endpoint' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+	"jsonrpc":"2.0",
+	"method":"tennis@ping",
+	"id":1
+}'
 ```
 
 The result will be the resulting JSON string:
