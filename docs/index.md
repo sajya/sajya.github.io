@@ -60,7 +60,8 @@ You can find out more on the [specification page](/docs/specification).
 ## How to install?
 
 The package is freely distributed over the Internet, [source codes](https://github.com/sajya/server), and [release notes](https://github.com/sajya/server/releases) are published on GitHub.
-The [installation manual](/docs/installation/) contains detailed instructions.
+The [Quick Start](/docs/quickstart) contains detailed instructions.
+
 
 
 > To suggest improvements to this guide, [create a new issue](https://github.com/sajya/sajya.github.io/issues/new).
