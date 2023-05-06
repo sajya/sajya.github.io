@@ -8,7 +8,7 @@
     <x-meta
         title="{{ View::getSection('title') ?  View::getSection('title') . ' | ' : '' }}{{ config('site.name') }}"
         description="{{ View::getSection('description', config('site.description')) }}"
-        image="https://github.com/orchidsoftware/art/raw/master/orchid-share.jpg"
+        image="https://opengraph.githubassets.com/master/sajya/server"
     />
 
     <meta name="google-site-verification" content="CezCm3VnIMolzHC65_TaI0DMhs4fJv2A7fWTPJrnp9s" />
