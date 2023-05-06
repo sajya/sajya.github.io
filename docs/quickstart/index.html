@@ -256,7 +256,13 @@ Route::rpc('/v1/endpoint', [TennisProcedure::class])-&gt;name('rpc.endpoint');
 <h2><a href='#check-response' id='check-response'>Check response</a></h2>
 <p>To turn to the required method, you must pass the name specified in the class and the necessary process with the delimiter &ldquo;@&rdquo; character. In our case, it will be: <code>tennis@ping</code>.</p>
 <p>Let&rsquo;s make a <code>curl</code> call to the new API:</p>
-<pre><code class="language-bash">curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '{"jsonrpc":"2.0","method":"tennis@ping","id":1}'
+<pre><code class="language-bash">curl --location --request POST 'http://127.0.0.1:8000/api/v1/endpoint' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+	"jsonrpc":"2.0",
+	"method":"tennis@ping",
+	"id":1
+}'
 </code></pre>
 <p>The result will be the resulting JSON string:</p>
 <pre><code class="language-json">{
