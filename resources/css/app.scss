@@ -275,6 +275,9 @@ main, .main {
 
 }
 
+main > h2:first-of-type {
+    margin-top: 0 !important;
+}
 
 @include media-breakpoint-up(lg) {
     .border-lg-start {
