@@ -6,9 +6,13 @@ section: content
 ---
 
 
-At this stage, you must already [installed the framework and package](/docs/installation)
+## Install via Composer
 
-----
+Navigate to your project directory and install Sajya using Composer:
+
+```bash
+composer require sajya/server
+```
 
 
 ## Creating Procedures
