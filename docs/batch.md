@@ -36,7 +36,20 @@ Note that in this scenario, the individual requests are independent and can ther
 To try out batch processing, you can use the following `curl` command:
 
 ```bash
-curl 'http://127.0.0.1:8000/api/v1/endpoint' --data-binary '[{"jsonrpc":"2.0","method":"tennis@ping","id":1},{"jsonrpc":"2.0","method":"tennis@ping","id":2}]'
+curl --location --request POST 'http://127.0.0.1:8000/api/v1/endpoint' \
+--header 'Content-Type: application/json' \
+--data-raw '[
+  {
+    "jsonrpc": "2.0",
+    "method": "tennis@ping",
+    "id": 1
+  },
+  {
+    "jsonrpc": "2.0",
+    "method": "tennis@ping",
+    "id": 2
+  }
+]'
 ```
 
 The execution result should be as follows:
