@@ -5,6 +5,7 @@ extends: _layouts.documentation
 section: content
 ---
 
+## Introduction
 
 The HTTP(S) Client is a standalone package that uses your PHP code to make requests. Built on [Laravel](https://laravel.com/docs/8.x/http-client#introduction) (Doesn't require the entire framework, just its component) expressive HTTP shell, it allows you to customize things like authorization, retries, and more.
 
