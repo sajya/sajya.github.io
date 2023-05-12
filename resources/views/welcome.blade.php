@@ -293,7 +293,7 @@
                 <h3 class="display-5 mb-3">Easy to use</h3>
                 <p class="fw-normal">
                     Request and response format is unified and easy to use, allowing even beginners to work.
-                    Use any transport you prefer, including <code>HTTP</code>, <code>WebSocket</code> <code>Server Sent Events</code>, or others.
+                    Use any transport you prefer, including <code>HTTP</code>, <code>WebSocket</code>, <code>Server Sent Events</code>, or others.
                 </p>
 
                 <p class="fw-normal small text-muted">Learn more about <a href="/docs/specification">Specification</a>.</p>
