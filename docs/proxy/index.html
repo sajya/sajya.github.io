@@ -191,8 +191,9 @@
             </div>
             <div class="col-12 col-md-auto me-auto bg-white py-md-3">
                 <main class="py-2 px-3 py-md-4 px-md-4 ms-md-4 me-md-auto order-md-first overflow-auto">
-                    <body><p>When using multiple services that are responsible for only a small defined part, you do not need to create multiple entry points or duplicate methods.
-Instead, you can use a proxy procedure that will execute the underlying method in the absence of suitable ones.</p>
+                    <body><h2><a href='#introduction' id='introduction'>Introduction</a></h2>
+<p>Proxy procedures in the application provide a way to handle requests for multiple services without duplicating methods or creating separate entry points.
+Instead, a proxy procedure acts as a fallback that executes the underlying method when no suitable method is found.</p>
 <h2><a href='#usage' id='usage'>Usage</a></h2>
 <p>An indication that a procedure must handle all requests containing its name is the presence of a <code>Proxy</code> interface.
 When no method is found in such a procedure, it will execute the <code>__invoke</code> method, passing the <code>JSON-RPC</code> request itself. For example:</p>
