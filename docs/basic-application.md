@@ -5,6 +5,7 @@ extends: _layouts.documentation
 section: content
 ---
 
+## Introduction
 
 Sajya is a JSON-RPC server for Laravel that allows for automatic use through Laravel routes, but JSON-RPC is not limited to HTTP transport only. It can also be used with WebSockets, console commands, or other situations.
 
