@@ -5,10 +5,10 @@ extends: _layouts.documentation
 section: content
 ---
 
+## Introduction
 
-When using multiple services that are responsible for only a small defined part,
-you do not need to create multiple entry points or duplicate methods.
-Instead, you can use a proxy procedure that will execute the underlying method in the absence of suitable ones.
+Proxy procedures in the application provide a way to handle requests for multiple services without duplicating methods or creating separate entry points.
+Instead, a proxy procedure acts as a fallback that executes the underlying method when no suitable method is found.
 
 ## Usage
 
