@@ -6,24 +6,30 @@ section: content
 ---
 
 
-A Notification is a request object that does not have an `id` member. This means that the client is not interested in receiving a response from the server for this request. As a result, the server will not send a response for a Notification.
+## Using Notifications
 
-You can try out a Notification by using the following curl command:
+Notifications are a special type of request object that does not expect a response from the server. They are useful when the client wants to send events or updates to the server without waiting for a response. By omitting the `id` member in the request object, the client indicates that it does not require a response for this specific request.
+
+### Trying out a Notification
+
+To try out a Notification, you can use the following `curl` command:
 
 ```bash
 curl --location --request POST 'http://127.0.0.1:8000/api/v1/endpoint' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-	"jsonrpc":"2.0",
-	"method":"tennis@ping",
-	"id":1
+    "jsonrpc": "2.0",
+    "method": "tennis@ping",
+    "id": 1
 }'
 ```
 
-The execution result should be an empty JSON object:
+Executing this command will result in an empty JSON object as the response:
 
 ```bash
 {}
 ```
 
-Notifications are useful when the client is only interested in triggering an action on the server, but does not need to receive a response. They can be used to send events or updates to the server without requiring a response, allowing for more efficient communication between client and server.
+### Benefits of Notifications
+
+Using Notifications can optimize your web application's performance by reducing unnecessary server responses. Since Notifications do not require a response, they enable more efficient communication between the client and server. By clearly indicating that the client is not interested in receiving a response, the communication becomes faster and lighter, contributing to better overall performance.
