@@ -10,60 +10,59 @@ section: content
 The HTTP(S) Client is a standalone package that uses your PHP code to make requests. Built on [Laravel](https://laravel.com/docs/8.x/http-client#introduction) (Doesn't require the entire framework, just its component) expressive HTTP shell, it allows you to customize things like authorization, retries, and more.
 
 
-## Install
+### Installation
 
-Go to the project directory and run the command:
+To install the client package, navigate to your project directory and run the following command:
 
-```php
-$ composer require sajya/client
+```bash
+composer require sajya/client
 ```
 
+### Basic Usage
 
-## Usage
+To use the client, you'll need to import the necessary classes and create an instance of the `Client` class. You can then make requests and process the responses. Here's an example:
 
 ```php
 use Illuminate\Support\Facades\Http;
 use Sajya\Client\Client;
 
-// Create the JSON RPC client
+// Create the HTTP(S) Client and specify the base URL
 $client = new Client(Http::baseUrl('http://localhost:8000/api/v1/endpoint'));
 
-// Call the 'tennis' method on the server
+// Make a request to the server
 $response = $client->execute('tennis@ping');
 
 // Print the response from the server
-$response->result(); // pong
+echo $response->result(); // pong
 ```
 
-By default, the request identifier will be generated using the [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier), you can get it by calling the `id()` method
+By default, the request identifier is generated using a [UUID](https://en.wikipedia.org/wiki/Universally_unique_identifier). You can retrieve the request identifier by calling the `id()` method on the response object:
 
 ```php
-$response->id();
+echo $response->id();
 ```
 
-To get the result of an error, you need to call the `error()` method
+To retrieve the result of an error response, you can use the `error()` method:
 
 ```php
-$response->error();
+echo $response->error();
 ```
 
-### Parameters
+### Request Parameters
 
-Example with positional parameters:
+You can pass parameters to your requests either as positional parameters or named arguments. Here are examples of both:
 
 ```php
+// Positional parameters
 $response = $client->execute('tennis@ping', [3, 5]);
-```
 
-Example with named arguments:
-
-```php
+// Named arguments
 $response = $client->execute('tennis@ping', ['end' => 10, 'start' => 1]);
 ```
 
-### Batch requests
+### Batch Requests
 
-Call several procedures in a single HTTP request:
+You can also make batch requests, where multiple procedures are called in a single HTTP request. This can be achieved using the `batch` method of the `Client` class. Here's an example:
 
 ```php
 $responses = $client->batch(function (Client $client) {
@@ -72,8 +71,12 @@ $responses = $client->batch(function (Client $client) {
 });
 ```
 
-### Notify requests
+### Notify Requests
+
+In addition to regular requests, you can also send notify requests. Notify requests are similar to regular requests but without waiting for a response. Here's an example:
 
 ```php
 $client->notify('procedure@method');
 ```
+
+With the HTTP(S) Client, you have powerful capabilities for making HTTP requests and processing responses in your PHP applications.
