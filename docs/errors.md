@@ -5,12 +5,13 @@ extends: _layouts.documentation
 section: content
 ---
 
+## Introduction
 
 Sajya tries to fully comply with the standards and expectations that apply to [Laravel](https://laravel.com/docs/errors). For example, with the `debug` option enabled in the `config/app.php` configuration file, the response error information will contain much more information.
 
-## Throw Exceptions
+## Throwing Exceptions
 
-During operation, you can throw exceptions that will be converted into a valid JSON-RPC response without your intervention. For example:
+During the operation of your application, you can throw exceptions that will be converted into a JSON-RPC response without any intervention required. Here's an example:
 
 ```php
 declare(strict_types=1);
@@ -31,7 +32,8 @@ class TennisProcedure extends Procedure
 }
 ```
 
-Will lead to the following response:
+In this example, when the ping method is called, an exception is thrown with a custom message and error code.
+The resulting JSON-RPC response will contain the error details:
 
 ```json
 {
