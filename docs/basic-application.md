@@ -18,14 +18,18 @@ To use Sajya in your application, you will need to use the `Sajya\Server\App` cl
 use Sajya\Server\App;
 
 /**
- * Instantiate App
+ * Instantiate the application
  */
 $app = new App([
-    // Your procedure classes, for example:
+    // Add your procedure classes here, for example:
     SajyaProcedure::class
 ]);
 
-$response = $app->handle('{"jsonrpc": "2.0", "method": "sajya@hello", "id": 1}');
+// Define the JSON-RPC request
+$request = '{"jsonrpc": "2.0", "method": "sajya@hello", "id": 1}';
+
+// Handle the request using the application
+$response = $app->handle($request);
 ```
 
 The result of this will be a class that you can modify or easily convert into a JSON string for the response:
