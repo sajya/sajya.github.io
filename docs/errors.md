@@ -14,8 +14,6 @@ Sajya tries to fully comply with the standards and expectations that apply to [L
 During the operation of your application, you can throw exceptions that will be converted into a JSON-RPC response without any intervention required. Here's an example:
 
 ```php
-declare(strict_types=1);
-
 namespace App\Http\Procedures;
 
 use Exception;
@@ -47,18 +45,18 @@ The resulting JSON-RPC response will contain the error details:
 }
 ```
 
-In order not to repeat, you can make your exception class for this, use inheritance from `Sajya\Server\Exceptions\RpcException`. To do this, create a new Exception class with the `Artisan` command:
+### Custom Exceptions
+
+To avoid repetition, you can create your own exception class that inherits from `Sajya\Server\Exceptions\RpcException`.
+This allows you to define the error message and code for your specific exception. Here's how you can create a custom exception using the Artisan command:
 
 ```bash
 php artisan make:exception DivisionByZero
 ```
-A new file will be created in the `app/Exceptions` directory. Let's change the inheritance to support RPC and define the description and error code:
+
+This will generate a new exception class in the `app/Exceptions` directory. You can then modify this class to support JSON-RPC and define the default message and error code:
 
 ```php
-<?php
-
-declare(strict_types=1);
-
 namespace App\Exceptions;
 
 use Sajya\Server\Exceptions\RpcException;
@@ -66,8 +64,7 @@ use Sajya\Server\Exceptions\RpcException;
 class DivisionByZero extends RpcException
 {
     /**
-     * A String providing a short description of the error.
-     * The message SHOULD be limited to a concise single sentence.
+     * Get the default error message for the exception.
      *
      * @return string
      */
@@ -77,8 +74,7 @@ class DivisionByZero extends RpcException
     }
 
     /**
-     * A Number that indicates the error type that occurred.
-     * This MUST be an integer.
+     * Get the default error code for the exception.
      *
      * @return int
      */
@@ -89,11 +85,14 @@ class DivisionByZero extends RpcException
 }
 ```
 
-We can then throw an exception at runtime and the client will get the correct error code and description: 
+By implementing the `getDefaultMessage` and `getDefaultCode` methods, you can define the default message and code for the exception.
+This allows you to provide a concise description of the error and specify an integer error code.
+
+### Throwing Custom Exceptions
+
+Once you have defined a custom exception, you can throw it during runtime. The JSON-RPC client will receive the correct error code and description in the response. Here's an example:
 
 ```php
-declare(strict_types=1);
-
 namespace App\Http\Procedures;
 
 use App\Exceptions\DivisionByZero;
@@ -109,6 +108,8 @@ class TennisProcedure extends Procedure
     }
 }
 ```
+
+In this example, the `ping` method throws a `DivisionByZero` exception. The JSON-RPC response will include the correct error code and description specified in the exception class.
 
 
 
