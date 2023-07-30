@@ -15,9 +15,9 @@ If you have questions or find an error in the documentation, please indicate the
 
 ## What is JSON-RPC 2.0?
 
-It is a simple stateless protocol for creating Remote Procedure Call (RPC) style APIs.
+JSON-RPC 2.0 is a simple stateless protocol used to create Remote Procedure Call (RPC) style APIs. It enables communication between a client and a server by exchanging JSON messages.
 
-For example, you have an endpoint on the server that accepts requests with a body like:
+For example, on the server side, you might have an endpoint that accepts requests with a JSON body like this:
 
 ```json
 {
@@ -31,7 +31,8 @@ For example, you have an endpoint on the server that accepts requests with a bod
 }
 ```
 
-This request will be responded with:
+The server then responds with a JSON message like this:
+
 ```json
 {
   "jsonrpc": "2.0",
@@ -40,17 +41,16 @@ This request will be responded with:
 }
 ```
 
-
-An example of an error:
+In case of an error, the response might look like this:
 
 ```json
 {
   "jsonrpc": "2.0",
   "error": {
     "code": 1234,
-    "message": "Description of error"
+    "message": "Description of the error"
   },
-  "id": "1"
+  "id": 3
 }
 ```
 
