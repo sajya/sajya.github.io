@@ -191,9 +191,10 @@
             </div>
             <div class="col-12 col-md-auto me-auto bg-white py-md-3">
                 <main class="py-2 px-3 py-md-4 px-md-4 ms-md-4 me-md-auto order-md-first overflow-auto">
-                    <body><p>Sajya tries to fully comply with the standards and expectations that apply to <a href="https://laravel.com/docs/errors">Laravel</a>. For example, with the <code>debug</code> option enabled in the <code>config/app.php</code> configuration file, the response error information will contain much more information.</p>
-<h2><a href='#throw-exceptions' id='throw-exceptions'>Throw Exceptions</a></h2>
-<p>During operation, you can throw exceptions that will be converted into a valid JSON-RPC response without your intervention. For example:</p>
+                    <body><h2><a href='#introduction' id='introduction'>Introduction</a></h2>
+<p>Sajya tries to fully comply with the standards and expectations that apply to <a href="https://laravel.com/docs/errors">Laravel</a>. For example, with the <code>debug</code> option enabled in the <code>config/app.php</code> configuration file, the response error information will contain much more information.</p>
+<h2><a href='#throwing-exceptions' id='throwing-exceptions'>Throwing Exceptions</a></h2>
+<p>During the operation of your application, you can throw exceptions that will be converted into a JSON-RPC response without any intervention required. Here&rsquo;s an example:</p>
 <pre><code class="language-php">declare(strict_types=1);
 
 namespace App\Http\Procedures;
@@ -211,7 +212,8 @@ class TennisProcedure extends Procedure
     }
 }
 </code></pre>
-<p>Will lead to the following response:</p>
+<p>In this example, when the ping method is called, an exception is thrown with a custom message and error code.
+The resulting JSON-RPC response will contain the error details:</p>
 <pre><code class="language-json">{
     "id": "1",
     "error": {
