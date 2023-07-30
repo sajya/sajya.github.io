@@ -192,7 +192,8 @@
             <div class="col-12 col-md-auto me-auto bg-white py-md-3">
                 <main class="py-2 px-3 py-md-4 px-md-4 ms-md-4 me-md-auto order-md-first overflow-auto">
                     <body><h2><a href='#passing-values-to-arguments' id='passing-values-to-arguments'>Passing Values to Arguments</a></h2>
-<p>For example, let&rsquo;s take the following simple procedure, where we pass two values for which we want to get the subtract:</p>
+<p>When working with Sajya, you can easily pass values to the arguments in your handlers. This allows you to retrieve and use the data you need to perform specific actions.</p>
+<p>Let&rsquo;s consider an example where we want to subtract two values. In the JSON-RPC request, we pass the values <code>a</code> and <code>b</code>:</p>
 <pre><code class="language-javascript">{
     "jsonrpc": "2.0",
     "method": "math@subtract",
@@ -203,20 +204,23 @@
     "id": 1
 }
 </code></pre>
-<p>In this case, we need to write something like the following in the handler:</p>
-<pre><code class="language-php">public function subtract(Request $request): int
+<p>To access these values in the handler, you can use the Laravel <code>Request</code> object. Here&rsquo;s an example implementation:</p>
+<pre><code class="language-php">use Illuminate\Http\Request;
+
+public function subtract(Request $request): int
 {
     return $request-&gt;get('a') - $request-&gt;get('b');
 }
 </code></pre>
-<p>Automatic passing of arguments will be by name:</p>
+<p>Alternatively, you can leverage Sajya&rsquo;s automatic argument binding feature. Simply define the argument types in the handler method signature, and Sajya will automatically bind the corresponding values based on their names. For example:</p>
 <pre><code class="language-php">public function subtract(int $a, int $b): int
 {
     return $a - $b;
 }
 </code></pre>
-<p>This will also work for deep things via <code>camelCase</code>:</p>
-<pre><code class="language-php">{
+<p>This way, Sajya will automatically pass the values <code>a</code> and <code>b</code> as integers to the handler method.</p>
+<p>Furthermore, if your request payload contains nested data, you can access it using camel case notation. Consider the following example where the <code>params</code> object has a nested property <code>user</code> with a <code>name</code> value:</p>
+<pre><code class="language-javascript">{
     "jsonrpc": "2.0",
     "method": "....",
     "params": {
@@ -227,12 +231,13 @@
     "id": 1
 }
 </code></pre>
-<p>for argument:</p>
+<p>To access the <code>name</code> value in your handler, you would define an argument with the same name in camel case:</p>
 <pre><code class="language-php">public function handler(string $userName): string
 {
     return $userName;
 }
 </code></pre>
+<p>With this setup, Sajya will automatically bind the value <code>"Alex"</code> to the <code>$userName</code> argument in your handler method.</p>
 <h2><a href='#customizing-the-resolution-logic' id='customizing-the-resolution-logic'>Customizing The Resolution Logic</a></h2>
 <p>If you wish to define your model binding resolution logic, you may use the <code>RPC::bind</code> method. The closure you pass to the bind method will receive the value of the params segment and should return the instance of the class that should be injected into the route. Again, this customization should take place in the boot method of your application&rsquo;s <code>RouteServiceProvider</code>:</p>
 <pre><code class="language-php">use Sajya\Server\Facades\RPC;
