@@ -193,46 +193,50 @@
                 <main class="py-2 px-3 py-md-4 px-md-4 ms-md-4 me-md-auto order-md-first overflow-auto">
                     <body><h2><a href='#introduction' id='introduction'>Introduction</a></h2>
 <p>The HTTP(S) Client is a standalone package that uses your PHP code to make requests. Built on <a href="https://laravel.com/docs/8.x/http-client#introduction">Laravel</a> (Doesn&rsquo;t require the entire framework, just its component) expressive HTTP shell, it allows you to customize things like authorization, retries, and more.</p>
-<h2><a href='#install' id='install'>Install</a></h2>
-<p>Go to the project directory and run the command:</p>
-<pre><code class="language-php">$ composer require sajya/client
+<h3><a href='#installation' id='installation'>Installation</a></h3>
+<p>To install the client package, navigate to your project directory and run the following command:</p>
+<pre><code class="language-bash">composer require sajya/client
 </code></pre>
-<h2><a href='#usage' id='usage'>Usage</a></h2>
+<h3><a href='#basic-usage' id='basic-usage'>Basic Usage</a></h3>
+<p>To use the client, you&rsquo;ll need to import the necessary classes and create an instance of the <code>Client</code> class. You can then make requests and process the responses. Here&rsquo;s an example:</p>
 <pre><code class="language-php">use Illuminate\Support\Facades\Http;
 use Sajya\Client\Client;
 
-// Create the JSON RPC client
+// Create the HTTP(S) Client and specify the base URL
 $client = new Client(Http::baseUrl('http://localhost:8000/api/v1/endpoint'));
 
-// Call the 'tennis' method on the server
+// Make a request to the server
 $response = $client-&gt;execute('tennis@ping');
 
 // Print the response from the server
-$response-&gt;result(); // pong
+echo $response-&gt;result(); // pong
 </code></pre>
-<p>By default, the request identifier will be generated using the <a href="https://en.wikipedia.org/wiki/Universally_unique_identifier">UUID</a>, you can get it by calling the <code>id()</code> method</p>
-<pre><code class="language-php">$response-&gt;id();
+<p>By default, the request identifier is generated using a <a href="https://en.wikipedia.org/wiki/Universally_unique_identifier">UUID</a>. You can retrieve the request identifier by calling the <code>id()</code> method on the response object:</p>
+<pre><code class="language-php">echo $response-&gt;id();
 </code></pre>
-<p>To get the result of an error, you need to call the <code>error()</code> method</p>
-<pre><code class="language-php">$response-&gt;error();
+<p>To retrieve the result of an error response, you can use the <code>error()</code> method:</p>
+<pre><code class="language-php">echo $response-&gt;error();
 </code></pre>
-<h3><a href='#parameters' id='parameters'>Parameters</a></h3>
-<p>Example with positional parameters:</p>
-<pre><code class="language-php">$response = $client-&gt;execute('tennis@ping', [3, 5]);
+<h3><a href='#request-parameters' id='request-parameters'>Request Parameters</a></h3>
+<p>You can pass parameters to your requests either as positional parameters or named arguments. Here are examples of both:</p>
+<pre><code class="language-php">// Positional parameters
+$response = $client-&gt;execute('tennis@ping', [3, 5]);
+
+// Named arguments
+$response = $client-&gt;execute('tennis@ping', ['end' =&gt; 10, 'start' =&gt; 1]);
 </code></pre>
-<p>Example with named arguments:</p>
-<pre><code class="language-php">$response = $client-&gt;execute('tennis@ping', ['end' =&gt; 10, 'start' =&gt; 1]);
-</code></pre>
-<h3><a href='#batch-requests' id='batch-requests'>Batch requests</a></h3>
-<p>Call several procedures in a single HTTP request:</p>
+<h3><a href='#batch-requests' id='batch-requests'>Batch Requests</a></h3>
+<p>You can also make batch requests, where multiple procedures are called in a single HTTP request. This can be achieved using the <code>batch</code> method of the <code>Client</code> class. Here&rsquo;s an example:</p>
 <pre><code class="language-php">$responses = $client-&gt;batch(function (Client $client) {
     $client-&gt;execute('tennis@ping');
     $client-&gt;execute('tennis@ping');
 });
 </code></pre>
-<h3><a href='#notify-requests' id='notify-requests'>Notify requests</a></h3>
+<h3><a href='#notify-requests' id='notify-requests'>Notify Requests</a></h3>
+<p>In addition to regular requests, you can also send notify requests. Notify requests are similar to regular requests but without waiting for a response. Here&rsquo;s an example:</p>
 <pre><code class="language-php">$client-&gt;notify('procedure@method');
 </code></pre>
+<p>With the HTTP(S) Client, you have powerful capabilities for making HTTP requests and processing responses in your PHP applications.</p>
 </body>                </main>
             </div>
         </div>
