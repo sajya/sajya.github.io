@@ -198,8 +198,8 @@
 If you have questions or find an error in the documentation, please indicate the chapter and accompanying text to indicate an error.</p>
 </blockquote>
 <h2><a href='#what-is-json-rpc-20' id='what-is-json-rpc-20'>What is JSON-RPC 2.0?</a></h2>
-<p>It is a simple stateless protocol for creating Remote Procedure Call (RPC) style APIs.</p>
-<p>For example, you have an endpoint on the server that accepts requests with a body like:</p>
+<p>JSON-RPC 2.0&nbsp;is a simple stateless protocol used to create Remote Procedure Call (RPC) style APIs. It enables communication between a client and a server by exchanging JSON messages.</p>
+<p>For example, on the server side, you might have an endpoint that accepts requests with a JSON body like this:</p>
 <pre><code class="language-json">{
   "jsonrpc": "2.0",
   "method": "subtract",
@@ -210,21 +210,21 @@ If you have questions or find an error in the documentation, please indicate the
   "id": 3
 }
 </code></pre>
-<p>This request will be responded with:</p>
+<p>The server then responds with a JSON message like this:</p>
 <pre><code class="language-json">{
   "jsonrpc": "2.0",
   "result": 19,
   "id": 3
 }
 </code></pre>
-<p>An example of an error:</p>
+<p>In case of an error, the response might look like this:</p>
 <pre><code class="language-json">{
   "jsonrpc": "2.0",
   "error": {
     "code": 1234,
-    "message": "Description of error"
+    "message": "Description of the error"
   },
-  "id": "1"
+  "id": 3
 }
 </code></pre>
 <p>You can find out more on the <a href="/docs/specification">specification page</a>.</p>
