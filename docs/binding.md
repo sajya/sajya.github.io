@@ -9,7 +9,9 @@ section: content
 ## Passing Values to Arguments 
 
 
-For example, let's take the following simple procedure, where we pass two values for which we want to get the subtract:
+When working with Sajya, you can easily pass values to the arguments in your handlers. This allows you to retrieve and use the data you need to perform specific actions.
+
+Let's consider an example where we want to subtract two values. In the JSON-RPC request, we pass the values `a` and `b`:
 
 ```javascript
 {
@@ -23,16 +25,18 @@ For example, let's take the following simple procedure, where we pass two values
 }
 ```
 
-In this case, we need to write something like the following in the handler:
+To access these values in the handler, you can use the Laravel `Request` object. Here's an example implementation:
 
 ```php
+use Illuminate\Http\Request;
+
 public function subtract(Request $request): int
 {
     return $request->get('a') - $request->get('b');
 }
 ```
 
-Automatic passing of arguments will be by name:
+Alternatively, you can leverage Sajya's automatic argument binding feature. Simply define the argument types in the handler method signature, and Sajya will automatically bind the corresponding values based on their names. For example:
 
 ```php
 public function subtract(int $a, int $b): int
@@ -41,10 +45,11 @@ public function subtract(int $a, int $b): int
 }
 ```
 
-This will also work for deep things via `camelCase`:
+This way, Sajya will automatically pass the values `a` and `b` as integers to the handler method.
 
+Furthermore, if your request payload contains nested data, you can access it using camel case notation. Consider the following example where the `params` object has a nested property `user` with a `name` value:
 
-```php
+```javascript
 {
     "jsonrpc": "2.0",
     "method": "....",
@@ -57,7 +62,7 @@ This will also work for deep things via `camelCase`:
 }
 ```
 
-for argument:
+To access the `name` value in your handler, you would define an argument with the same name in camel case:
 
 ```php
 public function handler(string $userName): string
@@ -65,6 +70,8 @@ public function handler(string $userName): string
     return $userName;
 }
 ```
+
+With this setup, Sajya will automatically bind the value `"Alex"` to the `$userName` argument in your handler method.
 
 ## Customizing The Resolution Logic
 
