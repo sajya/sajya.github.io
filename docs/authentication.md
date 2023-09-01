@@ -86,6 +86,22 @@ By default, `middleware` will use the `email` column in the user record as the "
 
 ----
 
+## Sanctum
+
+Sanctum is a package designed for Laravel applications that provides authentication middleware. It simplifies the implementation of authentication mechanisms like HTTP Basic Authentication while ensuring application security and integrity.
+
+
+To register the route middleware and attach it to the route, use the following code:
+
+```php
+Route::rpc('/v1/endpoint')
+    ->name('rpc.endpoint')
+    ->middleware('auth:sanctum');
+```
+
+For detailed information on integrating Sanctum into your Laravel application, please refer to the [Sanctum documentation](https://laravel.com/docs/sanctum).
+
+----
 
 ## Token Authentication
 
