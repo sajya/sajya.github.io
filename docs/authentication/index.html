@@ -253,6 +253,15 @@ class AuthenticateOnceWithBasicAuth
 </code></pre>
 <p>By default, <code>middleware</code> will use the <code>email</code> column in the user record as the &ldquo;username&rdquo;.</p>
 <hr>
+<h2><a href='#sanctum' id='sanctum'>Sanctum</a></h2>
+<p>Sanctum is a package designed for Laravel applications that provides authentication middleware. It simplifies the implementation of authentication mechanisms like HTTP Basic Authentication while ensuring application security and integrity.</p>
+<p>To register the route middleware and attach it to the route, use the following code:</p>
+<pre><code class="language-php">Route::rpc('/v1/endpoint')
+    -&gt;name('rpc.endpoint')
+    -&gt;middleware('auth:sanctum');
+</code></pre>
+<p>For detailed information on integrating Sanctum into your Laravel application, please refer to the <a href="https://laravel.com/docs/sanctum">Sanctum documentation</a>.</p>
+<hr>
 <h2><a href='#token-authentication' id='token-authentication'>Token Authentication</a></h2>
 <h3><a href='#database-preparation' id='database-preparation'>Database Preparation</a></h3>
 <p>Before using the <code>token</code> driver, you will need to create a migration which adds an <code>api_token</code> column to your <code>users</code> table:</p>
