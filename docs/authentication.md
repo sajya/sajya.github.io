@@ -57,7 +57,7 @@ class AuthenticateOnceWithBasicAuth
 Then register the route middleware and attach it to the route:
 
 ```php
-Route::rpc('/v1/endpoint')
+Route::rpc('/v1/endpoint', [...])
     ->name('rpc.endpoint')
     ->middleware('auth.basic.once');
 ```
@@ -94,7 +94,7 @@ Sanctum is a package designed for Laravel applications that provides authenticat
 To register the route middleware and attach it to the route, use the following code:
 
 ```php
-Route::rpc('/v1/endpoint')
+Route::rpc('/v1/endpoint', [...])
     ->name('rpc.endpoint')
     ->middleware('auth:sanctum');
 ```
