@@ -510,7 +510,7 @@ class UserProcedure extends Procedure
         <div class="py-5 bg-body-tertiary2 footer-secondary">
             <div class="container">
                 <div class="py-md-3 px-4">
-                    <div class="row g-4 py-md-5 py-3 row-cols-1 row-cols-lg-2">
+                    <div class="row g-4 py-md-5 py-3 row-cols-1 row-cols-lg-3">
                         <div class="feature col mb-5 mb-md-0">
 
                             <div class="d-flex align-items-center">
@@ -537,6 +537,26 @@ class UserProcedure extends Procedure
                                 </svg>
                             </a>
                         </div>
+
+                        <div class="feature col">
+                           <div class="d-flex align-items-center">
+                              <div class="feature-icon d-inline-flex align-items-center justify-content-center text-bg-primary bg-gradient fs-2 mb-3 p-3 rounded-4">
+                                 <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" role="img" width="1em" height="1en" viewBox="0 0 100 100">
+                                    <path d="M86.55 30.73c-11.33 10.72-27.5 12.65-42.3 14.43-10.94 1.5-23.3 3.78-30.48 13.04-6.2 8.3-4.25 20.3 2.25 27.8 1.35 2.03 5.7 5.7 6.38 5.3-5.96-8.42-5.88-21.6 2.6-28.4 8.97-7.52 21.2-7.1 32.03-9.7 6.47-1.23 13.3-3.5 19.2-5.34-8.3 7.44-19.38 10.36-29.7 13.75-8.7 3.08-17.22 10.23-17.45 20.1-.17 6.8 3.1 14.9 10.06 17.07 18.56 4.34 39.14-3.16 50.56-18.4 12.7-16.12 13.75-40.2 2.43-57.33-1.33 2.9-3.28 5.5-5.58 7.7z"></path>
+                                    <path d="M0 49.97c-.14 4.35 1.24 13.9 2.63 14.64 1.2-11.48 10.2-20.74 20.83-24.47 17.9-7.06 38.75-3.1 55.66-13.18 5.16-2.3 9.28-9.48 4.36-14.1-2.16-1.76-5.9-5.75-3.7-.72.83 6.22-5.47 10.06-10.63 11.65-10.9 3.34-22.46 3-33.62 4.93-1.9.32-5.9 1.2-2.07-.6 10.52-5.02 23.57-4.38 32.6-12.5 4.8-3.75 2.77-11.16-2.4-13.4C57.4-.35 50.3-.35 43.63.35c-19.85 2.3-37.3 17.7-42.05 37.1C.52 41.57 0 45.77 0 49.97z"></path>
+                                 </svg>
+                              </div>
+                              <h3 class="fs-2 fw-normal ms-3">UI Mastery</h3>
+                           </div>
+                           <p>Orchid is an exceptional admin panel for Laravel. Highly recommended for effortless project management.</p>
+                           <a href="https://orchid.software/" class="icon-link d-flex align-items-center text-body-secondary" target="_blank">
+                              <span>Elevate your development experience</span>
+                              <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-arrow-right-short ms-1" viewBox="0 0 16 16">
+                                 <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8z"></path>
+                              </svg>
+                           </a>
+                        </div>
+                        
                         <div class="feature col">
                             <div class="d-flex align-items-center">
                                 <div
