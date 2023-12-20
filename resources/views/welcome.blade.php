@@ -548,7 +548,7 @@ class UserProcedure extends Procedure
                               </div>
                               <h3 class="fs-2 fw-normal ms-3">UI Mastery</h3>
                            </div>
-                           <p>Orchid is an exceptional admin panel for Laravel. Highly recommended for effortless project management.</p>
+                           <p>Harness Orchid, the user-friendly Laravel admin panel, to control your APIs effortlessly.</p>
                            <a href="https://orchid.software/" class="icon-link d-flex align-items-center text-body-secondary" target="_blank">
                               <span>Get Orchid</span>
                               <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-arrow-right-short ms-1" viewBox="0 0 16 16">
