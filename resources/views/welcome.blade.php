@@ -2,6 +2,16 @@
 
 @section('body')
 
+    <div class="p-2 bg-body-tertiary2 footer-secondary">
+        <div class="container">
+            <ul class="nav col-12 ms-auto mb-2 justify-content-center mb-md-0">
+                <li><a href="/" class="nav-link px-3 text-secondary">Home</a></li>
+                <li><a href="/docs" class="nav-link px-3 text-secondary">Docs</a></li>
+                <li><a href="https://github.com/sajya" class="nav-link px-3 text-secondary">GitHub</a></li>
+            </ul>
+        </div>
+    </div>
+
     <div class="bg-gray">
         <div class="container">
 
@@ -254,7 +264,13 @@
         <div class="px-4 py-5 text-center">
             <div class="col-lg-8 mx-auto text-start">
 
-                <p class="lead">Sajya is the <span title="By the number of installations with Composer according to packagist.org">most popular</span> open-source package for Laravel that makes it easy to implement the JSON-RPC 2.0 server specification including validation of parameters, support for batch and notification requests, and more.</p>
+                <p class="lead mb-5">Sajya is the <span title="By the number of installations with Composer according to packagist.org">most popular</span> open-source package for Laravel that makes it easy to implement the JSON-RPC 2.0 server specification including validation of parameters, support for batch and notification requests, and more.</p>
+
+
+                <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <a href="/docs/" class="btn btn-primary btn-lg px-4 gap-3">Read The Docs</a>
+                    <a href="https://github.com/sajya" target="_blank" class="btn btn-outline-secondary btn-lg px-4">Source Code</a>
+                </div>
 
                 {{--
                 <p class="mb-4 text-muted">Features:</p>
@@ -277,7 +293,7 @@
 
     <div class="container">
         <div class="px-4 py-md-5 my-5">
-        <div class="col-lg-8 mx-auto text-start">
+        <div class="col-lg-9 mx-auto text-start">
             <section class="row g-md-5 mb-4">
             <div class="col-lg-5">
                 <div
@@ -372,7 +388,7 @@
 
     <div class="container">
         <div class="px-4 py-md-5 my-5">
-            <div class="col-lg-8 mx-auto text-start">
+            <div class="col-lg-9 mx-auto text-start">
                 <div class="position-relative p-5 rounded-5 bg-gray">
 
                         <h5 class="text-center mb-5">Agnostic of the client-side technology.</h5>
@@ -426,7 +442,7 @@
 
     <div class="container">
         <div class="px-4 py-md-5 my-5">
-            <div class="col-lg-8 mx-auto text-start">
+            <div class="col-lg-9 mx-auto text-start">
                 <section class="row g-md-5 mb-4">
                     <div class="col-lg-7 main order-last order-md-first">
                         <p class="text-muted small text-center mb-1"></p>
@@ -556,7 +572,7 @@ class UserProcedure extends Procedure
                               </svg>
                            </a>
                         </div>
-                        
+
                         <div class="feature col">
                             <div class="d-flex align-items-center">
                                 <div

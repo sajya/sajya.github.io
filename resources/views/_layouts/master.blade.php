@@ -29,15 +29,6 @@
 
 <body>
 
-    <div class="p-2 bg-body-tertiary2 footer-secondary">
-        <div class="container">
-            <ul class="nav col-12 ms-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="/" class="nav-link px-3 text-secondary">Home</a></li>
-                <li><a href="/docs" class="nav-link px-3 text-secondary">Docs</a></li>
-                <li><a href="https://github.com/sajya" class="nav-link px-3 text-secondary">GitHub</a></li>
-            </ul>
-        </div>
-    </div>
 
 @yield('body')
 

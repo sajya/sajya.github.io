@@ -151,7 +151,9 @@ main, .main {
         }
 
         a {
-            padding-left: 1em;
+            @include media-breakpoint-down(md) {
+                padding-left: 1em;
+            }
             transition: all 340ms;
             &:before {
                 transition: all 340ms;
