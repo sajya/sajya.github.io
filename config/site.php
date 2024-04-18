@@ -9,6 +9,7 @@ return [
     // navigation menu
     'navigation' => [
         'Prologue' => [
+                'Home' => '/',
                 'Introduction' => '/docs',
                 'Specification' => '/docs/specification',
         ],

@@ -264,7 +264,7 @@
         <div class="px-4 py-5 text-center">
             <div class="col-lg-8 mx-auto text-start">
 
-                <p class="lead mb-5">Sajya is the <span title="By the number of installations with Composer according to packagist.org">most popular</span> open-source package for Laravel that makes it easy to implement the JSON-RPC 2.0 server specification including validation of parameters, support for batch and notification requests, and more.</p>
+                <p class="lead mb-5"><strong class="text-dark">Sajya</strong> is the <span title="By the number of installations with Composer according to packagist.org">most popular</span> open-source package for Laravel that makes it easy to implement the JSON-RPC 2.0 server specification including validation of parameters, support for batch and notification requests, and more.</p>
 
 
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
