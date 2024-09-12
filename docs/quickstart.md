@@ -76,7 +76,8 @@ use App\Http\Procedures\TennisProcedure;
 |
 */
 
-Route::rpc('/v1/endpoint', [TennisProcedure::class])->name('rpc.endpoint');
+Route::rpc('/v1/endpoint', [TennisProcedure::class])
+    ->name('rpc.endpoint');
 ```
 
 > Note that the second argument, we pass an array that contains only the necessary classes. Thus, in the future, we will add a second version of our API without conflicts.
