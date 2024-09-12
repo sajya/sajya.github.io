@@ -3,7 +3,7 @@
 use \Illuminate\Support\Str;
 
 return [
-    'name' => 'JSON-RPC API server for Laravel framework',
+    'name' => 'JSON-RPC API Server for Laravel',
     'description' => 'Easy implementation of the JSON-RPC 2.0 server for the Laravel framework.',
 
     // navigation menu
