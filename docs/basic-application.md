@@ -54,5 +54,7 @@ Application::getInstance()->terminate()
 Alternatively, you can use the `terminate` method on the `Guide` instance, which will process deferred tasks every time:
 
 ```php
-$response = $app->terminate('{"jsonrpc": "2.0", "method": "sajya@hello", "id": 1}');
+$request = '{"jsonrpc": "2.0", "method": "sajya@hello", "id": 1}';
+
+$response = $app->terminate($request);
 ```
