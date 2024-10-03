@@ -32,22 +32,6 @@
 
 @yield('body')
 
-    <div class="bg-gray">
-        <div class="container">
-            <footer class="d-flex flex-wrap justify-content-between align-items-center py-4 px-4">
-                <p class="col-md-4 mb-0 text-body-secondary">
-                    <small class="text-muted">Package and documentation licensed <a href="https://github.com/sajya/server/blob/master/LICENSE.md" class="text-body-secondary">MIT</a>.</small>
-                </p>
-
-                <ul class="nav col-md-4 justify-content-end d-none d-md-flex">
-                    <li class="nav-item"><a href="https://www.jsonrpc.org/specification" class="nav-link px-2 text-body-secondary" target="_blank">Specification</a></li>
-                    <li class="nav-item"><a href="http://www.json.org" class="nav-link px-2 text-body-secondary" target="_blank"> What is JSON?</a></li>
-                    <li class="nav-item"><a href="http://en.wikipedia.org/wiki/Remote_procedure_call" class="nav-link px-2 text-body-secondary" target="_blank"> What is RPC?</a></li>
-                </ul>
-            </footer>
-        </div>
-    </div>
-
 <script src="{{ mix('js/app.js') }}"></script>
 
 <!-- Insert analytics code here -->

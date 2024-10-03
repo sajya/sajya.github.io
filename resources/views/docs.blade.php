@@ -38,7 +38,7 @@
             <div class="col-12 col-xl-3 col-md-4 bg-gray d-lg-flex ps-lg-5 side">
                 <x-docs-menu section="site.navigation"/>
             </div>
-            <div class="col-12 col-lg-6 d-lg-flex">
+            <div class="col-12 col-lg-6 d-lg-flex min-vh-100">
                 <div class="documentation position-relative mx-auto mb-4 mb-md-5 mt-md-4 overflow-hidden">
                     <main class="py-2 px-3 py-md-4 px-md-4 ms-md-4 me-md-auto order-md-first overflow-auto">
 
