@@ -213,7 +213,9 @@ $response = $app-&gt;handle($request);
 Application::getInstance()-&gt;terminate()
 </code></pre>
 <p>Alternatively, you can use the <code>terminate</code> method on the <code>Guide</code> instance, which will process deferred tasks every time:</p>
-<pre><code class="language-php">$response = $app-&gt;terminate('{"jsonrpc": "2.0", "method": "sajya@hello", "id": 1}');
+<pre><code class="language-php">$request = '{"jsonrpc": "2.0", "method": "sajya@hello", "id": 1}';
+
+$response = $app-&gt;terminate($request);
 </code></pre>
 </body>                    </main>
                 </div>
