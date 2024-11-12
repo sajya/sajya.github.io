@@ -52,7 +52,6 @@ curl --location --request POST 'http://127.0.0.1:8000/api/v1/endpoint' \
 	},
 	"id": 1
 }'
-
 ```
 
 Since this is a regular Laravel object, you can perform all available operations on it, for example, validation:
