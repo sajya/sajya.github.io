@@ -34,7 +34,7 @@
         </style>
 --}}
     <div class="position-relative overflow-hidden">
-        <div class="d-flex flex-lg-row flex-column" id="docs">
+        <div class="d-flex flex-lg-row flex-column gap-lg-5" id="docs">
             <div class="col-12 col-xl-3 col-md-4 bg-gray d-lg-flex ps-lg-5 side">
                 <x-docs-menu section="site.navigation"/>
             </div>
