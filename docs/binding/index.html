@@ -187,7 +187,7 @@
                         <body><h2><a href='#passing-values-to-arguments' id='passing-values-to-arguments'>Passing Values to Arguments</a></h2>
 <p>When working with Sajya, you can easily pass values to the arguments in your handlers. This allows you to retrieve and use the data you need to perform specific actions.</p>
 <p>Let&rsquo;s consider an example where we want to subtract two values. In the JSON-RPC request, we pass the values <code>a</code> and <code>b</code>:</p>
-<pre><code class="language-javascript">{
+<pre><code class="language-json">{
     "jsonrpc": "2.0",
     "method": "math@subtract",
     "params": {
@@ -213,9 +213,9 @@ public function subtract(Request $request): int
 </code></pre>
 <p>This way, Sajya will automatically pass the values <code>a</code> and <code>b</code> as integers to the handler method.</p>
 <p>Furthermore, if your request payload contains nested data, you can access it using camel case notation. Consider the following example where the <code>params</code> object has a nested property <code>user</code> with a <code>name</code> value:</p>
-<pre><code class="language-javascript">{
+<pre><code class="language-json">{
     "jsonrpc": "2.0",
-    "method": "....",
+    "method": "...",
     "params": {
         "user": {
             "name": "Alex"
@@ -238,10 +238,8 @@ use Illuminate\Support\Facades\Route;
 
 /**
  * Define your route model bindings, pattern filters, etc.
- *
- * @return void
  */
-public function boot()
+public function boot(): void
 {
     RPC::bind('a', function () {
         return 100;
@@ -262,10 +260,8 @@ use Illuminate\Support\Facades\Route;
 
 /**
  * Define your route model bindings, pattern filters, etc.
- *
- * @return void
  */
-public function boot()
+public function boot(): void
 {
     RPC::model('user', User::class);
 }
