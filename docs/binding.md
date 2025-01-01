@@ -13,7 +13,7 @@ When working with Sajya, you can easily pass values to the arguments in your han
 
 Let's consider an example where we want to subtract two values. In the JSON-RPC request, we pass the values `a` and `b`:
 
-```javascript
+```json
 {
     "jsonrpc": "2.0",
     "method": "math@subtract",
@@ -49,10 +49,10 @@ This way, Sajya will automatically pass the values `a` and `b` as integers to th
 
 Furthermore, if your request payload contains nested data, you can access it using camel case notation. Consider the following example where the `params` object has a nested property `user` with a `name` value:
 
-```javascript
+```json
 {
     "jsonrpc": "2.0",
-    "method": "....",
+    "method": "...",
     "params": {
         "user": {
             "name": "Alex"
@@ -83,10 +83,8 @@ use Illuminate\Support\Facades\Route;
 
 /**
  * Define your route model bindings, pattern filters, etc.
- *
- * @return void
  */
-public function boot()
+public function boot(): void
 {
     RPC::bind('a', function () {
         return 100;
@@ -116,10 +114,8 @@ use Illuminate\Support\Facades\Route;
 
 /**
  * Define your route model bindings, pattern filters, etc.
- *
- * @return void
  */
-public function boot()
+public function boot(): void
 {
     RPC::model('user', User::class);
 }
