@@ -7,7 +7,8 @@ $body-color: #3f3f3f;
 $code-color: #cc9393;
 
 @import "~bootstrap/scss/bootstrap";
-@import '~highlight.js/styles/zenburn.css';
+@import "highlight";
+//@import '~highlight.js/styles/zenburn.css';
 
 
 .bg-gray{
@@ -26,51 +27,23 @@ $code-color: #cc9393;
     color: rgb(0 0 0 / 50%)!important;
 }
 
-@keyframes slideInFromLeft {
-    0% {
-        transform: translateY(+50%);
-    }
-    100% {
-        transform: translateY(0);
-    }
-}
-
 .terminal {
-    .hljs {
+    pre code {
         background: initial !important;
         color: inherit !important;
+        border:none!important;
+        padding: 0;
+        margin: 0;
+    }
+
+    pre {
+        padding: 0;
+        margin: 0;
     }
 }
 
-.terminal p {
-    transition: all 260ms;
-    animation: 400ms ease-out 0s 1 slideInFromLeft;
-}
 
 
-.terminal p:nth-of-type(1) {
-    opacity: 0.2 !important;
-}
-
-.terminal p:nth-of-type(2) {
-    opacity: 0.35 !important;
-}
-
-.terminal p:nth-of-type(3) {
-    opacity: 0.45 !important;
-}
-
-.terminal p:nth-of-type(4) {
-    opacity: 0.55 !important;
-}
-
-.terminal p:nth-of-type(5) {
-    opacity: 0.7 !important;
-}
-
-.terminal p:nth-of-type(6) {
-    opacity: 0.8 !important;
-}
 
 
 
@@ -192,20 +165,19 @@ main, .main {
 
     blockquote {
         //background: #F9F9FE;
-        background: rgb(240 235 227);
+        background: rgba(240, 235, 227, 0.8);
         border-radius: $border-radius;
+        display: flex;
         padding: 1.5em;
         position: relative;
         margin: 2em 0;
         @extend .text-wrap;
         @extend .text-break;
+        gap: 1em;
 
         &:before{
-            position: absolute;
-            top: -0.5em;
-            left: -0.3em;
-            background-color: #e4dccf;
-            color: rgb(0 0 0 / 50%);
+            background-color: #ffffff;
+            color: rgb(181 105 89);
             content: "!";
             width: 1.5em;
             height: 1.5em;
@@ -213,10 +185,11 @@ main, .main {
             text-align: center;
             font-weight: 600;
             font-size: 1.5em;
-            display: flex;
-            align-self: center;
+            display: inline-flex;
+            align-self: baseline;
             justify-content: center;
             align-items: center;
+            aspect-ratio: 1/1;
             //box-shadow: 5px 5px 13px rgba(63, 26, 60, 0.29);
         }
         >p{
@@ -284,5 +257,55 @@ main > h2:first-of-type {
 @include media-breakpoint-up(lg) {
     .border-lg-start {
         border-left: var(--bs-border-width) solid var(--bs-border-color);
+    }
+}
+
+
+.terminal {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+.terminal::before,
+.terminal::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 3em;
+    pointer-events: none;
+    z-index: 10;
+}
+
+.terminal::before {
+    top: 0;
+    background: linear-gradient(to bottom, #fff, transparent);
+}
+
+.terminal::after {
+    bottom: 0;
+    background: linear-gradient(to top, #fff, transparent);
+}
+
+.console-2 {
+    position: sticky;
+    width: 100%;
+    animation: scroll 30s linear infinite;
+    transition: all 260ms;
+    top: 0;
+}
+
+.console-2.duplicate {
+    top: 100%;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-100%);
     }
 }

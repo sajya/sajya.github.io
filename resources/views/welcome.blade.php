@@ -28,9 +28,66 @@
                     <div class="bg-body shadow-sm mx-auto p-3"
                          style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
                         <div class="terminal text-start px-3">
-                            <pre>
-                            <code class="language-json" id="console"></code>
-                            </pre>
+                            <div class="console-2">
+                            @php
+                                echo \Str::of('
+```json
+{"jsonrpc": "2.0", "method": "subtract", "params": [42, 23], "id": 1}
+{"jsonrpc": "2.0", "result": 19, "id": 1}
+
+{"jsonrpc": "2.0", "method": "subtract", "params": [23, 42], "id": 2}
+{"jsonrpc": "2.0", "result": -19, "id": 2}
+
+{"jsonrpc": "2.0", "method": "subtract", "params": {"subtrahend": 23, "minuend": 42}, "id": 3}
+{"jsonrpc": "2.0", "result": 19, "id": 3}
+
+{"jsonrpc": "2.0", "method": "subtract", "params": {"minuend": 42, "subtrahend": 23}, "id": 4}
+{"jsonrpc": "2.0", "result": 19, "id": 4}
+
+{"jsonrpc": "2.0", "method": "foobar", "id": 10}
+{"jsonrpc": "2.0", "error": {"code": -32601, "message": "Procedure not found."}, "id": 10}
+
+{"jsonrpc": "2.0", "method": "foobar", "params": "bar", "baz"}
+{"jsonrpc": "2.0", "error": {"code": -32700, "message": "Parse error"}, "id": null}
+
+{"jsonrpc": "2.0", "method": 1, "params": "bar"}
+{"jsonrpc": "2.0", "error": {"code": -32600, "message": "Invalid JSON-RPC."}, "id": null}
+```
+                                ')->trim()->markdown(extensions: [new \Laravelsu\Highlight\CommonMark\HighlightExtension()])
+                            @endphp
+                            </div>
+
+                            <div class="console-2 duplicate">
+                                @php
+                                    echo \Str::of('
+```json
+{"jsonrpc": "2.0", "method": "subtract", "params": [42, 23], "id": 1}
+{"jsonrpc": "2.0", "result": 19, "id": 1}
+
+{"jsonrpc": "2.0", "method": "subtract", "params": [23, 42], "id": 2}
+{"jsonrpc": "2.0", "result": -19, "id": 2}
+
+{"jsonrpc": "2.0", "method": "subtract", "params": {"subtrahend": 23, "minuend": 42}, "id": 3}
+{"jsonrpc": "2.0", "result": 19, "id": 3}
+
+{"jsonrpc": "2.0", "method": "subtract", "params": {"minuend": 42, "subtrahend": 23}, "id": 4}
+{"jsonrpc": "2.0", "result": 19, "id": 4}
+
+{"jsonrpc": "2.0", "method": "foobar", "id": 10}
+{"jsonrpc": "2.0", "error": {"code": -32601, "message": "Procedure not found."}, "id": 10}
+
+{"jsonrpc": "2.0", "method": "foobar", "params": "bar", "baz"}
+{"jsonrpc": "2.0", "error": {"code": -32700, "message": "Parse error"}, "id": null}
+
+{"jsonrpc": "2.0", "method": 1, "params": "bar"}
+{"jsonrpc": "2.0", "error": {"code": -32600, "message": "Invalid JSON-RPC."}, "id": null}
+```
+                                    ')->trim()->markdown(extensions: [new \Laravelsu\Highlight\CommonMark\HighlightExtension()])
+                                @endphp
+                            </div>
+
+
+
                         </div>
                     </div>
                 </div>
@@ -323,8 +380,11 @@
 
             </div>
             <div class="col-lg-7 main">
-                <p class="text-muted small text-center mb-1"></p>
-                <pre><code class="language-json">{
+                <small class="opacity-75 user-select-none d-block">--> Request</small>
+                @php
+                    echo \Str::of('
+```json
+{
     "jsonrpc": "2.0",
     "method": "subtract",
     "params": {
@@ -333,15 +393,28 @@
     },
     "id": 3
 }
-<small class="opacity-75 user-select-none d-block text-end">--> Request</small>
+```
+                    ')->trim()->markdown(extensions: [new \Laravelsu\Highlight\CommonMark\HighlightExtension()])
+                @endphp
+
+                <small class="opacity-75 user-select-none d-block"><-- Response</small>
+
+                @php
+                    echo \Str::of('
+```json
 {
     "jsonrpc": "2.0",
     "result": 19,
     "id": 3
 }
-<small class="opacity-75 user-select-none d-block text-end"><-- Response</small></code></pre>
+```
+                    ')->trim()->markdown(extensions: [new \Laravelsu\Highlight\CommonMark\HighlightExtension()])
+                @endphp
             </div>
         </section>
+
+
+
             <section class="row g-3 g-md-5 justify-content-center">
                 <div class="col-lg-6 py-lg-4">
                     <div class="d-flex align-items-center">
@@ -446,8 +519,9 @@
                 <section class="row g-md-5 mb-4">
                     <div class="col-lg-7 main order-last order-md-first">
                         <p class="text-muted small text-center mb-1"></p>
-                        <pre><code class="language-php">declare(strict_types=1);
-
+                        @php
+                        echo \Str::of('
+```php
 namespace App\Http\Procedures;
 
 use App\Models\User;
@@ -459,7 +533,10 @@ class UserProcedure extends Procedure
     {
         // ...
     }
-}</code></pre>
+}
+```
+                        ')->trim()->markdown(extensions: [new \Laravelsu\Highlight\CommonMark\HighlightExtension()])
+                        @endphp
                     </div>
                     <div class="col-lg-5 order-first order-md-last">
                         <div

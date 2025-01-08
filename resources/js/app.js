@@ -1,6 +1,5 @@
-/* window.docsearch = require('docsearch.js'); */
 
-import hljs from 'highlight.js/lib/core';;
+import hljs from 'highlight.js/lib/core';
 import { listen, prefetch } from "quicklink";
 
 
@@ -17,10 +16,11 @@ hljs.registerLanguage('html', html);
 hljs.registerLanguage('json', json);
 
 
+/*
 document.querySelectorAll('pre code').forEach((block) => {
     hljs.highlightBlock(block);
 });
-
+*/
 
 if (document.getElementById("console")) {
 
@@ -91,11 +91,13 @@ document.addEventListener("DOMContentLoaded", () => {
         return false;
     }
 
-    document.querySelector('.active-doc-menu').scrollIntoView({
-        behavior: "auto",
-        block: "end",
-        inline: "center"
-    })
+    document
+        .querySelector('.active-doc-menu')
+        .scrollIntoView({
+            behavior: "auto",
+            block: "end",
+            inline: "center"
+        })
 });
 
 listen();
