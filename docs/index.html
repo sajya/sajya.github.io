@@ -42,7 +42,7 @@
     
     <link rel="home" href="https://sajya.github.io">
 
-    <link rel="stylesheet" href="/css/app.css?id=2ff350144da09be8f3d46ed4b2516f42">
+    <link rel="stylesheet" href="/css/app.css?id=f9a5124264feed20e66007f34ffebc04">
 </head>
 
 <body>
@@ -193,31 +193,31 @@ If you have questions or find an error in the documentation, please indicate the
 <h2><a href='#what-is-json-rpc-20' id='what-is-json-rpc-20'>What is JSON-RPC 2.0?</a></h2>
 <p>JSON-RPC 2.0&nbsp;is a simple stateless protocol used to create Remote Procedure Call (RPC) style APIs. It enables communication between a client and a server by exchanging JSON messages.</p>
 <p>For example, on the server side, you might have an endpoint that accepts requests with a JSON body like this:</p>
-<pre><code class="language-json">{
-  "jsonrpc": "2.0",
-  "method": "subtract",
-  "params": {
-    "minuend": 42,
-    "subtrahend": 23
+<pre><code data-lang="json" class="notranslate">{
+  "<span class="hl-value">jsonrpc</span>": "<span class="hl-value2">2.0</span>",
+  "<span class="hl-value">method</span>": "<span class="hl-value2">subtract</span>",
+  "<span class="hl-value">params</span>": {
+    "<span class="hl-value">minuend</span>": <span class="hl-number">42</span>,
+    "<span class="hl-value">subtrahend</span>": <span class="hl-number">23</span>
   },
-  "id": 3
+  "<span class="hl-value">id</span>": <span class="hl-number">3</span>
 }
 </code></pre>
 <p>The server then responds with a JSON message like this:</p>
-<pre><code class="language-json">{
-  "jsonrpc": "2.0",
-  "result": 19,
-  "id": 3
+<pre><code data-lang="json" class="notranslate">{
+  "<span class="hl-value">jsonrpc</span>": "<span class="hl-value2">2.0</span>",
+  "<span class="hl-value">result</span>": <span class="hl-number">19</span>,
+  "<span class="hl-value">id</span>": <span class="hl-number">3</span>
 }
 </code></pre>
 <p>In case of an error, the response might look like this:</p>
-<pre><code class="language-json">{
-  "jsonrpc": "2.0",
-  "error": {
-    "code": 1234,
-    "message": "Description of the error"
+<pre><code data-lang="json" class="notranslate">{
+  "<span class="hl-value">jsonrpc</span>": "<span class="hl-value2">2.0</span>",
+  "<span class="hl-value">error</span>": {
+    "<span class="hl-value">code</span>": <span class="hl-number">1234</span>,
+    "<span class="hl-value">message</span>": "<span class="hl-value2">Description of the error</span>"
   },
-  "id": 3
+  "<span class="hl-value">id</span>": <span class="hl-number">3</span>
 }
 </code></pre>
 <p>You can find out more on the <a href="/docs/specification">specification page</a>.</p>
@@ -235,7 +235,7 @@ The <a href="/docs/quickstart">Quick Start</a> contains detailed instructions.</
 
 
 
-<script src="/js/app.js?id=1cab8abf484910fe694cdf46cffd4186"></script>
+<script src="/js/app.js?id=1b2fa286610111082050100ab21a1df9"></script>
 
 <!-- Insert analytics code here -->
     <!-- Yandex.Metrika counter -->

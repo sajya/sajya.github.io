@@ -42,7 +42,7 @@
     
     <link rel="home" href="https://sajya.github.io">
 
-    <link rel="stylesheet" href="/css/app.css?id=2ff350144da09be8f3d46ed4b2516f42">
+    <link rel="stylesheet" href="/css/app.css?id=f9a5124264feed20e66007f34ffebc04">
 </head>
 
 <body>
@@ -75,9 +75,56 @@
                     <div class="bg-body shadow-sm mx-auto p-3"
                          style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;">
                         <div class="terminal text-start px-3">
-                            <pre>
-                            <code class="language-json" id="console"></code>
-                            </pre>
+                            <div class="console-2">
+                            <pre><code data-lang="json" class="notranslate">{&quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;, &quot;<span class="hl-value">method</span>&quot;: &quot;<span class="hl-value2">subtract</span>&quot;, &quot;<span class="hl-value">params</span>&quot;: [42, 23], &quot;<span class="hl-value">id</span>&quot;: <span class="hl-number">1</span>}
+{&quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;, &quot;<span class="hl-value">result</span>&quot;: <span class="hl-number">19</span>, &quot;<span class="hl-value">id</span>&quot;: <span class="hl-number">1</span>}
+
+{&quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;, &quot;<span class="hl-value">method</span>&quot;: &quot;<span class="hl-value2">subtract</span>&quot;, &quot;<span class="hl-value">params</span>&quot;: [23, 42], &quot;<span class="hl-value">id</span>&quot;: <span class="hl-number">2</span>}
+{&quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;, &quot;<span class="hl-value">result</span>&quot;: -19, &quot;<span class="hl-value">id</span>&quot;: <span class="hl-number">2</span>}
+
+{&quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;, &quot;<span class="hl-value">method</span>&quot;: &quot;<span class="hl-value2">subtract</span>&quot;, &quot;<span class="hl-value">params</span>&quot;: {&quot;<span class="hl-value">subtrahend</span>&quot;: <span class="hl-number">23</span>, &quot;<span class="hl-value">minuend</span>&quot;: <span class="hl-number">42</span>}, &quot;<span class="hl-value">id</span>&quot;: <span class="hl-number">3</span>}
+{&quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;, &quot;<span class="hl-value">result</span>&quot;: <span class="hl-number">19</span>, &quot;<span class="hl-value">id</span>&quot;: <span class="hl-number">3</span>}
+
+{&quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;, &quot;<span class="hl-value">method</span>&quot;: &quot;<span class="hl-value2">subtract</span>&quot;, &quot;<span class="hl-value">params</span>&quot;: {&quot;<span class="hl-value">minuend</span>&quot;: <span class="hl-number">42</span>, &quot;<span class="hl-value">subtrahend</span>&quot;: <span class="hl-number">23</span>}, &quot;<span class="hl-value">id</span>&quot;: <span class="hl-number">4</span>}
+{&quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;, &quot;<span class="hl-value">result</span>&quot;: <span class="hl-number">19</span>, &quot;<span class="hl-value">id</span>&quot;: <span class="hl-number">4</span>}
+
+{&quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;, &quot;<span class="hl-value">method</span>&quot;: &quot;<span class="hl-value2">foobar</span>&quot;, &quot;<span class="hl-value">id</span>&quot;: <span class="hl-number">10</span>}
+{&quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;, &quot;<span class="hl-value">error</span>&quot;: {&quot;<span class="hl-value">code</span>&quot;: -32601, &quot;<span class="hl-value">message</span>&quot;: &quot;<span class="hl-value2">Procedure not found.</span>&quot;}, &quot;<span class="hl-value">id</span>&quot;: <span class="hl-number">10</span>}
+
+{&quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;, &quot;<span class="hl-value">method</span>&quot;: &quot;<span class="hl-value2">foobar</span>&quot;, &quot;<span class="hl-value">params</span>&quot;: &quot;<span class="hl-value2">bar</span>&quot;, &quot;baz&quot;}
+{&quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;, &quot;<span class="hl-value">error</span>&quot;: {&quot;<span class="hl-value">code</span>&quot;: -32700, &quot;<span class="hl-value">message</span>&quot;: &quot;<span class="hl-value2">Parse error</span>&quot;}, &quot;<span class="hl-value">id</span>&quot;: null}
+
+{&quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;, &quot;<span class="hl-value">method</span>&quot;: <span class="hl-number">1</span>, &quot;<span class="hl-value">params</span>&quot;: &quot;<span class="hl-value2">bar</span>&quot;}
+{&quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;, &quot;<span class="hl-value">error</span>&quot;: {&quot;<span class="hl-value">code</span>&quot;: -32600, &quot;<span class="hl-value">message</span>&quot;: &quot;<span class="hl-value2">Invalid JSON-RPC.</span>&quot;}, &quot;<span class="hl-value">id</span>&quot;: null}
+</code></pre>
+                            </div>
+
+                            <div class="console-2 duplicate">
+                                <pre><code data-lang="json" class="notranslate">{&quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;, &quot;<span class="hl-value">method</span>&quot;: &quot;<span class="hl-value2">subtract</span>&quot;, &quot;<span class="hl-value">params</span>&quot;: [42, 23], &quot;<span class="hl-value">id</span>&quot;: <span class="hl-number">1</span>}
+{&quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;, &quot;<span class="hl-value">result</span>&quot;: <span class="hl-number">19</span>, &quot;<span class="hl-value">id</span>&quot;: <span class="hl-number">1</span>}
+
+{&quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;, &quot;<span class="hl-value">method</span>&quot;: &quot;<span class="hl-value2">subtract</span>&quot;, &quot;<span class="hl-value">params</span>&quot;: [23, 42], &quot;<span class="hl-value">id</span>&quot;: <span class="hl-number">2</span>}
+{&quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;, &quot;<span class="hl-value">result</span>&quot;: -19, &quot;<span class="hl-value">id</span>&quot;: <span class="hl-number">2</span>}
+
+{&quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;, &quot;<span class="hl-value">method</span>&quot;: &quot;<span class="hl-value2">subtract</span>&quot;, &quot;<span class="hl-value">params</span>&quot;: {&quot;<span class="hl-value">subtrahend</span>&quot;: <span class="hl-number">23</span>, &quot;<span class="hl-value">minuend</span>&quot;: <span class="hl-number">42</span>}, &quot;<span class="hl-value">id</span>&quot;: <span class="hl-number">3</span>}
+{&quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;, &quot;<span class="hl-value">result</span>&quot;: <span class="hl-number">19</span>, &quot;<span class="hl-value">id</span>&quot;: <span class="hl-number">3</span>}
+
+{&quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;, &quot;<span class="hl-value">method</span>&quot;: &quot;<span class="hl-value2">subtract</span>&quot;, &quot;<span class="hl-value">params</span>&quot;: {&quot;<span class="hl-value">minuend</span>&quot;: <span class="hl-number">42</span>, &quot;<span class="hl-value">subtrahend</span>&quot;: <span class="hl-number">23</span>}, &quot;<span class="hl-value">id</span>&quot;: <span class="hl-number">4</span>}
+{&quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;, &quot;<span class="hl-value">result</span>&quot;: <span class="hl-number">19</span>, &quot;<span class="hl-value">id</span>&quot;: <span class="hl-number">4</span>}
+
+{&quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;, &quot;<span class="hl-value">method</span>&quot;: &quot;<span class="hl-value2">foobar</span>&quot;, &quot;<span class="hl-value">id</span>&quot;: <span class="hl-number">10</span>}
+{&quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;, &quot;<span class="hl-value">error</span>&quot;: {&quot;<span class="hl-value">code</span>&quot;: -32601, &quot;<span class="hl-value">message</span>&quot;: &quot;<span class="hl-value2">Procedure not found.</span>&quot;}, &quot;<span class="hl-value">id</span>&quot;: <span class="hl-number">10</span>}
+
+{&quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;, &quot;<span class="hl-value">method</span>&quot;: &quot;<span class="hl-value2">foobar</span>&quot;, &quot;<span class="hl-value">params</span>&quot;: &quot;<span class="hl-value2">bar</span>&quot;, &quot;baz&quot;}
+{&quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;, &quot;<span class="hl-value">error</span>&quot;: {&quot;<span class="hl-value">code</span>&quot;: -32700, &quot;<span class="hl-value">message</span>&quot;: &quot;<span class="hl-value2">Parse error</span>&quot;}, &quot;<span class="hl-value">id</span>&quot;: null}
+
+{&quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;, &quot;<span class="hl-value">method</span>&quot;: <span class="hl-number">1</span>, &quot;<span class="hl-value">params</span>&quot;: &quot;<span class="hl-value2">bar</span>&quot;}
+{&quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;, &quot;<span class="hl-value">error</span>&quot;: {&quot;<span class="hl-value">code</span>&quot;: -32600, &quot;<span class="hl-value">message</span>&quot;: &quot;<span class="hl-value2">Invalid JSON-RPC.</span>&quot;}, &quot;<span class="hl-value">id</span>&quot;: null}
+</code></pre>
+                            </div>
+
+
+
                         </div>
                     </div>
                 </div>
@@ -142,25 +189,31 @@
 
             </div>
             <div class="col-lg-7 main">
-                <p class="text-muted small text-center mb-1"></p>
-                <pre><code class="language-json">{
-    "jsonrpc": "2.0",
-    "method": "subtract",
-    "params": {
-      "subtrahend": 23,
-      "minuend": 42
+                <small class="opacity-75 user-select-none d-block">--> Request</small>
+                <pre><code data-lang="json" class="notranslate">{
+    &quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;,
+    &quot;<span class="hl-value">method</span>&quot;: &quot;<span class="hl-value2">subtract</span>&quot;,
+    &quot;<span class="hl-value">params</span>&quot;: {
+      &quot;<span class="hl-value">subtrahend</span>&quot;: <span class="hl-number">23</span>,
+      &quot;<span class="hl-value">minuend</span>&quot;: <span class="hl-number">42</span>
     },
-    "id": 3
+    &quot;<span class="hl-value">id</span>&quot;: <span class="hl-number">3</span>
 }
-<small class="opacity-75 user-select-none d-block text-end">--> Request</small>
-{
-    "jsonrpc": "2.0",
-    "result": 19,
-    "id": 3
+</code></pre>
+
+                <small class="opacity-75 user-select-none d-block"><-- Response</small>
+
+                <pre><code data-lang="json" class="notranslate">{
+    &quot;<span class="hl-value">jsonrpc</span>&quot;: &quot;<span class="hl-value2">2.0</span>&quot;,
+    &quot;<span class="hl-value">result</span>&quot;: <span class="hl-number">19</span>,
+    &quot;<span class="hl-value">id</span>&quot;: <span class="hl-number">3</span>
 }
-<small class="opacity-75 user-select-none d-block text-end"><-- Response</small></code></pre>
+</code></pre>
             </div>
         </section>
+
+
+
             <section class="row g-3 g-md-5 justify-content-center">
                 <div class="col-lg-6 py-lg-4">
                     <div class="d-flex align-items-center">
@@ -265,20 +318,19 @@
                 <section class="row g-md-5 mb-4">
                     <div class="col-lg-7 main order-last order-md-first">
                         <p class="text-muted small text-center mb-1"></p>
-                        <pre><code class="language-php">declare(strict_types=1);
+                        <pre><code data-lang="php" class="notranslate"><span class="hl-keyword">namespace</span> App\Http\Procedures;
 
-namespace App\Http\Procedures;
+<span class="hl-keyword">use</span> App\Models\<span class="hl-type">User</span>;
+<span class="hl-keyword">use</span> Sajya\Server\<span class="hl-type">Procedure</span>;
 
-use App\Models\User;
-use Sajya\Server\Procedure;
-
-class UserProcedure extends Procedure
+<span class="hl-keyword">class</span> <span class="hl-type">UserProcedure</span> <span class="hl-keyword">extends</span> <span class="hl-template">Procedure</span>
 {
-    public function update(User $user)
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">update</span>(<span class="hl-injection"><span class="hl-type">User</span> $user</span>)
     {
-        // ...
+        <span class="hl-comment">// ...</span>
     }
-}</code></pre>
+}
+</code></pre>
                     </div>
                     <div class="col-lg-5 order-first order-md-last">
                         <div
@@ -441,7 +493,7 @@ class UserProcedure extends Procedure
 
 
 
-<script src="/js/app.js?id=1cab8abf484910fe694cdf46cffd4186"></script>
+<script src="/js/app.js?id=1b2fa286610111082050100ab21a1df9"></script>
 
 <!-- Insert analytics code here -->
     <!-- Yandex.Metrika counter -->

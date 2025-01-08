@@ -42,7 +42,7 @@
     
     <link rel="home" href="https://sajya.github.io">
 
-    <link rel="stylesheet" href="/css/app.css?id=2ff350144da09be8f3d46ed4b2516f42">
+    <link rel="stylesheet" href="/css/app.css?id=f9a5124264feed20e66007f34ffebc04">
 </head>
 
 <body>
@@ -188,35 +188,35 @@
 <p>Sajya is a JSON-RPC server for Laravel that allows for automatic use through Laravel routes, but JSON-RPC is not limited to HTTP transport only. It can also be used with WebSockets, console commands, or other situations.</p>
 <h2><a href='#usage' id='usage'>Usage</a></h2>
 <p>To use Sajya in your application, you will need to use the <code>Sajya\Server\App</code> class as the entry point for your JSON-RPC application. This class is used to register procedures and handle requests. To use it, you will need to create an instance of the Guide class and call its <code>handle</code> method:</p>
-<pre><code class="language-php">use Sajya\Server\App;
+<pre><code data-lang="php" class="notranslate"><span class="hl-keyword">use</span> Sajya\Server\<span class="hl-type">App</span>;
 
-/**
+<span class="hl-comment">/**
  * Instantiate the application
- */
-$app = new App([
-    // Add your procedure classes here, for example:
-    SajyaProcedure::class
+ */</span>
+$app <span class="hl-operator">=</span> <span class="hl-constant">new</span> <span class="hl-type">App</span>([
+    <span class="hl-comment">// Add your procedure classes here, for example:</span>
+    <span class="hl-type">SajyaProcedure</span><span class="hl-delimeter">::</span><span class="hl-keyword">class</span>
 ]);
 
-// Define the JSON-RPC request
-$request = '{"jsonrpc": "2.0", "method": "sajya@hello", "id": 1}';
+<span class="hl-comment">// Define the JSON-RPC request</span>
+$request <span class="hl-operator">=</span> <span class="hl-value">'{"jsonrpc": "2.0", "method": "sajya@hello", "id": 1}'</span>;
 
-// Handle the request using the application
-$response = $app-&gt;handle($request);
+<span class="hl-comment">// Handle the request using the application</span>
+$response <span class="hl-operator">=</span> $app<span class="hl-delimeter">-&gt;</span><span class="hl-function">handle</span>($request);
 </code></pre>
 <p>The result of this will be a class that you can modify or easily convert into a JSON string for the response:</p>
-<pre><code class="language-php">echo json_encode($response);
+<pre><code data-lang="php" class="notranslate"><span class="hl-constant">echo</span> <span class="hl-function">json_encode</span>($response);
 </code></pre>
 <h2><a href='#executing-notification-requests' id='executing-notification-requests'>Executing Notification Requests</a></h2>
 <p>It is important to note that notification requests are not executed immediately. This can be a problem in long-lived applications. To execute them manually, you can call the <code>terminate</code> method on the container:</p>
-<pre><code class="language-php">use Illuminate\Foundation\Application;
+<pre><code data-lang="php" class="notranslate"><span class="hl-keyword">use</span> Illuminate\Foundation\<span class="hl-type">Application</span>;
 
-Application::getInstance()-&gt;terminate()
+<span class="hl-type">Application</span><span class="hl-delimeter">::</span><span class="hl-function">getInstance</span>()<span class="hl-delimeter">-&gt;</span><span class="hl-function">terminate</span>()
 </code></pre>
 <p>Alternatively, you can use the <code>terminate</code> method on the <code>Guide</code> instance, which will process deferred tasks every time:</p>
-<pre><code class="language-php">$request = '{"jsonrpc": "2.0", "method": "sajya@hello", "id": 1}';
+<pre><code data-lang="php" class="notranslate">$request <span class="hl-operator">=</span> <span class="hl-value">'{"jsonrpc": "2.0", "method": "sajya@hello", "id": 1}'</span>;
 
-$response = $app-&gt;terminate($request);
+$response <span class="hl-operator">=</span> $app<span class="hl-delimeter">-&gt;</span><span class="hl-function">terminate</span>($request);
 </code></pre>
 </body>                    </main>
                 </div>
@@ -229,7 +229,7 @@ $response = $app-&gt;terminate($request);
 
 
 
-<script src="/js/app.js?id=1cab8abf484910fe694cdf46cffd4186"></script>
+<script src="/js/app.js?id=1b2fa286610111082050100ab21a1df9"></script>
 
 <!-- Insert analytics code here -->
     <!-- Yandex.Metrika counter -->

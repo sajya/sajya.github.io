@@ -42,7 +42,7 @@
     
     <link rel="home" href="https://sajya.github.io">
 
-    <link rel="stylesheet" href="/css/app.css?id=2ff350144da09be8f3d46ed4b2516f42">
+    <link rel="stylesheet" href="/css/app.css?id=f9a5124264feed20e66007f34ffebc04">
 </head>
 
 <body>
@@ -186,114 +186,114 @@
 
                         <body><h2><a href='#accessing-the-request' id='accessing-the-request'>Accessing The Request</a></h2>
 <p>To obtain an instance of the current HTTP request via dependency injection, you should type-hint the <code>Illuminate\Http\Request</code> class on your controller method. The incoming request instance will automatically be injected.</p>
-<pre><code class="language-php">declare(strict_types=1);
+<pre><code data-lang="php" class="notranslate"><span class="hl-keyword"><span class="hl-function">declare</span></span>(strict_types=<span class="hl-number">1</span>);
 
-namespace App\Http\Procedures;
+<span class="hl-keyword">namespace</span> App\Http\Procedures;
 
-use Sajya\Server\Procedure;
-use Illuminate\Http\Request;
+<span class="hl-keyword">use</span> Sajya\Server\<span class="hl-type">Procedure</span>;
+<span class="hl-keyword">use</span> Illuminate\Http\<span class="hl-type">Request</span>;
 
-class TennisProcedure extends Procedure
+<span class="hl-keyword">class</span> <span class="hl-type">TennisProcedure</span> <span class="hl-keyword">extends</span> <span class="hl-template">Procedure</span>
 {
-    /**
+    <span class="hl-comment">/**
      * The name of the procedure that will be
      * displayed and taken into account in the search
-     */
-    public static string $name = 'tennis';
+     */</span>
+    <span class="hl-keyword">public</span> <span class="hl-keyword">static</span> <span class="hl-keyword">string</span> $name <span class="hl-operator">=</span> <span class="hl-value">'tennis'</span>;
 
-    /**
+    <span class="hl-comment">/**
      * Execute the procedure.
      *
-     * @param  Request  $request
-     * @return string
-     */
-    public function ping(Request $request)
+     * <span class="hl-keyword">@param</span>  <span class="hl-type">Request</span>  $request
+     * <span class="hl-keyword">@return</span> <span class="hl-keyword">string</span>
+     */</span>
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">ping</span>(<span class="hl-injection"><span class="hl-type">Request</span> $request</span>)
     {
-        return $request-&gt;input('innings');
+        <span class="hl-keyword">return</span> $request<span class="hl-delimeter">-&gt;</span><span class="hl-function">input</span>(<span class="hl-value">'innings'</span>);
     }
 }
 </code></pre>
 <p>The transferred parameters will be automatically written to the object:</p>
-<pre><code class="language-bash">curl --location --request POST 'http://127.0.0.1:8000/api/v1/endpoint' \
---header 'Content-Type: application/json' \
---data-raw '{
+<pre><code data-lang="shell" class="notranslate">curl <span class="hl-constant">--location</span> <span class="hl-constant">--request</span> POST <span class="hl-value">'http://127.0.0.1:8000/api/v1/endpoint'</span> \
+<span class="hl-constant">--header</span> <span class="hl-value">'Content-Type: application/json'</span> \
+<span class="hl-constant">--data-raw</span> <span class="hl-value">'{
 	"jsonrpc": "2.0",
 	"method": "tennis@ping",
 	"params": {
 		"innings": "out"
 	},
 	"id": 1
-}'
+}'</span>
 </code></pre>
 <p>Since this is a regular Laravel object, you can perform all available operations on it, for example, validation:</p>
-<pre><code class="language-php">/**
+<pre><code data-lang="php" class="notranslate"><span class="hl-comment">/**
  * Execute the procedure.
  *
- * @param  Request  $request
- * @return string
- */
-public function ping(Request $request)
+ * <span class="hl-keyword">@param</span>  <span class="hl-type">Request</span>  $request
+ * <span class="hl-keyword">@return</span> <span class="hl-keyword">string</span>
+ */</span>
+<span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">ping</span>(<span class="hl-injection"><span class="hl-type">Request</span> $request</span>)
 {
-    $validatedData = $request-&gt;validate([
-        'innings' =&gt; 'required|string|max:255',
+    $validatedData <span class="hl-operator">=</span> $request<span class="hl-delimeter">-&gt;</span><span class="hl-function">validate</span>([
+        <span class="hl-value">'innings'</span> <span class="hl-operator">=&gt;</span> <span class="hl-value">'required|string|max:255'</span>,
     ]);
 }
 </code></pre>
 <p>Sometimes you may miss the automatic binding of models in the route. But you can extend the request class. Let&rsquo;s execute the artisan command:</p>
-<pre><code class="language-bash">php artisan make:request ExampleRequest
+<pre><code data-lang="shell" class="notranslate">php artisan make:request ExampleRequest
 </code></pre>
 <p>The generated class will be placed in the <code>app/Http/Requests</code> directory.</p>
-<pre><code class="language-php">declare(strict_types=1);
+<pre><code data-lang="php" class="notranslate"><span class="hl-keyword"><span class="hl-function">declare</span></span>(strict_types=<span class="hl-number">1</span>);
 
-namespace App\Http\Requests;
+<span class="hl-keyword">namespace</span> App\Http\Requests;
 
-use App\User;
-use Illuminate\Foundation\Http\FormRequest;
+<span class="hl-keyword">use</span> App\<span class="hl-type">User</span>;
+<span class="hl-keyword">use</span> Illuminate\Foundation\Http\<span class="hl-type">FormRequest</span>;
 
-class ExampleRequest extends FormRequest
+<span class="hl-keyword">class</span> <span class="hl-type">ExampleRequest</span> <span class="hl-keyword">extends</span> <span class="hl-template">FormRequest</span>
 {
-    /**
+    <span class="hl-comment">/**
      * Determine if the user is authorized to make this request.
      *
-     * @return bool
-     */
-    public function authorize()
+     * <span class="hl-keyword">@return</span> <span class="hl-keyword">bool</span>
+     */</span>
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">authorize</span>()
     {
-        return true;
+        <span class="hl-keyword">return</span> <span class="hl-constant">true</span>;
     }
-    /**
+    <span class="hl-comment">/**
      * Get the validation rules that apply to the request.
      *
-     * @return array
-     */
-    public function rules()
+     * <span class="hl-keyword">@return</span> <span class="hl-keyword">array</span>
+     */</span>
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">rules</span>()
     {
-        return [
-            'user' =&gt; 'bail|required|unique:user|max:255',
+        <span class="hl-keyword">return</span> [
+            <span class="hl-value">'user'</span> <span class="hl-operator">=&gt;</span> <span class="hl-value">'bail|required|unique:user|max:255'</span>,
         ];
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Model|null
-     */
-    public function user()
+    <span class="hl-comment">/**
+     * <span class="hl-keyword">@return</span> \Illuminate\Database\Eloquent\<span class="hl-type">Model</span>|<span class="hl-keyword">null</span>
+     */</span>
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">user</span>()
     {
-        $user = new User();
+        $user <span class="hl-operator">=</span> <span class="hl-constant">new</span> <span class="hl-type">User</span>();
 
-        return $user-&gt;resolveRouteBinding($this-&gt;user);
+        <span class="hl-keyword">return</span> $user<span class="hl-delimeter">-&gt;</span><span class="hl-function">resolveRouteBinding</span>(<span class="hl-tag2">$this</span><span class="hl-delimeter">-&gt;</span><span class="hl-delimeter">user</span>);
     }
 </code></pre>
 <p>Then you can quickly and conveniently get values in the methods of procedures:</p>
-<pre><code class="language-php">/**
+<pre><code data-lang="php" class="notranslate"><span class="hl-comment">/**
  * Execute the procedure.
  *
- * @param  ExampleRequest  $request
- * @return string
- */
-public function ping(ExampleRequest $request)
+ * <span class="hl-keyword">@param</span>  <span class="hl-type">ExampleRequest</span>  $request
+ * <span class="hl-keyword">@return</span> <span class="hl-keyword">string</span>
+ */</span>
+<span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">ping</span>(<span class="hl-injection"><span class="hl-type">ExampleRequest</span> $request</span>)
 {
-    $request-&gt;user();
-    //...
+    $request<span class="hl-delimeter">-&gt;</span><span class="hl-function">user</span>();
+    <span class="hl-comment">//...</span>
 }
 </code></pre>
 </body>                    </main>
@@ -307,7 +307,7 @@ public function ping(ExampleRequest $request)
 
 
 
-<script src="/js/app.js?id=1cab8abf484910fe694cdf46cffd4186"></script>
+<script src="/js/app.js?id=1b2fa286610111082050100ab21a1df9"></script>
 
 <!-- Insert analytics code here -->
     <!-- Yandex.Metrika counter -->

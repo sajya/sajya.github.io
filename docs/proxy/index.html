@@ -42,7 +42,7 @@
     
     <link rel="home" href="https://sajya.github.io">
 
-    <link rel="stylesheet" href="/css/app.css?id=2ff350144da09be8f3d46ed4b2516f42">
+    <link rel="stylesheet" href="/css/app.css?id=f9a5124264feed20e66007f34ffebc04">
 </head>
 
 <body>
@@ -190,47 +190,47 @@ Instead, a proxy procedure acts as a fallback that executes the underlying metho
 <h2><a href='#usage' id='usage'>Usage</a></h2>
 <p>An indication that a procedure must handle all requests containing its name is the presence of a <code>Proxy</code> interface.
 When no method is found in such a procedure, it will execute the <code>__invoke</code> method, passing the <code>JSON-RPC</code> request itself. For example:</p>
-<pre><code class="language-php">use Sajya\Server\Http\Request;
-use Sajya\Server\Procedure;
-use Sajya\Server\Proxy;
+<pre><code data-lang="php" class="notranslate"><span class="hl-keyword">use</span> Sajya\Server\Http\<span class="hl-type">Request</span>;
+<span class="hl-keyword">use</span> Sajya\Server\<span class="hl-type">Procedure</span>;
+<span class="hl-keyword">use</span> Sajya\Server\<span class="hl-type">Proxy</span>;
 
-class FixtureProxyProcedure extends Procedure implements Proxy
-{
-    /**
+<span class="hl-keyword">class</span> <span class="hl-type">FixtureProxyProcedure</span> <span class="hl-keyword">extends</span> <span class="hl-template">Procedure</span> <span class="hl-keyword">implements</span><span class="hl-template"> Proxy
+</span>{
+    <span class="hl-comment">/**
      * The name of the procedure that will be
      * displayed and taken into account in the search.
      *
-     * @var string
-     */
-    public static string $name = 'proxy';
+     * <span class="hl-keyword">@var</span> <span class="hl-keyword">string</span>
+     */</span>
+    <span class="hl-keyword">public</span> <span class="hl-keyword">static</span> <span class="hl-keyword">string</span> $name <span class="hl-operator">=</span> <span class="hl-value">'proxy'</span>;
 
-    /**
+    <span class="hl-comment">/**
      * The method that will be called if there is no match.
      * 
-     * @param \Sajya\Server\Http\Request $request
+     * <span class="hl-keyword">@param</span> \Sajya\Server\Http\<span class="hl-type">Request</span> $request
      *
-     * @return mixed
-     */
-    public function __invoke(Request $request): mixed
+     * <span class="hl-keyword">@return</span> <span class="hl-keyword">mixed</span>
+     */</span>
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">__invoke</span>(<span class="hl-injection"><span class="hl-type">Request</span> $request</span>): <span class="hl-keyword">mixed</span>
     {
-        return 'Hello '.$request-&gt;getId();
+        <span class="hl-keyword">return</span> <span class="hl-value">'Hello '</span><span class="hl-delimeter">.</span>$request<span class="hl-delimeter">-&gt;</span><span class="hl-function">getId</span>();
     }
 }
 </code></pre>
 <p>After that, we can call any method of this procedure:</p>
-<pre><code class="language-bash">curl --location --request POST 'http://127.0.0.1:8000/api/v1/endpoint' \
---header 'Content-Type: application/json' \
---data-raw '{
+<pre><code data-lang="shell" class="notranslate">curl <span class="hl-constant">--location</span> <span class="hl-constant">--request</span> POST <span class="hl-value">'http://127.0.0.1:8000/api/v1/endpoint'</span> \
+<span class="hl-constant">--header</span> <span class="hl-value">'Content-Type: application/json'</span> \
+<span class="hl-constant">--data-raw</span> <span class="hl-value">'{
 	"jsonrpc":"2.0",
 	"method":"proxy@ping",
 	"id":2
-}'
+}'</span>
 </code></pre>
 <p>And the result is</p>
-<pre><code class="language-json">{
-  "id": "2",
-  "result": "Hello 2",
-  "jsonrpc": "2.0"
+<pre><code data-lang="json" class="notranslate">{
+  "<span class="hl-value">id</span>": "<span class="hl-value2">2</span>",
+  "<span class="hl-value">result</span>": "<span class="hl-value2">Hello 2</span>",
+  "<span class="hl-value">jsonrpc</span>": "<span class="hl-value2">2.0</span>"
 }
 </code></pre>
 </body>                    </main>
@@ -244,7 +244,7 @@ class FixtureProxyProcedure extends Procedure implements Proxy
 
 
 
-<script src="/js/app.js?id=1cab8abf484910fe694cdf46cffd4186"></script>
+<script src="/js/app.js?id=1b2fa286610111082050100ab21a1df9"></script>
 
 <!-- Insert analytics code here -->
     <!-- Yandex.Metrika counter -->

@@ -42,7 +42,7 @@
     
     <link rel="home" href="https://sajya.github.io">
 
-    <link rel="stylesheet" href="/css/app.css?id=2ff350144da09be8f3d46ed4b2516f42">
+    <link rel="stylesheet" href="/css/app.css?id=f9a5124264feed20e66007f34ffebc04">
 </head>
 
 <body>
@@ -188,16 +188,16 @@
 <p>Notifications are a special type of request object that does not expect a response from the server. They are useful when the client wants to send events or updates to the server without waiting for a response. By omitting the <code>id</code> member in the request object, the client indicates that it does not require a response for this specific request.</p>
 <h3><a href='#trying-out-a-notification' id='trying-out-a-notification'>Trying out a Notification</a></h3>
 <p>To try out a Notification, you can use the following <code>curl</code> command:</p>
-<pre><code class="language-bash">curl --location --request POST 'http://127.0.0.1:8000/api/v1/endpoint' \
---header 'Content-Type: application/json' \
---data-raw '{
+<pre><code data-lang="shell" class="notranslate">curl <span class="hl-constant">--location</span> <span class="hl-constant">--request</span> POST <span class="hl-value">'http://127.0.0.1:8000/api/v1/endpoint'</span> \
+<span class="hl-constant">--header</span> <span class="hl-value">'Content-Type: application/json'</span> \
+<span class="hl-constant">--data-raw</span> <span class="hl-value">'{
     "jsonrpc": "2.0",
     "method": "tennis@ping",
     "id": 1
-}'
+}'</span>
 </code></pre>
 <p>Executing this command will result in an empty JSON object as the response:</p>
-<pre><code class="language-bash">{}
+<pre><code data-lang="shell" class="notranslate">{}
 </code></pre>
 <h3><a href='#benefits-of-notifications' id='benefits-of-notifications'>Benefits of Notifications</a></h3>
 <p>Using Notifications can optimize your web application&rsquo;s performance by reducing unnecessary server responses. Since Notifications do not require a response, they enable more efficient communication between the client and server. By clearly indicating that the client is not interested in receiving a response, the communication becomes faster and lighter, contributing to better overall performance.</p>
@@ -212,7 +212,7 @@
 
 
 
-<script src="/js/app.js?id=1cab8abf484910fe694cdf46cffd4186"></script>
+<script src="/js/app.js?id=1b2fa286610111082050100ab21a1df9"></script>
 
 <!-- Insert analytics code here -->
     <!-- Yandex.Metrika counter -->

@@ -42,7 +42,7 @@
     
     <link rel="home" href="https://sajya.github.io">
 
-    <link rel="stylesheet" href="/css/app.css?id=2ff350144da09be8f3d46ed4b2516f42">
+    <link rel="stylesheet" href="/css/app.css?id=f9a5124264feed20e66007f34ffebc04">
 </head>
 
 <body>
@@ -187,93 +187,93 @@
                         <body><h2><a href='#passing-values-to-arguments' id='passing-values-to-arguments'>Passing Values to Arguments</a></h2>
 <p>When working with Sajya, you can easily pass values to the arguments in your handlers. This allows you to retrieve and use the data you need to perform specific actions.</p>
 <p>Let&rsquo;s consider an example where we want to subtract two values. In the JSON-RPC request, we pass the values <code>a</code> and <code>b</code>:</p>
-<pre><code class="language-json">{
-    "jsonrpc": "2.0",
-    "method": "math@subtract",
-    "params": {
-        "a": 4,
-        "b": 2
+<pre><code data-lang="json" class="notranslate">{
+    "<span class="hl-value">jsonrpc</span>": "<span class="hl-value2">2.0</span>",
+    "<span class="hl-value">method</span>": "<span class="hl-value2">math@subtract</span>",
+    "<span class="hl-value">params</span>": {
+        "<span class="hl-value">a</span>": <span class="hl-number">4</span>,
+        "<span class="hl-value">b</span>": <span class="hl-number">2</span>
     },
-    "id": 1
+    "<span class="hl-value">id</span>": <span class="hl-number">1</span>
 }
 </code></pre>
 <p>To access these values in the handler, you can use the Laravel <code>Request</code> object. Here&rsquo;s an example implementation:</p>
-<pre><code class="language-php">use Illuminate\Http\Request;
+<pre><code data-lang="php" class="notranslate"><span class="hl-keyword">use</span> Illuminate\Http\<span class="hl-type">Request</span>;
 
-public function subtract(Request $request): int
+<span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">subtract</span>(<span class="hl-injection"><span class="hl-type">Request</span> $request</span>): <span class="hl-keyword">int</span>
 {
-    return $request-&gt;get('a') - $request-&gt;get('b');
+    <span class="hl-keyword">return</span> $request<span class="hl-delimeter">-&gt;</span><span class="hl-function">get</span>(<span class="hl-value">'a'</span>) - $request<span class="hl-delimeter">-&gt;</span><span class="hl-function">get</span>(<span class="hl-value">'b'</span>);
 }
 </code></pre>
 <p>Alternatively, you can leverage Sajya&rsquo;s automatic argument binding feature. Simply define the argument types in the handler method signature, and Sajya will automatically bind the corresponding values based on their names. For example:</p>
-<pre><code class="language-php">public function subtract(int $a, int $b): int
+<pre><code data-lang="php" class="notranslate"><span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">subtract</span>(<span class="hl-injection"><span class="hl-keyword">int</span> $a, <span class="hl-keyword">int</span> $b</span>): <span class="hl-keyword">int</span>
 {
-    return $a - $b;
+    <span class="hl-keyword">return</span> $a - $b;
 }
 </code></pre>
 <p>This way, Sajya will automatically pass the values <code>a</code> and <code>b</code> as integers to the handler method.</p>
 <p>Furthermore, if your request payload contains nested data, you can access it using camel case notation. Consider the following example where the <code>params</code> object has a nested property <code>user</code> with a <code>name</code> value:</p>
-<pre><code class="language-json">{
-    "jsonrpc": "2.0",
-    "method": "...",
-    "params": {
-        "user": {
-            "name": "Alex"
+<pre><code data-lang="json" class="notranslate">{
+    "<span class="hl-value">jsonrpc</span>": "<span class="hl-value2">2.0</span>",
+    "<span class="hl-value">method</span>": "<span class="hl-value2">...</span>",
+    "<span class="hl-value">params</span>": {
+        "<span class="hl-value">user</span>": {
+            "<span class="hl-value">name</span>": "<span class="hl-value2">Alex</span>"
         }
     },
-    "id": 1
+    "<span class="hl-value">id</span>": <span class="hl-number">1</span>
 }
 </code></pre>
 <p>To access the <code>name</code> value in your handler, you would define an argument with the same name in camel case:</p>
-<pre><code class="language-php">public function handler(string $userName): string
+<pre><code data-lang="php" class="notranslate"><span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">handler</span>(<span class="hl-injection"><span class="hl-keyword">string</span> $userName</span>): <span class="hl-keyword">string</span>
 {
-    return $userName;
+    <span class="hl-keyword">return</span> $userName;
 }
 </code></pre>
 <p>With this setup, Sajya will automatically bind the value <code>"Alex"</code> to the <code>$userName</code> argument in your handler method.</p>
 <h2><a href='#customizing-the-resolution-logic' id='customizing-the-resolution-logic'>Customizing The Resolution Logic</a></h2>
 <p>If you wish to define your model binding resolution logic, you may use the <code>RPC::bind</code> method. The closure you pass to the bind method will receive the value of the params segment and should return the instance of the class that should be injected into the route. Again, this customization should take place in the boot method of your application&rsquo;s <code>RouteServiceProvider</code>:</p>
-<pre><code class="language-php">use Sajya\Server\Facades\RPC;
-use Illuminate\Support\Facades\Route;
+<pre><code data-lang="php" class="notranslate"><span class="hl-keyword">use</span> Sajya\Server\Facades\<span class="hl-constant"><span class="hl-type">RPC</span></span>;
+<span class="hl-keyword">use</span> Illuminate\Support\Facades\<span class="hl-type">Route</span>;
 
-/**
+<span class="hl-comment">/**
  * Define your route model bindings, pattern filters, etc.
- */
-public function boot(): void
+ */</span>
+<span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">boot</span>(): <span class="hl-keyword">void</span>
 {
-    RPC::bind('a', function () {
-        return 100;
+    <span class="hl-type">RPC</span><span class="hl-delimeter">::</span><span class="hl-function">bind</span>(<span class="hl-value">'a'</span>, <span class="hl-keyword">function</span> () {
+        <span class="hl-keyword">return</span> <span class="hl-number">100</span>;
     });
 }
 </code></pre>
 <p>This will automatically replace the substituted value in our method:</p>
-<pre><code class="language-php">public function subtract(int $a, int $b): int
+<pre><code data-lang="php" class="notranslate"><span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">subtract</span>(<span class="hl-injection"><span class="hl-keyword">int</span> $a, <span class="hl-keyword">int</span> $b</span>): <span class="hl-keyword">int</span>
 {
-    return $a - $b; // $a = 100
+    <span class="hl-keyword">return</span> $a - $b; <span class="hl-comment">// $a = 100</span>
 }
 </code></pre>
 <p>But at the same time, the request will contain the original value that was passed.</p>
 <h2><a href='#explicit-model-binding' id='explicit-model-binding'>Explicit Model Binding</a></h2>
 <p>To register an explicit binding, use the <code>RPC::model</code> method to specify the class for a given parameter. It would help if you defined your explicit model bindings at the beginning of the <code>boot</code> method of your <code>RouteServiceProvider</code> class:</p>
-<pre><code class="language-php">use Sajya\Server\Facades\RPC;
-use Illuminate\Support\Facades\Route;
+<pre><code data-lang="php" class="notranslate"><span class="hl-keyword">use</span> Sajya\Server\Facades\<span class="hl-constant"><span class="hl-type">RPC</span></span>;
+<span class="hl-keyword">use</span> Illuminate\Support\Facades\<span class="hl-type">Route</span>;
 
-/**
+<span class="hl-comment">/**
  * Define your route model bindings, pattern filters, etc.
- */
-public function boot(): void
+ */</span>
+<span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">boot</span>(): <span class="hl-keyword">void</span>
 {
-    RPC::model('user', User::class);
+    <span class="hl-type">RPC</span><span class="hl-delimeter">::</span><span class="hl-function">model</span>(<span class="hl-value">'user'</span>, <span class="hl-type">User</span><span class="hl-delimeter">::</span><span class="hl-keyword">class</span>);
 }
 </code></pre>
 <p>It will work for anyone who expects a <code>$user</code> argument, and that value will be passed. The model will run the <code>resolveRouteBinding</code> method.</p>
 <h2><a href='#deep-binding' id='deep-binding'>Deep binding</a></h2>
 <p>As with automatic substitution, bindings <code>RPC::bind</code> and <code>RPC::model</code> can be set for nested elements. To do this, you need to use the <code>dot</code> notation in the declaration. For example:</p>
-<pre><code class="language-php">RPC::model('user.order', ...);
-RPC::bind('user.order', ...;
+<pre><code data-lang="php" class="notranslate"><span class="hl-type">RPC</span><span class="hl-delimeter">::</span><span class="hl-function">model</span>(<span class="hl-value">'user.order'</span>, <span class="hl-delimeter">.</span><span class="hl-delimeter">.</span><span class="hl-delimeter">.</span>);
+<span class="hl-type">RPC</span><span class="hl-delimeter">::</span><span class="hl-function">bind</span>(<span class="hl-value">'user.order'</span>, <span class="hl-delimeter">.</span><span class="hl-delimeter">.</span><span class="hl-delimeter">.</span>;
 </code></pre>
 <p>In turn, this will expect <code>camelCase</code> in the arguments:</p>
-<pre><code class="language-php">public function handler($userOrder)
+<pre><code data-lang="php" class="notranslate"><span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">handler</span>($userOrder)
 </code></pre>
 </body>                    </main>
                 </div>
@@ -286,7 +286,7 @@ RPC::bind('user.order', ...;
 
 
 
-<script src="/js/app.js?id=1cab8abf484910fe694cdf46cffd4186"></script>
+<script src="/js/app.js?id=1b2fa286610111082050100ab21a1df9"></script>
 
 <!-- Insert analytics code here -->
     <!-- Yandex.Metrika counter -->

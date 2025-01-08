@@ -42,7 +42,7 @@
     
     <link rel="home" href="https://sajya.github.io">
 
-    <link rel="stylesheet" href="/css/app.css?id=2ff350144da09be8f3d46ed4b2516f42">
+    <link rel="stylesheet" href="/css/app.css?id=f9a5124264feed20e66007f34ffebc04">
 </head>
 
 <body>
@@ -186,46 +186,46 @@
 
                         <body><h2><a href='#install-via-composer' id='install-via-composer'>Install via Composer</a></h2>
 <p>Navigate to your project directory and install Sajya using Composer:</p>
-<pre><code class="language-bash">composer require sajya/server
+<pre><code data-lang="shell" class="notranslate">composer require sajya/server
 </code></pre>
 <h2><a href='#creating-procedures' id='creating-procedures'>Creating Procedures</a></h2>
 <p>All actions are described in <code>Procedure</code> classes; it is a familiar controller. Still, it must contain the static property <code>name</code>, which will determine the request&rsquo;s execution. Actions can be performed in any public method.</p>
 <p>You can create a procedure class by executing the <code>artisan</code> command:</p>
-<pre><code class="language-bash">php artisan make:procedure TennisProcedure
+<pre><code data-lang="shell" class="notranslate">php artisan make:procedure TennisProcedure
 </code></pre>
 <p>Will create a new file, <code>TennisProcedure.php</code> in the directory <code>app/Http/Procedures</code>.</p>
 <p>Let&rsquo;s call the new procedure <code>tennis</code>. To do this, change the <code>name</code> property and add the <code>pong</code> returning value to the <code>ping</code> method to get this content:</p>
-<pre><code class="language-php">declare(strict_types=1);
+<pre><code data-lang="php" class="notranslate"><span class="hl-keyword"><span class="hl-function">declare</span></span>(strict_types=<span class="hl-number">1</span>);
 
-namespace App\Http\Procedures;
+<span class="hl-keyword">namespace</span> App\Http\Procedures;
 
-use Sajya\Server\Procedure;
+<span class="hl-keyword">use</span> Sajya\Server\<span class="hl-type">Procedure</span>;
 
-class TennisProcedure extends Procedure
+<span class="hl-keyword">class</span> <span class="hl-type">TennisProcedure</span> <span class="hl-keyword">extends</span> <span class="hl-template">Procedure</span>
 {
-    /**
+    <span class="hl-comment">/**
      * The name of the procedure that will be
      * displayed and taken into account in the search
-     */
-    public static string $name = 'tennis';
+     */</span>
+    <span class="hl-keyword">public</span> <span class="hl-keyword">static</span> <span class="hl-keyword">string</span> $name <span class="hl-operator">=</span> <span class="hl-value">'tennis'</span>;
 
-    /**
+    <span class="hl-comment">/**
      * Execute the procedure.
      *
-     * @return string
-     */
-    public function ping()
+     * <span class="hl-keyword">@return</span> <span class="hl-keyword">string</span>
+     */</span>
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">ping</span>()
     {
-        return 'pong';
+        <span class="hl-keyword">return</span> <span class="hl-value">'pong'</span>;
     }
 }
 </code></pre>
 <h2><a href='#route-registration' id='route-registration'>Route Registration</a></h2>
 <p>Like the controller, the procedure needs to be registered in the routes file, define it in the file <code>api.php</code>:</p>
-<pre><code class="language-php">use Illuminate\Support\Facades\Route;
-use App\Http\Procedures\TennisProcedure;
+<pre><code data-lang="php" class="notranslate"><span class="hl-keyword">use</span> Illuminate\Support\Facades\<span class="hl-type">Route</span>;
+<span class="hl-keyword">use</span> App\Http\Procedures\<span class="hl-type">TennisProcedure</span>;
 
-/*
+<span class="hl-comment">/*
 |--------------------------------------------------------------------------
 | API Routes
 |--------------------------------------------------------------------------
@@ -234,35 +234,35 @@ use App\Http\Procedures\TennisProcedure;
 | routes are loaded by the RouteServiceProvider within a group which
 | is assigned the "api" middleware group. Enjoy building your API!
 |
-*/
+*/</span>
 
-Route::rpc('/v1/endpoint', [TennisProcedure::class])
-    -&gt;name('rpc.endpoint');
+<span class="hl-type">Route</span><span class="hl-delimeter">::</span><span class="hl-function">rpc</span>(<span class="hl-value">'/v1/endpoint'</span>, [<span class="hl-type">TennisProcedure</span><span class="hl-delimeter">::</span><span class="hl-keyword">class</span>])
+    <span class="hl-delimeter">-&gt;</span><span class="hl-function">name</span>(<span class="hl-value">'rpc.endpoint'</span>);
 </code></pre>
 <blockquote>
 <p>Note that the second argument, we pass an array that contains only the necessary classes. Thus, in the future, we will add a second version of our API without conflicts.</p>
 </blockquote>
 <h2><a href='#starting-a-local-server' id='starting-a-local-server'>Starting a Local Server</a></h2>
 <p>To start the project, you can use the built-in server:</p>
-<pre><code class="language-bash">php artisan serve
+<pre><code data-lang="shell" class="notranslate">php artisan serve
 </code></pre>
 <p>Open a browser and go to <code>http://localhost:8000</code>. If everything works, you will see the welcome page. Later, when you are done, stop the server by pressing <code>Ctrl + C</code> in the terminal you are using.</p>
 <h2><a href='#check-response' id='check-response'>Check response</a></h2>
 <p>To turn to the required method, you must pass the name specified in the class and the necessary process with the delimiter &ldquo;@&rdquo; character. In our case, it will be: <code>tennis@ping</code>.</p>
 <p>Let&rsquo;s make a <code>curl</code> call to the new API:</p>
-<pre><code class="language-bash">curl --location --request POST 'http://127.0.0.1:8000/api/v1/endpoint' \
---header 'Content-Type: application/json' \
---data-raw '{
+<pre><code data-lang="shell" class="notranslate">curl <span class="hl-constant">--location</span> <span class="hl-constant">--request</span> POST <span class="hl-value">'http://127.0.0.1:8000/api/v1/endpoint'</span> \
+<span class="hl-constant">--header</span> <span class="hl-value">'Content-Type: application/json'</span> \
+<span class="hl-constant">--data-raw</span> <span class="hl-value">'{
 	"jsonrpc":"2.0",
 	"method":"tennis@ping",
 	"id":1
-}'
+}'</span>
 </code></pre>
 <p>The result will be the resulting JSON string:</p>
-<pre><code class="language-json">{
-  "id": "1",
-  "result": "pong",
-  "jsonrpc": "2.0"
+<pre><code data-lang="json" class="notranslate">{
+  "<span class="hl-value">id</span>": "<span class="hl-value2">1</span>",
+  "<span class="hl-value">result</span>": "<span class="hl-value2">pong</span>",
+  "<span class="hl-value">jsonrpc</span>": "<span class="hl-value2">2.0</span>"
 }
 </code></pre>
 </body>                    </main>
@@ -276,7 +276,7 @@ Route::rpc('/v1/endpoint', [TennisProcedure::class])
 
 
 
-<script src="/js/app.js?id=1cab8abf484910fe694cdf46cffd4186"></script>
+<script src="/js/app.js?id=1b2fa286610111082050100ab21a1df9"></script>
 
 <!-- Insert analytics code here -->
     <!-- Yandex.Metrika counter -->

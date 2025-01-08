@@ -42,7 +42,7 @@
     
     <link rel="home" href="https://sajya.github.io">
 
-    <link rel="stylesheet" href="/css/app.css?id=2ff350144da09be8f3d46ed4b2516f42">
+    <link rel="stylesheet" href="/css/app.css?id=f9a5124264feed20e66007f34ffebc04">
 </head>
 
 <body>
@@ -188,63 +188,63 @@
 <p>Sajya tries to fully comply with the standards and expectations that apply to <a href="https://laravel.com/docs/errors">Laravel</a>. For example, with the <code>debug</code> option enabled in the <code>config/app.php</code> configuration file, the response error information will contain much more information.</p>
 <h2><a href='#throwing-exceptions' id='throwing-exceptions'>Throwing Exceptions</a></h2>
 <p>During the operation of your application, you can throw exceptions that will be converted into a JSON-RPC response without any intervention required. Here&rsquo;s an example:</p>
-<pre><code class="language-php">namespace App\Http\Procedures;
+<pre><code data-lang="php" class="notranslate"><span class="hl-keyword">namespace</span> App\Http\Procedures;
 
-use Exception;
-use Sajya\Server\Procedure;
+<span class="hl-keyword">use</span> <span class="hl-type">Exception</span>;
+<span class="hl-keyword">use</span> Sajya\Server\<span class="hl-type">Procedure</span>;
 
-class TennisProcedure extends Procedure
+<span class="hl-keyword">class</span> <span class="hl-type">TennisProcedure</span> <span class="hl-keyword">extends</span> <span class="hl-template">Procedure</span>
 {
-    public static string $name = 'tennis';
+    <span class="hl-keyword">public</span> <span class="hl-keyword">static</span> <span class="hl-keyword">string</span> $name <span class="hl-operator">=</span> <span class="hl-value">'tennis'</span>;
 
-    public function ping()
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">ping</span>()
     {
-        throw new Exception('Division by zero.', -100);
+        <span class="hl-keyword">throw</span> <span class="hl-constant">new</span> <span class="hl-type">Exception</span>(<span class="hl-value">'Division by zero.'</span>, -<span class="hl-number">100</span>);
     }
 }
 </code></pre>
 <p>In this example, when the ping method is called, an exception is thrown with a custom message and error code.
 The resulting JSON-RPC response will contain the error details:</p>
-<pre><code class="language-json">{
-    "id": "1",
-    "error": {
-        "code": -100,
-        "message": "Division by zero."
+<pre><code data-lang="json" class="notranslate">{
+    "<span class="hl-value">id</span>": "<span class="hl-value2">1</span>",
+    "<span class="hl-value">error</span>": {
+        "<span class="hl-value">code</span>": -100,
+        "<span class="hl-value">message</span>": "<span class="hl-value2">Division by zero.</span>"
         ....
     },
-    "jsonrpc": "2.0"
+    "<span class="hl-value">jsonrpc</span>": "<span class="hl-value2">2.0</span>"
 }
 </code></pre>
 <h3><a href='#custom-exceptions' id='custom-exceptions'>Custom Exceptions</a></h3>
 <p>To avoid repetition, you can create your own exception class that inherits from <code>Sajya\Server\Exceptions\RpcException</code>.
 This allows you to define the error message and code for your specific exception. Here&rsquo;s how you can create a custom exception using the Artisan command:</p>
-<pre><code class="language-bash">php artisan make:exception DivisionByZero
+<pre><code data-lang="shell" class="notranslate">php artisan make:exception DivisionByZero
 </code></pre>
 <p>This will generate a new exception class in the <code>app/Exceptions</code> directory. You can then modify this class to support JSON-RPC and define the default message and error code:</p>
-<pre><code class="language-php">namespace App\Exceptions;
+<pre><code data-lang="php" class="notranslate"><span class="hl-keyword">namespace</span> App\Exceptions;
 
-use Sajya\Server\Exceptions\RpcException;
+<span class="hl-keyword">use</span> Sajya\Server\Exceptions\<span class="hl-type">RpcException</span>;
 
-class DivisionByZero extends RpcException
+<span class="hl-keyword">class</span> <span class="hl-type">DivisionByZero</span> <span class="hl-keyword">extends</span> <span class="hl-template">RpcException</span>
 {
-    /**
+    <span class="hl-comment">/**
      * Get the default error message for the exception.
      *
-     * @return string
-     */
-    protected function getDefaultMessage(): string
+     * <span class="hl-keyword">@return</span> <span class="hl-keyword">string</span>
+     */</span>
+    <span class="hl-keyword">protected</span> <span class="hl-keyword">function</span> <span class="hl-function">getDefaultMessage</span>(): <span class="hl-keyword">string</span>
     {
-        return 'Division by zero.';
+        <span class="hl-keyword">return</span> <span class="hl-value">'Division by zero.'</span>;
     }
 
-    /**
+    <span class="hl-comment">/**
      * Get the default error code for the exception.
      *
-     * @return int
-     */
-    protected function getDefaultCode(): int
+     * <span class="hl-keyword">@return</span> <span class="hl-keyword">int</span>
+     */</span>
+    <span class="hl-keyword">protected</span> <span class="hl-keyword">function</span> <span class="hl-function">getDefaultCode</span>(): <span class="hl-keyword">int</span>
     {
-        return -100;
+        <span class="hl-keyword">return</span> -<span class="hl-number">100</span>;
     }
 }
 </code></pre>
@@ -252,18 +252,18 @@ class DivisionByZero extends RpcException
 This allows you to provide a concise description of the error and specify an integer error code.</p>
 <h3><a href='#throwing-custom-exceptions' id='throwing-custom-exceptions'>Throwing Custom Exceptions</a></h3>
 <p>Once you have defined a custom exception, you can throw it during runtime. The JSON-RPC client will receive the correct error code and description in the response. Here&rsquo;s an example:</p>
-<pre><code class="language-php">namespace App\Http\Procedures;
+<pre><code data-lang="php" class="notranslate"><span class="hl-keyword">namespace</span> App\Http\Procedures;
 
-use App\Exceptions\DivisionByZero;
-use Sajya\Server\Procedure;
+<span class="hl-keyword">use</span> App\Exceptions\<span class="hl-type">DivisionByZero</span>;
+<span class="hl-keyword">use</span> Sajya\Server\<span class="hl-type">Procedure</span>;
 
-class TennisProcedure extends Procedure
+<span class="hl-keyword">class</span> <span class="hl-type">TennisProcedure</span> <span class="hl-keyword">extends</span> <span class="hl-template">Procedure</span>
 {
-    public static string $name = 'tennis';
+    <span class="hl-keyword">public</span> <span class="hl-keyword">static</span> <span class="hl-keyword">string</span> $name <span class="hl-operator">=</span> <span class="hl-value">'tennis'</span>;
 
-    public function ping()
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">ping</span>()
     {
-        throw new DivisionByZero();
+        <span class="hl-keyword">throw</span> <span class="hl-constant">new</span> <span class="hl-type">DivisionByZero</span>();
     }
 }
 </code></pre>
@@ -287,7 +287,7 @@ class TennisProcedure extends Procedure
 
 
 
-<script src="/js/app.js?id=1cab8abf484910fe694cdf46cffd4186"></script>
+<script src="/js/app.js?id=1b2fa286610111082050100ab21a1df9"></script>
 
 <!-- Insert analytics code here -->
     <!-- Yandex.Metrika counter -->

@@ -42,7 +42,7 @@
     
     <link rel="home" href="https://sajya.github.io">
 
-    <link rel="stylesheet" href="/css/app.css?id=2ff350144da09be8f3d46ed4b2516f42">
+    <link rel="stylesheet" href="/css/app.css?id=f9a5124264feed20e66007f34ffebc04">
 </head>
 
 <body>
@@ -190,17 +190,17 @@
 <p>Of course, if the service data is consumed directly by web browsers, this amount will be difficult to achieve. But when transferring data between servers, for more optimization, you can use compression, for example, <a href="https://en.wikipedia.org/wiki/Gzip">gzip</a>.</p>
 <p><picture alt='Compression reduces file size and makes it faster to transmit over the network.'><img src="/img/compress.svg" alt="Compression reduces file size and makes it faster to transmit over the network."></picture></p>
 <p>In order for application responses to be compressed, it is enough to put <code>GzipCompress</code> as the middleware:</p>
-<pre><code class="language-php">use Sajya\Server\Middleware\GzipCompress;
+<pre><code data-lang="php" class="notranslate"><span class="hl-keyword">use</span> Sajya\Server\Middleware\<span class="hl-type">GzipCompress</span>;
 
-Route::rpc('/v1/endpoint', [TennisProcedure::class])
-    -&gt;middleware(GzipCompress::class)
-    -&gt;name('rpc.endpoint');
+<span class="hl-type">Route</span><span class="hl-delimeter">::</span><span class="hl-function">rpc</span>(<span class="hl-value">'/v1/endpoint'</span>, [<span class="hl-type">TennisProcedure</span><span class="hl-delimeter">::</span><span class="hl-keyword">class</span>])
+    <span class="hl-delimeter">-&gt;</span><span class="hl-function">middleware</span>(<span class="hl-type">GzipCompress</span><span class="hl-delimeter">::</span><span class="hl-keyword">class</span>)
+    <span class="hl-delimeter">-&gt;</span><span class="hl-function">name</span>(<span class="hl-value">'rpc.endpoint'</span>);
 </code></pre>
 <p>After that, we can easily check this with curl:</p>
-<pre><code class="language-bash">curl 'http://127.0.0.1:8001/api/v1/endpoint' --data-binary '{"jsonrpc":"2.0","method":"tennis@ping","id":1}' -H "Accept-Encoding: gzip" --output -
+<pre><code data-lang="shell" class="notranslate">curl <span class="hl-value">'http://127.0.0.1:8001/api/v1/endpoint'</span> <span class="hl-constant">--data-binary</span> <span class="hl-value">'{"jsonrpc":"2.0","method":"tennis@ping","id":1}'</span> <span class="hl-constant">-H</span> <span class="hl-value">"Accept-Encoding: gzip"</span> <span class="hl-constant">--output</span> -
 </code></pre>
 <p>An approximate result would be:</p>
-<pre><code class="language-bash">Accept-Encoding: gzip"  --output -
+<pre><code data-lang="shell" class="notranslate">Accept-Encoding: gzip"  <span class="hl-constant">--output</span> -
 �V�LQ�R2T�Q*J-.�)r
 ��ҁ�������d�����R-��*%      
 </code></pre>
@@ -219,7 +219,7 @@ Route::rpc('/v1/endpoint', [TennisProcedure::class])
 
 
 
-<script src="/js/app.js?id=1cab8abf484910fe694cdf46cffd4186"></script>
+<script src="/js/app.js?id=1b2fa286610111082050100ab21a1df9"></script>
 
 <!-- Insert analytics code here -->
     <!-- Yandex.Metrika counter -->

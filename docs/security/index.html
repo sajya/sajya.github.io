@@ -42,7 +42,7 @@
     
     <link rel="home" href="https://sajya.github.io">
 
-    <link rel="stylesheet" href="/css/app.css?id=2ff350144da09be8f3d46ed4b2516f42">
+    <link rel="stylesheet" href="/css/app.css?id=f9a5124264feed20e66007f34ffebc04">
 </head>
 
 <body>
@@ -190,47 +190,47 @@
 <h2><a href='#bruteforce' id='bruteforce'>Bruteforce</a></h2>
 <p>Most likely when using api-token you will want to block them from overshooting. But leave enough limits for real users.
 To do this, we can add the following content to the middleware <code>Http/Middleware/Authenticate.php</code>:</p>
-<pre><code class="language-php">class Authenticate extends Middleware
+<pre><code data-lang="php" class="notranslate"><span class="hl-keyword">class</span> <span class="hl-type">Authenticate</span> <span class="hl-keyword">extends</span> <span class="hl-template">Middleware</span>
 {
-    /**
+    <span class="hl-comment">/**
      * Determine if the user is logged in to any of the given guards.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param array                    $guards
+     * <span class="hl-keyword">@param</span> \Illuminate\Http\<span class="hl-type">Request</span> $request
+     * <span class="hl-keyword">@param</span> <span class="hl-keyword">array</span>                    $guards
      *
-     * @throws \Illuminate\Auth\AuthenticationException
+     * <span class="hl-keyword">@throws</span> \Illuminate\Auth\<span class="hl-type">AuthenticationException</span>
      *
-     * @return void
-     */
-    protected function authenticate($request, array $guards)
+     * <span class="hl-keyword">@return</span> <span class="hl-keyword">void</span>
+     */</span>
+    <span class="hl-keyword">protected</span> <span class="hl-keyword">function</span> <span class="hl-function">authenticate</span>(<span class="hl-injection">$request, <span class="hl-keyword">array</span> $guards</span>)
     {
-        $guardedByApi = in_array('api', $guards, true);
+        $guardedByApi <span class="hl-operator">=</span> <span class="hl-function">in_array</span>(<span class="hl-value">'api'</span>, $guards, <span class="hl-constant">true</span>);
         
-        abort_if(
-            $guardedByApi &amp;&amp; RateLimiter::tooManyAttempts('api', 10),
-            429,
-            'Too many requests. Retry in '.RateLimiter::availableIn('api').' seconds'
+        <span class="hl-function">abort_if</span>(
+            $guardedByApi <span class="hl-operator">&amp;&amp;</span> <span class="hl-type">RateLimiter</span><span class="hl-delimeter">::</span><span class="hl-function">tooManyAttempts</span>(<span class="hl-value">'api'</span>, <span class="hl-number">10</span>),
+            <span class="hl-number">429</span>,
+            <span class="hl-value">'Too many requests. Retry in '</span><span class="hl-delimeter">.</span><span class="hl-type">RateLimiter</span><span class="hl-delimeter">::</span><span class="hl-function">availableIn</span>(<span class="hl-value">'api'</span>)<span class="hl-delimeter">.</span><span class="hl-value">' seconds'</span>
         );
 
-        if (empty($guards)) {
-            $guards = [null];
+        <span class="hl-keyword">if</span> (<span class="hl-keyword"><span class="hl-function">empty</span></span>($guards)) {
+            $guards <span class="hl-operator">=</span> [<span class="hl-keyword"><span class="hl-constant">null</span></span>];
         }
 
-        foreach ($guards as $guard) {
-            if ($this-&gt;auth-&gt;guard($guard)-&gt;check()) {
-                return $this-&gt;auth-&gt;shouldUse($guard);
+        <span class="hl-keyword">foreach</span> ($guards <span class="hl-keyword">as</span> $guard) {
+            <span class="hl-keyword">if</span> (<span class="hl-tag2">$this</span><span class="hl-delimeter">-&gt;</span><span class="hl-delimeter">auth</span><span class="hl-delimeter">-&gt;</span><span class="hl-function">guard</span>($guard)<span class="hl-delimeter">-&gt;</span><span class="hl-function">check</span>()) {
+                <span class="hl-keyword">return</span> <span class="hl-tag2">$this</span><span class="hl-delimeter">-&gt;</span><span class="hl-delimeter">auth</span><span class="hl-delimeter">-&gt;</span><span class="hl-function">shouldUse</span>($guard);
             }
         }
 
-        // User is unauthenticated. If the request is guarded by api...
-        if ($guardedByApi) {
-            RateLimiter::hit('api');
+        <span class="hl-comment">// User is unauthenticated. If the request is guarded by api...</span>
+        <span class="hl-keyword">if</span> ($guardedByApi) {
+            <span class="hl-type">RateLimiter</span><span class="hl-delimeter">::</span><span class="hl-function">hit</span>(<span class="hl-value">'api'</span>);
         }
 
-        $this-&gt;unauthenticated($request, $guards);
+        <span class="hl-tag2">$this</span><span class="hl-delimeter">-&gt;</span><span class="hl-function">unauthenticated</span>($request, $guards);
     }
     
-    // ...
+    <span class="hl-comment">// ...</span>
 }
 </code></pre>
 <p>This will allow you to set a limit on login attempts and significantly limit token brute-forcing capabilities.
@@ -246,7 +246,7 @@ The rate limit will not be affected for authorized users.</p>
 
 
 
-<script src="/js/app.js?id=1cab8abf484910fe694cdf46cffd4186"></script>
+<script src="/js/app.js?id=1b2fa286610111082050100ab21a1df9"></script>
 
 <!-- Insert analytics code here -->
     <!-- Yandex.Metrika counter -->

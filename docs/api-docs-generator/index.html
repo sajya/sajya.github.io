@@ -42,7 +42,7 @@
     
     <link rel="home" href="https://sajya.github.io">
 
-    <link rel="stylesheet" href="/css/app.css?id=2ff350144da09be8f3d46ed4b2516f42">
+    <link rel="stylesheet" href="/css/app.css?id=f9a5124264feed20e66007f34ffebc04">
 </head>
 
 <body>
@@ -186,37 +186,37 @@
 
                         <body><h2><a href='#usage' id='usage'>Usage</a></h2>
 <p>Documentation creation based on phpdoc annotations:</p>
-<pre><code class="language-php">declare(strict_types=1);
+<pre><code data-lang="php" class="notranslate"><span class="hl-keyword"><span class="hl-function">declare</span></span>(strict_types=<span class="hl-number">1</span>);
 
-namespace App\Http\Procedures;
+<span class="hl-keyword">namespace</span> App\Http\Procedures;
 
-use Illuminate\Http\Request;
-use Sajya\Server\Annotations\Param;
-use Sajya\Server\Annotations\Result;
-use Sajya\Server\Procedure;
+<span class="hl-keyword">use</span> Illuminate\Http\<span class="hl-type">Request</span>;
+<span class="hl-keyword">use</span> Sajya\Server\Annotations\<span class="hl-type">Param</span>;
+<span class="hl-keyword">use</span> Sajya\Server\Annotations\<span class="hl-type">Result</span>;
+<span class="hl-keyword">use</span> Sajya\Server\<span class="hl-type">Procedure</span>;
 
-class MathProcedure extends Procedure
+<span class="hl-keyword">class</span> <span class="hl-type">MathProcedure</span> <span class="hl-keyword">extends</span> <span class="hl-template">Procedure</span>
 {
-    /**
+    <span class="hl-comment">/**
      * The name of the procedure that will be
      * displayed and taken into account in the search
      *
-     * @var string
-     */
-    public static string $name = 'math';
+     * <span class="hl-keyword">@var</span> <span class="hl-keyword">string</span>
+     */</span>
+    <span class="hl-keyword">public</span> <span class="hl-keyword">static</span> <span class="hl-keyword">string</span> $name <span class="hl-operator">=</span> <span class="hl-value">'math'</span>;
 
-    /**
+    <span class="hl-comment">/**
      * Execute the procedure.
      *
-     * @Param(name="minuend", value="required|integer")
-     * @Param(name="subtrahend", value="required|integer")
+     * <span class="hl-keyword">@Param</span>(name="minuend", value="required|integer")
+     * <span class="hl-keyword">@Param</span>(name="subtrahend", value="required|integer")
      *
-     * @Result(name="outcome", value="required|integer")
-     */
-    public function subtract(Request $request): array
+     * <span class="hl-keyword">@Result</span>(name="outcome", value="required|integer")
+     */</span>
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">subtract</span>(<span class="hl-injection"><span class="hl-type">Request</span> $request</span>): <span class="hl-keyword">array</span>
     {
-        return [
-            'outcome' =&gt; $request-&gt;get('minuend') - $request-&gt;get('subtrahend'),
+        <span class="hl-keyword">return</span> [
+            <span class="hl-value">'outcome'</span> <span class="hl-operator">=&gt;</span> $request<span class="hl-delimeter">-&gt;</span><span class="hl-function">get</span>(<span class="hl-value">'minuend'</span>) - $request<span class="hl-delimeter">-&gt;</span><span class="hl-function">get</span>(<span class="hl-value">'subtrahend'</span>),
         ];
     }
 }
@@ -227,15 +227,15 @@ class MathProcedure extends Procedure
 <p><strong>Note.</strong> Importing annotation classes is required.</p>
 </blockquote>
 <p>To specify array elements or nesting, use dot notation, for example:</p>
-<pre><code class="language-php">@Param(name="server.title", value="required|string|max:255")
+<pre><code data-lang="php" class="notranslate">@<span class="hl-function">Param</span>(name=<span class="hl-value">"server.title"</span>, value=<span class="hl-value">"required|string|max:255"</span>)
 </code></pre>
 <hr>
 <h2><a href='#generating-html' id='generating-html'>Generating HTML</a></h2>
 <p>Run the documentations generator command from the root directory:</p>
-<pre><code class="language-php">php artisan sajya:docs 'Route name'
+<pre><code data-lang="php" class="notranslate">php artisan sajya:docs <span class="hl-value">'Route name'</span>
 </code></pre>
 <p>By default, the file will be saved <code>storage/app/api/docs.html</code>, but you can change both path and filename with options:</p>
-<pre><code class="language-php">php artisan sajya:docs rpc.endpoint --path='/api/v1/' --name="index.html"
+<pre><code data-lang="php" class="notranslate">php artisan sajya:docs rpc<span class="hl-delimeter">.</span>endpoint --path=<span class="hl-value">'/api/v1/'</span> --name=<span class="hl-value">"index.html"</span>
 </code></pre>
 </body>                    </main>
                 </div>
@@ -248,7 +248,7 @@ class MathProcedure extends Procedure
 
 
 
-<script src="/js/app.js?id=1cab8abf484910fe694cdf46cffd4186"></script>
+<script src="/js/app.js?id=1b2fa286610111082050100ab21a1df9"></script>
 
 <!-- Insert analytics code here -->
     <!-- Yandex.Metrika counter -->
