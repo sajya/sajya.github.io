@@ -197,7 +197,10 @@
     <span class="hl-delimeter">-&gt;</span><span class="hl-function">name</span>(<span class="hl-value">'rpc.endpoint'</span>);
 </code></pre>
 <p>After that, we can easily check this with curl:</p>
-<pre><code data-lang="shell" class="notranslate">curl <span class="hl-value">'http://127.0.0.1:8001/api/v1/endpoint'</span> <span class="hl-constant">--data-binary</span> <span class="hl-value">'{"jsonrpc":"2.0","method":"tennis@ping","id":1}'</span> <span class="hl-constant">-H</span> <span class="hl-value">"Accept-Encoding: gzip"</span> <span class="hl-constant">--output</span> -
+<pre><code data-lang="shell" class="notranslate">curl <span class="hl-value">'http://127.0.0.1:8001/api/v1/endpoint'</span> \
+  <span class="hl-constant">--data-binary</span> <span class="hl-value">'{"jsonrpc":"2.0","method":"tennis@ping","id":1}'</span> \
+  <span class="hl-constant">-H</span> <span class="hl-value">"Accept-Encoding: gzip"</span> \
+  <span class="hl-constant">--output</span> -
 </code></pre>
 <p>An approximate result would be:</p>
 <pre><code data-lang="shell" class="notranslate">Accept-Encoding: gzip"  <span class="hl-constant">--output</span> -
