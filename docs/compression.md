@@ -30,7 +30,10 @@ Route::rpc('/v1/endpoint', [TennisProcedure::class])
 After that, we can easily check this with curl:
 
 ```bash
-curl 'http://127.0.0.1:8001/api/v1/endpoint' --data-binary '{"jsonrpc":"2.0","method":"tennis@ping","id":1}' -H "Accept-Encoding: gzip" --output -
+curl 'http://127.0.0.1:8001/api/v1/endpoint' \
+  --data-binary '{"jsonrpc":"2.0","method":"tennis@ping","id":1}' \
+  -H "Accept-Encoding: gzip" \
+  --output -
 ```
 
 An approximate result would be:
