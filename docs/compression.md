@@ -5,7 +5,7 @@ extends: _layouts.documentation
 section: content
 ---
 
-## Middleware for gzip
+## Middleware for Gzip
 
 Many services use `JSON` for messaging due to its human-readable data and smaller size compared to `XML`. But it also has its own problems, one of which is the file size compared to binary formats. On a small amount of data, the transfer and decryption speed will be almost invisible in almost any format, but with an increase in the volume, the load on the network can greatly increase.
 
