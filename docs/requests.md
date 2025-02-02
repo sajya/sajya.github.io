@@ -48,7 +48,7 @@ curl --location --request POST 'http://127.0.0.1:8000/api/v1/endpoint' \
 	"jsonrpc": "2.0",
 	"method": "tennis@ping",
 	"params": {
-		"innings": "out"
+        "innings": "out"
 	},
 	"id": 1
 }'
