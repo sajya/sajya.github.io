@@ -45,12 +45,12 @@ The transferred parameters will be automatically written to the object:
 curl --location --request POST 'http://127.0.0.1:8000/api/v1/endpoint' \
 --header 'Content-Type: application/json' \
 --data-raw '{
-	"jsonrpc": "2.0",
-	"method": "tennis@ping",
-	"params": {
+    "jsonrpc": "2.0",
+    "method": "tennis@ping",
+    "params": {
         "innings": "out"
-	},
-	"id": 1
+    },
+    "id": 1
 }'
 ```
 
