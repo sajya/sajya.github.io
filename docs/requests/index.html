@@ -217,12 +217,12 @@
 <pre><code data-lang="shell" class="notranslate">curl <span class="hl-constant">--location</span> <span class="hl-constant">--request</span> POST <span class="hl-value">'http://127.0.0.1:8000/api/v1/endpoint'</span> \
 <span class="hl-constant">--header</span> <span class="hl-value">'Content-Type: application/json'</span> \
 <span class="hl-constant">--data-raw</span> <span class="hl-value">'{
-	"jsonrpc": "2.0",
-	"method": "tennis@ping",
-	"params": {
+    "jsonrpc": "2.0",
+    "method": "tennis@ping",
+    "params": {
         "innings": "out"
-	},
-	"id": 1
+    },
+    "id": 1
 }'</span>
 </code></pre>
 <p>Since this is a regular Laravel object, you can perform all available operations on it, for example, validation:</p>
