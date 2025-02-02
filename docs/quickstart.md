@@ -47,10 +47,8 @@ class TennisProcedure extends Procedure
 
     /**
      * Execute the procedure.
-     *
-     * @return string
      */
-    public function ping()
+    public function ping(): string
     {
         return 'pong';
     }
