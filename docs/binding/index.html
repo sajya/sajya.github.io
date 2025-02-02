@@ -186,13 +186,13 @@
 
                         <body><h2><a href='#passing-values-to-arguments' id='passing-values-to-arguments'>Passing Values to Arguments</a></h2>
 <p>When working with Sajya, you can easily pass values to the arguments in your handlers. This allows you to retrieve and use the data you need to perform specific actions.</p>
-<p>Let&rsquo;s consider an example where we want to subtract two values. In the JSON-RPC request, we pass the values <code>a</code> and <code>b</code>:</p>
+<p>Let&rsquo;s consider an example where we want to subtract two values. In the JSON-RPC request, we pass the values <code>minuend</code> and <code>subtrahend</code>:</p>
 <pre><code data-lang="json" class="notranslate">{
     "<span class="hl-value">jsonrpc</span>": "<span class="hl-value2">2.0</span>",
     "<span class="hl-value">method</span>": "<span class="hl-value2">math@subtract</span>",
     "<span class="hl-value">params</span>": {
-        "<span class="hl-value">a</span>": <span class="hl-number">4</span>,
-        "<span class="hl-value">b</span>": <span class="hl-number">2</span>
+        "<span class="hl-value">minuend</span>": <span class="hl-number">4</span>,
+        "<span class="hl-value">subtrahend</span>": <span class="hl-number">2</span>
     },
     "<span class="hl-value">id</span>": <span class="hl-number">1</span>
 }
@@ -202,16 +202,16 @@
 
 <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">subtract</span>(<span class="hl-injection"><span class="hl-type">Request</span> $request</span>): <span class="hl-keyword">int</span>
 {
-    <span class="hl-keyword">return</span> $request<span class="hl-delimeter">-&gt;</span><span class="hl-function">get</span>(<span class="hl-value">'a'</span>) - $request<span class="hl-delimeter">-&gt;</span><span class="hl-function">get</span>(<span class="hl-value">'b'</span>);
+    <span class="hl-keyword">return</span> $request<span class="hl-delimeter">-&gt;</span><span class="hl-function">get</span>(<span class="hl-value">'minuend'</span>) - $request<span class="hl-delimeter">-&gt;</span><span class="hl-function">get</span>(<span class="hl-value">'subtrahend'</span>);
 }
 </code></pre>
 <p>Alternatively, you can leverage Sajya&rsquo;s automatic argument binding feature. Simply define the argument types in the handler method signature, and Sajya will automatically bind the corresponding values based on their names. For example:</p>
-<pre><code data-lang="php" class="notranslate"><span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">subtract</span>(<span class="hl-injection"><span class="hl-keyword">int</span> $a, <span class="hl-keyword">int</span> $b</span>): <span class="hl-keyword">int</span>
+<pre><code data-lang="php" class="notranslate"><span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">subtract</span>(<span class="hl-injection"><span class="hl-keyword">int</span> $minuend, <span class="hl-keyword">int</span> $subtrahend</span>): <span class="hl-keyword">int</span>
 {
-    <span class="hl-keyword">return</span> $a - $b;
+    <span class="hl-keyword">return</span> $minuend - $subtrahend;
 }
 </code></pre>
-<p>This way, Sajya will automatically pass the values <code>a</code> and <code>b</code> as integers to the handler method.</p>
+<p>This way, Sajya will automatically pass the values <code>minuend</code> and <code>subtrahend</code> as integers to the handler method.</p>
 <p>Furthermore, if your request payload contains nested data, you can access it using camel case notation. Consider the following example where the <code>params</code> object has a nested property <code>user</code> with a <code>name</code> value:</p>
 <pre><code data-lang="json" class="notranslate">{
     "<span class="hl-value">jsonrpc</span>": "<span class="hl-value2">2.0</span>",
@@ -241,15 +241,16 @@
  */</span>
 <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">boot</span>(): <span class="hl-keyword">void</span>
 {
-    <span class="hl-type">RPC</span><span class="hl-delimeter">::</span><span class="hl-function">bind</span>(<span class="hl-value">'a'</span>, <span class="hl-keyword">function</span> () {
+    <span class="hl-type">RPC</span><span class="hl-delimeter">::</span><span class="hl-function">bind</span>(<span class="hl-value">'minuend'</span>, <span class="hl-keyword">function</span> () {
         <span class="hl-keyword">return</span> <span class="hl-number">100</span>;
     });
 }
 </code></pre>
 <p>This will automatically replace the substituted value in our method:</p>
-<pre><code data-lang="php" class="notranslate"><span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">subtract</span>(<span class="hl-injection"><span class="hl-keyword">int</span> $a, <span class="hl-keyword">int</span> $b</span>): <span class="hl-keyword">int</span>
+<pre><code data-lang="php" class="notranslate"><span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">subtract</span>(<span class="hl-injection"><span class="hl-keyword">int</span> $minuend, <span class="hl-keyword">int</span> $subtrahend</span>): <span class="hl-keyword">int</span>
 {
-    <span class="hl-keyword">return</span> $a - $b; <span class="hl-comment">// $a = 100</span>
+    <span class="hl-comment">// $minuend = 100</span>
+    <span class="hl-keyword">return</span> $minuend - $subtrahend;
 }
 </code></pre>
 <p>But at the same time, the request will contain the original value that was passed.</p>
