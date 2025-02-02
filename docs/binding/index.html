@@ -268,7 +268,7 @@
 }
 </code></pre>
 <p>It will work for anyone who expects a <code>$user</code> argument, and that value will be passed. The model will run the <code>resolveRouteBinding</code> method.</p>
-<h2><a href='#deep-binding' id='deep-binding'>Deep binding</a></h2>
+<h2><a href='#deep-binding' id='deep-binding'>Deep Binding</a></h2>
 <p>As with automatic substitution, bindings <code>RPC::bind</code> and <code>RPC::model</code> can be set for nested elements. To do this, you need to use the <code>dot</code> notation in the declaration. For example:</p>
 <pre><code data-lang="php" class="notranslate"><span class="hl-type">RPC</span><span class="hl-delimeter">::</span><span class="hl-function">model</span>(<span class="hl-value">'user.order'</span>, <span class="hl-delimeter">.</span><span class="hl-delimeter">.</span><span class="hl-delimeter">.</span>);
 <span class="hl-type">RPC</span><span class="hl-delimeter">::</span><span class="hl-function">bind</span>(<span class="hl-value">'user.order'</span>, <span class="hl-delimeter">.</span><span class="hl-delimeter">.</span><span class="hl-delimeter">.</span>;
