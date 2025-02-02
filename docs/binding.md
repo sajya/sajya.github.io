@@ -11,15 +11,15 @@ section: content
 
 When working with Sajya, you can easily pass values to the arguments in your handlers. This allows you to retrieve and use the data you need to perform specific actions.
 
-Let's consider an example where we want to subtract two values. In the JSON-RPC request, we pass the values `a` and `b`:
+Let's consider an example where we want to subtract two values. In the JSON-RPC request, we pass the values `minuend` and `subtrahend`:
 
 ```json
 {
     "jsonrpc": "2.0",
     "method": "math@subtract",
     "params": {
-        "a": 4,
-        "b": 2
+        "minuend": 4,
+        "subtrahend": 2
     },
     "id": 1
 }
@@ -32,20 +32,20 @@ use Illuminate\Http\Request;
 
 public function subtract(Request $request): int
 {
-    return $request->get('a') - $request->get('b');
+    return $request->get('minuend') - $request->get('subtrahend');
 }
 ```
 
 Alternatively, you can leverage Sajya's automatic argument binding feature. Simply define the argument types in the handler method signature, and Sajya will automatically bind the corresponding values based on their names. For example:
 
 ```php
-public function subtract(int $a, int $b): int
+public function subtract(int $minuend, int $subtrahend): int
 {
-    return $a - $b;
+    return $minuend - $subtrahend;
 }
 ```
 
-This way, Sajya will automatically pass the values `a` and `b` as integers to the handler method.
+This way, Sajya will automatically pass the values `minuend` and `subtrahend` as integers to the handler method.
 
 Furthermore, if your request payload contains nested data, you can access it using camel case notation. Consider the following example where the `params` object has a nested property `user` with a `name` value:
 
@@ -86,7 +86,7 @@ use Illuminate\Support\Facades\Route;
  */
 public function boot(): void
 {
-    RPC::bind('a', function () {
+    RPC::bind('minuend', function () {
         return 100;
     });
 }
@@ -95,9 +95,10 @@ public function boot(): void
 This will automatically replace the substituted value in our method:
 
 ```php
-public function subtract(int $a, int $b): int
+public function subtract(int $minuend, int $subtrahend): int
 {
-    return $a - $b; // $a = 100
+    // $minuend = 100
+    return $minuend - $subtrahend;
 }
 ```
 
