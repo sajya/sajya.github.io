@@ -125,7 +125,7 @@ public function boot(): void
 It will work for anyone who expects a `$user` argument, and that value will be passed. The model will run the `resolveRouteBinding` method.
 
 
-## Deep binding
+## Deep Binding
 
 As with automatic substitution, bindings `RPC::bind` and `RPC::model` can be set for nested elements. To do this, you need to use the `dot` notation in the declaration. For example:
 
