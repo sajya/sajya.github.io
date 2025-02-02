@@ -118,6 +118,7 @@ class ExampleRequest extends FormRequest
 
         return $user->resolveRouteBinding($this->user);
     }
+}
 ```
 
 Then you can quickly and conveniently get values in the methods of procedures:
