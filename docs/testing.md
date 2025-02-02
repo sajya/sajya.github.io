@@ -45,10 +45,8 @@ class PingPongTest extends TestCase
 
     /**
      * A basic RPC test example.
-     *
-     * @return void
      */
-    public function testPingPong()
+    public function testPingPong(): void
     {
         $this
             ->setRpcRoute('rpc.endpoint')
