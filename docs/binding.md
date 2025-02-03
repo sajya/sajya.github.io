@@ -1,6 +1,6 @@
 ---
 title: Binding
-description: Different methods for binding allows you to conveniently access objct instances created from the request parameters
+description: Different methods for binding allows you to conveniently access object instances created from the request parameters
 extends: _layouts.documentation
 section: content
 ---
