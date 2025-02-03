@@ -28,11 +28,8 @@ class TennisProcedure extends Procedure
 
     /**
      * Execute the procedure.
-     *
-     * @param  Request  $request
-     * @return string
      */
-    public function ping(Request $request)
+    public function ping(Request $request): string
     {
         return $request->input('innings');
     }
@@ -59,15 +56,14 @@ Since this is a regular Laravel object, you can perform all available operations
 ```php
 /**
  * Execute the procedure.
- *
- * @param  Request  $request
- * @return string
  */
 public function ping(Request $request)
 {
     $validatedData = $request->validate([
         'innings' => 'required|string|max:255',
     ]);
+
+    //...
 }
 ```
 
