@@ -203,11 +203,8 @@
 
     <span class="hl-comment">/**
      * Execute the procedure.
-     *
-     * <span class="hl-keyword">@param</span>  <span class="hl-type">Request</span>  $request
-     * <span class="hl-keyword">@return</span> <span class="hl-keyword">string</span>
      */</span>
-    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">ping</span>(<span class="hl-injection"><span class="hl-type">Request</span> $request</span>)
+    <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">ping</span>(<span class="hl-injection"><span class="hl-type">Request</span> $request</span>): <span class="hl-keyword">string</span>
     {
         <span class="hl-keyword">return</span> $request<span class="hl-delimeter">-&gt;</span><span class="hl-function">input</span>(<span class="hl-value">'innings'</span>);
     }
@@ -228,15 +225,14 @@
 <p>Since this is a regular Laravel object, you can perform all available operations on it, for example, validation:</p>
 <pre><code data-lang="php" class="notranslate"><span class="hl-comment">/**
  * Execute the procedure.
- *
- * <span class="hl-keyword">@param</span>  <span class="hl-type">Request</span>  $request
- * <span class="hl-keyword">@return</span> <span class="hl-keyword">string</span>
  */</span>
 <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">ping</span>(<span class="hl-injection"><span class="hl-type">Request</span> $request</span>)
 {
     $validatedData <span class="hl-operator">=</span> $request<span class="hl-delimeter">-&gt;</span><span class="hl-function">validate</span>([
         <span class="hl-value">'innings'</span> <span class="hl-operator">=&gt;</span> <span class="hl-value">'required|string|max:255'</span>,
     ]);
+
+    <span class="hl-comment">//...</span>
 }
 </code></pre>
 <p>Sometimes you may miss the automatic binding of models in the route. But you can extend the request class. Let&rsquo;s execute the artisan command:</p>
