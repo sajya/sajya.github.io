@@ -122,9 +122,6 @@ Then you can quickly and conveniently get values in the methods of procedures:
 ```php
 /**
  * Execute the procedure.
- *
- * @param  ExampleRequest  $request
- * @return string
  */
 public function ping(ExampleRequest $request)
 {
