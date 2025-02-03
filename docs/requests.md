@@ -129,6 +129,7 @@ Then you can quickly and conveniently get values in the methods of procedures:
 public function ping(ExampleRequest $request)
 {
     $request->user();
+
     //...
 }
 ```
