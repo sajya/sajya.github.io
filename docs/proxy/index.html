@@ -199,17 +199,11 @@ When no method is found in such a procedure, it will execute the <code>__invoke<
     <span class="hl-comment">/**
      * The name of the procedure that will be
      * displayed and taken into account in the search.
-     *
-     * <span class="hl-keyword">@var</span> <span class="hl-keyword">string</span>
      */</span>
     <span class="hl-keyword">public</span> <span class="hl-keyword">static</span> <span class="hl-keyword">string</span> $name <span class="hl-operator">=</span> <span class="hl-value">'proxy'</span>;
 
     <span class="hl-comment">/**
      * The method that will be called if there is no match.
-     * 
-     * <span class="hl-keyword">@param</span> \Sajya\Server\Http\<span class="hl-type">Request</span> $request
-     *
-     * <span class="hl-keyword">@return</span> <span class="hl-keyword">mixed</span>
      */</span>
     <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">__invoke</span>(<span class="hl-injection"><span class="hl-type">Request</span> $request</span>): <span class="hl-keyword">mixed</span>
     {
