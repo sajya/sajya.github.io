@@ -39,7 +39,7 @@ The resulting JSON-RPC response will contain the error details:
     "error": {
         "code": -100,
         "message": "Division by zero."
-        ....
+        ...
     },
     "jsonrpc": "2.0"
 }
