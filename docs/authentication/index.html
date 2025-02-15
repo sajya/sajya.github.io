@@ -200,6 +200,15 @@
 <p>Each client request to the server must contain all the information necessary to fulfill this request without storing any context on the server-side. The session state is entirely stored on the client-side.</p>
 </blockquote>
 <hr>
+<h2><a href='#sanctum' id='sanctum'>Sanctum</a></h2>
+<p>Sanctum is a package designed for Laravel applications that provides authentication middleware. It simplifies the implementation of authentication mechanisms like HTTP Basic Authentication while ensuring application security and integrity.</p>
+<p>To register the route middleware and attach it to the route, use the following code:</p>
+<pre><code data-lang="php" class="notranslate"><span class="hl-type">Route</span><span class="hl-delimeter">::</span><span class="hl-function">rpc</span>(<span class="hl-value">'/v1/endpoint'</span>, [<span class="hl-delimeter">.</span><span class="hl-delimeter">.</span><span class="hl-delimeter">.</span>])
+    <span class="hl-delimeter">-&gt;</span><span class="hl-function">name</span>(<span class="hl-value">'rpc.endpoint'</span>)
+    <span class="hl-delimeter">-&gt;</span><span class="hl-function">middleware</span>(<span class="hl-value">'auth:sanctum'</span>);
+</code></pre>
+<p>For detailed information on integrating Sanctum into your Laravel application, please refer to the <a href="https://laravel.com/docs/sanctum">Sanctum documentation</a>.</p>
+<hr>
 <h2><a href='#http-basic-authentication' id='http-basic-authentication'>HTTP Basic Authentication</a></h2>
 <p>For example, we implement <code>HTTP Basic Authentication</code> to define the middleware that calls the <code>onceBasic</code> method. If the <code>onceBasic</code> method does not return a response, the request can be passed on to the application:</p>
 <pre><code data-lang="php" class="notranslate"><span class="hl-keyword">namespace</span> App\Http\Middleware;
@@ -245,15 +254,6 @@
 });
 </code></pre>
 <p>By default, <code>middleware</code> will use the <code>email</code> column in the user record as the &ldquo;username&rdquo;.</p>
-<hr>
-<h2><a href='#sanctum' id='sanctum'>Sanctum</a></h2>
-<p>Sanctum is a package designed for Laravel applications that provides authentication middleware. It simplifies the implementation of authentication mechanisms like HTTP Basic Authentication while ensuring application security and integrity.</p>
-<p>To register the route middleware and attach it to the route, use the following code:</p>
-<pre><code data-lang="php" class="notranslate"><span class="hl-type">Route</span><span class="hl-delimeter">::</span><span class="hl-function">rpc</span>(<span class="hl-value">'/v1/endpoint'</span>, [<span class="hl-delimeter">.</span><span class="hl-delimeter">.</span><span class="hl-delimeter">.</span>])
-    <span class="hl-delimeter">-&gt;</span><span class="hl-function">name</span>(<span class="hl-value">'rpc.endpoint'</span>)
-    <span class="hl-delimeter">-&gt;</span><span class="hl-function">middleware</span>(<span class="hl-value">'auth:sanctum'</span>);
-</code></pre>
-<p>For detailed information on integrating Sanctum into your Laravel application, please refer to the <a href="https://laravel.com/docs/sanctum">Sanctum documentation</a>.</p>
 <hr>
 <h2><a href='#token-authentication' id='token-authentication'>Token Authentication</a></h2>
 <h3><a href='#database-preparation' id='database-preparation'>Database Preparation</a></h3>
