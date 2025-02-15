@@ -32,3 +32,7 @@ Executing this command will result in an empty JSON object as the response:
 ### Benefits of Notifications
 
 Using Notifications can optimize your web application's performance by reducing unnecessary server responses. Since Notifications do not require a response, they enable more efficient communication between the client and server. By clearly indicating that the client is not interested in receiving a response, the communication becomes faster and lighter, contributing to better overall performance.
+
+### Sajya with HTTP  
+
+Typically, a client sends a request to the server, where it is processed before returning a response. However, if the request is purely a notification, there is no need to make the client wait for the entire processing to complete. Laravel Sajya allows you to send an immediate response to the client while handling the request in the background. This reduces client wait time and improves system responsiveness, as the processing does not block further user actions.
