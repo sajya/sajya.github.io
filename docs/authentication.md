@@ -26,6 +26,25 @@ It would be best if you did not do this. The exchange format does not imply auth
  > Each client request to the server must contain all the information necessary to fulfill this request without storing any context on the server-side. The session state is entirely stored on the client-side.
  
  ----
+
+
+## Sanctum
+
+Sanctum is a package designed for Laravel applications that provides authentication middleware. It simplifies the implementation of authentication mechanisms like HTTP Basic Authentication while ensuring application security and integrity.
+
+
+To register the route middleware and attach it to the route, use the following code:
+
+```php
+Route::rpc('/v1/endpoint', [...])
+    ->name('rpc.endpoint')
+    ->middleware('auth:sanctum');
+```
+
+For detailed information on integrating Sanctum into your Laravel application, please refer to the [Sanctum documentation](https://laravel.com/docs/sanctum).
+
+----
+ 
  
 ## HTTP Basic Authentication 
 
@@ -86,22 +105,6 @@ By default, `middleware` will use the `email` column in the user record as the "
 
 ----
 
-## Sanctum
-
-Sanctum is a package designed for Laravel applications that provides authentication middleware. It simplifies the implementation of authentication mechanisms like HTTP Basic Authentication while ensuring application security and integrity.
-
-
-To register the route middleware and attach it to the route, use the following code:
-
-```php
-Route::rpc('/v1/endpoint', [...])
-    ->name('rpc.endpoint')
-    ->middleware('auth:sanctum');
-```
-
-For detailed information on integrating Sanctum into your Laravel application, please refer to the [Sanctum documentation](https://laravel.com/docs/sanctum).
-
-----
 
 ## Token Authentication
 
