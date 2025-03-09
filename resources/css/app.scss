@@ -165,7 +165,7 @@ main, .main {
 
     blockquote {
         //background: #F9F9FE;
-        background: rgba(240, 235, 227, 0.8);
+        //background: rgba(240, 235, 227, 0.8);
         border-radius: $border-radius;
         display: flex;
         padding: 1.5em;
@@ -173,10 +173,11 @@ main, .main {
         margin: 2em 0;
         @extend .text-wrap;
         @extend .text-break;
+        border: 1px dashed rgba(0, 0, 0, 0.35);
         gap: 1em;
 
         &:before{
-            background-color: #ffffff;
+            background-color: #fbf9f6;
             color: rgb(181 105 89);
             content: "!";
             width: 1.5em;
@@ -308,4 +309,8 @@ main > h2:first-of-type {
     100% {
         transform: translateY(-100%);
     }
+}
+
+.text-balance {
+    text-wrap: balance;
 }
