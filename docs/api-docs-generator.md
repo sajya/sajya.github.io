@@ -8,7 +8,7 @@ section: content
 
 ## Usage
 
-Documentation creation based on phpdoc annotations:
+Documentation creation based on php attribute `Sajya\Server\Attributes\RpcMethod`:
 
 ```php
 declare(strict_types=1);
@@ -16,9 +16,8 @@ declare(strict_types=1);
 namespace App\Http\Procedures;
 
 use Illuminate\Http\Request;
-use Sajya\Server\Annotations\Param;
-use Sajya\Server\Annotations\Result;
 use Sajya\Server\Procedure;
+use Sajya\Server\Attributes\RpcMethod;
 
 class MathProcedure extends Procedure
 {
@@ -30,14 +29,16 @@ class MathProcedure extends Procedure
      */
     public static string $name = 'math';
 
-    /**
-     * Execute the procedure.
-     *
-     * @Param(name="minuend", value="required|integer")
-     * @Param(name="subtrahend", value="required|integer")
-     *
-     * @Result(name="outcome", value="required|integer")
-     */
+    #[RpcMethod(
+        description: "Performs a subtraction operation",
+        params: [
+            "minuend" => "int",
+            "subtrahend" => "int",
+        ],
+        result: [
+            "outcome" => "int",
+        ]
+    )]
     public function subtract(Request $request): array
     {
         return [
@@ -45,17 +46,6 @@ class MathProcedure extends Procedure
         ];
     }
 }
-
-```
-
-Using annotations `Param` and `Result`, you can specify the expected key's name and description.
-
-> **Note.** Importing annotation classes is required.
-
-To specify array elements or nesting, use dot notation, for example:
-
-```php
-@Param(name="server.title", value="required|string|max:255")
 ```
 
 ----
