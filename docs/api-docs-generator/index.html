@@ -185,15 +185,14 @@
                         </div>
 
                         <body><h2><a href='#usage' id='usage'>Usage</a></h2>
-<p>Documentation creation based on phpdoc annotations:</p>
+<p>Documentation creation based on php attribute <code>Sajya\Server\Attributes\RpcMethod</code>:</p>
 <pre><code data-lang="php" class="notranslate"><span class="hl-keyword"><span class="hl-function">declare</span></span>(strict_types=<span class="hl-number">1</span>);
 
 <span class="hl-keyword">namespace</span> App\Http\Procedures;
 
 <span class="hl-keyword">use</span> Illuminate\Http\<span class="hl-type">Request</span>;
-<span class="hl-keyword">use</span> Sajya\Server\Annotations\<span class="hl-type">Param</span>;
-<span class="hl-keyword">use</span> Sajya\Server\Annotations\<span class="hl-type">Result</span>;
 <span class="hl-keyword">use</span> Sajya\Server\<span class="hl-type">Procedure</span>;
+<span class="hl-keyword">use</span> Sajya\Server\Attributes\<span class="hl-type">RpcMethod</span>;
 
 <span class="hl-keyword">class</span> <span class="hl-type">MathProcedure</span> <span class="hl-keyword">extends</span> <span class="hl-template">Procedure</span>
 {
@@ -205,14 +204,16 @@
      */</span>
     <span class="hl-keyword">public</span> <span class="hl-keyword">static</span> <span class="hl-keyword">string</span> $name <span class="hl-operator">=</span> <span class="hl-value">'math'</span>;
 
-    <span class="hl-comment">/**
-     * Execute the procedure.
-     *
-     * <span class="hl-keyword">@Param</span>(name="minuend", value="required|integer")
-     * <span class="hl-keyword">@Param</span>(name="subtrahend", value="required|integer")
-     *
-     * <span class="hl-keyword">@Result</span>(name="outcome", value="required|integer")
-     */</span>
+    #[<span class="hl-function">RpcMethod</span>(
+        <span class="hl-property">description</span>: <span class="hl-value">"Performs a subtraction operation"</span>,
+        <span class="hl-property">params</span>: [
+            <span class="hl-value">"minuend"</span> <span class="hl-operator">=&gt;</span> <span class="hl-value">"int"</span>,
+            <span class="hl-value">"subtrahend"</span> <span class="hl-operator">=&gt;</span> <span class="hl-value">"int"</span>,
+        ],
+        <span class="hl-property">result</span>: [
+            <span class="hl-value">"outcome"</span> <span class="hl-operator">=&gt;</span> <span class="hl-value">"int"</span>,
+        ]
+    )]
     <span class="hl-keyword">public</span> <span class="hl-keyword">function</span> <span class="hl-function">subtract</span>(<span class="hl-injection"><span class="hl-type">Request</span> $request</span>): <span class="hl-keyword">array</span>
     {
         <span class="hl-keyword">return</span> [
@@ -220,14 +221,6 @@
         ];
     }
 }
-
-</code></pre>
-<p>Using annotations <code>Param</code> and <code>Result</code>, you can specify the expected key&rsquo;s name and description.</p>
-<blockquote>
-<p><strong>Note.</strong> Importing annotation classes is required.</p>
-</blockquote>
-<p>To specify array elements or nesting, use dot notation, for example:</p>
-<pre><code data-lang="php" class="notranslate">@<span class="hl-function">Param</span>(name=<span class="hl-value">"server.title"</span>, value=<span class="hl-value">"required|string|max:255"</span>)
 </code></pre>
 <hr>
 <h2><a href='#generating-html' id='generating-html'>Generating HTML</a></h2>
