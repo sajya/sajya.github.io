@@ -90,7 +90,7 @@ php artisan serve
 
 Open a browser and go to `http://localhost:8000`. If everything works, you will see the welcome page. Later, when you are done, stop the server by pressing `Ctrl + C` in the terminal you are using.
 
-## Check response 
+## Check Response
 
 To turn to the required method, you must pass the name specified in the class and the necessary process with the delimiter "@" character. In our case, it will be: `tennis@ping`.
 
