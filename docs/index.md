@@ -57,7 +57,7 @@ In case of an error, the response might look like this:
 You can find out more on the [specification page](/docs/specification).
 
 
-## How to install?
+## How To Install?
 
 The package is freely distributed over the Internet, [source codes](https://github.com/sajya/server), and [release notes](https://github.com/sajya/server/releases) are published on GitHub.
 The [Quick Start](/docs/quickstart) contains detailed instructions.
