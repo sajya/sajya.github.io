@@ -7,7 +7,7 @@ section: content
 
 ## Test an RPC method
 
-Server 8.1 includes the `MakesRpcRequests` trait for Laravel feature tests.
+Sajya server includes the `MakesRpcRequests` trait for Laravel feature tests.
 Create a test class:
 
 ```bash
