@@ -21,8 +21,6 @@ For supported Laravel and PHP versions, see the [installation requirements](/doc
 
 A procedure is a PHP class with public methods that handle RPC calls. Add the `Sajya\Server\Attributes\Procedure` attribute to give the class its RPC name. Each registered procedure class must have the attribute; a base class and a static `$name` property are no longer needed.
 
-Upgrading an existing application? Follow the [upgrade guide for server 8.0](/docs/upgrade).
-
 You can create a procedure class by executing the `artisan` command:
 
 ```bash
