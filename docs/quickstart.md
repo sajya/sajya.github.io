@@ -11,7 +11,7 @@ section: content
 Navigate to your project directory and install Sajya using Composer:
 
 ```bash
-composer require "sajya/server:^8.0"
+composer require "sajya/server:^8.1"
 ```
 
 For supported Laravel and PHP versions, see the [installation requirements](/docs/installation).

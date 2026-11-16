@@ -46,6 +46,12 @@ The `RpcMethod` attributes used by the [documentation generator](/docs/api-docs-
 
 New classes created by `php artisan make:procedure` already use the attribute.
 
+## Update testing helpers in 8.1
+
+Server 8.1 adds `MakesRpcRequests` and deprecates `ProceduralRequests`.
+Follow the [testing guide](/docs/testing#migrate-from-proceduralrequests) to migrate your tests.
+Test examples use PHPUnit's `#[Test]` attribute instead of a `test` method prefix.
+
 ## Update the HTTP client
 
 If your application uses `sajya/client`, version 1.6 is tested with server 8.0:
