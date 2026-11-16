@@ -15,17 +15,12 @@ declare(strict_types=1);
 
 namespace App\Http\Procedures;
 
-use Sajya\Server\Procedure;
+use Sajya\Server\Attributes\Procedure;
 use Illuminate\Http\Request;
 
-class TennisProcedure extends Procedure
+#[Procedure('tennis')]
+class TennisProcedure
 {
-    /**
-     * The name of the procedure that will be
-     * displayed and taken into account in the search
-     */
-    public static string $name = 'tennis';
-
     /**
      * Execute the procedure.
      */

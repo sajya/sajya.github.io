@@ -15,8 +15,10 @@ The HTTP(S) Client is a standalone package that uses your PHP code to make reque
 To install the client package, navigate to your project directory and run the following command:
 
 ```bash
-composer require sajya/client
+composer require "sajya/client:^1.6"
 ```
+
+Client 1.6 is tested with server 8.0. Procedure attributes are configured on the server; client calls such as `tennis@ping` stay the same.
 
 ### Basic Usage
 

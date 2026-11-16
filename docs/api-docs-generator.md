@@ -16,19 +16,12 @@ declare(strict_types=1);
 namespace App\Http\Procedures;
 
 use Illuminate\Http\Request;
-use Sajya\Server\Procedure;
+use Sajya\Server\Attributes\Procedure;
 use Sajya\Server\Attributes\RpcMethod;
 
-class MathProcedure extends Procedure
+#[Procedure('math')]
+class MathProcedure
 {
-    /**
-     * The name of the procedure that will be
-     * displayed and taken into account in the search
-     *
-     * @var string
-     */
-    public static string $name = 'math';
-
     #[RpcMethod(
         description: "Performs a subtraction operation",
         params: [

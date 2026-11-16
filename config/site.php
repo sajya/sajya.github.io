@@ -16,6 +16,7 @@ return [
         'Getting Started' => [
                 //'Installation'   => '/docs/installation',
                 'Quick Start'    => '/docs/quickstart',
+                'Upgrade to 8.0' => '/docs/upgrade',
                 'Notifications'  => '/docs/notifications',
                 'Batch'          => '/docs/batch',
         ],

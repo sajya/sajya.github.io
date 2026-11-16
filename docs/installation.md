@@ -1,6 +1,6 @@
 ---
 title: Installation
-description: Building a navigation menu for your site
+description: Install the Sajya JSON-RPC server for Laravel
 extends: _layouts.documentation
 section: content
 ---
@@ -8,7 +8,7 @@ section: content
 
 ## System Requirements
 
-To use Sajya, you need to have [Composer](https://getcomposer.org/) installed on your machine. 
+Server 8.0 supports Laravel 10–13 and requires PHP 8.1 or later. Use the PHP version required by your Laravel release. Install packages with [Composer](https://getcomposer.org/).
 
 ---
 
@@ -19,8 +19,10 @@ Navigate to your project directory and install Sajya using Composer:
 
 ```bash
 $ cd my-application
-$ composer require sajya/server
+$ composer require "sajya/server:^8.0"
 ```
+
+Upgrading from server 7.x? Follow the [upgrade guide](/docs/upgrade).
 
 ## What to do next?
 

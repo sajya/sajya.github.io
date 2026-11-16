@@ -11,13 +11,17 @@ section: content
 Navigate to your project directory and install Sajya using Composer:
 
 ```bash
-composer require sajya/server
+composer require "sajya/server:^8.0"
 ```
+
+For supported Laravel and PHP versions, see the [installation requirements](/docs/installation).
 
 
 ## Creating Procedures
 
-All actions are described in `Procedure` classes; it is a familiar controller. Still, it must contain the static property `name`, which will determine the request's execution. Actions can be performed in any public method.
+A procedure is a PHP class with public methods that handle RPC calls. Add the `Sajya\Server\Attributes\Procedure` attribute to give the class its RPC name. Each registered procedure class must have the attribute; a base class and a static `$name` property are no longer needed.
+
+Upgrading an existing application? Follow the [upgrade guide for server 8.0](/docs/upgrade).
 
 You can create a procedure class by executing the `artisan` command:
 
@@ -25,9 +29,9 @@ You can create a procedure class by executing the `artisan` command:
 php artisan make:procedure TennisProcedure
 ```
 
-Will create a new file, `TennisProcedure.php` in the directory `app/Http/Procedures`.
+This creates `app/Http/Procedures/TennisProcedure.php` with `#[Procedure('TennisProcedure')]` and a `handle` method.
 
-Let's call the new procedure `tennis`. To do this, change the `name` property and add the `pong` returning value to the `ping` method to get this content:
+Change the attribute to `#[Procedure('tennis')]` and replace the generated `handle` method with `ping`:
 
 
 ```php
@@ -35,16 +39,11 @@ declare(strict_types=1);
 
 namespace App\Http\Procedures;
 
-use Sajya\Server\Procedure;
+use Sajya\Server\Attributes\Procedure;
 
-class TennisProcedure extends Procedure
+#[Procedure('tennis')]
+class TennisProcedure
 {
-    /**
-     * The name of the procedure that will be
-     * displayed and taken into account in the search
-     */
-    public static string $name = 'tennis';
-
     /**
      * Execute the procedure.
      */
@@ -92,7 +91,7 @@ Open a browser and go to `http://localhost:8000`. If everything works, you will 
 
 ## Check Response
 
-To turn to the required method, you must pass the name specified in the class and the necessary process with the delimiter "@" character. In our case, it will be: `tennis@ping`.
+Combine the name from the `Procedure` attribute with the public method name, separated by `@`. Here, `#[Procedure('tennis')]` and `ping()` give the RPC method `tennis@ping`.
 
 Let's make a `curl` call to the new API:
 

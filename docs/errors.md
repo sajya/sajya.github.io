@@ -17,12 +17,11 @@ During the operation of your application, you can throw exceptions that will be 
 namespace App\Http\Procedures;
 
 use Exception;
-use Sajya\Server\Procedure;
+use Sajya\Server\Attributes\Procedure;
 
-class TennisProcedure extends Procedure
+#[Procedure('tennis')]
+class TennisProcedure
 {
-    public static string $name = 'tennis';
-
     public function ping()
     {
         throw new Exception('Division by zero.', -100);
@@ -96,12 +95,11 @@ Once you have defined a custom exception, you can throw it during runtime. The J
 namespace App\Http\Procedures;
 
 use App\Exceptions\DivisionByZero;
-use Sajya\Server\Procedure;
+use Sajya\Server\Attributes\Procedure;
 
-class TennisProcedure extends Procedure
+#[Procedure('tennis')]
+class TennisProcedure
 {
-    public static string $name = 'tennis';
-
     public function ping()
     {
         throw new DivisionByZero();

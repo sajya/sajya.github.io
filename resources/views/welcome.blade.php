@@ -525,9 +525,10 @@
 namespace App\Http\Procedures;
 
 use App\Models\User;
-use Sajya\Server\Procedure;
+use Sajya\Server\Attributes\Procedure;
 
-class UserProcedure extends Procedure
+#[Procedure("users")]
+class UserProcedure
 {
     public function update(User $user)
     {
