@@ -27,7 +27,9 @@ use Illuminate\Support\Facades\Http;
 use Sajya\Client\Client;
 
 // Create the HTTP(S) Client and specify the base URL
-$client = new Client(Http::baseUrl('http://localhost:8000/api/v1/endpoint'));
+$client = new Client(
+    Http::baseUrl('http://localhost:8000/api/v1/endpoint')
+);
 
 // Make a request to the server
 $response = $client->execute('tennis@ping');
@@ -57,7 +59,10 @@ You can pass parameters to your requests either as positional parameters or name
 $response = $client->execute('tennis@ping', [3, 5]);
 
 // Named arguments
-$response = $client->execute('tennis@ping', ['end' => 10, 'start' => 1]);
+$response = $client->execute('tennis@ping', [
+    'end' => 10,
+    'start' => 1
+]);
 ```
 
 ### Batch Requests
