@@ -28,7 +28,7 @@ class PingPongTest extends TestCase
     use MakesRpcRequests;
 
     #[Test]
-    public function ping_returns_pong(): void
+    public function pingPong(): void
     {
         $this->withRpcEndpoint(route('rpc.endpoint'))
             ->rpc('tennis@ping')
