@@ -27,17 +27,11 @@ class PingPongTest extends TestCase
 {
     use MakesRpcRequests;
 
-    protected function setUp(): void
-    {
-        parent::setUp();
-
-        $this->withRpcEndpoint(route('rpc.endpoint'));
-    }
-
     #[Test]
     public function ping_returns_pong(): void
     {
-        $this->rpc('tennis@ping')
+        $this->withRpcEndpoint(route('rpc.endpoint'))
+            ->rpc('tennis@ping')
             ->assertOk()
             ->assertJsonPath('result', 'pong')
             ->assertJsonMissingPath('error');
@@ -68,13 +62,19 @@ Calling `rpc()` before configuring an endpoint throws a `LogicException` with se
 Pass named parameters as the second argument:
 
 ```php
-$this->rpc('math@subtract', ['minuend' => 42, 'subtrahend' => 23]);
+$this->rpc('math@subtract', [
+    'minuend' => 42,
+    'subtrahend' => 23
+]);
 ```
 
 The request ID defaults to `1`. Pass a custom ID as the third argument:
 
 ```php
-$this->rpc('math@subtract', ['minuend' => 42, 'subtrahend' => 23], id: 'subtract-1')
+$this->rpc('math@subtract', [
+    'minuend' => 42,
+    'subtrahend' => 23
+], id: 'subtract-1')
     ->assertOk()
     ->assertJsonPath('result.outcome', 19);
 ```
@@ -111,29 +111,5 @@ $this->postJson(route('rpc.endpoint'), [
 ]);
 ```
 
-## Migrate from ProceduralRequests
-
-`ProceduralRequests` is deprecated in server 8.1 and remains available for existing tests.
-Replace the trait import and usage with `Sajya\Server\Testing\MakesRpcRequests`.
-
-| Previous call | Replacement |
-| --- | --- |
-| `setRpcRoute($name)` | `withRpcEndpoint(route($name))` |
-| `setRpcUrl($url)` | `withRpcEndpoint($url)` |
-| `callProcedure($method, $params, $id)` | `rpc($method, $params, $id)` with explicit assertions |
-| `callHttpProcedure($method, $params, $id)` | `rpc($method, $params, $id)` |
-
-`callProcedure()` checked the HTTP status and response content type automatically.
-Keep those checks when migrating:
-
-```php
-$this->rpc('tennis@ping')
-    ->assertOk()
-    ->assertHeader('content-type', 'application/json')
-    ->assertJsonPath('result', 'pong');
-```
-
-The old trait has a `@deprecated` tag for IDEs. Its public methods carry native `#[Deprecated]` attributes,
-which emit warnings on PHP 8.4 and later.
 
 For more HTTP assertions, see the [Laravel HTTP testing documentation](https://laravel.com/docs/http-tests).
